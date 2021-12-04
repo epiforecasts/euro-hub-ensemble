@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "Exploring ensembles of European Covid-19 forecasts"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -8,4 +8,19 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+### [Abstract](about.html)
+
+### [Background](background.html)
+
+### [Methods](methods.html)
+
+### Results
+- [View rendered text](results.html)
+- [Edit text with code](https://docs.google.com/document/d/1fV6T9ptkWaEHgpkjd8GOeL4U0Fuap_PBeZeYcyGE2UI/edit?usp=sharing)
+
+### [Discussion](disucssion.html)
+
+
+---
+
+Built using workflowr and trackdown
