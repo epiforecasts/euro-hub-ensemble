@@ -6,6 +6,30 @@ output:
 editor_options:
   chunk_output_type: console
 ---
+```{r set up, include=FALSE}
+# Packages
+library(here)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(purrr)
+library(ggplot2)
+library(forcats)
+library(patchwork)
+library(gghighlight)
+# Settings
+this_doc <- "analysis/whole.Rmd"
+here::i_am(this_doc)
+knitr::opts_chunk$set(eval = TRUE, echo = FALSE, 
+                      message = FALSE, warning = FALSE,
+                      eval.after = "fig.cap")
+theme_set(theme_bw())
+# Use trackdown for edits
+# gdrive_path <- "trackdown/euro-hub-ensemble"
+# trackdown::render_file(this_doc, gpath = gdrive_path)
+# trackdown::download_file(this_doc, gpath = gdrive_path)
+# trackdown::update_file(this_doc, gpath = gdrive_path)
+```
 
 ## Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations
 
@@ -60,26 +84,6 @@ To create weights for component models, we measured past performance using the i
 To evaluate the simple and weighted mean and median ensemble forecasts, we used the same measure of performance described above based on calculating the relative interval score scaled to a baseline, and explored coverage and the interval score.
 
 ### Results
-
-```{r set up, include=FALSE}
-# Packages
-library(here)
-library(dplyr)
-library(tidyr)
-library(lubridate)
-library(purrr)
-library(ggplot2)
-library(forcats)
-library(patchwork)
-library(gghighlight)
-
-# Settings
-here::i_am("analysis/results.Rmd")
-knitr::opts_chunk$set(eval = TRUE, echo = FALSE, 
-                      message = FALSE, warning = FALSE,
-                      eval.after = "fig.cap")
-theme_set(theme_bw())
-```
 
 ```{r model-description}
 # Get latest evaluation scores for models
