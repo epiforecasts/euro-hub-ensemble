@@ -18,7 +18,7 @@ editor_options:
 - [View rendered text](results.html)
 - [Edit text with code](https://docs.google.com/document/d/1fV6T9ptkWaEHgpkjd8GOeL4U0Fuap_PBeZeYcyGE2UI/edit?usp=sharing)
 
-### [Discussion](disucssion.html)
+### [Discussion](discussion.html)
 
 
 ---

@@ -1,0 +1,4 @@
+[submodule "covid19-forecast-hub-europe"]
+	path = covid19-forecast-hub-europe
+	url = https://github.com/epiforecasts/covid19-forecast-hub-europe
+	branch = assess-ensembles
