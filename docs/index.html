@@ -11,7 +11,7 @@
 
 
 
-<title>Exploring ensembles of European Covid-19 forecasts</title>
+<title>Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -284,7 +284,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Exploring ensembles of European Covid-19 forecasts</h1>
+<h1 class="title toc-ignore">Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations</h1>
 
 </div>
 
@@ -340,16 +340,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree201a9686401a7768c46610857295a0780242e7abtargetblank201a968a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/201a9686401a7768c46610857295a0780242e7ab" target="_blank">201a968</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree1498fccc1294c84978269b7f4d9c00a3a0dcd5aetargetblank1498fcca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/1498fccc1294c84978269b7f4d9c00a3a0dcd5ae" target="_blank">1498fcc</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree201a9686401a7768c46610857295a0780242e7abtargetblank201a968a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree1498fccc1294c84978269b7f4d9c00a3a0dcd5aetargetblank1498fcca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/201a9686401a7768c46610857295a0780242e7ab" target="_blank">201a968</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/1498fccc1294c84978269b7f4d9c00a3a0dcd5ae" target="_blank">1498fcc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -358,10 +358,16 @@ Note that you need to be careful to ensure that all relevant files for the analy
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    analysis/about.html
+
+Untracked files:
+    Untracked:  analysis/whole.Rmd
 
 Unstaged changes:
+    Modified:   analysis/about.Rmd
     Modified:   analysis/index.Rmd
+    Modified:   analysis/results.Rmd
+    Modified:   code/get-ensemble-eval.R
+    Modified:   code/get-model-eval.R
 
 </code></pre>
 <p>
@@ -405,6 +411,74 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/1498fccc1294c84978269b7f4d9c00a3a0dcd5ae/analysis/index.Rmd" target="_blank">1498fcc</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2021-12-04
+</td>
+<td>
+readme
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/f7f625cf00ebd5168503f32ef4c94cf15626a716/analysis/index.Rmd" target="_blank">f7f625c</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2021-12-04
+</td>
+<td>
+add submodule
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/0470e8ff9f4bba2246b38271110cd07e0ca2a714/analysis/index.Rmd" target="_blank">0470e8f</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2021-12-04
+</td>
+<td>
+wflow_git_commit(all = TRUE)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/0470e8ff9f4bba2246b38271110cd07e0ca2a714/docs/index.html" target="_blank">0470e8f</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2021-12-04
+</td>
+<td>
+wflow_git_commit(all = TRUE)
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/201a9686401a7768c46610857295a0780242e7ab/analysis/index.Rmd" target="_blank">201a968</a>
 </td>
 <td>
@@ -441,27 +515,19 @@ add all files
 </div>
 </div>
 </div>
-<div id="abstract" class="section level3">
-<h3><a href="about.html">Abstract</a></h3>
-</div>
-<div id="background" class="section level3">
-<h3><a href="background.html">Background</a></h3>
-</div>
-<div id="methods" class="section level3">
-<h3><a href="methods.html">Methods</a></h3>
-</div>
-<div id="results" class="section level3">
-<h3>Results</h3>
 <ul>
-<li><a href="results.html">View rendered text</a></li>
-<li><a href="https://docs.google.com/document/d/1fV6T9ptkWaEHgpkjd8GOeL4U0Fuap_PBeZeYcyGE2UI/edit?usp=sharing">Edit text with code</a></li>
+<li><a href="whole.html">Rendered document</a>
+<ul>
+<li><a href="whole.html#abstract">Abstract</a></li>
+<li><a href="whole.html#background">Background</a></li>
+<li><a href="whole.html#methods">Methods</a></li>
+<li><a href="whole.html#results">Results</a></li>
+<li><a href="whole.html#discussion">Discussion</a></li>
+</ul></li>
+<li><a href="https://docs.google.com/document/d/1fV6T9ptkWaEHgpkjd8GOeL4U0Fuap_PBeZeYcyGE2UI/edit?usp=sharing">Editable text with code</a></li>
 </ul>
-</div>
-<div id="discussion" class="section level3">
-<h3><a href="disucssion.html">Discussion</a></h3>
 <hr />
 <p>Built using workflowr and trackdown</p>
-</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using

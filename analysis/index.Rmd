@@ -8,17 +8,15 @@ editor_options:
   chunk_output_type: console
 ---
 
-### [Abstract](about.html)
+- [Rendered document](whole.html)
+   - [Abstract](whole.html#abstract)
+   - [Background](whole.html#background)
+   - [Methods](whole.html#methods)
+   - [Results](whole.html#results)
+   - [Discussion](whole.html#discussion)
+   
+- [Editable text with code](https://docs.google.com/document/d/1fV6T9ptkWaEHgpkjd8GOeL4U0Fuap_PBeZeYcyGE2UI/edit?usp=sharing)
 
-### [Background](background.html)
-
-### [Methods](methods.html)
-
-### Results
-- [View rendered text](results.html)
-- [Edit text with code](https://docs.google.com/document/d/1fV6T9ptkWaEHgpkjd8GOeL4U0Fuap_PBeZeYcyGE2UI/edit?usp=sharing)
-
-### [Discussion](discussion.html)
 
 
 ---

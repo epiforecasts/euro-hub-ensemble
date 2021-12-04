@@ -1,6 +1,3 @@
-subproj_dir <- ""
-here::i_am(paste0(subproj_dir, "/code/get-model-eval.R"))
-
 # Get evaluation dataset
 library(here)
 library(purrr)
@@ -9,6 +6,7 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(covidHubUtils)
+here::i_am("code/get-model-eval.R")
 
 # find evaluation  ------------------------------------------------------
 # Find latest evaluation

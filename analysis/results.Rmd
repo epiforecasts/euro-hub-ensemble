@@ -48,15 +48,6 @@ n_team <- length(unique(model_eval$team_name))
 n_model_wis <- filter(model_eval, !is.na(rel_wis)) %>%
   distinct(model) %>% nrow()
 
-## Not used
-## Across all possible scores, which models never crossed >1 relative to baseline WIS?
-# cross <- model_eval %>%
-#   filter(!is.na(rel_wis)) %>%
-#   group_by(model) %>%
-#   summarise(n_scores = n(),
-#             outperform = 1 - (sum(rel_wis >= 1, na.rm = TRUE)) / n_scores,
-#             n_forecasts = sum(n))
-
 ```
 
 We scored all forecasts submitted weekly in real time over the `r n_weeks` week period from `r start_date` to `r end_date`. Each week, forecasts could predict incident cases and deaths, for 32 locations over the following 4 weeks, creating 256 possible forecast targets. We received `r n_model` unique forecasting models from `r n_team` separate forecasting teams. We added an ensemble model using all available forecasts for each possible target. 
@@ -180,15 +171,6 @@ model_eval %>%
   theme(legend.position = "none",
         axis.text.x = element_text(angle = 30, hjust = 1),
         strip.background = element_blank())
-
-# Ensemble relative to IQR for each country
-# ensemble_iqr <- model_eval %>%
-#   group_by(location, target_variable) %>%
-#   summarise(q.25 = quantile(rel_wis, 0.25, na.rm = TRUE),
-#             median = median(rel_wis, na.rm = TRUE),
-#             q.75 = quantile(rel_wis, 0.75, na.rm = TRUE),
-#             ensemble = median(ensemble_rel_wis) < q.25)
-
 ```
 
 The ensemble also performed consistently well when forecasting across countries, relative to individual models and the baseline (figure #).  Compared to models that forecast across all 32 countries at the two week horizon, the ensemble was the most consistent in outperforming the baseline across countries compared to any single model forecasting deaths, and all but one model for case forecasts. Considering forecast targets across all 32 countries and over all four horizons (128 targets), the ensemble forecast outperformed the baseline for `r p_ensemble_beat_loc$Cases`% and `r p_ensemble_beat_loc$Deaths`% of all 128 targets when forecasting cases and deaths respectively.

@@ -1,11 +1,10 @@
-subproj_dir <- ""
-here::i_am(paste0(subproj_dir, "/code/get-ensemble-eval.R"))
-
+# Get evaluation of ensembles
 library(here)
 library(readr)
 library(dplyr)
 library(tidyr)
 library(forcats)
+here::i_am("code/get-ensemble-eval.R")
 
 # Get latest evaluation dataset ------------------------------------------------
 eval_date <- dir(here("covid19-forecast-hub-europe",
