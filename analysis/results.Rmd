@@ -26,7 +26,7 @@ knitr::opts_chunk$set(eval = TRUE, echo = FALSE,
 theme_set(theme_bw())
 
 # Project
-subproj_dir <- "hub-ensemble/"
+subproj_dir <- ""
 here::i_am(paste0(subproj_dir, "analysis/results.Rmd"))
 ```
 

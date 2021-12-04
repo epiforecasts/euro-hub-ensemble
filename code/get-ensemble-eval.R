@@ -1,4 +1,4 @@
-subproj_dir <- "hub-ensemble"
+subproj_dir <- ""
 here::i_am(paste0(subproj_dir, "/code/get-ensemble-eval.R"))
 
 library(here)
