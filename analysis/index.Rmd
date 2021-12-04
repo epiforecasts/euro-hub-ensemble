@@ -8,6 +8,7 @@ editor_options:
   chunk_output_type: console
 ---
 
+### Read
 - [Rendered document](whole.html)
    - [Abstract](whole.html#abstract)
    - [Background](whole.html#background)
@@ -15,7 +16,9 @@ editor_options:
    - [Results](whole.html#results)
    - [Discussion](whole.html#discussion)
    
-- [Editable text with code](https://docs.google.com/document/d/1fV6T9ptkWaEHgpkjd8GOeL4U0Fuap_PBeZeYcyGE2UI/edit?usp=sharing)
+### Edit
+  - Editable text with code [here](https://docs.google.com/document/d/1fV6T9ptkWaEHgpkjd8GOeL4U0Fuap_PBeZeYcyGE2UI/edit?usp=sharing)
+  - Google doc created using trackdown
 
 
 
