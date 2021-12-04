@@ -17,8 +17,7 @@ editor_options:
    - [Discussion](whole.html#discussion)
    
 ### Edit
-  - [Google doc](https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit?usp=sharing)
-  - Created using trackdown
+  - [Google doc](https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit?usp=sharing), created using trackdown
 
 
 
