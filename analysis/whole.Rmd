@@ -7,6 +7,8 @@ editor_options:
   chunk_output_type: console
 ---
 ```{r set up, include=FALSE}
+# See website: https://kathsherratt.github.io/euro-hub-ensemble/whole.html
+
 # Packages
 library(here)
 library(dplyr)
@@ -38,7 +40,6 @@ theme_set(theme_bw())
 ## Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations
 
 _Order tbc;_ Katharine Sherratt, Hugo Gruson, _Any co-authors_, _Team authors_, _Advisory team authors_, _ECDC authors_, Johannes Bracher, Sebastian Funk
-
 
 ### Abstract
 
@@ -90,6 +91,9 @@ To evaluate the simple and weighted mean and median ensemble forecasts, we used 
 ### Results
 
 ```{r model-description}
+
+# See rendered results: https://kathsherratt.github.io/euro-hub-ensemble/whole.html#Results
+
 # Get latest evaluation scores for models
 source(here("code", "get-model-eval.R"))
 
@@ -274,7 +278,4 @@ At the two-week ahead horizon, variations in ensemble methods made little differ
 
 ### Discussion
 
-
 ---
-
-
