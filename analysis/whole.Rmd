@@ -24,11 +24,15 @@ knitr::opts_chunk$set(eval = TRUE, echo = FALSE,
                       message = FALSE, warning = FALSE,
                       eval.after = "fig.cap")
 theme_set(theme_bw())
-# Use trackdown for edits
+
+# Workflow:
+# - Use trackdown for edits
 # gdrive_path <- "trackdown/euro-hub-ensemble"
 # trackdown::render_file(this_doc, gpath = gdrive_path)
 # trackdown::download_file(this_doc, gpath = gdrive_path)
 # trackdown::update_file(this_doc, gpath = gdrive_path)
+# - Use workflowr for all updates
+# workflowr::wflow_publish(all = TRUE, update = TRUE)
 ```
 
 ## Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations
