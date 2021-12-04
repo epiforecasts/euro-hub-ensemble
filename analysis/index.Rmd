@@ -17,8 +17,8 @@ editor_options:
    - [Discussion](whole.html#discussion)
    
 ### Edit
-  - Editable text with code [here](https://docs.google.com/document/d/1fV6T9ptkWaEHgpkjd8GOeL4U0Fuap_PBeZeYcyGE2UI/edit?usp=sharing)
-  - Google doc created using trackdown
+  - [Google doc](https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit?usp=sharing)
+  - Created using trackdown
 
 
 
