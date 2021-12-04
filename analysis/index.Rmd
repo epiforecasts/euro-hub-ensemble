@@ -1,5 +1,5 @@
 ---
-title: "Exploring ensembles of European Covid-19 forecasts"
+title: "Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
