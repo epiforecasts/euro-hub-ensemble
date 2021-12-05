@@ -467,16 +467,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree2d643a8635ca72f5cd797175e0e498dc5d67fe33targetblank2d643a8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/2d643a8635ca72f5cd797175e0e498dc5d67fe33" target="_blank">2d643a8</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletreee189cdda66f07ca70f33e77911732d15c47798f8targetblanke189cdda"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/e189cdda66f07ca70f33e77911732d15c47798f8" target="_blank">e189cdd</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree2d643a8635ca72f5cd797175e0e498dc5d67fe33targetblank2d643a8a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletreee189cdda66f07ca70f33e77911732d15c47798f8targetblanke189cdda" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/2d643a8635ca72f5cd797175e0e498dc5d67fe33" target="_blank">2d643a8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/e189cdda66f07ca70f33e77911732d15c47798f8" target="_blank">e189cdd</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -523,6 +523,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/e189cdda66f07ca70f33e77911732d15c47798f8/analysis/whole.Rmd" target="_blank">e189cdd</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2021-12-05
+</td>
+<td>
+workflowr::wflow_publish(all = TRUE, update = TRUE)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/19621f35be4e9ec5d2eb4d53443628fae5730334/docs/whole.html" target="_blank">19621f3</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2021-12-05
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -783,7 +817,11 @@ update organisation
 <p>Epidemiological forecasts make quantitative statements about a disease outcome in the near future. At the most general level forecasting targets can include measures of prevalent or incident disease and its severity, for some population over a specified time horizon. Researchers, policy makers, and the general public have used such forecasts to understand and respond to the global outbreaks of Covid-19 since early 2020 [1]. However forecasters use many methods for creating and publishing forecasts, varying in both defining the forecast outcome and in reporting the distribution of probability around outcomes [2]. Such variation between forecasts makes it difficult to interpret the likelihood of any one outcome, or to compare the predictive performance between forecast models. These barriers to comparing and evaluating mean there is little objective support for using any one particular forecast for representing or acting on likely outcomes.</p>
 <p>A “forecast hub” is a centralised effort to improve the transparency and usefulness of forecasts, by standardising and collating the work of many independent teams producing forecasts [4]. A hub sets a commonly agreed structure for forecast targets, such as type of disease event, spatio-temporal units, or the set of quantiles of the probability distribution to include from probabilistic forecasts. Forecasters can adopt this format and contribute forecasts for centralised storage in the public domain. This shared infrastructure allows forecasts produced from diverse teams and methods to be visualised and quantitatively compared on a near-exact like to like basis, which can strengthen public and policy use of disease forecasts [#ref CDC]. The underlying approach to creating a forecast hub was pioneered for forecasting influenza in the USA and quickly adapted for forecasts of short-term Covid-19 cases and deaths in the US [5] and elsewhere [6], with similar efforts elsewhere [6] [7] [8] [9] [10].</p>
 <p>Standardising forecasts may also allow us to maximise their predictive performance by combining multiple forecasts into a single ensemble forecast. Evidence from infectious disease forecasting in the US suggests that forecasts from an ensemble of many forecast models can be consistently high performing compared to any one of the component models [#ref-US]. Somewhat comparably, weather forecasting has a long standing use of building ensembles of many models using diverse methods with standardised data and formatting [11,12].</p>
-<p>The European Covid-19 Forecast Hub [13] is a project to collate short term forecasts of Covid-19 across 32 countries in the European region. The Hub is jointly run with the European Centre for Disease Control (ECDC), with the primary aim to provide reliable information about the short-term epidemiology of the COVID-19 pandemic to the research and policy communities and the general public. Second, the hub aims to create infrastructure for storing and analysing epidemiological forecasts made in real time by diverse research teams and methods across Europe. Third, the hub aims to maintain a community of infectious disease modellers underpinned by open science principles. We started formally collating and combining contributions to the European Forecast Hub in March 2021. Here, we investigate the predictive performance of an ensemble of all forecasts contributed to the hub in real time each week, as well as the performance of variations of ensemble methods created retrospectively. ### Methods We developed infrastructure to host and analyse forecasts. We follow a similar structure and data format, and adapted processes and software provided by the US [14,15] and the German and Polish COVID-19 [16,17] forecast hubs.</p>
+<p>The European Covid-19 Forecast Hub [13] is a project to collate short term forecasts of Covid-19 across 32 countries in the European region. The Hub is jointly run with the European Centre for Disease Control (ECDC), with the primary aim to provide reliable information about the short-term epidemiology of the COVID-19 pandemic to the research and policy communities and the general public. Second, the hub aims to create infrastructure for storing and analysing epidemiological forecasts made in real time by diverse research teams and methods across Europe. Third, the hub aims to maintain a community of infectious disease modellers underpinned by open science principles. We started formally collating and combining contributions to the European Forecast Hub in March 2021. Here, we investigate the predictive performance of an ensemble of all forecasts contributed to the hub in real time each week, as well as the performance of variations of ensemble methods created retrospectively.</p>
+</div>
+<div id="methods" class="section level3">
+<h3>Methods</h3>
+<p>We developed infrastructure to host and analyse forecasts. We follow a similar structure and data format, and adapted processes and software provided by the US [14,15] and the German and Polish COVID-19 [16,17] forecast hubs.</p>
 <div id="forecast-targets-and-standardisation" class="section level4">
 <h4>Forecast targets and standardisation</h4>
 <p>We sought forecasts for reported weekly incident counts of cases and deaths from COVID-19 for each of 32 countries in the European region (including all countries of the European Union and European Free Trade Area, and separately the United Kingdom). Incidence was aggregated over the US epidemiological week definition of Sunday through Saturday. When predicting any single forecast target, teams could express probability by submitting predictions across a range of a pre-specified set of 23 quantiles in the probability distribution. At the first submission we also asked teams to add a single set of metadata briefly describing the forecasting team and methods. Teams could also submit a single point forecast without uncertainty. We maintain a full project specification for detailed submissions protocol [18].</p>
