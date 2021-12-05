@@ -7,7 +7,10 @@ editor_options:
   chunk_output_type: console
 ---
 ```{r set up, include=FALSE}
-# See website: https://kathsherratt.github.io/euro-hub-ensemble/whole.html
+# See rendered: 
+# https://kathsherratt.github.io/euro-hub-ensemble/whole.html
+# See google doc:
+# https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit
 
 # Packages
 library(here)
@@ -20,6 +23,7 @@ library(forcats)
 library(patchwork)
 library(gghighlight)
 # Settings
+gdrive_path <- "trackdown/euro-hub-ensemble"
 this_doc <- "analysis/whole.Rmd"
 here::i_am(this_doc)
 knitr::opts_chunk$set(eval = TRUE, echo = FALSE, 
@@ -28,13 +32,11 @@ knitr::opts_chunk$set(eval = TRUE, echo = FALSE,
 theme_set(theme_bw())
 
 # Workflow:
-# - Use trackdown for edits
-# gdrive_path <- "trackdown/euro-hub-ensemble"
-# trackdown::render_file(this_doc, gpath = gdrive_path)
+# - Before editing, get latest from google docs
 # trackdown::download_file(this_doc, gpath = gdrive_path)
-# trackdown::update_file(this_doc, gpath = gdrive_path)
-# - Use workflowr for all updates
-# workflowr::wflow_publish(all = TRUE, update = TRUE)
+# - When done editing:
+# trackdown::update_file(this_doc, gpath = gdrive_path) # update doc
+# workflowr::wflow_publish(all = TRUE, update = TRUE) # render to website
 ```
 
 ## Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations
@@ -43,24 +45,23 @@ _Order tbc;_ Katharine Sherratt, Hugo Gruson, _Any co-authors_, _Team authors_, 
 
 ### Abstract
 
-_Background_ Short-term forecasts of infectious disease burden can contribute to situational awareness and aid capacity planning. Based on best practice in other fields and recent insights in infectious disease epidemiology, the predictive performance of such forecasts is maximised if multiple models are combined into an ensemble. Here we report on the performance of ensembles created from over 40 models in predicting COVID-19 cases and deaths across 32 European countries.
+_Background_ Short-term forecasts of infectious disease burden can contribute to situational awareness and aid capacity planning. Based on best practice in other fields and recent insights in infectious disease epidemiology, we can maximise the predictive performance of such forecasts if multiple models are combined into an ensemble. Here we report on the performance of ensembles created from over 40 models in predicting COVID-19 cases and deaths across 32 European countries.
 
-_Methods_ We set up the European Covid-19 Forecast Hub in a publicly available repository and invited participation by groups globally. We solicited weekly forecasts as a combination of point forecasts and quantiles of the predictive distribution. Forecasts were time-stamped at submission and combined every week into an unweighted ensemble where each predictive quantile was calculated as either the median or mean of individual model predictive quantiles, as well as a suite of weighted ensembles where model weights calculated based on past predictive skill. The performance of the ensembles was compared to individual models and a baseline model of no change using pairwise comparison with the Weighted Interval Score (WIS).
+_Methods_ We adopted existing infrastructure to develop a public European Covid-19 Forecast Hub. We invited groups globally to contribute weekly forecasts for Covi-19 cases and deaths over the next one to four weeks. Forecasts included quantiles across the predictive distribution. Each week we created an ensemble forecast, where each predictive quantile was calculated as the equally-weighted average of all individual models? predictive quantiles. We retrospectively explored alternative methods for ensemble forecasts, including weighted averages based on models? past predictive skill. The performance of the ensembles was compared to individual models and a baseline model of no change using pairwise comparison with the Weighted Interval Score (WIS).
 
-_Results_ We found that any of our ensemble forecasts outperformed the baseline forecast, while using any form of median forecast was nearly always the most accurate choice of ensemble method. Ensemble forecasts for incident death counts had consistently better performance than forecasts of case counts. Performance remained relatively stable at longer horizons up to 4 weeks for death forecasts of any ensemble method, while performance worsened over time for case forecasts.
+_Results_ We collected and combined 36 weeks of forecasts for 32 countries from 43 forecast models. We found the weekly ensemble had among the most reliable performance across countries over time, outperforming the baseline for 67% and 91% of targets for cases and deaths respectively. Ensemble performance declined with increasing forecast time horizon when forecasting cases but remained strong for incident death forecasts. Among several choices of ensemble methods, we found that regardless of methods for weighting component forecasts, the calculation of the average was the most influential choice for performance, with almost any forecast created using a median average performing better than using a mean.
 
-_Conclusions_ Our results support the use of an ensemble as a reliable way to make real-time forecasts during infectious disease epidemics. We recommend the use of median ensemble methods, and that policy relevant work that uses ensembles should place more confidence in forecasts of incident death than case counts, particularly at longer (more than 2 week) periods into the future.
+_Conclusions_ Our results support the use of an ensemble as a reliable way to make real-time forecasts across many populations and epidemiological targets during infectious disease epidemics. We recommend the use of median ensemble methods, and that policy relevant work that uses ensembles should place more confidence in forecasts of incident death than case counts, particularly at longer (more than 2 week) periods into the future.
 
 ### Background
 
-Epidemiological forecasts make quantitative statements about a disease outcome in the near future. Multiple forecasts of Covid-19 outcomes have been critical to responding to the global outbreaks of Covid-19 since early 2020, for both policy makers and the general public [1]. At the most general level forecasting targets can include measures of disease incidence, prevalence, or severity, for example forecasting reported cases, hospitalisations, or deaths in some population over a specified time horizon. However, often studies present forecasts from a single model [2], with methods varying widely from structured mathematical to purely statistical models [3]. While these forecasts are individually useful, there are barriers to accessing and comparing between forecasts for the same target. These include variation in outcome definition, aggregation of time or space, or reporting of probability [2].
+Epidemiological forecasts make quantitative statements about a disease outcome in the near future. At the most general level forecasting targets can include measures of prevalent or incident disease and its severity, for some population over a specified time horizon. Researchers, policy makers, and the general public have used such forecasts to understand and respond to the global outbreaks of Covid-19 since early 2020 [1]. However forecasters use many methods for creating and publishing forecasts, varying in both defining the forecast outcome and in reporting the distribution of probability around outcomes [2]. Such variation between forecasts makes it difficult to interpret the likelihood of any one outcome, or to compare the predictive performance between forecast models. These barriers to comparing and evaluating mean there is little objective support for using any one particular forecast for representing or acting on likely outcomes.
 
-A "forecast hub" is a centralised effort to improve the transparency and utility of forecasts, by standardising and collating the work of many independent teams producing forecasts in the public domain [4]. A hub sets a commonly agreed structure for forecast targets, such as type of disease event, spatio-temporal units, or the set of quantiles of the probability distribution to include from probabilistic forecasts. Forecasters then adopt this structure to format existing model outputs, and at regular intervals contribute forecasts for centralised storage. This allows forecasts produced from diverse teams and methods to be visualised and quantitatively compared on a near-exact like to like basis, which can strengthen public and policy use of disease forecasts.
+A "forecast hub" is a centralised effort to improve the transparency and usefulness of forecasts, by standardising and collating the work of many independent teams producing forecasts [4]. A hub sets a commonly agreed structure for forecast targets, such as type of disease event, spatio-temporal units, or the set of quantiles of the probability distribution to include from probabilistic forecasts. Forecasters can adopt this format and contribute forecasts for centralised storage in the public domain. This shared infrastructure allows forecasts produced from diverse teams and methods to be visualised and quantitatively compared on a near-exact like to like basis, which can strengthen public and policy use of disease forecasts [#ref CDC]. The underlying approach to creating a forecast hub was pioneered for forecasting influenza in the USA and quickly adapted for forecasts of short-term Covid-19 cases and deaths in the US [5] and elsewhere [6], with similar efforts elsewhere [6] [7] [8] [9] [10].
 
-The underlying approach to creating a forecast hub was pioneered for forecasting influenza in the USA and quickly adapted for forecasts of short-term Covid-19 cases and deaths in US states and counties [5]. This has also been adopted to forecasts for subnational units in Germany and Poland [6]. Similar efforts exist at a national scale in Austria [7] and the UK [8] and for longer term scenario projections in the USA [9], while forecasts for Covid-19 mortality at a national level worldwide have also been passively collected and evaluated [10]. Somewhat comparably, weather forecasting has a long standing use of building ensembles of many models using diverse methods with standardised data and formatting [11,12].
+Standardising forecasts may also allow us to maximise their predictive performance by combining multiple forecasts into a single ensemble forecast. Evidence from infectious disease forecasting in the US suggests that forecasts from an ensemble of many forecast models can be consistently high performing compared to any one of the component models [#ref-US]. Somewhat comparably, weather forecasting has a long standing use of building ensembles of many models using diverse methods with standardised data and formatting [11,12].
 
-The European Covid-19 Forecast Hub [13] is a project to collate short term forecasts of Covid-19 across 32 countries in the European region. The Hub is jointly run with the European Centre for Disease Control (ECDC), with the primary aim to provide reliable information about the short-term epidemiology of the COVID-19 pandemic to the research and policy communities and the general public. Second, the hub aims to create infrastructure for storing and analysing epidemiological forecasts made in real time by diverse research teams and methods across Europe. Third, the hub aims to maintain a community of infectious disease modellers underpinned by open science principles. We started formally collating and combining contributions to the European Forecast Hub in March 2021. Here, we investigate the predictive performance of forecasts contributed to the hub and their combination into weighted and unweighted ensembles.
-
+The European Covid-19 Forecast Hub [13] is a project to collate short term forecasts of Covid-19 across 32 countries in the European region. The Hub is jointly run with the European Centre for Disease Control (ECDC), with the primary aim to provide reliable information about the short-term epidemiology of the COVID-19 pandemic to the research and policy communities and the general public. Second, the hub aims to create infrastructure for storing and analysing epidemiological forecasts made in real time by diverse research teams and methods across Europe. Third, the hub aims to maintain a community of infectious disease modellers underpinned by open science principles. We started formally collating and combining contributions to the European Forecast Hub in March 2021. Here, we investigate the predictive performance of an ensemble of all forecasts contributed to the hub in real time each week, as well as the performance of variations of ensemble methods created retrospectively.
 ### Methods
 We developed infrastructure to host and analyse forecasts. We follow a similar structure and data format, and adapted processes and software provided by the US [14,15] and the German and Polish COVID-19 [16,17] forecast hubs. 
 
@@ -72,15 +73,16 @@ With the complete dataset for the latest forecasting week available each Sunday,
 
 Each week we built an ensemble of all forecasts which updated each week after all forecasts had been validated. From the first week of forecasting from 8 March 2021, the ensemble method for summarising across forecasts was the mean average of all models at each predictive quantile for a given location, target, and horizon. From 26 July 2021 onwards the ensemble instead used a median average of all predictive quantiles, in order to mitigate the wide uncertainty produced by highly anomalous forecasts. We created an open and publicly accessible interface to the forecasts and ensemble, including an online visualization tool allowing viewers to see past data and interact with one or multiple forecasts for each country and target for up to four weeks' horizon (\#cite website). All forecast and meta data are freely available and held on Zoltar, a platform for hosting epidemiological forecasts (\#cite Zoltar link). 
 
-#### Forecast evaluation 
+#### Forecast evaluation [a]
 
-We evaluated all previous forecasts against actual observed values for each model, stratified by the forecast horizon, location, and target. We calculated scores using the scoringutils R package [19] with observed data reported by Johns Hopkins University [20]. JHU data included a mix of national and aggregated subnational data for the 32 countries in the Hub. We removed any forecast surrounding (in the week of or after) a strongly anomalous data point. We focus here on measurements of calibration and the interval score. 
+We evaluated all previous forecasts against actual observed values for each model, stratified by the forecast horizon, location, and target. We calculated scores using the scoringutils R package [19] with observed data reported by Johns Hopkins University [20]. JHU data included a mix of national and aggregated subnational data for the 32 countries in the Hub. We removed any forecast surrounding (in the week of or after) a strongly anomalous data point.
+We focus here on measurements of calibration and the interval score. 
+We explored coverage of probabilistic forecasts to find where 50% of observations matched predictions within the 50% forecast interval. 
+The interval score accounts for both under and over prediction (the difference between an observed value and a single prediction) as well as overall sharpness of the forecast (width of the probability distribution). These three factors are added to create the interval score [21]. This means that the interval score is the same as the absolute error for single-value point forecasts. It is therefore possible to compare probabilistic interval scores with the absolute error when evaluating probabilistic and deterministic forecasts simultaneously.
+However, absolute scores are difficult to compare across different forecast targets, as scores measured on the scale of the data result in the dominance of locations with large epidemics. Meanwhile, using error scaled only relative to itself over-exposes small changes in the data with large percentage differences (although this can be useful in the context of a growing epidemic). To enable a level comparison among all forecast targets, we created a forecast to use as a baseline against which other forecasts could be evaluated. This model was designed as the simplest possible probabilistic forecasting model where each forecast repeats the latest week?s data, with expanding uncertainty over time created by re-sampling the forecast at each horizon.
+We could then scale the interval and absolute error scores against those of the baseline predictions. For each model?s scaled relative score, we took the mean score for each target (location, target variable, and time horizon), and then used a geometric mean of pairwise comparisons. This allowed like for like comparison across targets. This baseline and comparison model was developed by the US COVID-19 forecast hub and has been used similarly to compare COVID-19 forecasts [5]. 
 
-We explored coverage of probabilistic forecasts to find where 50% of observations matched predictions within the 50% forecast interval. The interval score accounts for both under and over prediction (the difference between an observed value and a single prediction) as well as overall sharpness of the forecast (width of the probability distribution). These three factors are added to create the interval score [21]. This means that the interval score is the same as the absolute error for single-value point forecasts. It is therefore possible to compare probabilistic interval scores with the absolute error when evaluating probabilistic and deterministic forecasts simultaneously. However, absolute scores are difficult to compare across different forecast targets, as scores measured on the scale of the data result in the dominance of locations with large epidemics. Meanwhile, using error scaled only relative to itself over-exposes small changes in the data with large percentage differences (although this can be useful in the context of a growing epidemic). 
-
-To enable a level comparison among all forecast targets, we created a forecast to use as a baseline against which other forecasts could be evaluated. This model was designed as the simplest possible probabilistic forecasting model where each forecast repeats the latest week's data, with expanding uncertainty over time created by re-sampling the forecast at each horizon. We could then scale the interval and absolute error scores against those of the baseline predictions. For each model's scaled relative score, we took the mean score for each target (location, target variable, and time horizon), and then used a geometric mean of pairwise comparisons. This allowed like for like comparison across targets. This baseline and comparison model was developed by the US COVID-19 forecast hub and has been used similarly to compare COVID-19 forecasts [5]. 
-
-#### Alternative ensemble methods 
+#### Alternative ensemble methods [b]
 
 We retrospectively explored alternative methods for ensembling forecasts for each target each week. We used both mean and median methods of averaging across forecasts, each used with two methods of weighting any individual predicted value. Unweighted ensembles took the average predicted value from all forecasts, giving equal contributions from all forecasts available for any given target. Weighted ensembles allocated weights to each forecast model based on past performance of an individual model before averaging. 
 
@@ -91,9 +93,6 @@ To evaluate the simple and weighted mean and median ensemble forecasts, we used 
 ### Results
 
 ```{r model-description}
-
-# See rendered results: https://kathsherratt.github.io/euro-hub-ensemble/whole.html#Results
-
 # Get latest evaluation scores for models
 source(here("code", "get-model-eval.R"))
 
@@ -274,20 +273,58 @@ ggplot(ensemble_change_dtb, aes(x = change)) +
 
 ```
 
-At the two-week ahead horizon, variations in ensemble methods made little difference to forecast scores. Ensembles that weighted forecasts showed no difference in performance to simple unweighted ensemble methods. Similarly, in choosing a method with which to weight forecasts, the choice of whether the use scores across all past forecasts, or scores evaluating only the most recent 10 weeks' forecast scores, made very little difference to the performance of the resulting ensemble (0 mean change in forecast score). The choice to exclude any forecast that scored worse than the baseline forecast ("cut off") affected the performance of the ensemble in both directions, overall slightly worsening performance (+`r ensemble_change_dtb[ensemble_change_dtb$change == "Cutoff rel. WIS < 1", "mean"]` relative WIS).  Using the median average was the only variation of ensemble method that typically improved performance, compared to using the mean average across any combination of ensemble method.
+At the two-week ahead horizon, variations in ensemble methods made little difference to forecast scores. Ensembles that weighted forecasts showed no difference in performance to simple unweighted ensemble methods. Similarly, in choosing a method with which to weight forecasts, the choice of whether to use scores across all past forecasts, or scores evaluating only the most recent 10 weeks' forecast scores, made very little difference to the performance of the resulting ensemble (0 mean change in forecast score). The choice to exclude any forecast that scored worse than the baseline forecast ("cut off") affected the performance of the ensemble in both directions, overall slightly worsening performance (+`r ensemble_change_dtb[ensemble_change_dtb$change == "Cutoff rel. WIS < 1", "mean"]` relative WIS).  Using the median average was the only variation of ensemble method that typically improved performance, compared to using the mean average across any combination of ensemble method.
 
 ### Discussion
 
 We collated forecasts from multiple teams making forecasts of COVID-19 cases and deaths across countries in Europe, using an open and principled approach to standardising both forecast targets and the uncertainty around predictions. Combining these forecasts into an ensemble we found that the ensemble forecasts outperformed a baseline model at short forecast horizons.
 
-More detailed discussion of performance by horizon in the context of epidemic dynamics in Europe at the time: suggests possibly limited value in reporting case forecasts that go out longer than 2 weeks (though there might be some exceptions where 4-week forecasts have good performance in some countries?). There are good reasons for this: changing policy, behaviour, variants etc. Our death forecasts on the other hand outperformed the baseline at 4 weeks - could we go even further out? Or is this because deaths were fairly ?easy? with a general trend of decline (?) whereas cases had more turning points? Testing the limits of forecasting ability in this way is an important component in the investigation of forecasts and forms an important part of communicating any model-based prediction to decision makers. 
+_Interpreting results_
+More detailed discussion of performance by horizon in the context of epidemic dynamics in Europe at the time: 
 
-Forecast hubs have strengthened public and policy use of Covid-19 forecasts. First, open access to visualised forecasts and data is useful for academics and the public to interpret across forecasts from models with different assumptions and interpretations of current data on a like for like scale in real time. This can support perceptions and decision making, when uncertainty is particularly important to assess accurately given forecasts can both directly and indirectly influence the future of infectious disease outcomes [1,22]. Second, this is useful for creating an ensemble forecast. Our results confirm previous findings that ensembles are or are near the best performing models by error and are the most reliably consistent models in terms of appropriate coverage of uncertainty [6,23]. 
+suggests possibly limited value in reporting case forecasts that go out longer than 2 weeks (though there might be some exceptions where 4-week forecasts have good performance in some countries?). 
 
-Setting a structure for collaboration can also expand the research environment for epidemic forecasting. International collaboration in particular can promote broader expertise and pooled resources, while barriers include high transaction costs of long distance and cross cultural coordination ? particularly in the pandemic context of intensified time and resource pressures [24,25]. The forecast hub framework creates a new space for sharing knowledge about methods, data, and policy. In real time, forecasters can use this knowledge to adapt forecasts to changing conditions, which may help improve forecast quality [26]. Researchers can also use the support for peer discussions to share and seek feedback on underlying methods and concepts. This is likely to be particularly useful in emergency situations, where method development may require a focus on characterising and interpreting across multiple and diverse sources of uncertainty rather than defining a single best method [22,27]. At the same time, collating time-stamped predictions at the times ensures that true out-of-sample performance of models can be tested and retrospective claims of performance avoided.
+There are good reasons for this: changing policy, behaviour, variants etc. 
 
-There were some limitations (particularly: data and potential bias from who did or didn?t participate). There is further scope to adapt the hub to the changing situation across Europe. We have recently extended the hub infrastructure to include short term forecasts for hospitalisations with COVID-19, although this faces additional challenges with limited data across the locations covered by the hub. It may also be of value to separately investigate models for longer term scenarios in addition to the short term forecasts, particularly as the policy focus shifts from immediate response to anticipating changes brought by vaccinations or the geographic spread of new variants [28]. 
+Our death forecasts on the other hand outperformed the baseline at 4 weeks - could we go even further out? 
 
-Comment on the computational infrastructure and that this could be used elsewhere, reducing the reliance on individual models and maximising both the transparency and accuracy of model forecasts; potentially informing the response and situational awareness in future epidemics or pandemics.
+Or is this because deaths were fairly ?easy? with a general trend of decline (?) whereas cases had more turning points? 
 
-Conclude by repeating the main result and that we have shown that good forecasts are possible at the short time horizon but there are clear limits to predictability especially of cases, that there is benefit from combining multiple models into an ensemble. Based on these results we have reason to expect benefits to public health from similar efforts run in close collaboration between academics and decision makers, and setting up the infrastructure for them could be an important component to future epidemic and pandemic preparedness.
+
+
+_Strengths of approach_
+
+The forecast hub infrastructure is useful for creating an ensemble forecast. Our results confirm previous findings that ensembles are or are near the best performing models by error and are the most reliably consistent models in terms of appropriate coverage of uncertainty [6,23]. 
+
+The forecast hub infrastructure has also created wider benefits for research and its use in real time epidemic response. The hub creates a new framework for sharing knowledge about methods or data in real time, which forecasters can use to improve forecast quality by adapting models to changing conditions [26]. At the same time, collating time-stamped predictions ensures that we can test true out-of-sample performance of models and avoid retrospective claims of performance.
+
+Further, open access to visualised forecasts and data are useful for academics and the public to interpret across forecasts from models with different assumptions and interpretations of current data on a like for like scale in real time. Uncertainty is particularly important to assess accurately given forecasts can both directly and indirectly influence the future of infectious disease outcomes [1,22]. Testing the limits of forecasting ability with these comparisons forms an important part of communicating any model-based prediction to decision makers. 
+
+_Limits of approach and mitigation_
+
+There were some limitations.
+
+Our assessment of performance suffered from biases in data. Real time data can be revised over time and this would mean that the data used to create forecasts was not the same as that used to evaluate the forecast. We mitigated this by excluding some forecasts made at a time of missing, unreliable, or heavily revised data.
+
+The result that the ensemble was among the most reliable across countries and over time could have been influenced by biases in the component forecasts. We accepted any participation . 
+
+There is further scope to adapt the hub to the changing situation across Europe. 
+
+We have recently extended the hub infrastructure to include short term forecasts for hospitalisations with COVID-19, although this faces additional challenges with limited data across the locations covered by the hub. 
+
+It may also be of value to separately investigate models for longer term scenarios in addition to the short term forecasts, particularly as the policy focus shifts from immediate response to anticipating changes brought by vaccinations or the geographic spread of new variants [28]. 
+
+
+
+_Recommendations_
+
+Conclude by repeating the main result and that we have shown that good forecasts are possible at the short time horizon but there are clear limits to predictability especially of cases, that there is benefit from combining multiple models into an ensemble. 
+
+We recommend using the dataset created by the European Forecast Hub to further understand real time forecast performance. 
+
+The computational infrastructure could be used elsewhere, reducing the reliance on individual models and maximising both the transparency and accuracy of model forecasts. This can potentially inform the response and situational awareness in future epidemics or pandemics.
+
+Based on these results we have reason to expect benefits to public health from similar efforts run in close collaboration between academics and decision makers, and setting up the infrastructure for them could be an important component to future epidemic and pandemic preparedness.
+
+[a]expand/eqns
+[b]use seb ensemble report
