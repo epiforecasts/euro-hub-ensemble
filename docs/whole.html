@@ -467,16 +467,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletreec805a2e870e3a3f88df7f2c4a7e511840b53ace4targetblankc805a2ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/c805a2e870e3a3f88df7f2c4a7e511840b53ace4" target="_blank">c805a2e</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree388ddf3b4eb105f17666da6532c4913b1557926atargetblank388ddf3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/388ddf3b4eb105f17666da6532c4913b1557926a" target="_blank">388ddf3</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletreec805a2e870e3a3f88df7f2c4a7e511840b53ace4targetblankc805a2ea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree388ddf3b4eb105f17666da6532c4913b1557926atargetblank388ddf3a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/c805a2e870e3a3f88df7f2c4a7e511840b53ace4" target="_blank">c805a2e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/388ddf3b4eb105f17666da6532c4913b1557926a" target="_blank">388ddf3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -523,6 +523,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/388ddf3b4eb105f17666da6532c4913b1557926a/analysis/whole.Rmd" target="_blank">388ddf3</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2021-12-06
+</td>
+<td>
+workflowr::wflow_publish(all = TRUE, update = TRUE)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/10c6234049b1cc2dfca553d0d4dd932772362ccb/docs/whole.html" target="_blank">10c6234</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2021-12-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -881,12 +915,16 @@ update organisation
 </div>
 <div id="forecast-evaluation-a" class="section level4">
 <h4>Forecast evaluation [a]</h4>
-<p>We evaluated all previous forecasts against actual observed values for each model, stratified by the forecast horizon, location, and target. We calculated scores using the scoringutils R package [19] with observed data reported by Johns Hopkins University [20]. JHU data included a mix of national and aggregated subnational data for the 32 countries in the Hub. We removed any forecast surrounding (in the week of or after) a strongly anomalous data point. We focus here on measurements of calibration and the interval score. We explored coverage of probabilistic forecasts to find where 50% of observations matched predictions within the 50% forecast interval. The interval score accounts for both under and over prediction (the difference between an observed value and a single prediction) as well as overall sharpness of the forecast (width of the probability distribution). These three factors are added to create the interval score [21]. This means that the interval score is the same as the absolute error for single-value point forecasts. It is therefore possible to compare probabilistic interval scores with the absolute error when evaluating probabilistic and deterministic forecasts simultaneously. However, absolute scores are difficult to compare across different forecast targets, as scores measured on the scale of the data result in the dominance of locations with large epidemics. Meanwhile, using error scaled only relative to itself over-exposes small changes in the data with large percentage differences (although this can be useful in the context of a growing epidemic). To enable a level comparison among all forecast targets, we created a forecast to use as a baseline against which other forecasts could be evaluated. This model was designed as the simplest possible probabilistic forecasting model where each forecast repeats the latest week of data, with expanding uncertainty over time created by re-sampling the forecast at each horizon. We could then scale the interval and absolute error scores against those of the baseline predictions. For each model’s scaled relative score, we took the mean score for each target (location, target variable, and time horizon), and then used a geometric mean of pairwise comparisons. This allowed like for like comparison across targets. This baseline and comparison model was developed by the US COVID-19 forecast hub and has been used similarly to compare COVID-19 forecasts [5].</p>
+<p>We evaluated all previous forecasts against actual observed values for each model, stratified by the forecast horizon, location, and target. We calculated scores using the scoringutils R package [19] with observed data reported by Johns Hopkins University [20]. JHU data included a mix of national and aggregated subnational data for the 32 countries in the Hub. We removed any forecast surrounding (in the week of or after) a strongly anomalous data point.</p>
+<p>We focus here on measurements of calibration and the interval score. We explored coverage of probabilistic forecasts to find where 50% of observations matched predictions within the 50% forecast interval. The interval score accounts for both under and over prediction (the difference between an observed value and a single prediction) as well as overall sharpness of the forecast (width of the probability distribution). These three factors are added to create the interval score [21]. This means that the interval score is the same as the absolute error for single-value point forecasts. It is therefore possible to compare probabilistic interval scores with the absolute error when evaluating probabilistic and deterministic forecasts simultaneously.</p>
+<p>However, absolute scores are difficult to compare across different forecast targets, as scores measured on the scale of the data result in the dominance of locations with large epidemics. Meanwhile, using error scaled only relative to itself over-exposes small changes in the data with large percentage differences (although this can be useful in the context of a growing epidemic). To enable a level comparison among all forecast targets, we created a forecast to use as a baseline against which other forecasts could be evaluated. This model was designed as the simplest possible probabilistic forecasting model where each forecast repeats the latest week of data, with expanding uncertainty over time created by re-sampling the forecast at each horizon.</p>
+<p>We could then scale the interval and absolute error scores against those of the baseline predictions. For each model’s scaled relative score, we took the mean score for each target (location, target variable, and time horizon), and then used a geometric mean of pairwise comparisons. This allowed like for like comparison across targets. This baseline and comparison model was developed by the US COVID-19 forecast hub and has been used similarly to compare COVID-19 forecasts [5].</p>
 </div>
 <div id="alternative-ensemble-methods-b" class="section level4">
 <h4>Alternative ensemble methods [b]</h4>
 <p>We retrospectively explored alternative methods for ensembling forecasts for each target each week. We used both mean and median methods of averaging across forecasts, each used with two methods of weighting any individual predicted value. Unweighted ensembles took the average predicted value from all forecasts, giving equal contributions from all forecasts available for any given target. Weighted ensembles allocated weights to each forecast model based on past performance of an individual model before averaging.</p>
-<p>To create weights for component models, we measured past performance using the interval score. The interval score evaluates probabilistic forecasts by accounting for both calibration and sharpness of a forecast [21]. We excluded models which did not provide the total set of 23 prediction intervals from weighted ensembles. However, models varied in predicting any one or multiple targets combined from a choice of predicting case or death counts, for 32 countries, and at four forecast horizons (weeks ahead predictions). To account for this variation, we weighted the interval score based on comparing each model’s score to every other model forecasting for the same target, creating a pairwise comparison tournament. We then took the geometric mean of these pairwise comparisons for each model. This resulted in a single score per model for each of two target counts, 32 locations, and four forecast horizons. Separately, at this point we also averaged these scores across forecast horizons. We took the weighted interval score of each model and scaled it against the performance of the baseline (flat) forecast, giving a measure of performance that accounted for each forecast’s individual skill compared to all other equivalent forecasts and a simple baseline. We took the inverse of these scores to create weights on a scale of 0-1 and applied these to a model’s forecast values at all quantile predictions for each model. We then averaged across these weighted values at each quantile.</p>
+<p>To create weights for component models, we measured past performance using the interval score. The interval score evaluates probabilistic forecasts by accounting for both calibration and sharpness of a forecast [21]. We excluded models which did not provide the total set of 23 prediction intervals from weighted ensembles. However, models varied in predicting any one or multiple targets combined from a choice of predicting case or death counts, for 32 countries, and at four forecast horizons (weeks ahead predictions). To account for this variation, we weighted the interval score based on comparing each model’s score to every other model forecasting for the same target, creating a pairwise comparison tournament. We then took the geometric mean of these pairwise comparisons for each model. This resulted in a single score per model for each of two target counts, 32 locations, and four forecast horizons. Separately, at this point we also averaged these scores across forecast horizons.</p>
+<p>We took the weighted interval score of each model and scaled it against the performance of the baseline (flat) forecast, giving a measure of performance that accounted for each forecast’s individual skill compared to all other equivalent forecasts and a simple baseline. We took the inverse of these scores to create weights on a scale of 0-1 and applied these to a model’s forecast values at all quantile predictions for each model. We then averaged across these weighted values at each quantile.</p>
 <p>To evaluate the simple and weighted mean and median ensemble forecasts, we used the same measure of performance described above based on calculating the relative interval score scaled to a baseline, and explored coverage and the interval score.</p>
 </div>
 </div>
