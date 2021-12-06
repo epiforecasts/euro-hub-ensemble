@@ -8,7 +8,7 @@ editor_options:
 ---
 ```{r set up, include=FALSE}
 # See rendered: 
-# https://kathsherratt.github.io/euro-hub-ensemble/whole.html
+# https://kathsherratt.github.io/euro-hub-ensemble/euro-hub-ensemble-draft.html
 # See google doc:
 # https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit
 
@@ -24,7 +24,7 @@ library(patchwork)
 library(gghighlight)
 # Settings
 gdrive_path <- "trackdown/euro-hub-ensemble"
-this_doc <- "analysis/whole.Rmd"
+this_doc <- "analysis/euro-hub-ensemble-draft.Rmd"
 here::i_am(this_doc)
 knitr::opts_chunk$set(eval = TRUE, echo = FALSE, 
                       message = FALSE, warning = FALSE,

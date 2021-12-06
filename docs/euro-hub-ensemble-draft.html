@@ -358,7 +358,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -367,7 +367,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -379,7 +379,7 @@ div.tocify {
 <strong>Last updated:</strong> 2021-12-06
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>euro-hub-ensemble/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -395,12 +395,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -467,16 +467,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree7512007be9463300b73dbb7eeee9b0ccadcbfef2targetblank7512007a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/7512007be9463300b73dbb7eeee9b0ccadcbfef2" target="_blank">7512007</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree6d445e8e6c487139c7e38afc8a521ddd0193ba14targetblank6d445e8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/6d445e8e6c487139c7e38afc8a521ddd0193ba14" target="_blank">6d445e8</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree7512007be9463300b73dbb7eeee9b0ccadcbfef2targetblank7512007a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree6d445e8e6c487139c7e38afc8a521ddd0193ba14targetblank6d445e8a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/7512007be9463300b73dbb7eeee9b0ccadcbfef2" target="_blank">7512007</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/6d445e8e6c487139c7e38afc8a521ddd0193ba14" target="_blank">6d445e8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -485,6 +485,9 @@ Note that you need to be careful to ensure that all relevant files for the analy
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+
+Untracked files:
+    Untracked:  analysis/euro-hub-ensemble-draft.Rmd
 
 </code></pre>
 <p>
@@ -497,426 +500,9 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/whole.Rmd</code>) and HTML (<code>docs/whole.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/7512007be9463300b73dbb7eeee9b0ccadcbfef2/analysis/whole.Rmd" target="_blank">7512007</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-06
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/9dad200482981574b840d5438ae598ab47fe0aea/docs/whole.html" target="_blank">9dad200</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-06
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/388ddf3b4eb105f17666da6532c4913b1557926a/analysis/whole.Rmd" target="_blank">388ddf3</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-06
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/10c6234049b1cc2dfca553d0d4dd932772362ccb/docs/whole.html" target="_blank">10c6234</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-06
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/c805a2e870e3a3f88df7f2c4a7e511840b53ace4/analysis/whole.Rmd" target="_blank">c805a2e</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-06
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/c805a2e870e3a3f88df7f2c4a7e511840b53ace4/docs/whole.html" target="_blank">c805a2e</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-06
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/d25875b3ff3820b08be364ac276cffcdf9b4ede0/docs/whole.html" target="_blank">d25875b</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-05
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/e189cdda66f07ca70f33e77911732d15c47798f8/analysis/whole.Rmd" target="_blank">e189cdd</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-05
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/19621f35be4e9ec5d2eb4d53443628fae5730334/docs/whole.html" target="_blank">19621f3</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-05
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/2d643a8635ca72f5cd797175e0e498dc5d67fe33/analysis/whole.Rmd" target="_blank">2d643a8</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-05
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/2d643a8635ca72f5cd797175e0e498dc5d67fe33/docs/whole.html" target="_blank">2d643a8</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-05
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/57ee6c9fb2392da9db559707f403e614d98fa1bb/docs/whole.html" target="_blank">57ee6c9</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/e877bfbcc1f311c8bb58607888134cf034438609/analysis/whole.Rmd" target="_blank">e877bfb</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/e877bfbcc1f311c8bb58607888134cf034438609/docs/whole.html" target="_blank">e877bfb</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/892446f86fcad5b2b514a054a01491d313c32b34/docs/whole.html" target="_blank">892446f</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/3743c545781346506acf4ee7c8397d705bcbe10b/analysis/whole.Rmd" target="_blank">3743c54</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-wflow_publish(update = TRUE, all = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/4e814f625c4a760d9b5b37742897a3f98cbc2cd4/docs/whole.html" target="_blank">4e814f6</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/2d33ac14085c098f0c13e5e6c316b7345c43f8f4/analysis/whole.Rmd" target="_blank">2d33ac1</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/2d33ac14085c098f0c13e5e6c316b7345c43f8f4/docs/whole.html" target="_blank">2d33ac1</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/ea0c172a589af4bb43ce3a620d213b86a9f00319/analysis/whole.Rmd" target="_blank">ea0c172</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-Update whole.Rmd
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/6879b4593902e752a51e0b20faec8c1dd5eec1b9/docs/whole.html" target="_blank">6879b45</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/04117e64f808809efdda3f69a7789a089fbb72e1/analysis/whole.Rmd" target="_blank">04117e6</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-update organisation
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/04117e64f808809efdda3f69a7789a089fbb72e1/docs/whole.html" target="_blank">04117e6</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2021-12-04
-</td>
-<td>
-update organisation
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
@@ -967,7 +553,7 @@ update organisation
 <p>We scored all forecasts submitted weekly in real time over the 36 week period from 08 March to 15 November 2021. Each week, forecasts could predict incident cases and deaths, for 32 locations over the following 4 weeks, creating 256 possible forecast targets. We received 43 unique forecasting models from 36 separate forecasting teams. We added an ensemble model using all available forecasts for each possible target.</p>
 <p>We used this dataset to create 3998 forecasting scores, each summarising a unique combination of model, variable, country, and week ahead horizon. Not all teams forecast for all targets, nor across all quantiles of the predictive distribution for each target. 37 models provided sufficient quantiles that we could evaluate them using the relative weighted interval score (WIS).</p>
 <div class="figure" style="text-align: center">
-<img src="figure/whole.Rmd/figure-model-by-horizon-1.png" alt="Figure #: Performance of short-term forecasts, by relative interval score (relative to a baseline forecast, top) and coverage of the 0.5 interval (the proportion of observed values that fell within the predicted 50% range, bottom). The scores of each model (grey) and ensemble (red) are averaged across all forecast targets and shown by one- to four-week ahead horizon." width="672" />
+<img src="figure/euro-hub-ensemble-draft.Rmd/figure-model-by-horizon-1.png" alt="Figure #: Performance of short-term forecasts, by relative interval score (relative to a baseline forecast, top) and coverage of the 0.5 interval (the proportion of observed values that fell within the predicted 50% range, bottom). The scores of each model (grey) and ensemble (red) are averaged across all forecast targets and shown by one- to four-week ahead horizon." width="672" />
 <p class="caption">
 Figure #: Performance of short-term forecasts, by relative interval score (relative to a baseline forecast, top) and coverage of the 0.5 interval (the proportion of observed values that fell within the predicted 50% range, bottom). The scores of each model (grey) and ensemble (red) are averaged across all forecast targets and shown by one- to four-week ahead horizon.
 </p>
@@ -975,14 +561,14 @@ Figure #: Performance of short-term forecasts, by relative interval score (relat
 <p>The ensemble model performed well compared to both the relative scores of each original forecast model scaled to the baseline, and the baseline model itself. In ranking all models’ scores compared to the baseline, the ensemble performed better on relative WIS than 66% model scores when forecasting cases (n=1832), and 67% of scores for forecasts of incident deaths (n=1910). Compared to the baseline model alone, the ensemble outperformed at one week for both cases and deaths (figure #). For horizons longer than one-week ahead, performance depended on the epidemiological target. Using relative WIS, the ensemble stopped outperforming the baseline at three to four weeks for cases. In contrast, the ensemble outperformed the baseline for deaths at all horizons considered (up to four weeks WIS), with no discernible deterioration in performance.</p>
 <p>We observed similar trends in performance when considering how well the ensemble calibrated to uncertainty. At one week the case ensemble was well calibrated (ca. 50% nominal coverage), but this did not hold with increasing forecast horizon. The death ensemble was well calibrated at the 95% level for all horizons and under confident for the 50% level, with only slow deterioration with increasing forecast horizon.</p>
 <div class="figure" style="text-align: center">
-<img src="figure/whole.Rmd/figure-model-by-location-1.png" alt="Figure #: Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts. Performance measured by relative weighted interval score scaled against baseline. Boxplots show interquartile range, with outliers as faded points, and ensemble model performance marked by asterisk." width="672" />
+<img src="figure/euro-hub-ensemble-draft.Rmd/figure-model-by-location-1.png" alt="Figure #: Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts. Performance measured by relative weighted interval score scaled against baseline. Boxplots show interquartile range, with outliers as faded points, and ensemble model performance marked by asterisk." width="672" />
 <p class="caption">
 Figure #: Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts. Performance measured by relative weighted interval score scaled against baseline. Boxplots show interquartile range, with outliers as faded points, and ensemble model performance marked by asterisk.
 </p>
 </div>
 <p>The ensemble also performed consistently well when forecasting across countries, relative to individual models and the baseline (figure #). Compared to models that forecast across all 32 countries at the two week horizon, the ensemble was the most consistent in outperforming the baseline across countries compared to any single model forecasting deaths, and all but one model for case forecasts. Considering forecast targets across all 32 countries and over all four horizons (128 targets), the ensemble forecast outperformed the baseline for 67% and 91% of all 128 targets when forecasting cases and deaths respectively.</p>
 <div class="figure" style="text-align: center">
-<img src="figure/whole.Rmd/figure-alternative-ensembles-1.png" alt="Figure #: Performance of alternative ensemble methods at 2 week horizon, showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted (n=250); median v. mean (n=376); cutoff by WIS v. all models included (n=374); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=248)" width="672" />
+<img src="figure/euro-hub-ensemble-draft.Rmd/figure-alternative-ensembles-1.png" alt="Figure #: Performance of alternative ensemble methods at 2 week horizon, showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted (n=250); median v. mean (n=376); cutoff by WIS v. all models included (n=374); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=248)" width="672" />
 <p class="caption">
 Figure #: Performance of alternative ensemble methods at 2 week horizon, showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted (n=250); median v. mean (n=376); cutoff by WIS v. all models included (n=374); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=248)
 </p>
@@ -1039,19 +625,19 @@ loaded via a namespace (and not attached):
  [1] Rcpp_1.0.7         assertthat_0.2.1   rprojroot_2.0.2    digest_0.6.28     
  [5] foreach_1.5.1      utf8_1.2.2         R6_2.5.1           evaluate_0.14     
  [9] highr_0.9          httr_1.4.2         pillar_1.6.4       rlang_0.4.11      
-[13] rstudioapi_0.13    whisker_0.4        jquerylib_0.1.4    rmarkdown_2.11    
-[17] labeling_0.4.2     stringr_1.4.0      bit_4.0.4          munsell_0.5.0     
-[21] compiler_4.0.4     httpuv_1.6.3       xfun_0.28          pkgconfig_2.0.3   
-[25] htmltools_0.5.2    tidyselect_1.1.1   tibble_3.1.6       codetools_0.2-18  
-[29] fansi_0.5.0        crayon_1.4.2       tzdb_0.2.0         withr_2.4.2       
-[33] later_1.3.0        grid_4.0.4         jsonlite_1.7.2     gtable_0.3.0      
-[37] lifecycle_1.0.1    DBI_1.1.1          git2r_0.29.0       magrittr_2.0.1    
-[41] scales_1.1.1       cli_3.1.0          stringi_1.7.5      vroom_1.5.6       
-[45] farver_2.1.0       fs_1.5.0           promises_1.2.0.1   doParallel_1.0.16 
-[49] bslib_0.3.1        ellipsis_0.3.2     generics_0.1.1     vctrs_0.3.8       
-[53] RColorBrewer_1.1-2 iterators_1.0.13   tools_4.0.4        bit64_4.0.5       
-[57] glue_1.5.0         hms_1.1.1          parallel_4.0.4     fastmap_1.1.0     
-[61] yaml_2.2.1         colorspace_2.0-2   knitr_1.36         sass_0.4.0        </code></pre>
+[13] rstudioapi_0.13    jquerylib_0.1.4    rmarkdown_2.11     labeling_0.4.2    
+[17] stringr_1.4.0      bit_4.0.4          munsell_0.5.0      compiler_4.0.4    
+[21] httpuv_1.6.3       xfun_0.28          pkgconfig_2.0.3    htmltools_0.5.2   
+[25] tidyselect_1.1.1   tibble_3.1.6       codetools_0.2-18   fansi_0.5.0       
+[29] crayon_1.4.2       tzdb_0.2.0         withr_2.4.2        later_1.3.0       
+[33] grid_4.0.4         jsonlite_1.7.2     gtable_0.3.0       lifecycle_1.0.1   
+[37] DBI_1.1.1          git2r_0.29.0       magrittr_2.0.1     scales_1.1.1      
+[41] cli_3.1.0          stringi_1.7.5      vroom_1.5.6        farver_2.1.0      
+[45] fs_1.5.0           promises_1.2.0.1   doParallel_1.0.16  bslib_0.3.1       
+[49] ellipsis_0.3.2     generics_0.1.1     vctrs_0.3.8        RColorBrewer_1.1-2
+[53] iterators_1.0.13   tools_4.0.4        bit64_4.0.5        glue_1.5.0        
+[57] hms_1.1.1          parallel_4.0.4     fastmap_1.1.0      yaml_2.2.1        
+[61] colorspace_2.0-2   knitr_1.36         sass_0.4.0        </code></pre>
 </div>
 </div>
 </div>
