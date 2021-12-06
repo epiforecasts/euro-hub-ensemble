@@ -310,7 +310,7 @@ We further recommend adapting and using our open-source computational infrastruc
 
 In conclusion, we have shown that an ensemble forecast performed reliably well across multiple forecast targets, with good short term predictions during a rapidly evolving epidemic spreading through multiple populations. However we have also demonstrated there are clear limits to predictability, especially for case forecasts longer than two weeks, with few methods able to consistently improve forecast performance other than the use of a median rather than mean average.
 
-
+---
 
 [a]expand/eqns
 [b]use seb ensemble report
