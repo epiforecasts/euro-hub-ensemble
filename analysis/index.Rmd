@@ -9,12 +9,12 @@ editor_options:
 ---
 
 ### Read
-- [Rendered document](whole.html)
-   - [Abstract](whole.html#abstract)
-   - [Background](whole.html#background)
-   - [Methods](whole.html#methods)
-   - [Results](whole.html#results)
-   - [Discussion](whole.html#discussion)
+- [Rendered document](euro-hub-ensemble-draft.html)
+   - [Abstract](euro-hub-ensemble-draft.html#abstract)
+   - [Background](euro-hub-ensemble-draft.html#background)
+   - [Methods](euro-hub-ensemble-draft.html#methods)
+   - [Results](euro-hub-ensemble-draft.html#results)
+   - [Discussion](euro-hub-ensemble-draft.html#discussion)
    
 ### Edit
   - [Google doc](https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit?usp=sharing), created using trackdown
