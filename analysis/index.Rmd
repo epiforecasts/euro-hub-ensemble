@@ -18,6 +18,7 @@ editor_options:
    
 ### Edit
   - [Google doc](https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit?usp=sharing), created using trackdown
+  - [R markdown](https://github.com/kathsherratt/euro-hub-ensemble/blob/main/analysis/euro-hub-ensemble-draft.Rmd)
 
 
 

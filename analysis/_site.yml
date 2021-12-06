@@ -6,11 +6,11 @@ navbar:
   - text: Home
     href: index.html
   - text: Read
-    href: whole.html
-  - text: Edit
-    href: index.html#edit
-  - text: License
-    href: license.html
+    href: euro-hub-ensemble-draft.html
+  - text: Edit text
+    href: https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit
+  - text: Edit code
+    href: https://github.com/kathsherratt/euro-hub-ensemble/blob/main/analysis/euro-hub-ensemble-draft.Rmd
 output:
   workflowr::wflow_html:
     toc: yes
