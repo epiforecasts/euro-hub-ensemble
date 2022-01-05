@@ -8,7 +8,7 @@ editor_options:
 ---
 ```{r set up, include=FALSE}
 # See rendered: 
-# https://kathsherratt.github.io/euro-hub-ensemble/euro-hub-ensemble-draft.html
+# https://covid19-forecast-hub-europe.github.io/euro-hub-ensemble/euro-hub-ensemble-draft.html
 # See google doc:
 # https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit
 
@@ -31,10 +31,10 @@ knitr::opts_chunk$set(eval = TRUE, echo = FALSE,
                       eval.after = "fig.cap")
 theme_set(theme_bw())
 
-# Workflow:
-# - Before editing, get latest from google docs
+# # Workflow:
+# # - Before editing, get latest from google docs
 # trackdown::download_file(this_doc, gpath = gdrive_path)
-# - When done editing:
+# # - When done editing:
 # trackdown::update_file(this_doc, gpath = gdrive_path) # update doc
 # workflowr::wflow_publish(all = TRUE, update = TRUE) # render to website
 ```
