@@ -358,7 +358,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -367,7 +367,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -376,10 +376,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-01-05
+<strong>Last updated:</strong> 2022-01-07
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>euro-hub-ensemble/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -395,12 +395,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -467,16 +467,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree0358deeb73131dd03f23e5d0c7bcdb993ed1f145targetblank0358deea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/0358deeb73131dd03f23e5d0c7bcdb993ed1f145" target="_blank">0358dee</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletree9c7755c5d1e22d6f66646bf5be549454563c5f90targetblank9c7755ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/9c7755c5d1e22d6f66646bf5be549454563c5f90" target="_blank">9c7755c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomkathsherratteurohubensembletree0358deeb73131dd03f23e5d0c7bcdb993ed1f145targetblank0358deea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletree9c7755c5d1e22d6f66646bf5be549454563c5f90targetblank9c7755ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/kathsherratt/euro-hub-ensemble/tree/0358deeb73131dd03f23e5d0c7bcdb993ed1f145" target="_blank">0358dee</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/9c7755c5d1e22d6f66646bf5be549454563c5f90" target="_blank">9c7755c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -485,6 +485,10 @@ Note that you need to be careful to ensure that all relevant files for the analy
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/figure/
+
+Unstaged changes:
+    Modified:   analysis/euro-hub-ensemble-draft.Rmd
 
 </code></pre>
 <p>
@@ -525,27 +529,10 @@ Message
 <tbody>
 <tr>
 <td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/0358deeb73131dd03f23e5d0c7bcdb993ed1f145/analysis/euro-hub-ensemble-draft.Rmd" target="_blank">0358dee</a>
-</td>
-<td>
-kathsherratt
-</td>
-<td>
-2022-01-05
-</td>
-<td>
-workflowr::wflow_publish(all = TRUE, update = TRUE)
-</td>
-</tr>
-<tr>
-<td>
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/135822c060d5b8156a0bd0cc82ff34ddf6b6ab67/docs/euro-hub-ensemble-draft.html" target="_blank">135822c</a>
+<a href="https://rawcdn.githack.com/covid19-forecast-hub-europe/euro-hub-ensemble/48c660fcdc4b2841baa1f810ddc74ae8ecc372bd/docs/euro-hub-ensemble-draft.html" target="_blank">48c660f</a>
 </td>
 <td>
 kathsherratt
@@ -562,7 +549,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/ca19fa003f7baca5ed2c7a4a8b2b6aa0b0db7762/analysis/euro-hub-ensemble-draft.Rmd" target="_blank">ca19fa0</a>
+<a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/0358deeb73131dd03f23e5d0c7bcdb993ed1f145/analysis/euro-hub-ensemble-draft.Rmd" target="_blank">0358dee</a>
 </td>
 <td>
 kathsherratt
@@ -579,7 +566,41 @@ workflowr::wflow_publish(all = TRUE, update = TRUE)
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/c2b25dc862934dcc642a8be54681cd5eee2354ae/docs/euro-hub-ensemble-draft.html" target="_blank">c2b25dc</a>
+<a href="https://rawcdn.githack.com/covid19-forecast-hub-europe/euro-hub-ensemble/135822c060d5b8156a0bd0cc82ff34ddf6b6ab67/docs/euro-hub-ensemble-draft.html" target="_blank">135822c</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2022-01-05
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/ca19fa003f7baca5ed2c7a4a8b2b6aa0b0db7762/analysis/euro-hub-ensemble-draft.Rmd" target="_blank">ca19fa0</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2022-01-05
+</td>
+<td>
+workflowr::wflow_publish(all = TRUE, update = TRUE)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/covid19-forecast-hub-europe/euro-hub-ensemble/c2b25dc862934dcc642a8be54681cd5eee2354ae/docs/euro-hub-ensemble-draft.html" target="_blank">c2b25dc</a>
 </td>
 <td>
 kathsherratt
@@ -596,7 +617,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/1be56c8a9daab09e1289c37d6a4d3baac3ef411a/analysis/euro-hub-ensemble-draft.Rmd" target="_blank">1be56c8</a>
+<a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/1be56c8a9daab09e1289c37d6a4d3baac3ef411a/analysis/euro-hub-ensemble-draft.Rmd" target="_blank">1be56c8</a>
 </td>
 <td>
 kathsherratt
@@ -613,7 +634,7 @@ workflowr::wflow_publish(all = TRUE, update = TRUE)
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/a8920fc3bbfd18f33ac7d2362c895e493f117c3a/docs/euro-hub-ensemble-draft.html" target="_blank">a8920fc</a>
+<a href="https://rawcdn.githack.com/covid19-forecast-hub-europe/euro-hub-ensemble/a8920fc3bbfd18f33ac7d2362c895e493f117c3a/docs/euro-hub-ensemble-draft.html" target="_blank">a8920fc</a>
 </td>
 <td>
 kathsherratt
@@ -630,7 +651,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/29b235cec2eb85225bb0619882b39032f09a8dee/analysis/euro-hub-ensemble-draft.Rmd" target="_blank">29b235c</a>
+<a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/29b235cec2eb85225bb0619882b39032f09a8dee/analysis/euro-hub-ensemble-draft.Rmd" target="_blank">29b235c</a>
 </td>
 <td>
 kathsherratt
@@ -647,7 +668,7 @@ change title
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/kathsherratt/euro-hub-ensemble/29b235cec2eb85225bb0619882b39032f09a8dee/docs/euro-hub-ensemble-draft.html" target="_blank">29b235c</a>
+<a href="https://rawcdn.githack.com/covid19-forecast-hub-europe/euro-hub-ensemble/29b235cec2eb85225bb0619882b39032f09a8dee/docs/euro-hub-ensemble-draft.html" target="_blank">29b235c</a>
 </td>
 <td>
 kathsherratt
@@ -671,16 +692,16 @@ change title
 <p><em>Order tbc;</em> Katharine Sherratt, Hugo Gruson, <em>Any co-authors</em>, <em>Team authors</em>, <em>Advisory team authors</em>, <em>ECDC authors</em>, Johannes Bracher, Sebastian Funk</p>
 <div id="abstract" class="section level3">
 <h3>Abstract</h3>
-<p><em>Background</em> Short-term forecasts of infectious disease burden can contribute to situational awareness and aid capacity planning. Based on best practice in other fields and recent insights in infectious disease epidemiology, we can maximise the predictive performance of such forecasts if multiple models are combined into an ensemble. Here we report on the performance of ensembles created from over 40 models in predicting COVID-19 cases and deaths across 32 European countries.</p>
+<p><em>Background</em> Short-term forecasts of infectious disease burden can contribute to situational awareness and aid capacity planning. Based on best practice in other fields and recent insights in infectious disease epidemiology, one can maximise the predictive performance of such forecasts if multiple models are combined into an ensemble. Here we report on the performance of ensembles created from over 40 models in predicting COVID-19 cases and deaths across Europe.</p>
 <p><em>Methods</em> We adopted existing infrastructure to develop a public European Covid-19 Forecast Hub. We invited groups globally to contribute weekly forecasts for Covid-19 cases and deaths over the next one to four weeks. Forecasts included quantiles across the predictive distribution. Each week we created an ensemble forecast, where each predictive quantile was calculated as the equally-weighted average of all individual models’ predictive quantiles. We retrospectively explored alternative methods for ensemble forecasts, including weighted averages based on models’ past predictive skill. The performance of the ensembles was compared to individual models and a baseline model of no change using pairwise comparison with the Weighted Interval Score (WIS).</p>
 <p><em>Results</em> We collected and combined 36 weeks of forecasts for 32 countries from 43 forecast models. We found the weekly ensemble had among the most reliable performances across countries over time, outperforming the baseline for 67% and 91% of targets for cases and deaths, respectively. Ensemble performance declined with increasing forecast time horizon when forecasting cases but remained stable for 4 weeks for incident death forecasts. Among several choices of ensemble methods, we found that regardless of methods for weighting component forecasts, the calculation of the average was the most influential choice for performance, with almost any forecast created using a median average performing better than using a mean.</p>
 <p><em>Conclusions</em> Our results support the use of an ensemble as a reliable way to make real-time forecasts across many populations and epidemiological targets during infectious disease epidemics. We recommend the use of median ensemble methods, and that policy relevant work that uses ensembles should place more confidence in forecasts of incident death than case counts, particularly at longer (more than 2 week) periods into the future.</p>
 </div>
 <div id="background" class="section level3">
 <h3>Background</h3>
-<p>Epidemiological forecasts make quantitative statements about a disease outcome in the near future. At the most general level, forecasting targets can include measures of prevalent or incident disease and its severity, for some population over a specified time horizon. Researchers, policy makers, and the general public have used such forecasts to understand and respond to the global outbreaks of Covid-19 since early 2020 [1]. However forecasters use many methods for creating and publishing forecasts, varying in both defining the forecast outcome and in reporting the distribution of probability around outcomes [2]. Such variation between forecasts makes it difficult to interpret the likelihood of any one outcome, or to compare the predictive performance between forecast models. These barriers to comparing and evaluating mean there is little objective support for using any one particular forecast for representing or acting on likely outcomes.</p>
-<p>A “forecast hub” is a centralised effort to improve the transparency and usefulness of forecasts, by standardising and collating the work of many independent teams producing forecasts [4]. A hub sets a commonly agreed structure for forecast targets, such as type of disease event, spatio-temporal units, or the set of quantiles of the probability distribution to include from probabilistic forecasts. Forecasters can adopt this format and contribute forecasts for centralised storage in the public domain. This shared infrastructure allows forecasts produced from diverse teams and methods to be visualised and quantitatively compared on a near-exact like to like basis, which can strengthen public and policy use of disease forecasts [#ref CDC]. The underlying approach to creating a forecast hub was pioneered for forecasting influenza in the USA and adapted for forecasts of short-term Covid-19 cases and deaths in the US [5] and elsewhere [6], with similar efforts elsewhere [7] [8] [9] [10].</p>
-<p>Standardising forecasts may also allow us to maximise their predictive performance by combining multiple forecasts into a single ensemble forecast. Evidence from previous efforts in multi-model infectious disease forecasting suggests that forecasts from an ensemble of many forecast models can be consistently high performing compared to any one of the component models [#ref-U[a]S]. Somewhat comparably, weather forecasting has a long standing use of building ensembles of many models using diverse methods with standardised data and formatting [11,12].</p>
+<p>Epidemiological forecasts make quantitative statements about a disease outcome in the near future. At the most general level, forecasting targets can include measures of prevalent or incident disease and its severity, for some population over a specified time horizon. Researchers, policy makers, and the general public have used such forecasts to understand and respond to the global outbreaks of Covid-19 since early 2020 [1]. However forecasters use a variety of methods and models for creating and publishing forecasts, varying in both defining the forecast outcome and in reporting the distribution of probability around outcomes [2]. Such variation between forecasts makes it difficult to interpret the likelihood of any one outcome, or to compare the predictive performance between forecast models. These barriers to comparing and evaluating mean there is little objective support for using any one particular forecast for representing or acting on likely outcomes.</p>
+<p>A “forecast hub” is a centralised effort to improve the transparency and usefulness of forecasts, by standardising and collating the work of many independent teams producing forecasts [4]. A hub sets a commonly agreed structure for forecast targets, such as type of disease event, spatio-temporal units, or the set of quantiles of the probability distribution to include from probabilistic forecasts. Forecasters can adopt this format and contribute forecasts for centralised storage in the public domain. This shared infrastructure allows forecasts produced from diverse teams and methods to be visualised and quantitatively compared on a near-exact like-for-like basis, which can strengthen public and policy use of disease forecasts [#ref CDC]. The underlying approach to creating a forecast hub was pioneered for forecasting influenza in the USA and adapted for forecasts of short-term Covid-19 cases and deaths in the US [5] and elsewhere [6], with similar efforts elsewhere [7] [8] [9] [10].</p>
+<p>Standardising forecasts may also allow us to maximise their predictive performance by combining multiple forecasts into a single ensemble forecast. Evidence from previous efforts in multi-model infectious disease forecasting suggests that forecasts from an ensemble of many forecast models can be consistently high performing compared to any one of the component models [a][#ref-US]. Somewhat comparably, weather forecasting has a long standing use of building ensembles of many models using diverse methods with standardised data and formatting [11,12].</p>
 <p>The European Covid-19 Forecast Hub [13] is a project to collate short term forecasts of Covid-19 across 32 countries in the European region. The Hub is supported by the European Centre for Disease Control (ECDC), with the primary aim to provide reliable information about the near-term epidemiology of the COVID-19 pandemic to the research and policy communities and the general public. Second, the hub aims to create infrastructure for storing and analysing epidemiological forecasts made in real time by diverse research teams and methods across Europe. Third, the hub aims to maintain a community of infectious disease modellers underpinned by open science principles. We started formally collating and combining contributions to the European Forecast Hub in March 2021. Here, we investigate the predictive performance of an ensemble of all forecasts contributed to the hub in real time each week, as well as the performance of variations of ensemble methods created retrospectively.</p>
 </div>
 <div id="methods" class="section level3">
@@ -688,23 +709,25 @@ change title
 <p>We developed infrastructure to host and analyse forecasts, following a similar structure and data format, and adapted processes and software provided by the US [14,15] and the German and Polish COVID-19 [16,17] forecast hubs.</p>
 <div id="forecast-targets-and-standardisation" class="section level4">
 <h4>Forecast targets and standardisation</h4>
-<p>We sought forecasts for reported weekly incident counts of cases and deaths from COVID-19 for each of 32 countries in the European region (including all countries of the European Union and European Free Trade Area, and separately the United Kingdom). Incidence was aggregated over the Morbidity and Mortality Weekly Report (MMWR) epidemiological week definition of Sunday through Saturday. When predicting any single forecast target, teams could express uncertainty by submitting predictions across a range of a pre-specified set of 23 quantiles in the probability distribution. Teams could also submit a single point forecast without uncertainty. At the first submission we asked teams to add a single set of metadata briefly describing the forecasting team and methods. Model types included mechanistic models, agent-based and statistical models, ensembles of multiple models and an expertise-based model. We maintain a full project specification for detailed submissions protocol [18].</p>
+<p>We sought forecasts for reported weekly incident counts of cases and deaths from COVID-19 for each of 32 countries in Europe (including all countries of the European Union and European Free Trade Area, and separately the United Kingdom). Incidence was aggregated over the Morbidity and Mortality Weekly Report (MMWR) epidemiological week definition of Sunday through Saturday. When predicting any single forecast target, teams could express uncertainty by submitting predictions across a range of a pre-specified set of 23 quantiles in the probability distribution. Teams could also submit a single point forecast without uncertainty. At the first submission we asked teams to add a single set of metadata briefly describing the forecasting team and methods. Model types included mechanistic models, agent-based and statistical models, ensembles of multiple models and an expertise-based model. We maintain a full project specification with a detailed submissions protocol [18].</p>
 <p>With the complete dataset for the latest forecasting week available each Sunday, forecasts were typically submitted to the hub on Monday. We used an automated validation programme to check that each new forecast conformed to standardised formatting. This included checking that predictions increased monotonically with each increasing quantile, that predictions were integer counts, as well as that forecasts conformed to consistent date and location definitions.</p>
-<p>Each week we built an ensemble of all forecasts which updated each week after all forecasts had been validated. From the first week of forecasting from 8 March 2021, the ensemble method for summarising across forecasts was the mean average of all models at each predictive quantile for a given location, target, and horizon. From 26 July 2021 onwards the ensemble instead used a median average of all predictive quantiles, in order to mitigate the wide uncertainty produced by some highly anomalous forecasts. We created an open and publicly accessible interface to the forecasts and ensemble, including an online visualization tool allowing viewers to see past data and interact with one or multiple forecasts for each country and target for up to four weeks’ horizon (#cite website). All forecast and meta data are freely available and held on Zoltar, a platform for hosting epidemiological forecasts (#cite Zoltar link).</p>
+<p>Each week we built an ensemble of all forecasts which was updated each week after all forecasts had been validated. From the first week of forecasting from 8 March 2021, the ensemble method for summarising across forecasts was the mean average of all models at each predictive quantile for a given location, target, and horizon. From 26 July 2021 onwards the ensemble instead used a median average of all predictive quantiles, in order to mitigate the wide uncertainty produced by some highly anomalous forecasts. We created an open and publicly accessible interface to the forecasts and ensemble, including an online visualization tool allowing viewers to see past data and interact with one or multiple forecasts for each country and target for up to four weeks’ horizon (#cite website). All forecast and meta data are freely available and held on Zoltar, a platform for hosting epidemiological forecasts (#cite Zoltar link).</p>
 </div>
-<div id="forecast-evaluation-a" class="section level4">
-<h4>Forecast evaluation [a]</h4>
+<div id="forecast-evaluation" class="section level4">
+<h4>Forecast evaluation</h4>
 <p>We evaluated all previous forecasts against actual observed values for each model, stratified by the forecast horizon, location, and target. We calculated scores using the <em>scoringutils</em> R package [19] with observed data reported by Johns Hopkins University [20]. JHU data included a mix of national and aggregated subnational data for the 32 countries in the Hub. We removed any forecast surrounding (in the week of or after) a strongly anomalous data point.</p>
-<p>We focus here on measurements of calibration and the interval score. We explored coverage of probabilistic forecasts to find where 50% of observations matched predictions within the 50% forecast interval. The interval score accounts for both under and over prediction (the difference between an observed value and a single prediction) as well as overall sharpness of the forecast (width of the probability distribution). These three factors are added to create the interval score [21]. This means that the interval score is the same as the absolute error for single-value point forecasts. It is therefore possible to compare probabilistic interval scores with the absolute error when evaluating probabilistic and deterministic forecasts simultaneously.</p>
-<p>However, absolute scores are difficult to compare across different forecast targets, as scores measured on the scale of the data result in the dominance of locations with large epidemics. Meanwhile, using error scaled only relative to itself over-exposes small changes in the data with large percentage differences (although this can be useful in the context of a growing epidemic). To enable a level comparison among all forecast targets, we created a forecast to use as a baseline against which other forecasts could be evaluated. This model was designed as the simplest possible probabilistic forecasting model where each forecast repeats the latest week of data, with expanding uncertainty over time created by re-sampling the forecast at each horizon.</p>
-<p>We could then scale the interval and absolute error scores against those of the baseline predictions. For each model’s scaled relative score, we took the mean score for each target (location, target variable, and time horizon), and then used a geometric mean of pairwise comparisons. This allowed like for like comparison across targets. This baseline and comparison model was developed by the US COVID-19 forecast hub and has been used similarly to compare COVID-19 forecasts [5].</p>
+<p>We assessed calibration via coverage of the predictive intervals and overall predictive performance via the weighted interval score (WIS). Coverage at a given interval level <span class="math inline">\(k\)</span> was calculated as the proportion <span class="math inline">\(p\)</span> of observations that fell within the corresponding central predictive intervals across locations and forecast dates. A perfectly calibrated model would have <span class="math inline">\(p=k\)</span> at all 11 levels (corresponding to 22 quantiles excluding the median). An underconfident model at level <span class="math inline">\(k\)</span> would have <span class="math inline">\(p&gt;k\)</span>, i.e. more observations falling within a given interval than expected, whereas an overconfident model at level <span class="math inline">\(k\)</span> would have <span class="math inline">\(p&lt;k\)</span>, i.e. fewer observations falling within a given interval than expected. We here focus on coverage at the 50% and 95% [b]level.</p>
+<p>We assessed weekly forecasts using the WIS across all quantiles that were being gathered[c]. This WIS is a strictly proper scoring rule, that is, it is optimised for predictions that come from the data-generating model and, as a consequence, encourages forecasters to report predictions representing their true belief about the future[d]. The WIS represents a parsimonious approach to scoring forecasts when only quantiles are available:</p>
+<p><span class="math display">\[\mathrm{WIS}_{\alpha_{0:K}}(y, F) = \frac{1}{K + 0.5} \left( \frac{1}{2} \left| y - m \right| + \sum_{k=1}^{K} \left(\frac{\alpha_k}{2} \left(u_k - l_k \right) + \left( l_k - y \right) \mathbb{I}_{y &lt; l_k} + \left( y - u_k \right) \mathbb{I}_{y &gt; l_k} \right) \right)\]</span></p>
+<p>Where <span class="math inline">\(y\)</span> is an observed outcome, <span class="math inline">\(F\)</span> the forecast, <span class="math inline">\(m\)</span> the median of the predictive distribution, <span class="math inline">\(u_k\)</span> and <span class="math inline">\(l_k\)</span> are the predictive upper and lower quantiles corresponding to the central predictive interval level <span class="math inline">\(k\)</span>, respectively, <span class="math inline">\(K=11\)</span> is the number of intervals considered and <span class="math inline">\(1 - \alpha_k\)</span> the width of central predictive interval <span class="math inline">\(k\)</span>.</p>
+<p>Not all models were used to generate forecasts for all locations and all forecast dates. In order to be able to compare predictive performance in the face of various levels of missingness, we further calculated a relative WIS as a relative measure of forecast performance which takes into account that different teams may not cover the exact same set of forecast targets (i.e., weeks and locations). Loosely speaking, a relative WIS of X means that averaged over the targets a given team addressed, its WIS was X times higher/lower than the the performance of the baseline model assuming case/death numbers to stay the same in the future, described previously[e]. Smaller values are thus better and a value below one means that the model has above average performance. The relative WIS is computed using a ?pairwise comparison tournament? where for each pair of models a mean score ratio is computed based on the set of shared targets. The relative WIS of a model with respect to another model is then the ratio of their respective geometric mean of the mean score ratios, where here we report the relative WIS of each model with respect to the baseline model.</p>
 </div>
-<div id="alternative-ensemble-methods-b" class="section level4">
-<h4>Alternative ensemble methods [b]</h4>
-<p>We retrospectively explored alternative methods for ensembling forecasts for each target each week. We used both mean and median methods of averaging across forecasts, each used with two methods of weighting any individual predicted value. Unweighted ensembles took the average predicted value from all forecasts, giving equal contributions from all forecasts available for any given target. Weighted ensembles allocated weights to each forecast model based on past performance of an individual model before averaging.</p>
-<p>To create weights for component models, we measured past performance using the interval score. The interval score evaluates probabilistic forecasts by accounting for both calibration and sharpness of a forecast [21]. We excluded models which did not provide the total set of 23 prediction intervals from weighted ensembles. However, models varied in predicting any one or multiple targets combined from a choice of predicting case or death counts, for 32 countries, and at four forecast horizons (weeks ahead predictions). To account for this variation, we weighted the interval score based on comparing each model’s score to every other model forecasting for the same target, creating a pairwise comparison tournament. We then took the geometric mean of these pairwise comparisons for each model. This resulted in a single score per model for each of two target counts, 32 locations, and four forecast horizons. Separately, at this point we also averaged these scores across forecast horizons.</p>
-<p>We took the weighted interval score of each model and scaled it against the performance of the baseline (flat) forecast, giving a measure of performance that accounted for each forecast’s individual skill compared to all other equivalent forecasts and a simple baseline. We took the inverse of these scores to create weights on a scale of 0-1 and applied these to a model’s forecast values at all quantile predictions for each model. We then averaged across these weighted values at each quantile.</p>
-<p>To evaluate the simple and weighted mean and median ensemble forecasts, we used the same measure of performance described above based on calculating the relative interval score scaled to a baseline, and explored coverage and the interval score.</p>
+<div id="ensemble-methods" class="section level4">
+<h4>Ensemble methods</h4>
+<p>We retrospectively explored alternative methods for ensembling forecasts for each target each week. A natural way to combine probability distributions available in a quantile format, such as the ones collated in the European Covid-19 Forecast Hub is[f] <span class="math display">\[F^{-1}(\alpha) = \sum_{i=1}^{n}w_i F_i^{-1}(\alpha)\]</span> Where <span class="math inline">\(F_{1 \ldots n}\)</span> are the cumulative distribution functions of the individual probability distributions (in our case, the predictive distributions of the forecasts contributed to the hub), <span class="math inline">\(w_i\)</span> are a set of weights; and <span class="math inline">\(\alpha\)</span> are the quantile levels such that <span class="math display">\[F^{-1}(\alpha) = \mathrm{inf} \{t : F_i(t) \geq \alpha \}\]</span>. Different ensemble choices then largely come down to the choice of weights <span class="math inline">\(w_i\)</span>.</p>
+<p>The simplest choice of weights is to set them all equal so that they sum up to 1, <span class="math inline">\(w_i=1/n\)</span>,, resulting in an unweighted mean ensemble. This can be subject to outlier forecasts that could skew the mean. A choice that avoids this potential issue is to combine the forecasts at each quantile level in an unweighted median ensemble, where the average is replaced by a median. An unweighted median ensemble has previously been found to yield very competitive performance while maintaining robustness to outlying forecast[g].</p>
+<p>By choosing the weights <span class="math inline">\(w_i\)</span> to reflect past performance one can move from an untrained to a trained ensemble. Numerous options exist for choosing the weights with the aim to maximise predictive performance. A straightforward choice is so-called inverse score weighting, which was recently found in the US to outperform unweighted scores during some time periods[h] [taylor21_combiningprobabilisticforecasts] but not confirmed in a similar study in Germany and Poland (Bracher et al. 2021). In this case, the weights are calculated as <span class="math display">\[w_i = \frac{1}{S_i}\]</span> where <span class="math inline">\(S_i\)</span> reflects the forecast skill of forecaster <span class="math inline">\(i\)</span>.</p>
+<p>Here we considered unweighted and inverse relative WIS weighted mean and median ensembles. We additionally considered ensembles where the training period was restricted to the last 10 weeks (for the weighted ensembles), or where only models with relative WIS &lt; 1 (i.e., outperforming the baseline) were admitted included.</p>
 </div>
 </div>
 <div id="results" class="section level3">
@@ -725,14 +748,14 @@ Figure #: Performance of short-term forecasts, by relative interval score (relat
 Figure #: Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk.
 </p>
 </div>
-<p>The ensemble also performed consistently well when forecasting across countries relative to individual models and the baseline (figure #). Compared to models that forecast across all 32 countries at the two-week horizon [c], the ensemble was more consistent in outperforming the baseline across countries compared to any single model forecasting deaths, and all but one model for case forecasts. Considering forecast targets across all 32 countries and over all four horizons (128 targets), the ensemble forecast outperformed the baseline for 67% and 91% of all 128 targets when forecasting cases and deaths, respectively. [d]</p>
+<p>The ensemble also performed consistently well when forecasting across countries relative to individual models and the baseline (figure #). Compared to models that forecast across all 32 countries at the two-week horizon[i], the ensemble was more consistent in outperforming the baseline across countries compared to any single model forecasting deaths, and all but one model for case forecasts. Considering forecast targets across all 32 countries and over all four horizons (128 targets), the ensemble forecast outperformed the baseline for 67% and 91% of all 128 targets when forecasting cases and deaths, respectively[j].</p>
 <div class="figure" style="text-align: center">
 <img src="figure/euro-hub-ensemble-draft.Rmd/figure-alternative-ensembles-1.png" alt="Figure #: Performance of alternative ensemble methods at 2 week horizon, showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted (n=250); median v. mean (n=376); cutoff by WIS v. all models included (n=374); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=248)" width="672" />
 <p class="caption">
 Figure #: Performance of alternative ensemble methods at 2 week horizon, showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted (n=250); median v. mean (n=376); cutoff by WIS v. all models included (n=374); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=248)
 </p>
 </div>
-<p>At the two-week ahead horizon [c], variations in ensemble methods made little difference to forecast scores. Ensembles that weighted forecasts showed no difference in performance to simple unweighted ensemble methods. Similarly, in choosing a method with which to weight forecasts, the choice of whether to use scores across all past forecasts, or scores evaluating only the most recent 10 weeks’ forecast scores, made very little difference to the performance of the resulting ensemble (0 mean change in forecast score). The choice to exclude any forecast that scored worse than the baseline forecast (“cut off”) affected the performance of the ensemble in both directions, overall slightly worsening performance (0.07 relative WIS). Using the median average was the only variation of ensemble method that typically improved performance, compared to using the mean average across any combination of ensemble method.</p>
+<p>At the two-week ahead horizon[k], variations in ensemble methods made little difference to forecast scores. Ensembles that weighted forecasts showed no difference in performance to simple unweighted ensemble methods. Similarly, in choosing a method with which to weight forecasts, the choice of whether to use scores across all past forecasts, or scores evaluating only the most recent 10 weeks’ forecast scores, made very little difference to the performance of the resulting ensemble (0 mean change in forecast score). The choice to exclude any forecast that scored worse than the baseline forecast (“cut off”) affected the performance of the ensemble in both directions, overall slightly worsening performance (0.07 relative WIS). Using the median average was the only variation of ensemble method that typically improved performance, compared to using the mean average across any combination of ensemble method.</p>
 </div>
 <div id="discussion" class="section level3">
 <h3>Discussion</h3>
@@ -750,8 +773,7 @@ Figure #: Performance of alternative ensemble methods at 2 week horizon, showing
 <p>This study raises further questions which could inform epidemic forecast modellers and users. We recommend using the dataset created by the European Forecast Hub for further research on forecast performance. Future work could explore the impact of changing epidemiology on individual or ensemble models by combining analyses of trends and turning points in cases and deaths with forecast performance, or extending to include data on vaccination, variant, or policy changes over time. There is also a wide range of methods for combining forecasts which could improve performance of an ensemble or continue to demonstrate the value of a simple approach. This includes altering the inclusion criteria of forecast models based on different thresholds of past performance, excluding or including only forecasts that predict the lowest- and highest-values (trimming) [#taylor], or using alternative weighting methods such as quantile regression averaging [#funk/qra]. Exploring these questions would add to our understanding of real time performance, supporting and improving future forecasting efforts.</p>
 <p>We further recommend adapting and using our open-source computational infrastructure elsewhere for applied public health work. The hub structure maximises the transparency and accuracy of real-time forecasts and can reduce reliance on individual models as a basis for action during an epidemic. The benefits of combining multiple models into an ensemble come from individual models’ wide variation in forecast performance across varying targets, and this is particularly true during emerging epidemics where forecasters vary in how quickly their models are able to adapt to new information. Setting up the infrastructure for this could be an important component to future epidemic and pandemic preparedness.</p>
 <p>In conclusion, we have shown that an ensemble forecast performed reliably well across multiple forecast targets, with good short term predictions during a rapidly evolving epidemic spreading through multiple populations. However we have also demonstrated there are clear limits to predictability, especially for case forecasts longer than two weeks, with few methods able to consistently improve forecast performance other than the use of a median rather than mean average.</p>
-<hr />
-<p>[a]expand/eqns [b]use seb ensemble report [c]show other horizons in SI [d]can you mention the % at which the baseline model is outperformed by the best individual model, to support the claim in the previous sentence? [a]Also cite: <a href="https://doi.org/10.1016/j.epidem.2017.08.002" class="uri">https://doi.org/10.1016/j.epidem.2017.08.002</a> <a href="https://doi.org/10.1073/pnas.1909865116" class="uri">https://doi.org/10.1073/pnas.1909865116</a> <a href="https://doi.org/10.1371/journal.pcbi.1007486" class="uri">https://doi.org/10.1371/journal.pcbi.1007486</a></p>
+<p>[a][Seb open comment] Also cite: <a href="https://doi.org/10.1016/j.epidem.2017.08.002" class="uri">https://doi.org/10.1016/j.epidem.2017.08.002</a> <a href="https://doi.org/10.1073/pnas.1909865116" class="uri">https://doi.org/10.1073/pnas.1909865116</a> <a href="https://doi.org/10.1371/journal.pcbi.1007486" class="uri">https://doi.org/10.1371/journal.pcbi.1007486</a> [b]correct? Or 90%? Either would make sense I think. [c]cite <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008618" class="uri">https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008618</a> [d]cite Gneiting &amp; Raftery (2007) Strictly Proper Scoring Rules, Prediction and Estimation [e]Cramer et al. 2021 [f]cite Genest, Christian. 1992. ?Vincentization Revisited.? The Annals of Statistics 20 (2). <a href="https://doi.org/10.121" class="uri">https://doi.org/10.121</a> 4/aos/1176348676. [g]Ray, Evan L, Logan C Brooks, Jacob Bien, Johannes Bracher, Aaron Gerding, Aaron Rumack, Matthew Biggerstaff, Michael A Johansson, Ryan J Tibshirani, and Nicholas G Reich. 2020. ?Challenges in Training Ensembles to Forecast COVID-19 Cases and Deaths in the United States.? International Institute of Forecasters. [h]Taylor, “Combining probabilistic forecasts” [i]show other horizons in SI [j][Seb open comment] can you mention the % at which the baseline model is outperformed by the best individual model, to support the claim in the previous sentence? [k]show other horizons in SI</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -779,7 +801,7 @@ other attached packages:
  [1] covidHubUtils_0.1.6 readr_2.1.0         gghighlight_0.3.2  
  [4] patchwork_1.1.1     forcats_0.5.1       ggplot2_3.3.5      
  [7] purrr_0.3.4         lubridate_1.8.0     tidyr_1.1.4        
-[10] dplyr_1.0.7         here_1.0.1          workflowr_1.6.2    
+[10] dplyr_1.0.7         here_1.0.1         
 
 loaded via a namespace (and not attached):
  [1] Rcpp_1.0.7         assertthat_0.2.1   rprojroot_2.0.2    digest_0.6.28     
@@ -788,16 +810,17 @@ loaded via a namespace (and not attached):
 [13] rstudioapi_0.13    whisker_0.4        jquerylib_0.1.4    rmarkdown_2.11    
 [17] labeling_0.4.2     stringr_1.4.0      bit_4.0.4          munsell_0.5.0     
 [21] compiler_4.0.4     httpuv_1.6.3       xfun_0.28          pkgconfig_2.0.3   
-[25] htmltools_0.5.2    tidyselect_1.1.1   tibble_3.1.6       codetools_0.2-18  
-[29] fansi_0.5.0        crayon_1.4.2       tzdb_0.2.0         withr_2.4.2       
-[33] later_1.3.0        grid_4.0.4         jsonlite_1.7.2     gtable_0.3.0      
-[37] lifecycle_1.0.1    DBI_1.1.1          git2r_0.29.0       magrittr_2.0.1    
-[41] scales_1.1.1       cli_3.1.0          stringi_1.7.5      vroom_1.5.6       
-[45] farver_2.1.0       fs_1.5.0           promises_1.2.0.1   doParallel_1.0.16 
-[49] bslib_0.3.1        ellipsis_0.3.2     generics_0.1.1     vctrs_0.3.8       
-[53] RColorBrewer_1.1-2 iterators_1.0.13   tools_4.0.4        bit64_4.0.5       
-[57] glue_1.5.0         hms_1.1.1          parallel_4.0.4     fastmap_1.1.0     
-[61] yaml_2.2.1         colorspace_2.0-2   knitr_1.36         sass_0.4.0        </code></pre>
+[25] htmltools_0.5.2    tidyselect_1.1.1   tibble_3.1.6       workflowr_1.6.2   
+[29] codetools_0.2-18   fansi_0.5.0        crayon_1.4.2       tzdb_0.2.0        
+[33] withr_2.4.2        later_1.3.0        grid_4.0.4         jsonlite_1.7.2    
+[37] gtable_0.3.0       lifecycle_1.0.1    DBI_1.1.1          git2r_0.29.0      
+[41] magrittr_2.0.1     scales_1.1.1       cli_3.1.0          stringi_1.7.5     
+[45] vroom_1.5.6        farver_2.1.0       fs_1.5.0           promises_1.2.0.1  
+[49] doParallel_1.0.16  bslib_0.3.1        ellipsis_0.3.2     generics_0.1.1    
+[53] vctrs_0.3.8        RColorBrewer_1.1-2 iterators_1.0.13   tools_4.0.4       
+[57] bit64_4.0.5        glue_1.5.0         hms_1.1.1          parallel_4.0.4    
+[61] fastmap_1.1.0      yaml_2.2.1         colorspace_2.0-2   knitr_1.36        
+[65] sass_0.4.0        </code></pre>
 </div>
 </div>
 </div>
