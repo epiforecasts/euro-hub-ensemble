@@ -284,7 +284,8 @@ The ensemble also performed consistently well when forecasting across countries 
 #|  "); cutoff by WIS v. all models included (n=", 
 #|  ensemble_change_n$`Cutoff rel. WIS < 1`, 
 #|  "); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=",
-#|  ensemble_change_n$`10 weeks history`, ")")
+#|  ensemble_change_n$`10 weeks history`, ")"),
+#| out.height = "50%"
 #
 # OR-style plot showing relative impact of different ensemble methods on performance
 # get eval, calculate differences between ensemble methods
@@ -351,7 +352,8 @@ In conclusion, we have shown that an ensemble forecast performed reliably well a
 #|  median ensemble (asterisk), by country, forecasting cases (left) and deaths
 #|  (right) for one-week (top) through four-week (bottom) ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile
 #|  ranges, with outliers as faded points, and the ensemble model performance is marked
-#|  by an asterisk."
+#|  by an asterisk.",
+#| out.width = "150%"
 
 model_eval %>%
   # plot structure: boxplot rel wis by location and horizon
@@ -390,7 +392,8 @@ model_eval %>%
 #|  Reference categories are: 
 #|  weighted v. unweighted; median v. mean; 
 #|  cutoff by WIS v. all models included;, 
-#|  relative WIS measures over 10 weeks of forecast history vs. all forecasts"
+#|  relative WIS measures over 10 weeks of forecast history vs. all forecasts",
+#| out.height = "30%"
 
 # OR-style plot showing relative impact of different ensemble methods on performance
 # get eval, calculate differences between ensemble methods
