@@ -21,8 +21,8 @@ this_doc <- "analysis/euro-hub-ensemble-draft.Rmd"
 # trackdown::update_file(file = this_doc, gpath = gdrive_path, hide_code = TRUE)
 # 3. Build doc and push to website
 # workflowr::wflow_publish(all = TRUE, update = TRUE)
-# 
-# Optionally, build PDF: rmarkdown::render(this_doc, rmarkdown::pdf_document())
+# 4. Optionally, build PDF: 
+# rmarkdown::render(this_doc, rmarkdown::pdf_document())
 #--------------------------------------------------------------------
 ```
 
@@ -79,7 +79,7 @@ We sought forecasts for reported weekly incident counts of cases and deaths from
 
 With the complete dataset for the latest forecasting week available each Sunday, forecasts were typically submitted to the hub on Monday. We used an automated validation programme to check that each new forecast conformed to standardised formatting. This included checking that predictions increased monotonically with each increasing quantile, that predictions were integer counts, as well as that forecasts conformed to consistent date and location definitions. 
 
-Each week we built an ensemble of all forecasts which was updated each week after all forecasts had been validated. From the first week of forecasting from 8 March 2021, the ensemble method for summarising across forecasts was the mean average of all models at each predictive quantile for a given location, target, and horizon. From 26 July 2021 onwards the ensemble instead used a median average of all predictive quantiles, in order to mitigate the wide uncertainty produced by some highly anomalous forecasts. We created an open and publicly accessible interface to the forecasts and ensemble, including an online visualization tool allowing viewers to see past data and interact with one or multiple forecasts for each country and target for up to four weeks' horizon [@europeancovid-19forecasthubEuropeanCovid19Forecast]. All forecast and meta data are freely available and held on Zoltar, a platform for hosting epidemiological forecasts (@epiforecastsProjectECDCEuropean2021; reichZoltarForecastArchive2021). 
+Each week we built an ensemble of all forecasts which was updated each week after all forecasts had been validated. From the first week of forecasting from 8 March 2021, the ensemble method for summarising across forecasts was the mean average of all models at each predictive quantile for a given location, target, and horizon. From 26 July 2021 onwards the ensemble instead used a median average of all predictive quantiles, in order to mitigate the wide uncertainty produced by some highly anomalous forecasts. We created an open and publicly accessible interface to the forecasts and ensemble, including an online visualization tool allowing viewers to see past data and interact with one or multiple forecasts for each country and target for up to four weeks' horizon [@europeancovid-19forecasthubEuropeanCovid19Forecast]. All forecast and meta data are freely available and held on Zoltar, a platform for hosting epidemiological forecasts (@epiforecastsProjectECDCEuropean2021; @reichZoltarForecastArchive2021). 
 
 ### Forecast evaluation
 
