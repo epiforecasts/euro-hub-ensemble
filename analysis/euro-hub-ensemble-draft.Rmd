@@ -269,6 +269,7 @@ The ensemble also performed consistently well when forecasting across countries 
 
 ```{r}
 #| figure-3-alternative-ensembles,
+#| out.height = "50%",
 #| fig.cap = paste0(
 #| "Figure 3: Performance of alternative ensemble methods at 2 week
 #|  horizon, showing mean difference (triangle) in relative weighted
@@ -284,8 +285,7 @@ The ensemble also performed consistently well when forecasting across countries 
 #|  "); cutoff by WIS v. all models included (n=", 
 #|  ensemble_change_n$`Cutoff rel. WIS < 1`, 
 #|  "); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=",
-#|  ensemble_change_n$`10 weeks history`, ")"),
-#| out.height = "50%"
+#|  ensemble_change_n$`10 weeks history`, ")")
 #
 # OR-style plot showing relative impact of different ensemble methods on performance
 # get eval, calculate differences between ensemble methods
@@ -348,12 +348,12 @@ In conclusion, we have shown that an ensemble forecast performed reliably well a
 
 ```{r}
 #| si-figure-model-by-location,
+#| out.width = "150%",
 #| fig.cap = "Figure SI1: Performance of short-term forecasts across models and
 #|  median ensemble (asterisk), by country, forecasting cases (left) and deaths
 #|  (right) for one-week (top) through four-week (bottom) ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile
 #|  ranges, with outliers as faded points, and the ensemble model performance is marked
-#|  by an asterisk.",
-#| out.width = "150%"
+#|  by an asterisk."
 
 model_eval %>%
   # plot structure: boxplot rel wis by location and horizon
@@ -383,6 +383,7 @@ model_eval %>%
 
 ```{r}
 #| si-figure-alternative-ensembles,
+#| out.height = "30%",
 #| fig.cap = "Figure SI2: Performance of alternative ensemble methods at each weekly
 #|  horizon (1-4), showing mean difference (triangle) in relative weighted
 #|  interval score, with 48% and 96% probability (thick and thin line
@@ -392,8 +393,8 @@ model_eval %>%
 #|  Reference categories are: 
 #|  weighted v. unweighted; median v. mean; 
 #|  cutoff by WIS v. all models included;, 
-#|  relative WIS measures over 10 weeks of forecast history vs. all forecasts",
-#| out.height = "30%"
+#|  relative WIS measures over 10 weeks of forecast history vs. all forecasts"
+
 
 # OR-style plot showing relative impact of different ensemble methods on performance
 # get eval, calculate differences between ensemble methods
