@@ -45,7 +45,7 @@ theme_set(theme_bw())
 
 _Order tbc;_ Katharine Sherratt, Hugo Gruson, _Any co-authors_, _Team authors_, _Advisory team authors_, _ECDC authors_, Johannes Bracher, Sebastian Funk
 
-### Abstract
+# Abstract
 
 _Background_ Short-term forecasts of infectious disease burden can contribute to situational awareness and aid capacity planning. Based on best practice in other fields and recent insights in infectious disease epidemiology, one can maximise the predictive performance of such forecasts if multiple models are combined into an ensemble. Here we report on the performance of ensembles created from over 40 models in predicting COVID-19 cases and deaths across Europe.
 
@@ -55,7 +55,7 @@ _Results_ We collected and combined 36 weeks of forecasts for 32 countries from 
 
 _Conclusions_ Our results support the use of an ensemble as a reliable way to make real-time forecasts across many populations and epidemiological targets during infectious disease epidemics. We recommend the use of median ensemble methods, and that policy relevant work that uses ensembles should place more confidence in forecasts of incident death than case counts, particularly at longer (more than 2 week) periods into the future.
 
-### Background
+# Background
 
 Epidemiological forecasts make quantitative statements about a disease outcome in the near future. At the most general level, forecasting targets can include measures of prevalent or incident disease and its severity, for some population over a specified time horizon. Researchers, policy makers, and the general public have used such forecasts to understand and respond to the global outbreaks of Covid-19 since early 2020 [@basshuysenThreeWaysWhich2021]. However forecasters use a variety of methods and models for creating and publishing forecasts, varying in both defining the forecast outcome and in reporting the distribution of probability around outcomes [@zelnerAccountingUncertaintyPandemic2021; @jamesUseMisuseMathematical2021]. Such variation between forecasts makes it difficult to interpret the likelihood of any one outcome, or to compare the predictive performance between forecast models. These barriers to comparing and evaluating mean there is little objective support for using any one particular forecast for representing or acting on likely outcomes.
 
@@ -65,11 +65,11 @@ Standardising forecasts may also allow us to maximise their predictive performan
 
 The European Covid-19 Forecast Hub [@europeancovid-19forecasthubEuropeanCOVID19Forecast2021] is a project to collate short term forecasts of Covid-19 across 32 countries in the European region. The Hub is supported by the European Centre for Disease Control (ECDC), with the primary aim to provide reliable information about the near-term epidemiology of the COVID-19 pandemic to the research and policy communities and the general public. Second, the hub aims to create infrastructure for storing and analysing epidemiological forecasts made in real time by diverse research teams and methods across Europe. Third, the hub aims to maintain a community of infectious disease modellers underpinned by open science principles. We started formally collating and combining contributions to the European Forecast Hub in March 2021. Here, we investigate the predictive performance of an ensemble of all forecasts contributed to the hub in real time each week, as well as the performance of variations of ensemble methods created retrospectively.
 
-### Methods
+# Methods
 
 We developed infrastructure to host and analyse forecasts, following a similar structure and data format, and adapted processes and software provided by the US [@cramerReichlabCovid19forecasthubRelease2021; @wangReichlabCovidHubUtilsRepository2021] and the German and Polish COVID-19 [@bracherGermanPolishCOVID192020] forecast hubs. 
 
-#### Forecast targets and standardisation 
+### Forecast targets and standardisation 
 
 We sought forecasts for reported weekly incident counts of cases and deaths from COVID-19 for each of 32 countries in Europe (including all countries of the European Union and European Free Trade Area, and separately the United Kingdom). Incidence was aggregated over the Morbidity and Mortality Weekly Report (MMWR) epidemiological week definition of Sunday through Saturday. When predicting any single forecast target, teams could express uncertainty by submitting predictions across a range of a pre-specified set of 23 quantiles in the probability distribution. Teams could also submit a single point forecast without uncertainty. At the first submission we asked teams to add a single set of metadata briefly describing the forecasting team and methods. Model types included mechanistic models, agent-based and statistical models, ensembles of multiple models and an expertise-based model. We maintain a full project specification with a detailed submissions protocol [@europeancovid-19forecasthubCovid19forecasthubeuropeWiki]. 
 
@@ -77,7 +77,7 @@ With the complete dataset for the latest forecasting week available each Sunday,
 
 Each week we built an ensemble of all forecasts which was updated each week after all forecasts had been validated. From the first week of forecasting from 8 March 2021, the ensemble method for summarising across forecasts was the mean average of all models at each predictive quantile for a given location, target, and horizon. From 26 July 2021 onwards the ensemble instead used a median average of all predictive quantiles, in order to mitigate the wide uncertainty produced by some highly anomalous forecasts. We created an open and publicly accessible interface to the forecasts and ensemble, including an online visualization tool allowing viewers to see past data and interact with one or multiple forecasts for each country and target for up to four weeks' horizon [@europeancovid-19forecasthubEuropeanCovid19Forecast]. All forecast and meta data are freely available and held on Zoltar, a platform for hosting epidemiological forecasts (@epiforecastsProjectECDCEuropean2021; reichZoltarForecastArchive2021). 
 
-#### Forecast evaluation
+### Forecast evaluation
 
 We evaluated all previous forecasts against actual observed values for each model, stratified by the forecast horizon, location, and target. We calculated scores using the _scoringutils_ R package [@nikosibosseScoringutilsUtilitiesScoring2020] with observed data reported by Johns Hopkins University (JHU, [@dongInteractiveWebbasedDashboard2020a]). JHU data included a mix of national and aggregated subnational data for the 32 countries in the Hub. We removed any forecast surrounding (in the week of or after) a strongly anomalous data point.
 
@@ -106,7 +106,7 @@ where $S_i$ reflects the forecast skill of forecaster $i$.
 
 Here we considered unweighted and inverse relative WIS weighted mean and median ensembles. We additionally considered ensembles where the training period was restricted to the last 10 weeks (for the weighted ensembles), or where only models with relative WIS < 1 (i.e., outperforming the baseline) were admitted included.
 
-### Results
+# Results
 
 ```{r model-description}
 # Get latest evaluation scores for models
@@ -306,7 +306,7 @@ ggplot(ensemble_change_dtb, aes(x = change)) +
 
 At the two-week ahead horizon (1-4 week horizons in SI), variations in ensemble methods made little difference to forecast scores (figure \ref(fig:figure-alternative-ensembles)). Ensembles that weighted forecasts showed no difference in performance to simple unweighted ensemble methods. Similarly, in choosing a method with which to weight forecasts, the choice of whether to use scores across all past forecasts, or scores evaluating only the most recent 10 weeks' forecast scores, made very little difference to the performance of the resulting ensemble (0 mean change in forecast score). The choice to exclude any forecast that scored worse than the baseline forecast ("cut off") affected the performance of the ensemble in both directions, overall slightly worsening performance (`r ensemble_change_dtb[ensemble_change_dtb$change == "Cutoff rel. WIS < 1", "mean"]` relative WIS).  Using the median average was the only variation of ensemble method that typically improved performance, compared to using the mean average across any combination of ensemble method.
 
-### Discussion
+# Discussion
 
 We collated forecasts from multiple teams making forecasts of COVID-19 cases and deaths across countries over March to November in Europe, using an open and principled approach to standardising both forecast targets and the uncertainty around predictions. Combining these forecasts into an ensemble we found that the ensemble forecasts outperformed a baseline model at short forecast horizons and produced among the most consistent predictive performance across countries over time.
 
