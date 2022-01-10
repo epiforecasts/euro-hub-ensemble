@@ -278,15 +278,13 @@ The ensemble also performed consistently well when forecasting across countries 
 #|  scores from forecasts made from all possible combinations of methods,
 #|  with a single element of ensemble method input changed.
 #|  Reference categories are: 
-#|  weighted v. unweighted (n=", 
-#|  ensemble_change_n$Weighted, 
-#|  "); median v. mean (n=", 
-#|  ensemble_change_n$Median, 
+#|  weighted v. unweighted (n=", ensemble_change_n$Weighted, 
+#|  "); median v. mean (n=", ensemble_change_n$Median, 
 #|  "); cutoff by WIS v. all models included (n=", 
 #|  ensemble_change_n$`Cutoff rel. WIS < 1`, 
 #|  "); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=",
 #|  ensemble_change_n$`10 weeks history`, ")")
-#
+
 # OR-style plot showing relative impact of different ensemble methods on performance
 # get eval, calculate differences between ensemble methods
 source(here("code", "get-ensemble-eval.R"))
@@ -349,7 +347,8 @@ In conclusion, we have shown that an ensemble forecast performed reliably well a
 ```{r si-figure-model-by-location, out.width = "150%"}
 #| fig.cap = "Figure SI1: Performance of short-term forecasts across models and
 #|  median ensemble (asterisk), by country, forecasting cases (left) and deaths
-#|  (right) for one-week (top) through four-week (bottom) ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile
+#|  (right) for one-week (top) through four-week (bottom) ahead forecasts, 
+#|  according to the relative weighted interval score. Boxplots show interquartile
 #|  ranges, with outliers as faded points, and the ensemble model performance is marked
 #|  by an asterisk."
 
