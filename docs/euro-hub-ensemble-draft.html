@@ -490,16 +490,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletree95f9770e2cd39ddb48180cdd3af7b3804a323859targetblank95f9770a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/95f9770e2cd39ddb48180cdd3af7b3804a323859" target="_blank">95f9770</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletree725dd314d9bfceab05ea8e2797376627875dad0etargetblank725dd31a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/725dd314d9bfceab05ea8e2797376627875dad0e" target="_blank">725dd31</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletree95f9770e2cd39ddb48180cdd3af7b3804a323859targetblank95f9770a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletree725dd314d9bfceab05ea8e2797376627875dad0etargetblank725dd31a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/95f9770e2cd39ddb48180cdd3af7b3804a323859" target="_blank">95f9770</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/725dd314d9bfceab05ea8e2797376627875dad0e" target="_blank">725dd31</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -549,6 +549,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/725dd314d9bfceab05ea8e2797376627875dad0e/analysis/euro-hub-ensemble-draft.Rmd" target="_blank">725dd31</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2022-01-10
+</td>
+<td>
+workflowr::wflow_publish(all = TRUE, update = TRUE)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/covid19-forecast-hub-europe/euro-hub-ensemble/a1b349049c974b698e1d542ca9e151a010fba4a8/docs/euro-hub-ensemble-draft.html" target="_blank">a1b3490</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2022-01-10
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1128,7 +1162,7 @@ Figure 3: Performance of alternative ensemble methods at 2 week horizon, showing
 <p>However, we experienced several limitations to our approach. First, our assessment of individual model performance may have been inaccurate due to limitations in the data source used. We saw some real time data revised retrospectively, introducing bias in either direction where the data used to create forecasts was not the same as that used to evaluate it. We mitigated this by excluding forecasts made at or for a time of missing, unreliable, or heavily revised data. We used a manual process for determining anomalous data, and if we did not detect where data revisions affected forecasts this could have created inaccurate forecast scores. However, we note that the national data used here are less likely to see revisions than subnational data <span class="citation">[@dongInteractiveWebbasedDashboard2020a]</span>.</p>
 <p>The results presented also depend on our choice of performance metric. While other work supports the use of the weighted interval score <span class="citation">[@bracherEvaluatingEpidemicForecasts2021, @gneitingStrictlyProperScoring2007; @taylorCombiningProbabilisticForecasts2021]</span>, our use of a flat-line comparison meant that it was more difficult for forecasts to perform well in relative terms during periods where incidence was very stable <span class="citation">[@cramerEvaluationIndividualEnsemble2021c]</span>. This may have differentially biased forecast performance where, for equally good forecasts for different targets, models that predicted a change in trend were rewarded with better scores than those that equally accurately predicted a stable continuation. Further work could consider how well our results compare when using an alternative baseline suitable for epidemics, for example an exponential growth model.</p>
 <p>The result that the ensemble was among the most reliable across countries and over time could also have been influenced by the sample of contributing forecasts. We accepted all modelling teams’ participation and teams used a wide variety of methods. Meanwhile, teams may have changed their forecast methods, and entered and exited the hub over time. The ensemble therefore included forecasts based on models with changing assumptions each week, and we did not test how far the stability or methods of component forecasts influenced the resulting ensemble. This could be significant, for example where in a time of low incidence, including only compartmental models in an ensemble improved predictive performance relative to including forecasts from a wider variety of methods <span class="citation">[@taylorCombiningProbabilisticForecasts2021]</span>. However, the same study found the most consistent ensemble over time was that which included all forecasts regardless of method, with performance increasing with the number of forecast models, so our results are unlikely to have changed by excluding any contributing forecasts.</p>
-<p>We see additional scope to adapt the hub to the changing Covid-19 situation across Europe. We have recently extended the hub infrastructure to include short term forecasts for hospitalisations with COVID-19, although this faces additional challenges with limited data across the locations covered by the hub. It may also be valuable to separately investigate models for longer term scenarios in addition to the short term forecasts, particularly as the policy focus shifts from immediate response to anticipating changes brought by vaccinations or the geographic spread of new variants [europeancentrefordiseasepreventionandcontrolOverviewImplementationCOVID192021].</p>
+<p>We see additional scope to adapt the hub to the changing Covid-19 situation across Europe. We have recently extended the hub infrastructure to include short term forecasts for hospitalisations with COVID-19, although this faces additional challenges with limited data across the locations covered by the hub. It may also be valuable to separately investigate models for longer term scenarios in addition to the short term forecasts, particularly as the policy focus shifts from immediate response to anticipating changes brought by vaccinations or the geographic spread of new variants <span class="citation">[@europeancentrefordiseasepreventionandcontrolOverviewImplementationCOVID192021]</span>.</p>
 <p>This study raises further questions which could inform epidemic forecast modellers and users. We recommend using the dataset created by the European Forecast Hub for further research on forecast performance. Future work could explore the impact of changing epidemiology on individual or ensemble models by combining analyses of trends and turning points in cases and deaths with forecast performance, or extending to include data on vaccination, variant, or policy changes over time. There is also a wide range of methods for combining forecasts which could improve performance of an ensemble or continue to demonstrate the value of a simple approach. This includes altering the inclusion criteria of forecast models based on different thresholds of past performance, excluding or including only forecasts that predict the lowest- and highest-values (trimming) <span class="citation">[@taylorCombiningProbabilisticForecasts2021]</span>, or using alternative weighting methods such as quantile regression averaging <span class="citation">[@funkShorttermForecastsInform2020]</span>. Exploring these questions would add to our understanding of real time performance, supporting and improving future forecasting efforts.</p>
 <p>We further recommend adapting and using our open-source computational infrastructure elsewhere for applied public health work. The hub structure maximises the transparency and accuracy of real-time forecasts and can reduce reliance on individual models as a basis for action during an epidemic. The benefits of combining multiple models into an ensemble come from individual models’ wide variation in forecast performance across varying targets, and this is particularly true during emerging epidemics where forecasters vary in how quickly their models are able to adapt to new information. Setting up the infrastructure for this could be an important component to future epidemic and pandemic preparedness.</p>
 <p>In conclusion, we have shown that an ensemble forecast performed reliably well across multiple forecast targets, with good short term predictions during a rapidly evolving epidemic spreading through multiple populations. However we have also demonstrated there are clear limits to predictability, especially for case forecasts longer than two weeks, with few methods able to consistently improve forecast performance other than the use of a median rather than mean average.</p>
