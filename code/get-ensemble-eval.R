@@ -83,66 +83,70 @@ Testing variation over 6 method inputs:
 We are taking the average difference when changing one input, for each of
 four inputs (average, weight, history, cutoff)
 "
-reference <- c(method_cutoff = "No cutoff",
-               method_average = "Mean",
-               method_weight = "Unweighted",
-               method_history = "All history")
-
-tests <- names(eval_ensemble)[grepl("method_", names(eval_ensemble))]
-
-plot_base <- eval_ensemble %>%
-  filter(location != "Overall" &
-           horizon == 2 &
-           weeks_included == "All" &
-           !is.infinite(rel_wis)
-         ) %>%
-  mutate(model = factor(model),
-         model = forcats::fct_rev(model)) %>%
-  select_at(c("target_variable", "horizon", "location_name",
-              tests, "rel_wis"))
-
-differences <- list()
-ensemble_change_n <- list()
-
 # calculate difference between scores comparable on all variables except one
-for (test in tests) {
-  # Get all variables but one
-  plot_table <- plot_base %>%
+compare_ensemble_diffs <- function(at_horizon, eval_ensemble) {
+
+  reference <- c(method_cutoff = "No cutoff",
+                 method_average = "Mean",
+                 method_weight = "Unweighted",
+                 method_history = "All history")
+
+  tests <- names(eval_ensemble)[grepl("method_", names(eval_ensemble))]
+
+  plot_base <- eval_ensemble %>%
+    filter(location != "Overall" &
+             horizon == at_horizon &
+             weeks_included == "All" &
+             !is.infinite(rel_wis)
+    ) %>%
+    mutate(model = factor(model),
+           model = forcats::fct_rev(model)) %>%
     select_at(c("target_variable", "horizon", "location_name",
-                setdiff(tests, test), test, "rel_wis")) %>%
-    unite("matches", 2:(ncol(.) - 2)) %>%
-    pivot_wider(names_from = all_of(test), values_from = "rel_wis") %>%
-    pivot_longer(3:ncol(.)) %>%
-    group_by(target_variable, matches) %>%
-    mutate(all_there = all(!is.na(value))) %>%
-    ungroup() %>%
-    filter(all_there) %>%
-    select(-all_there)
+                tests, "rel_wis"))
 
-  ptw <- plot_table %>%
-    pivot_wider() %>%
-    mutate(across(.cols = c(3,4), as.numeric))
-  alternative_columns <- setdiff(colnames(ptw),
-                                 c("target_variable", "matches", reference[[test]]))
+  differences <- list()
+  ensemble_change_n <- list()
 
-  # Compare difference in scores when one method variable changed
-  for (column in alternative_columns) {
-    raw_differences <- ptw[[column]] - ptw[[reference[[test]]]]
-    raw_differences <- raw_differences[is.finite(raw_differences)]
-    differences[[column]] <- tibble(mean = round(mean(raw_differences), 2),
-                                    median = round(median(raw_differences), 2),
-                                    low_48 = round(quantile(raw_differences, 0.26), 2),
-                                    high_48 = round(quantile(raw_differences, 0.74), 2),
-                                    low_96 = round(quantile(raw_differences, 0.02), 2),
-                                    high_96 = round(quantile(raw_differences, 0.98), 2),
-                                    n = length(raw_differences))
-    ensemble_change_n[[column]] <- length(raw_differences)
+  for (test in tests) {
+    # Get all variables but one
+    plot_table <- plot_base %>%
+      select_at(c("target_variable", "horizon", "location_name",
+                  setdiff(tests, test), test, "rel_wis")) %>%
+      unite("matches", 2:(ncol(.) - 2)) %>%
+      pivot_wider(names_from = all_of(test), values_from = "rel_wis") %>%
+      pivot_longer(3:ncol(.)) %>%
+      group_by(target_variable, matches) %>%
+      mutate(all_there = all(!is.na(value))) %>%
+      ungroup() %>%
+      filter(all_there) %>%
+      select(-all_there)
+
+    ptw <- plot_table %>%
+      pivot_wider() %>%
+      mutate(across(.cols = c(3,4), as.numeric))
+    alternative_columns <- setdiff(colnames(ptw),
+                                   c("target_variable", "matches", reference[[test]]))
+
+    # Compare difference in scores when one method variable changed
+    for (column in alternative_columns) {
+      raw_differences <- ptw[[column]] - ptw[[reference[[test]]]]
+      raw_differences <- raw_differences[is.finite(raw_differences)]
+      differences[[column]] <- tibble(mean = round(mean(raw_differences), 2),
+                                      median = round(median(raw_differences), 2),
+                                      low_48 = round(quantile(raw_differences, 0.26), 2),
+                                      high_48 = round(quantile(raw_differences, 0.74), 2),
+                                      low_96 = round(quantile(raw_differences, 0.02), 2),
+                                      high_96 = round(quantile(raw_differences, 0.98), 2),
+                                      n = length(raw_differences))
+      ensemble_change_n[[column]] <- length(raw_differences)
+    }
   }
+  ensemble_change_dtb <- bind_rows(differences, .id = "change")
+  ensemble_change_dtb$horizon <- at_horizon
+
+  return(list("ensemble_change_dtb" = ensemble_change_dtb,
+              "ensemble_change_n" = ensemble_change_n))
 }
 
-ensemble_change_dtb <- bind_rows(differences, .id = "change")
-
 # Clean -------------------------------------------------------------------
-rm(eval_file, clean_target_names, main_ensembles_names,
-   raw_differences, differences, plot_table,
-   test, tests, reference, ptw, column, alternative_columns)
+rm(eval_file, clean_target_names, main_ensembles_names)

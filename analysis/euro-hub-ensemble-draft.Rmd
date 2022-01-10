@@ -132,8 +132,8 @@ We scored all forecasts submitted weekly in real time over the `r n_weeks` week 
 We used this dataset to create `r nrow(model_eval)` forecasting scores, each summarising a unique combination of model, variable, country, and week ahead horizon. Not all teams forecast for all targets, nor across all quantiles of the predictive distribution for each target. `r n_model_wis` models provided sufficient quantiles that we could evaluate them using the relative weighted interval score (WIS).
 
 ```{r}
-#| figure-model-by-horizon,
-#| fig.cap = "Performance of short-term forecasts, by relative
+#| figure-1-model-by-horizon,
+#| fig.cap = "Figure 1: Performance of short-term forecasts, by relative
 #|  interval score (relative to a baseline forecast, top) and coverage of the central 50%
 #|  interval (the proportion of observed values that fell within the predicted
 #|  50% range, bottom). The scores of each model (grey) and ensemble (red) are
@@ -202,13 +202,13 @@ plot_model_wis +
 
 ```
 
-The ensemble model performed well compared to both its component models and the baseline. In ranking all models' scores compared to the baseline, the ensemble performed better on relative WIS than `r p_ensemble_beat$Cases`% model scores when forecasting cases (n=`r n_model_scores$Cases`), and `r p_ensemble_beat$Deaths`% of scores for forecasts of incident deaths (n=`r n_model_scores$Deaths`). Compared to the baseline model alone, the ensemble outperformed it at the one-week ahead horizon for both cases and deaths (figure \@ref(fig:figure-model-by-horizon)). For horizons longer than one week, performance depended on the epidemiological target. The ensemble stopped outperforming the baseline at three to four weeks for cases. In contrast, the ensemble outperformed the baseline for deaths at all horizons considered (up to four weeks WIS), with no discernible deterioration in performance. 
+The ensemble model performed well compared to both its component models and the baseline. In ranking all models' scores compared to the baseline, the ensemble performed better on relative WIS than `r p_ensemble_beat$Cases`% model scores when forecasting cases (n=`r n_model_scores$Cases`), and `r p_ensemble_beat$Deaths`% of scores for forecasts of incident deaths (n=`r n_model_scores$Deaths`). Compared to the baseline model alone, the ensemble outperformed it at the one-week ahead horizon for both cases and deaths (figure 1). For horizons longer than one week, performance depended on the epidemiological target. The ensemble stopped outperforming the baseline at three to four weeks for cases. In contrast, the ensemble outperformed the baseline for deaths at all horizons considered (up to four weeks WIS), with no discernible deterioration in performance. 
 
 We observed similar trends in performance when considering how well the ensemble was calibrated with respect to the observed data. At one week ahead the case ensemble was well calibrated (ca. 50% nominal coverage at the 50% level), but this did not hold with increasing forecast horizon. The death ensemble was well calibrated at the 95% level for all horizons and under confident for the 50% level, with only slow deterioration with increasing forecast horizon.
 
 ```{r}
-#| figure-model-by-location,
-#| fig.cap = "Performance of short-term forecasts across models and
+#| figure-2-model-by-location,
+#| fig.cap = "Figure 2: Performance of short-term forecasts across models and
 #|  median ensemble (asterisk), by country, forecasting cases (top) and deaths
 #|  (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile
 #|  ranges, with outliers as faded points, and the ensemble model performance is marked
@@ -240,7 +240,7 @@ p_model_beat_loc <- map(split(n_model_loc, n_model_loc$target_variable),
 
 # PLOT: All model and ensemble performance by boxplot by location at 2 wk horizon
 model_eval %>%
-  # Use 1 week horizon
+  # Use 2 week horizon
   filter(horizon == 2) %>%
   # plot structure: boxplot rel wis by location and horizon
   ggplot(aes(x = location_name, y = rel_wis,
@@ -265,12 +265,12 @@ model_eval %>%
         strip.background = element_blank())
 ```
 
-The ensemble also performed consistently well when forecasting across countries relative to individual models and the baseline (figure \ref(fig:figure-model-by-location)).  Compared to models that forecast across all 32 countries at the two-week horizon (see SI for 1-4 week horizons), the ensemble was more consistent in outperforming the baseline across countries compared to any single model forecasting deaths, and all but one model for case forecasts. Considering forecast targets across all 32 countries and over all four horizons (128 targets), the ensemble forecast outperformed the baseline for `r p_ensemble_beat_loc$Cases`% and `r p_ensemble_beat_loc$Deaths`% of all 128 targets when forecasting cases and deaths, respectively[j]. Comparably, the best individual models forecasting for the same number of targets as the ensemble model outperformed the baseline for `r p_model_beat_loc$Cases$p_model_beat_loc`% ("`r p_model_beat_loc$Cases$model`" model) for cases and `r p_model_beat_loc$Deaths$p_model_beat_loc`% ("`r p_model_beat_loc$Deaths$p_model_beat_loc`" model) for death forecasts.
+The ensemble also performed consistently well when forecasting across countries relative to individual models and the baseline (figure 2, figure SI1).  Compared to models that forecast across all 32 countries at the two-week horizon, the ensemble was more consistent in outperforming the baseline across countries compared to any single model forecasting deaths, and all but one model for case forecasts. Considering forecast targets across all 32 countries and over all four horizons (128 targets), the ensemble forecast outperformed the baseline for `r p_ensemble_beat_loc$Cases`% and `r p_ensemble_beat_loc$Deaths`% of all 128 targets when forecasting cases and deaths, respectively[j]. Comparably, the best individual models forecasting for the same number of targets as the ensemble model outperformed the baseline for `r p_model_beat_loc$Cases$p_model_beat_loc`% ("`r p_model_beat_loc$Cases$model`" model) for cases and `r p_model_beat_loc$Deaths$p_model_beat_loc`% ("`r p_model_beat_loc$Deaths$p_model_beat_loc`" model) for death forecasts.
 
 ```{r}
-#| figure-alternative-ensembles,
+#| figure-3-alternative-ensembles,
 #| fig.cap = paste0(
-#| "Performance of alternative ensemble methods at 2 week
+#| "Figure 3: Performance of alternative ensemble methods at 2 week
 #|  horizon, showing mean difference (triangle) in relative weighted
 #|  interval score, with 48% and 96% probability (thick and thin line
 #|  respectively). The difference in WIS is a comparison of
@@ -289,6 +289,10 @@ The ensemble also performed consistently well when forecasting across countries 
 # OR-style plot showing relative impact of different ensemble methods on performance
 # get eval, calculate differences between ensemble methods
 source(here("code", "get-ensemble-eval.R"))
+ensemble_change <- compare_ensemble_diffs(at_horizon = 2,
+                                          eval_ensemble = eval_ensemble)
+ensemble_change_dtb <- ensemble_change$ensemble_change_dtb
+ensemble_change_n <- ensemble_change$ensemble_change_n
 # plot differences summary
 ggplot(ensemble_change_dtb, aes(x = change)) +
   # mean = triangle
@@ -301,10 +305,9 @@ ggplot(ensemble_change_dtb, aes(x = change)) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   labs(x = NULL, y = "Change in relative WIS compared to reference") +
   coord_flip()
-
 ```
 
-At the two-week ahead horizon (1-4 week horizons in SI), variations in ensemble methods made little difference to forecast scores (figure \ref(fig:figure-alternative-ensembles)). Ensembles that weighted forecasts showed no difference in performance to simple unweighted ensemble methods. Similarly, in choosing a method with which to weight forecasts, the choice of whether to use scores across all past forecasts, or scores evaluating only the most recent 10 weeks' forecast scores, made very little difference to the performance of the resulting ensemble (0 mean change in forecast score). The choice to exclude any forecast that scored worse than the baseline forecast ("cut off") affected the performance of the ensemble in both directions, overall slightly worsening performance (`r ensemble_change_dtb[ensemble_change_dtb$change == "Cutoff rel. WIS < 1", "mean"]` relative WIS).  Using the median average was the only variation of ensemble method that typically improved performance, compared to using the mean average across any combination of ensemble method.
+At the two-week ahead horizon, variations in ensemble methods made little difference to forecast scores (figure 3, figure SI2). Ensembles that weighted forecasts showed no difference in performance to simple unweighted ensemble methods. Similarly, in choosing a method with which to weight forecasts, the choice of whether to use scores across all past forecasts, or scores evaluating only the most recent 10 weeks' forecast scores, made very little difference to the performance of the resulting ensemble (0 mean change in forecast score). The choice to exclude any forecast that scored worse than the baseline forecast ("cut off") affected the performance of the ensemble in both directions, overall slightly worsening performance (`r ensemble_change_dtb[ensemble_change_dtb$change == "Cutoff rel. WIS < 1", "mean"]` relative WIS).  Using the median average was the only variation of ensemble method that typically improved performance, compared to using the mean average across any combination of ensemble method.
 
 # Discussion
 
@@ -328,7 +331,7 @@ The results presented also depend on our choice of performance metric. While oth
 
 The result that the ensemble was among the most reliable across countries and over time could also have been influenced by the sample of contributing forecasts. We accepted all modelling teams' participation and teams used a wide variety of methods. Meanwhile, teams may have changed their forecast methods, and entered and exited the hub over time. The ensemble therefore included forecasts based on models with changing assumptions each week, and we did not test how far the stability or methods of component forecasts influenced the resulting ensemble. This could be significant, for example where in a time of low incidence, including only compartmental models in an ensemble improved predictive performance relative to including forecasts from a wider variety of methods [@taylorCombiningProbabilisticForecasts2021]. However, the same study found the most consistent ensemble over time was that which included all forecasts regardless of method, with performance increasing with the number of forecast models, so our results are unlikely to have changed by excluding any contributing forecasts.
 
-We see additional scope to adapt the hub to the changing Covid-19 situation across Europe. We have recently extended the hub infrastructure to include short term forecasts for hospitalisations with COVID-19, although this faces additional challenges with limited data across the locations covered by the hub. It may also be valuable to separately investigate models for longer term scenarios in addition to the short term forecasts, particularly as the policy focus shifts from immediate response to anticipating changes brought by vaccinations or the geographic spread of new variants [ECDC-covid-priorities-long-term-vaccination]. 
+We see additional scope to adapt the hub to the changing Covid-19 situation across Europe. We have recently extended the hub infrastructure to include short term forecasts for hospitalisations with COVID-19, although this faces additional challenges with limited data across the locations covered by the hub. It may also be valuable to separately investigate models for longer term scenarios in addition to the short term forecasts, particularly as the policy focus shifts from immediate response to anticipating changes brought by vaccinations or the geographic spread of new variants [europeancentrefordiseasepreventionandcontrolOverviewImplementationCOVID192021]. 
 
 This study raises further questions which could inform epidemic forecast modellers and users. We recommend using the dataset created by the European Forecast Hub for further research on forecast performance. Future work could explore the impact of changing epidemiology on individual or ensemble models by combining analyses of trends and turning points in cases and deaths with forecast performance, or extending to include data on vaccination, variant, or policy changes over time. There is also a wide range of methods for combining forecasts which could improve performance of an ensemble or continue to demonstrate the value of a simple approach. This includes altering the inclusion criteria of forecast models based on different thresholds of past performance, excluding or including only forecasts that predict the lowest- and highest-values (trimming) [@taylorCombiningProbabilisticForecasts2021], or using alternative weighting methods such as quantile regression averaging [@funkShorttermForecastsInform2020]. Exploring these questions would add to our understanding of real time performance, supporting and improving future forecasting efforts.
 
@@ -341,3 +344,77 @@ In conclusion, we have shown that an ensemble forecast performed reliably well a
 <div id="refs"></div>
 
 # Supplementary information
+
+```{r}
+#| si-figure-model-by-location,
+#| fig.cap = "Figure SI1: Performance of short-term forecasts across models and
+#|  median ensemble (asterisk), by country, forecasting cases (left) and deaths
+#|  (right) for one-week (top) through four-week (bottom) ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile
+#|  ranges, with outliers as faded points, and the ensemble model performance is marked
+#|  by an asterisk."
+
+model_eval %>%
+  # plot structure: boxplot rel wis by location and horizon
+  ggplot(aes(x = location_name, y = rel_wis,
+             colour = target_variable,
+             fill = target_variable)) +
+  geom_boxplot(alpha = 0.8, 
+               outlier.alpha = 0.2) +
+  geom_hline(aes(yintercept = 1), lty = 2) +
+  # overlay ensemble as extra point
+  geom_point(aes(y = ensemble_rel_wis),
+              size = 2, shape = "asterisk",
+             colour = "grey 10",
+             position = position_dodge(width = 0.8)) +
+  # format
+  ylim(c(0,4)) +
+  labs(x = NULL, y = "Scaled relative WIS across models") +
+  scale_fill_brewer(palette = "Set1") +
+  scale_colour_brewer(palette = "Set1") +
+  facet_grid(cols = vars(target_variable), 
+             rows = vars(horizon),
+             scales = "fixed") +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 30, hjust = 1),
+        strip.background = element_blank())
+```
+
+```{r}
+#| si-figure-alternative-ensembles,
+#| fig.cap = "Figure SI2: Performance of alternative ensemble methods at each weekly
+#|  horizon (1-4), showing mean difference (triangle) in relative weighted
+#|  interval score, with 48% and 96% probability (thick and thin line
+#|  respectively). The difference in WIS is a comparison of
+#|  scores from forecasts made from all possible combinations of methods,
+#|  with a single element of ensemble method input changed.
+#|  Reference categories are: 
+#|  weighted v. unweighted; median v. mean; 
+#|  cutoff by WIS v. all models included;, 
+#|  relative WIS measures over 10 weeks of forecast history vs. all forecasts"
+
+# OR-style plot showing relative impact of different ensemble methods on performance
+# get eval, calculate differences between ensemble methods
+source(here("code", "get-ensemble-eval.R"))
+# ensemble_change <- compare_ensemble_diffs(at_horizon = 2,
+#                                           eval_ensemble = eval_ensemble)
+# ensemble_change_dtb <- ensemble_change$ensemble_change_dtb
+# ensemble_change_n <- ensemble_change$ensemble_change_n
+
+ensemble_change_dtb_all <- map_dfr(1:4, 
+                          ~ compare_ensemble_diffs(at_horizon = .x,
+                          eval_ensemble = eval_ensemble)$ensemble_change_dtb)
+
+# plot differences summary
+ggplot(ensemble_change_dtb_all, aes(x = change)) +
+  # mean = triangle
+  geom_point(aes(y = mean), pch = 2, size = 4) +
+  # 48% interval = thick line
+  geom_linerange(aes(ymin = low_48, ymax = high_48), lwd = 2) +
+  # 96% interval = thin line
+  geom_linerange(aes(ymin = low_96, ymax = high_96), lwd = 1) +
+  # 0 change in wis = reference line
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(x = NULL, y = "Change in relative WIS compared to reference") +
+  coord_flip() +
+  facet_wrap(~ horizon, nrow = 1)
+```

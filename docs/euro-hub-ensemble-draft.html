@@ -380,7 +380,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -389,7 +389,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -401,7 +401,7 @@ div.tocify {
 <strong>Last updated:</strong> 2022-01-10
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>euro-hub-ensemble/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -417,12 +417,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -489,16 +489,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletree0316e856beef795c826c492509ddef5833568473targetblank0316e85a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/0316e856beef795c826c492509ddef5833568473" target="_blank">0316e85</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletreef57e78f8efd64fe567c44d245a4e3b3b51e8ad36targetblankf57e78fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/f57e78f8efd64fe567c44d245a4e3b3b51e8ad36" target="_blank">f57e78f</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletree0316e856beef795c826c492509ddef5833568473targetblank0316e85a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletreef57e78f8efd64fe567c44d245a4e3b3b51e8ad36targetblankf57e78fa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/0316e856beef795c826c492509ddef5833568473" target="_blank">0316e85</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/f57e78f8efd64fe567c44d245a4e3b3b51e8ad36" target="_blank">f57e78f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -507,6 +507,10 @@ Note that you need to be careful to ensure that all relevant files for the analy
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+
+Unstaged changes:
+    Modified:   analysis/euro-hub-ensemble-draft.Rmd
+    Modified:   code/get-ensemble-eval.R
 
 </code></pre>
 <p>
@@ -545,6 +549,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/covid19-forecast-hub-europe/euro-hub-ensemble/f57e78f8efd64fe567c44d245a4e3b3b51e8ad36/docs/euro-hub-ensemble-draft.html" target="_blank">f57e78f</a>
+</td>
+<td>
+kathsherratt
+</td>
+<td>
+2022-01-10
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -886,27 +907,27 @@ change title
 <p>We scored all forecasts submitted weekly in real time over the 36 week period from 08 March to 15 November 2021. Each week, forecasts were collated for incident cases and deaths, for 32 locations over the following 4 weeks, creating 256 possible forecast targets. We received 43 unique forecasting models from 36 separate forecasting teams. We added an ensemble model using all available forecasts for each possible target every week.</p>
 <p>We used this dataset to create 3998 forecasting scores, each summarising a unique combination of model, variable, country, and week ahead horizon. Not all teams forecast for all targets, nor across all quantiles of the predictive distribution for each target. 37 models provided sufficient quantiles that we could evaluate them using the relative weighted interval score (WIS).</p>
 <div class="figure" style="text-align: center">
-<img src="figure/euro-hub-ensemble-draft.Rmd/figure-model-by-horizon-1.png" alt="Performance of short-term forecasts, by relative interval score (relative to a baseline forecast, top) and coverage of the central 50% interval (the proportion of observed values that fell within the predicted 50% range, bottom). The scores of each model (grey) and ensemble (red) are averaged across all forecast targets and shown by one- to four-week ahead horizon." width="672" />
+<img src="figure/euro-hub-ensemble-draft.Rmd/figure-1-model-by-horizon-1.png" alt="Figure 1: Performance of short-term forecasts, by relative interval score (relative to a baseline forecast, top) and coverage of the central 50% interval (the proportion of observed values that fell within the predicted 50% range, bottom). The scores of each model (grey) and ensemble (red) are averaged across all forecast targets and shown by one- to four-week ahead horizon." width="672" />
 <p class="caption">
-Performance of short-term forecasts, by relative interval score (relative to a baseline forecast, top) and coverage of the central 50% interval (the proportion of observed values that fell within the predicted 50% range, bottom). The scores of each model (grey) and ensemble (red) are averaged across all forecast targets and shown by one- to four-week ahead horizon.
+Figure 1: Performance of short-term forecasts, by relative interval score (relative to a baseline forecast, top) and coverage of the central 50% interval (the proportion of observed values that fell within the predicted 50% range, bottom). The scores of each model (grey) and ensemble (red) are averaged across all forecast targets and shown by one- to four-week ahead horizon.
 </p>
 </div>
-<p>The ensemble model performed well compared to both its component models and the baseline. In ranking all models’ scores compared to the baseline, the ensemble performed better on relative WIS than 66% model scores when forecasting cases (n=1832), and 67% of scores for forecasts of incident deaths (n=1910). Compared to the baseline model alone, the ensemble outperformed it at the one-week ahead horizon for both cases and deaths (figure @ref(fig:figure-model-by-horizon)). For horizons longer than one week, performance depended on the epidemiological target. The ensemble stopped outperforming the baseline at three to four weeks for cases. In contrast, the ensemble outperformed the baseline for deaths at all horizons considered (up to four weeks WIS), with no discernible deterioration in performance.</p>
+<p>The ensemble model performed well compared to both its component models and the baseline. In ranking all models’ scores compared to the baseline, the ensemble performed better on relative WIS than 66% model scores when forecasting cases (n=1832), and 67% of scores for forecasts of incident deaths (n=1910). Compared to the baseline model alone, the ensemble outperformed it at the one-week ahead horizon for both cases and deaths (figure 1). For horizons longer than one week, performance depended on the epidemiological target. The ensemble stopped outperforming the baseline at three to four weeks for cases. In contrast, the ensemble outperformed the baseline for deaths at all horizons considered (up to four weeks WIS), with no discernible deterioration in performance.</p>
 <p>We observed similar trends in performance when considering how well the ensemble was calibrated with respect to the observed data. At one week ahead the case ensemble was well calibrated (ca. 50% nominal coverage at the 50% level), but this did not hold with increasing forecast horizon. The death ensemble was well calibrated at the 95% level for all horizons and under confident for the 50% level, with only slow deterioration with increasing forecast horizon.</p>
 <div class="figure" style="text-align: center">
-<img src="figure/euro-hub-ensemble-draft.Rmd/figure-model-by-location-1.png" alt="Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk." width="672" />
+<img src="figure/euro-hub-ensemble-draft.Rmd/figure-2-model-by-location-1.png" alt="Figure 2: Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk." width="672" />
 <p class="caption">
-Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk.
+Figure 2: Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk.
 </p>
 </div>
-<p>The ensemble also performed consistently well when forecasting across countries relative to individual models and the baseline (figure (fig:figure-model-by-location)). Compared to models that forecast across all 32 countries at the two-week horizon (see SI for 1-4 week horizons), the ensemble was more consistent in outperforming the baseline across countries compared to any single model forecasting deaths, and all but one model for case forecasts. Considering forecast targets across all 32 countries and over all four horizons (128 targets), the ensemble forecast outperformed the baseline for 67% and 91% of all 128 targets when forecasting cases and deaths, respectively[j]. Comparably, the best individual models forecasting for the same number of targets as the ensemble model outperformed the baseline for 80% (“LANL-GrowthRate” model) for cases and 81% (“81” model) for death forecasts.</p>
+<p>The ensemble also performed consistently well when forecasting across countries relative to individual models and the baseline (figure 2). Compared to models that forecast across all 32 countries at the two-week horizon (see SI for 1-4 week horizons), the ensemble was more consistent in outperforming the baseline across countries compared to any single model forecasting deaths, and all but one model for case forecasts. Considering forecast targets across all 32 countries and over all four horizons (128 targets), the ensemble forecast outperformed the baseline for 67% and 91% of all 128 targets when forecasting cases and deaths, respectively[j]. Comparably, the best individual models forecasting for the same number of targets as the ensemble model outperformed the baseline for 80% (“LANL-GrowthRate” model) for cases and 81% (“81” model) for death forecasts.</p>
 <div class="figure" style="text-align: center">
-<img src="figure/euro-hub-ensemble-draft.Rmd/figure-alternative-ensembles-1.png" alt="Performance of alternative ensemble methods at 2 week horizon, showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted (n=250); median v. mean (n=376); cutoff by WIS v. all models included (n=374); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=248)" width="672" />
+<img src="figure/euro-hub-ensemble-draft.Rmd/figure-3-alternative-ensembles-1.png" alt="Figure 3: Performance of alternative ensemble methods at 2 week horizon, showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted (n=250); median v. mean (n=376); cutoff by WIS v. all models included (n=374); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=248)" width="672" />
 <p class="caption">
-Performance of alternative ensemble methods at 2 week horizon, showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted (n=250); median v. mean (n=376); cutoff by WIS v. all models included (n=374); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=248)
+Figure 3: Performance of alternative ensemble methods at 2 week horizon, showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted (n=250); median v. mean (n=376); cutoff by WIS v. all models included (n=374); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=248)
 </p>
 </div>
-<p>At the two-week ahead horizon (1-4 week horizons in SI), variations in ensemble methods made little difference to forecast scores (figure (fig:figure-alternative-ensembles)). Ensembles that weighted forecasts showed no difference in performance to simple unweighted ensemble methods. Similarly, in choosing a method with which to weight forecasts, the choice of whether to use scores across all past forecasts, or scores evaluating only the most recent 10 weeks’ forecast scores, made very little difference to the performance of the resulting ensemble (0 mean change in forecast score). The choice to exclude any forecast that scored worse than the baseline forecast (“cut off”) affected the performance of the ensemble in both directions, overall slightly worsening performance (0.07 relative WIS). Using the median average was the only variation of ensemble method that typically improved performance, compared to using the mean average across any combination of ensemble method.</p>
+<p>At the two-week ahead horizon (1-4 week horizons in SI), variations in ensemble methods made little difference to forecast scores (figure 3). Ensembles that weighted forecasts showed no difference in performance to simple unweighted ensemble methods. Similarly, in choosing a method with which to weight forecasts, the choice of whether to use scores across all past forecasts, or scores evaluating only the most recent 10 weeks’ forecast scores, made very little difference to the performance of the resulting ensemble (0 mean change in forecast score). The choice to exclude any forecast that scored worse than the baseline forecast (“cut off”) affected the performance of the ensemble in both directions, overall slightly worsening performance (0.07 relative WIS). Using the median average was the only variation of ensemble method that typically improved performance, compared to using the mean average across any combination of ensemble method.</p>
 </div>
 <div id="discussion" class="section level1">
 <h1>Discussion</h1>
@@ -920,7 +941,7 @@ Performance of alternative ensemble methods at 2 week horizon, showing mean diff
 <p>However, we experienced several limitations to our approach. First, our assessment of individual model performance may have been inaccurate due to limitations in the data source used. We saw some real time data revised retrospectively, introducing bias in either direction where the data used to create forecasts was not the same as that used to evaluate it. We mitigated this by excluding forecasts made at or for a time of missing, unreliable, or heavily revised data. We used a manual process for determining anomalous data, and if we did not detect where data revisions affected forecasts this could have created inaccurate forecast scores. However, we note that the national data used here are less likely to see revisions than subnational data <span class="citation"><a href="#ref-dongInteractiveWebbasedDashboard2020a" role="doc-biblioref">[23]</a></span>.</p>
 <p>The results presented also depend on our choice of performance metric. While other work supports the use of the weighted interval score <span class="citation"><a href="#ref-gneitingStrictlyProperScoring2007" role="doc-biblioref">[25]</a></span>, our use of a flat-line comparison meant that it was more difficult for forecasts to perform well in relative terms during periods where incidence was very stable <span class="citation"><a href="#ref-cramerEvaluationIndividualEnsemble2021c" role="doc-biblioref">[26]</a></span>. This may have differentially biased forecast performance where, for equally good forecasts for different targets, models that predicted a change in trend were rewarded with better scores than those that equally accurately predicted a stable continuation. Further work could consider how well our results compare when using an alternative baseline suitable for epidemics, for example an exponential growth model.</p>
 <p>The result that the ensemble was among the most reliable across countries and over time could also have been influenced by the sample of contributing forecasts. We accepted all modelling teams’ participation and teams used a wide variety of methods. Meanwhile, teams may have changed their forecast methods, and entered and exited the hub over time. The ensemble therefore included forecasts based on models with changing assumptions each week, and we did not test how far the stability or methods of component forecasts influenced the resulting ensemble. This could be significant, for example where in a time of low incidence, including only compartmental models in an ensemble improved predictive performance relative to including forecasts from a wider variety of methods <span class="citation"><a href="#ref-taylorCombiningProbabilisticForecasts2021" role="doc-biblioref">[29]</a></span>. However, the same study found the most consistent ensemble over time was that which included all forecasts regardless of method, with performance increasing with the number of forecast models, so our results are unlikely to have changed by excluding any contributing forecasts.</p>
-<p>We see additional scope to adapt the hub to the changing Covid-19 situation across Europe. We have recently extended the hub infrastructure to include short term forecasts for hospitalisations with COVID-19, although this faces additional challenges with limited data across the locations covered by the hub. It may also be valuable to separately investigate models for longer term scenarios in addition to the short term forecasts, particularly as the policy focus shifts from immediate response to anticipating changes brought by vaccinations or the geographic spread of new variants [ECDC-covid-priorities-long-term-vaccination].</p>
+<p>We see additional scope to adapt the hub to the changing Covid-19 situation across Europe. We have recently extended the hub infrastructure to include short term forecasts for hospitalisations with COVID-19, although this faces additional challenges with limited data across the locations covered by the hub. It may also be valuable to separately investigate models for longer term scenarios in addition to the short term forecasts, particularly as the policy focus shifts from immediate response to anticipating changes brought by vaccinations or the geographic spread of new variants [europeancentrefordiseasepreventionandcontrolOverviewImplementationCOVID192021].</p>
 <p>This study raises further questions which could inform epidemic forecast modellers and users. We recommend using the dataset created by the European Forecast Hub for further research on forecast performance. Future work could explore the impact of changing epidemiology on individual or ensemble models by combining analyses of trends and turning points in cases and deaths with forecast performance, or extending to include data on vaccination, variant, or policy changes over time. There is also a wide range of methods for combining forecasts which could improve performance of an ensemble or continue to demonstrate the value of a simple approach. This includes altering the inclusion criteria of forecast models based on different thresholds of past performance, excluding or including only forecasts that predict the lowest- and highest-values (trimming) <span class="citation"><a href="#ref-taylorCombiningProbabilisticForecasts2021" role="doc-biblioref">[29]</a></span>, or using alternative weighting methods such as quantile regression averaging <span class="citation"><a href="#ref-funkShorttermForecastsInform2020" role="doc-biblioref">[8]</a></span>. Exploring these questions would add to our understanding of real time performance, supporting and improving future forecasting efforts.</p>
 <p>We further recommend adapting and using our open-source computational infrastructure elsewhere for applied public health work. The hub structure maximises the transparency and accuracy of real-time forecasts and can reduce reliance on individual models as a basis for action during an epidemic. The benefits of combining multiple models into an ensemble come from individual models’ wide variation in forecast performance across varying targets, and this is particularly true during emerging epidemics where forecasters vary in how quickly their models are able to adapt to new information. Setting up the infrastructure for this could be an important component to future epidemic and pandemic preparedness.</p>
 <p>In conclusion, we have shown that an ensemble forecast performed reliably well across multiple forecast targets, with good short term predictions during a rapidly evolving epidemic spreading through multiple populations. However we have also demonstrated there are clear limits to predictability, especially for case forecasts longer than two weeks, with few methods able to consistently improve forecast performance other than the use of a median rather than mean average.</p>
@@ -1040,6 +1061,18 @@ Performance of alternative ensemble methods at 2 week horizon, showing mean diff
 </div>
 <div id="supplementary-information" class="section level1">
 <h1>Supplementary information</h1>
+<div class="figure" style="text-align: center">
+<img src="figure/euro-hub-ensemble-draft.Rmd/si-figure-model-by-location-1.png" alt="Figure SI1: Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (left) and deaths (right) for one-week (top) through four-week (bottom) ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk." width="672" />
+<p class="caption">
+Figure SI1: Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (left) and deaths (right) for one-week (top) through four-week (bottom) ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<img src="figure/euro-hub-ensemble-draft.Rmd/si-figure-alternative-ensembles-1.png" alt="Figure SI2: Performance of alternative ensemble methods at each weekly horizon (1-4), showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted; median v. mean; cutoff by WIS v. all models included;, relative WIS measures over 10 weeks of forecast history vs. all forecasts" width="672" />
+<p class="caption">
+Figure SI2: Performance of alternative ensemble methods at each weekly horizon (1-4), showing mean difference (triangle) in relative weighted interval score, with 48% and 96% probability (thick and thin line respectively). The difference in WIS is a comparison of scores from forecasts made from all possible combinations of methods, with a single element of ensemble method input changed. Reference categories are: weighted v. unweighted; median v. mean; cutoff by WIS v. all models included;, relative WIS measures over 10 weeks of forecast history vs. all forecasts
+</p>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1067,7 +1100,7 @@ other attached packages:
  [1] covidHubUtils_0.1.6 readr_2.1.0         gghighlight_0.3.2  
  [4] patchwork_1.1.1     forcats_0.5.1       ggplot2_3.3.5      
  [7] purrr_0.3.4         lubridate_1.8.0     tidyr_1.1.4        
-[10] dplyr_1.0.7         here_1.0.1          workflowr_1.6.2    
+[10] dplyr_1.0.7         here_1.0.1         
 
 loaded via a namespace (and not attached):
  [1] Rcpp_1.0.7         assertthat_0.2.1   rprojroot_2.0.2    digest_0.6.28     
@@ -1076,16 +1109,17 @@ loaded via a namespace (and not attached):
 [13] rstudioapi_0.13    whisker_0.4        jquerylib_0.1.4    rmarkdown_2.11    
 [17] labeling_0.4.2     stringr_1.4.0      bit_4.0.4          munsell_0.5.0     
 [21] compiler_4.0.4     httpuv_1.6.3       xfun_0.28          pkgconfig_2.0.3   
-[25] htmltools_0.5.2    tidyselect_1.1.1   tibble_3.1.6       codetools_0.2-18  
-[29] fansi_0.5.0        crayon_1.4.2       tzdb_0.2.0         withr_2.4.2       
-[33] later_1.3.0        grid_4.0.4         jsonlite_1.7.2     gtable_0.3.0      
-[37] lifecycle_1.0.1    DBI_1.1.1          git2r_0.29.0       magrittr_2.0.1    
-[41] scales_1.1.1       cli_3.1.0          stringi_1.7.5      vroom_1.5.6       
-[45] farver_2.1.0       fs_1.5.0           promises_1.2.0.1   doParallel_1.0.16 
-[49] bslib_0.3.1        ellipsis_0.3.2     generics_0.1.1     vctrs_0.3.8       
-[53] RColorBrewer_1.1-2 iterators_1.0.13   tools_4.0.4        bit64_4.0.5       
-[57] glue_1.5.0         hms_1.1.1          parallel_4.0.4     fastmap_1.1.0     
-[61] yaml_2.2.1         colorspace_2.0-2   knitr_1.36         sass_0.4.0        </code></pre>
+[25] htmltools_0.5.2    tidyselect_1.1.1   tibble_3.1.6       workflowr_1.6.2   
+[29] codetools_0.2-18   fansi_0.5.0        crayon_1.4.2       tzdb_0.2.0        
+[33] withr_2.4.2        later_1.3.0        grid_4.0.4         jsonlite_1.7.2    
+[37] gtable_0.3.0       lifecycle_1.0.1    DBI_1.1.1          git2r_0.29.0      
+[41] magrittr_2.0.1     scales_1.1.1       cli_3.1.0          stringi_1.7.5     
+[45] vroom_1.5.6        farver_2.1.0       fs_1.5.0           promises_1.2.0.1  
+[49] doParallel_1.0.16  bslib_0.3.1        ellipsis_0.3.2     generics_0.1.1    
+[53] vctrs_0.3.8        RColorBrewer_1.1-2 iterators_1.0.13   tools_4.0.4       
+[57] bit64_4.0.5        glue_1.5.0         hms_1.1.1          parallel_4.0.4    
+[61] fastmap_1.1.0      yaml_2.2.1         colorspace_2.0-2   knitr_1.36        
+[65] sass_0.4.0        </code></pre>
 </div>
 </div>
 
