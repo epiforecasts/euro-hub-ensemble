@@ -1,3 +1,16 @@
+---
+title: "Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations"
+output:
+  workflowr::wflow_html:
+    toc: true
+    toc_depth: 3
+bibliography: references.bib
+link-citations: true
+csl: ieee.csl
+editor_options:
+  chunk_output_type: console
+---
+
 ```{r, include=FALSE}
 gdrive_path <- "trackdown/euro-hub-ensemble"
 this_doc <- "analysis/euro-hub-ensemble-draft.Rmd"
@@ -13,19 +26,6 @@ this_doc <- "analysis/euro-hub-ensemble-draft.Rmd"
 ```
 
 View draft: [Rendered](https://covid19-forecast-hub-europe.github.io/euro-hub-ensemble/euro-hub-ensemble-draft.html) | [Google doc](https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit)
-
----
-title: "Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations"
-output:
-  workflowr::wflow_html:
-    toc: true
-    toc_depth: 3
-bibliography: references.bib
-link-citations: true
-csl: ieee.csl
-editor_options:
-  chunk_output_type: console
----
 
 ```{r set up, include=FALSE}
 # Packages
