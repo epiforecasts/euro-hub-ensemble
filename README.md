@@ -1,10 +1,9 @@
-This repository provides code and data for the paper: **Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations**, in draft from the European COVID-19 Forecast Hub. 
-- The entire manuscript can be produced by rendering [euro-hub-ensemble-draft.Rmd](analysis/euro-hub-ensemble-draft.Rmd). See that file for instructions on rendering to different output formats.
+This repository provides code and data for the paper: *Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations*, in draft from the European COVID-19 Forecast Hub. 
 - **Collaborators:** please provide comments on text using the shared [Google doc](https://docs.google.com/document/d/1AdlfV3KcyMI3oTqzGRmK1e3jj288IOzl/edit#). Please open an [Issue](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/issues) to comment or discuss code.
 
 A quick guide to this repository:
 - [output](output): pdf and word versions of rendered `rmarkdown` file, including the [latest draft pdf](output/euro-hub-ensemble-draft.pdf)
-- [analysis](analysis): raw `rmarkdown` file containing blended text and code
+- [analysis](analysis): raw `rmarkdown` file containing blended text and code. The full manuscript can be produced by rendering [euro-hub-ensemble-draft.Rmd](analysis/euro-hub-ensemble-draft.Rmd). See that file for instructions on rendering to different output formats.
 - [code](code): data loading and cleaning code used only to support the main [Rmarkdown](analysis/euro-hub-ensemble-draft.Rmd) file
 - [covid19-forecast-hub-europe](covid19-forecast-hub-europe): submodule, the version of the European Covid-19 Forecast Hub used in this analysis. This submodule tracks the `assess-ensembles` branch
 
