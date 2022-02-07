@@ -23,7 +23,10 @@ this_doc <- "analysis/euro-hub-ensemble-draft.Rmd"
 # workflowr::wflow_publish(all = TRUE, update = TRUE)
 # 
 # Build PDF: 
-# rmarkdown::render(this_doc, rmarkdown::pdf_document())
+# rmarkdown::render(this_doc, rmarkdown:: pdf_document())
+# 
+# Create word doc:
+# rmarkdown::render(this_doc, rmarkdown::word_document())
 # 
 # View:
 # Rendered draft: https://covid19-forecast-hub-europe.github.io/euro-hub-ensemble/euro-hub-ensemble-draft.html
