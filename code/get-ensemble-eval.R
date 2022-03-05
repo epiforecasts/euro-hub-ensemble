@@ -5,13 +5,14 @@ library(dplyr)
 library(tidyr)
 library(forcats)
 here::i_am("code/get-ensemble-eval.R")
+hub_submodule <- here("hub-data", "assess-ensembles")
 
 # Get latest evaluation dataset ------------------------------------------------
-eval_date <- dir(here("covid19-forecast-hub-europe",
+eval_date <- dir(here(hub_submodule,
                       "ensembles", "evaluation", "weekly-summary"))
 eval_date <- sort(as.Date(gsub("(evaluation-)|(\\.csv)", "", eval_date)))
 eval_date <- eval_date[length(eval_date)]
-eval_file <- here("covid19-forecast-hub-europe",
+eval_file <- here(hub_submodule,
                   "ensembles", "evaluation", "weekly-summary",
                   paste0("evaluation-", eval_date, ".csv"))
 

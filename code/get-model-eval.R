@@ -7,13 +7,14 @@ library(tidyr)
 library(ggplot2)
 library(covidHubUtils)
 here::i_am("code/get-model-eval.R")
+hub_submodule <- here("hub-data", "assess-ensembles")
 
 # find evaluation  ------------------------------------------------------
 # Find latest evaluation
-eval_date <- dir(here("covid19-forecast-hub-europe", "evaluation", "weekly-summary"))
+eval_date <- dir(here(hub_submodule, "evaluation", "weekly-summary"))
 eval_date <- sort(as.Date(gsub("(evaluation-)|(\\.csv)", "", eval_date)))
 eval_date <- eval_date[length(eval_date)]
-eval_file <- here("covid19-forecast-hub-europe", "evaluation", "weekly-summary",
+eval_file <- here(hub_submodule, "evaluation", "weekly-summary",
                   paste0("evaluation-", eval_date, ".csv"))
 
 # clean variable names
@@ -21,7 +22,7 @@ clean_variables <- c("inc case" = "Cases", "inc death" = "Deaths")
 
 # get model designations - in order to remove "other"
 model_desig <- get_model_designations(source = "local_hub_repo",
-                                      hub_repo_path = here("covid19-forecast-hub-europe"))
+                                      hub_repo_path = here(hub_submodule))
 
 # clean eval dataset ------------------------------------------------------
 
