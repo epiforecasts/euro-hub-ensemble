@@ -21,7 +21,7 @@ eval_file <- here(hub_submodule, "evaluation", "weekly-summary",
 clean_variables <- c("inc case" = "Cases", "inc death" = "Deaths")
 
 # get model designations - in order to remove "other"
-model_desig <- get_model_designations(source = "local_hub_repo",
+model_desig <- covidHubUtils::get_model_designations(source = "local_hub_repo",
                                       hub_repo_path = here(hub_submodule))
 
 # clean eval dataset ------------------------------------------------------
