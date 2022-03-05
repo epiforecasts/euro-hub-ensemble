@@ -1,0 +1,4 @@
+[submodule "hub-data/assess-ensembles"]
+	path = hub-data/assess-ensembles
+	url = https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe.git
+	branch = assess-ensembles
