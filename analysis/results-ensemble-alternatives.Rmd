@@ -1,0 +1,44 @@
+---
+title: 'Results: Ensemble alternatives'
+output: html_document
+---
+```{r figure-3-alternative-ensembles}
+#| fig.cap = paste0(
+#| "Performance of alternative ensemble methods at 2 week
+#|  horizon, showing mean difference (triangle) in relative weighted
+#|  interval score, with 48% and 96% probability (thick and thin line
+#|  respectively). The difference in WIS is a comparison of
+#|  scores from forecasts made from all possible combinations of methods,
+#|  with a single element of ensemble method input changed.
+#|  Reference categories are: 
+#|  weighted v. unweighted (n=", 
+#|  ensemble_change_n$Weighted, 
+#|  "); median v. mean (n=", 
+#|  ensemble_change_n$Median, 
+#|  "); cutoff by WIS v. all models included (n=", 
+#|  ensemble_change_n$`Cutoff rel. WIS < 1`, 
+#|  "); relative WIS measures over 10 weeks of forecast history vs. all forecasts (n=",
+#|  ensemble_change_n$`10 weeks history`, ")")
+#
+# OR-style plot showing relative impact of different ensemble methods on performance
+# get eval, calculate differences between ensemble methods
+source(here("code", "get-ensemble-eval.R"))
+ensemble_change <- compare_ensemble_diffs(at_horizon = 2,
+                                          eval_ensemble = eval_ensemble)
+ensemble_change_dtb <- ensemble_change$ensemble_change_dtb
+ensemble_change_n <- ensemble_change$ensemble_change_n
+# plot differences summary
+ggplot(ensemble_change_dtb, aes(x = change)) +
+  # mean = triangle
+  geom_point(aes(y = mean), pch = 2, size = 4) +
+  # 48% interval = thick line
+  geom_linerange(aes(ymin = low_48, ymax = high_48), lwd = 2) +
+  # 96% interval = thin line
+  geom_linerange(aes(ymin = low_96, ymax = high_96), lwd = 1) +
+  # 0 change in wis = reference line
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(x = NULL, y = "Change in relative WIS compared to reference") +
+  coord_flip()
+```
+
+At the two-week ahead horizon, variations in ensemble methods made little difference to forecast scores (figure 3, figure SI2). Ensembles that weighted forecasts showed no difference in performance to simple unweighted ensemble methods. Similarly, in choosing a method with which to weight forecasts, the choice of whether to use scores across all past forecasts, or scores evaluating only the most recent 10 weeks' forecast scores, made very little difference to the performance of the resulting ensemble (0 mean change in forecast score). The choice to exclude any forecast that scored worse than the baseline forecast ("cut off") affected the performance of the ensemble in both directions, overall slightly worsening performance (`r ensemble_change_dtb[ensemble_change_dtb$change == "Cutoff rel. WIS < 1", "mean"]` relative WIS).  Using the median average was the only variation of ensemble method that typically improved performance, compared to using the mean average across any combination of ensemble method.
