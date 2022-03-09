@@ -10,12 +10,8 @@ Latest update = assess-ensembles branch
 git submodule add -b assess-ensembles https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe.git hub-data/assess-ensembles
 git submodule update --init hub-data/assess-ensembles
 
-## add & init hub-data/updated-evaluations
-git submodule add -b updated-evaluations https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe.git hub-data/updated-evaluations
-git submodule update --init hub-data/updated-evaluations
-
 # Fetch updates from remote branch
-git submodule update --remote hub-data/updated-evaluations
+git submodule update --remote hub-data/assess-ensembles
 
 # Edit submodule code
 cd hub-data/assess-ensembles
