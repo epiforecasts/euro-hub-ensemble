@@ -5,16 +5,24 @@ library(dplyr)
 library(tidyr)
 library(forcats)
 here::i_am("code/get-ensemble-eval.R")
-hub_submodule <- here("hub-data", "assess-ensembles")
+# Function to get evaluations
+source("code/get_latest_eval.R")
+
+# Get evaluations for each individual model submitted to Hub
+branch <- "assess-ensembles"
+subdir <- "ensembles"
+eval_date <- as.Date("2022-03-07")
+ensemble_eval <- get_latest_eval(eval_date = eval_date,
+                                 branch = branch, subdir = subdir)
 
 # Get latest evaluation dataset ------------------------------------------------
-eval_date <- dir(here(hub_submodule,
-                      "ensembles", "evaluation", "weekly-summary"))
-eval_date <- sort(as.Date(gsub("(evaluation-)|(\\.csv)", "", eval_date)))
-eval_date <- eval_date[length(eval_date)]
-eval_file <- here(hub_submodule,
-                  "ensembles", "evaluation", "weekly-summary",
-                  paste0("evaluation-", eval_date, ".csv"))
+# eval_date <- dir(here(hub_submodule,
+#                       "ensembles", "evaluation", "weekly-summary"))
+# eval_date <- sort(as.Date(gsub("(evaluation-)|(\\.csv)", "", eval_date)))
+# eval_date <- eval_date[length(eval_date)]
+# eval_file <- here(hub_submodule,
+#                   "ensembles", "evaluation", "weekly-summary",
+#                   paste0("evaluation-", eval_date, ".csv"))
 
 # Prep dataset
 # neater factor labels
