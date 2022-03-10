@@ -48,7 +48,7 @@ n_model_wis <- filter(model_eval, !is.na(rel_wis)) %>%
 
 Each week, forecasts were collated for incident cases and deaths, for 32 locations over the following 4 weeks, creating 256 possible forecast targets.
 
-A single model forecasting for every location, target, and horizon could therefore submit up to `r (n_weeks*32*2*4)` forecasts.We excluded from evaluation forecasts made for `r nrow(anomalies)` targets where data for these targets were subsequently revised by >5%. 
+A single model forecasting for every location, target, and horizon could therefore submit up to `r (n_weeks*32*2*4)` forecasts.We excluded from evaluation forecasts made for `r #nrow(anomalies)` targets where data for these targets were subsequently revised by >5%. 
 
 - We received `r n_model` unique forecasting models from `r n_team` separate forecasting teams. 
 
