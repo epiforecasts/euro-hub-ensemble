@@ -6,7 +6,7 @@ library(tidyr)
 library(forcats)
 here::i_am("code/get-ensemble-eval.R")
 # Function to get evaluations
-source("code/get_latest_eval.R")
+source(here("code", "get_latest_eval.R"))
 
 # Get evaluations for each individual model submitted to Hub
 branch <- "assess-ensembles"
