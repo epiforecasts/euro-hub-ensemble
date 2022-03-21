@@ -8,7 +8,7 @@ link-citations: true
 csl: ieee.csl
 ---
 
-```{r set up, include=FALSE}
+```{r set-up, include=FALSE}
 # Packages
 library(here)
 library(dplyr)
@@ -19,6 +19,8 @@ library(ggplot2)
 library(forcats)
 library(patchwork)
 library(gghighlight)
+library(kableExtra)
+
 # Settings
 this_doc <- "analysis/results.Rmd"
 here::i_am(this_doc)
@@ -37,7 +39,7 @@ start_date <- format.Date(eval_date - weeks(n_weeks), "%d %B %Y")
 end_date <- format.Date(eval_date, "%d %B %Y")
 ```
 
-```{r model-description}
+```{r create-model-description}
 # Number of forecasters
 n_model <- length(unique(model_eval$model))
 n_team <- length(unique(model_eval$team_name))
@@ -58,7 +60,7 @@ p_ensemble_beat <- map(split(n_ensemble, n_ensemble$target_variable),
                        ~ .x %>% pull(p_ensemble_beat) %>% round(0))
 ```
 
-```{r figure-1-box-by-horizon}
+```{r create-figure-1-by-horizon}
 models_ensemble_cols <- c("#9ebcda", "#8856a7")
 
 # Ensemble performance in 32 locations plotted at each horizon
@@ -134,7 +136,7 @@ figure_1 <-
 ggsave(filename = here("output", "figures", "figure-1-horizon.png"), plot = figure_1, width = 5, height = 7)
 ```
 
-```{r figure-2-model-by-location}
+```{r create-figure-2-by-location}
 #| fig.cap = "Performance of short-term forecasts across models and
 #|  median ensemble (asterisk), by country, forecasting cases (top) and deaths
 #|  (bottom) for two-week ahead forecasts, according to the relative weighted interval score. 
@@ -196,6 +198,27 @@ figure_2 <- model_eval %>%
 
 ggsave(filename = here("output", "figures", "figure-2-location.png"), plot = figure_2)
 ```
+
+```{r create-ensemble-table}
+# Get ensemble evaluations
+source(here("code", "get-ensemble-eval.R"))
+
+ensemble_eval_table <- ensemble_eval %>%
+  filter(location == "Overall") %>%
+  mutate(horizon = paste(horizon, if_else(horizon == 1, "week", "weeks"))) %>%
+  select(model, target_variable, Horizon = horizon, rel_wis) %>%
+  pivot_wider(names_from = "model", values_from = "rel_wis") %>%
+  arrange(target_variable) %>%
+  select(-target_variable)
+
+ensemble_eval_table <- ensemble_eval_table %>%
+  kbl(booktabs = TRUE, caption = "Predictive performance of main ensembles, as measured by the scaled relative WIS.") %>%
+  kable_styling(latex_options = "striped") %>%
+  pack_rows(group_label = "Cases", start_row = 1, end_row = 4) %>%
+  pack_rows(group_label = "Deaths", start_row = 5, end_row = 8)
+
+```
+
 _Order tbc;_ Katharine Sherratt, Hugo Gruson, _Any co-authors_, _Team authors_, _Advisory team authors_, _ECDC authors_, Johannes Bracher, Sebastian Funk
 
 # Abstract
@@ -281,3 +304,6 @@ _delta and omicron – show forecasts_
 #### Alternative ensembles
 _Weighted mean, weighted median, mean, median – table comparing performance_
 
+```{r print-ensemble-table}
+ensemble_eval_table
+```
