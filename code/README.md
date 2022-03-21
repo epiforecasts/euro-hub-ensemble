@@ -1,22 +1,20 @@
-# Code
+## Code and data
 
-`get-model-eval.R`
-- Data: 
-  - data are evaluation results from comparing multiple forecasting models to observed data
-  - the evaluation includes relative WIS against a basline, and coverage. Results for each model are taken over the entire history of forecasts submitted for each target. 
-  - see also: [more information on evaluation](https://covid19forecasthub.eu/reports.html)
-- Script: 
-  - finds the evaluation dataset from a given `eval_date` 
-  - tidies the dataframe for readable plots
-  - no further analysis, as this is integrated directly in the [Rmarkdown](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/main/analysis/euro-hub-ensemble-draft.Rmd)
+Data for this project are evaluation results from comparing multiple forecasting models to observed data. [Read more about Hub evaluation](https://covid19forecasthub.eu/reports.html).
 
-`get-ensemble-eval.R`
-- Data: 
-  - evaluation results from comparing multiple ensemble methods to observed data
-  - these alternative ensemble methods include: mean / median average; weighted / unweighted forecast values
-     - weighted methods include: using all available forecasts for evaluation, or only 10 weeks; using a cut-off to exclude models with a relative WIS > 1
-- Script: 
-  - gets evaluation dataset for ensemble comparison
-  - cleans to clarify each ensemble method used
-  - creates a function to compute overall differences in scores between each ensemble method
+The code in this folder gets and cleans these evaluation datasets. This code is used (sourced) within the analysis files, but could also be used separately to get data for new analyses of the evaluation datasets.
 
+### Code
+
+- `get_latest_eval.R`
+  - Contains a single function: `get_latest_eval()`
+  - Function downloads latest evaluation from the European Forecast Hub github repository
+
+
+- `get-model-eval.R`
+  - Gets and cleans evaluation dataset of all individual models contributed to the forecast hub
+
+
+- `get-ensemble-eval.R`
+  - Gets and cleans evaluation dataset for ensemble comparison
+  - This includes four ensemble models created retrospectively from forecast hub models. These ensemble methods include: mean / median; using weighted / unweighted forecast values
