@@ -6,15 +6,22 @@ The code in this folder gets and cleans these evaluation datasets. This code is 
 
 ### Code
 
-- `get_latest_eval.R`
-  - Contains a single function: `get_latest_eval()`
-  - Function downloads latest evaluation from the European Forecast Hub github repository
+- `download_latest_eval.R`
+  - Contains a single function: `download_latest_eval()`
+  - Function downloads latest evaluation from the European Forecast Hub github repository and lightly cleans
+  - Options to 
+    - specify the evaluation date (latest date until when to assess models)
+    - how many weeks models should have been evaluated over (only the most recent 10 weeks or over all time)
+    - which scores to include from evaluating forecasts of cases, deaths, and/or hospitalisations (default returns only cases and deaths)
+    - whether to download evaluations from `main` branch or alternative branch of the Forecast Hub repo
+
+- `download_metadata.R`
+  - Function: `download_metadata()` - helper to check metadata for all individual models in the Hub, including model designation
+
+- `load-evaluation-scores.R`
+  - Loads the latest evaluation scores for all individual models, and the retrospectively run alternative ensembles
+  
+- `data-summary.R`
+  - Uses evaluation scores to create a list of named values used in the text of the paper 
 
 
-- `get-model-eval.R`
-  - Gets and cleans evaluation dataset of all individual models contributed to the forecast hub
-
-
-- `get-ensemble-eval.R`
-  - Gets and cleans evaluation dataset for ensemble comparison
-  - This includes four ensemble models created retrospectively from forecast hub models. These ensemble methods include: mean / median; using weighted / unweighted forecast values

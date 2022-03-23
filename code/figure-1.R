@@ -1,8 +1,14 @@
+# Create figure 1: models vs. ensemble by horizon
+library(dplyr)
+library(ggplot2)
+library(patchwork)
 
+#
+theme_set(theme_bw())
 models_ensemble_cols <- c("#9ebcda", "#8856a7")
 
 # Ensemble performance in 32 locations plotted at each horizon
-horizon <- model_eval %>%
+horizon <- scores_model %>%
   mutate(horizon = factor(horizon),
          Model = factor(is_hub, levels = c(FALSE, TRUE),
                         labels = c("All other models", "Hub ensemble")))
@@ -25,8 +31,6 @@ rel_wis <- horizon %>%
   theme(strip.background = element_blank(),
         legend.position = "none",
         axis.text.x = element_blank())
-rel_wis
-
 
 # 50% coverage
 cov_50 <- horizon %>%
@@ -42,11 +46,10 @@ cov_50 <- horizon %>%
        x = NULL, col = NULL) +
   facet_wrap(~ target_variable, ncol = 2) +
   scale_colour_manual(values = models_ensemble_cols) +
-  theme(strip.background = element_blank(),
+  theme(strip.text = element_blank(),
+        strip.background = element_blank(),
         legend.position = "none",
         axis.text.x = element_blank())
-cov_50
-
 
 # 95% coverage
 cov_95 <- horizon %>%
@@ -65,15 +68,13 @@ cov_95 <- horizon %>%
        Yellow indicates target range") +
   facet_wrap(~ target_variable, ncol = 2) +
   scale_colour_manual(values = models_ensemble_cols) +
-  theme(strip.background = element_blank(),
+  theme(strip.text = element_blank(),
+        strip.background = element_blank(),
         legend.position = "bottom")
-cov_95
-
-horizon_plot <-
+figure_1 <-
   rel_wis +
   cov_50 +
   cov_95 +
   plot_layout(ncol = 1)
 
-ggsave(filename = here("output", "figures", "horizon.png"), plot = horizon_plot, width = 5, height = 7)
-
+ggsave(filename = here("output", "figures", "figure-1.png"), plot = figure_1, width = 5, height = 7)

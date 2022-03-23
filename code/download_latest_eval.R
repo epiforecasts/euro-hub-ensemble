@@ -5,15 +5,19 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(lubridate)
-here::i_am("code/get_latest_eval.R")
+here::i_am("code/download_latest_eval.R")
 
 # Args:
 # eval_date the date of an evaluation (a Monday)
-# branch    name of branch in github repo if not main
-# subdir    subdirectory within root to find evaluations folder (with "/subdir")
+# branch        name of branch in github repo if not main
+# subdir        subdirectory within root to find evaluations folder (with "/subdir")
+# weeks_included  "All" or "10" - number of weeks included in evaluation score
+# target_variables  any of "inc case", "inc death", "inc hosp"
 
-
-get_latest_eval <- function(eval_date, branch = "main", subdir = "") {
+download_latest_eval <- function(eval_date,
+                                 branch = "main", subdir = "",
+                                 weeks_included = "All",
+                                 target_variables = c("inc case", "inc death")) {
 
   # Function to get a single weekly evaluation file
   get_given_date_eval <- function(eval_date, branch, subdir) {
@@ -65,6 +69,25 @@ get_latest_eval <- function(eval_date, branch = "main", subdir = "") {
       }
 
   } else { latest_eval <- given_date_eval}
+
+# Cleaning steps ----------------------------------------------------------
+  clean_variables <- c("inc case" = "Cases",
+                       "inc death" = "Deaths",
+                       "inc hosp" = "Hospitalisations")
+
+  latest_eval <- latest_eval %>%
+    filter(
+      horizon <= 4 &
+        target_variable %in% target_variables &
+        weeks_included == !!weeks_included) %>%
+    separate(model, into = c("team_name", "model_name"),
+             sep = "-", remove = FALSE) %>%
+    mutate(
+      target_variable = recode(target_variable, !!!clean_variables),
+      model = factor(model, ordered = TRUE),
+      horizon = factor(horizon, ordered = TRUE),
+      across(c(horizon, rel_ae:n_loc), as.numeric),
+      across(rel_ae:bias, ~ na_if(., Inf)))
 
 return(latest_eval)
 }
