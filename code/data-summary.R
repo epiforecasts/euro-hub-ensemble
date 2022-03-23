@@ -5,23 +5,37 @@ library(dplyr)
 if (!exists("scores_model")) {source(here("code", "load-evaluation-scores.R"))}
 
 # Note - All model descriptions include the hub ensemble model
-metadata <- list(
+hub <- list(
   # Evaluation period
   "n_weeks" = max(scores_model$n),
   "start_date" = format.Date(eval_date - weeks(max(scores_model$n)), "%d %B %Y"),
-  "end_date" = format.Date(eval_date, "%d %B %Y"),
-  # Number of forecasters
-  "n_model" = length(unique(scores_model$model)),
-  "n_team" = length(unique(scores_model$team_name)),
-  "n_model_wis" = filter(scores_model, !is.na(rel_wis)) %>%
-    distinct(model) %>% nrow()
+  "end_date" = format.Date(eval_date, "%d %B %Y")
 )
 
-targets <- scores_model %>%
-  group_by(target_variable) %>%
-  summarise(n = n())
+# Summarise n forecasts per target
+models_per_target <- scores_model %>%
+  filter(team_name != "EuroCOVIDhub") %>%
+  group_by(target_variable, horizon, location_name) %>%
+  summarise(n_models = n(),
+            n_scores = sum(n)) %>%
+  ungroup() %>%
+  mutate(target_variable = tolower(target_variable))
+
+modellers <- list(
+  "n_model" = length(unique(scores_model$model)) - 1,
+  "n_team" = length(unique(scores_model$team_name)) - 1,
+  "n_model_wis" = filter(scores_model, !is.na(rel_wis)) %>%
+    distinct(model) %>% nrow() - 1,
+  "targets" = list("max_scores" = slice_max(models_per_target,
+                                            n_scores) %>% as.list(),
+                   "min_scores" = slice_min(models_per_target,
+                                            n_scores) %>% as.list(),
+                   "max_models" = max(models_per_target$n_models),
+                   "min_models" = min(models_per_target$n_models))
+  )
 
 
+# Ensemble vs. models -----------------------------------------------------
 
 # How often did the ensemble beat any score from all model scores?
 n_ensemble <- filter(scores_model, !is_hub) %>%

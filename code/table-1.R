@@ -3,7 +3,7 @@ library(dplyr)
 library(tidyr)
 library(kableExtra)
 
-ensemble_eval_table <- eval_ensemble %>%
+ensemble_eval_table <- scores_ensemble %>%
   filter(location == "Overall") %>%
   mutate(horizon = paste(horizon, if_else(horizon == 1, "week", "weeks"))) %>%
   select(model, target_variable, Horizon = horizon, rel_wis) %>%

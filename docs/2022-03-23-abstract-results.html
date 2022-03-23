@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations</title>
+
+<script src="site_libs/header-attrs-2.12/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">European Covid-19 Forecast Hub: Ensembles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="euro-hub-ensemble-draft.html">Read</a>
+</li>
+<li>
+  <a href="https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit">Edit text</a>
+</li>
+<li>
+  <a href="https://github.com/kathsherratt/euro-hub-ensemble/blob/main/analysis/euro-hub-ensemble-draft.Rmd">Edit code</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2022-03-23
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+</p>
+<p>
+<strong>Knit directory:</strong> <code>euro-hub-ensemble/analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version 1.7.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed12345code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(12345)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed12345code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(12345)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletree7af43e871b2a70b36554634e25d54eaed55b5207targetblank7af43e8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/7af43e871b2a70b36554634e25d54eaed55b5207" target="_blank">7af43e8</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomcovid19forecasthubeuropeeurohubensembletree7af43e871b2a70b36554634e25d54eaed55b5207targetblank7af43e8a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/tree/7af43e871b2a70b36554634e25d54eaed55b5207" target="_blank">7af43e8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+
+Untracked files:
+    Untracked:  code/si-figure-1.R
+    Untracked:  output/figures/figure-1.png
+    Untracked:  output/figures/figure-2.png
+    Untracked:  output/figures/si-figure-1-scores.png
+
+Unstaged changes:
+    Modified:   analysis/2022-03-23-abstract-results.Rmd
+    Modified:   code/data-summary.R
+    Modified:   code/figure-2.R
+    Modified:   code/table-1.R
+    Modified:   code/unused/get-target-matrix.R
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/2022-03-23-abstract-results.Rmd</code>) and HTML (<code>docs/2022-03-23-abstract-results.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/7af43e871b2a70b36554634e25d54eaed55b5207/analysis/2022-03-23-abstract-results.Rmd" target="_blank">7af43e8</a>
+</td>
+<td>
+Kath Sherratt
+</td>
+<td>
+2022-03-23
+</td>
+<td>
+simplify code
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<p><em>Order tbc;</em> Katharine Sherratt, Hugo Gruson, <em>Any co-authors</em>, <em>Team authors</em>, <em>Advisory team authors</em>, <em>ECDC authors</em>, Johannes Bracher, Sebastian Funk</p>
+<div id="abstract" class="section level1">
+<h1>Abstract</h1>
+<p><em>Background</em> Short-term forecasts of infectious disease burden can contribute to situational awareness and aid capacity planning. Based on best practice in other fields and recent insights in infectious disease epidemiology, one can maximise the predictive performance of such forecasts if multiple models are combined into an ensemble. Here we report on the performance of ensembles in predicting COVID-19 cases and deaths across Europe between 08 March 2021 and 07 March 2022.</p>
+<p><em>Methods</em> We used open-source tools to develop a public European COVID-19 Forecast Hub. We invited groups globally to contribute weekly forecasts for COVID-19 cases and deaths over the next one to four weeks. Forecasts were submitted using standardised quantiles of the predictive distribution. Each week we created an ensemble forecast, where each predictive quantile was calculated as the equally-weighted average (initially the mean and then the median from the 26th of July) of all individual models’ predictive quantiles. We retrospectively explored alternative methods for ensemble forecasts, including weighted averages based on models’ past predictive performance. The performance of the ensembles was compared to individual models and a baseline model of no change using pairwise comparison of the Weighted Interval Score (WIS).</p>
+<p><em>Results</em> Over 52 weeks we collected and combined 28 forecast models for 32 countries. We found a weekly ensemble had among the most reliable performance across countries over time, with more accurate predictions for reported cases and deaths than a simple baseline for of and of forecast targets respectively. Ensemble performance <em>declined with increasing forecast time horizon when forecasting cases but remained stable for 4 weeks for incident death forecasts</em>. <em>Among several choices of ensemble methods we found that the most influential and best choice was to use a median average of models instead of using the mean, regardless of methods of weighting component forecast models.</em></p>
+<p><em>Conclusions</em> Our results support the use of combining forecasts from individual models into an ensemble in order to improve predictive performance across epidemiological targets and populations during infectious disease epidemics. Our findings suggested that for an emerging pathogen with many individual models, median ensemble methods may improve predictive performance more than mean ensemble methods. Our findings also highlight that forecast consumers should place more weight on incident death forecasts versus incident case forecasts for forecast horizons greater than two weeks.</p>
+<p><em>Code and data availability</em> All data and code are publicly available on Github: covid19-forecast-hubeurope/euro-hub-ensemble.</p>
+<p><em>This document was generated on</em> 2022-03-23</p>
+</div>
+<div id="background" class="section level1">
+<h1>Background</h1>
+<p>Epidemiological forecasts make quantitative statements about a disease outcome in the near future. Forecasting targets can include measures of prevalent or incident disease and its severity, for some population over a specified time horizon. Researchers, policy makers, and the general public have used such forecasts to understand and respond to the global outbreaks of COVID-19 since early 2020 <span class="citation"><a href="#ref-basshuysenThreeWaysWhich2021" role="doc-biblioref">[1]</a></span>. Forecasters use a variety of methods and models for creating and publishing forecasts, varying in both defining the forecast outcome and in reporting the probability distribution of outcomes <span class="citation"><a href="#ref-zelnerAccountingUncertaintyPandemic2021" role="doc-biblioref">[2]</a>, <a href="#ref-jamesUseMisuseMathematical2021" role="doc-biblioref">[3]</a></span>. Such variation between forecasts makes it difficult to compare predictive performance between forecast models. These barriers to comparing and evaluating forecasts make it difficult to derive objective arguments for using one forecast over another. This hampers the selection of a representative forecast and hinders finding a reliable basis for decisions.</p>
+<p>A “forecast hub” is a centralised effort to improve the transparency and usefulness of forecasts, by standardising and collating the work of many independent teams producing forecasts <span class="citation"><a href="#ref-reichCollaborativeMultiyearMultimodel2019" role="doc-biblioref">[4]</a></span>. A hub sets a commonly agreed-upon structure for forecast targets, such as type of disease event, spatio-temporal units, or the set of quantiles of the probability distribution to include from probabilistic forecasts. For instance, a hub may collect predictions of the total number of cases reported in a given country for each day in the next two weeks. Forecasters can adopt this format and contribute forecasts for centralised storage in the public domain. This shared infrastructure allows forecasts produced from diverse teams and methods to be visualised and quantitatively compared on a like-for-like basis, which can strengthen public and policy use of disease forecasts <span class="citation"><a href="#ref-cdcCoronavirusDisease20192020" role="doc-biblioref">[5]</a></span>. The underlying approach to creating a forecast hub was pioneered for forecasting influenza in the USA and adapted for forecasts of short-term COVID-19 cases and deaths in the US <span class="citation"><a href="#ref-rayEnsembleForecastsCoronavirus2020e" role="doc-biblioref">[6]</a></span> <code>#ADD ZOTERO cite US data descriptor paper</code>, with similar efforts elsewhere <span class="citation"><a href="#ref-bracherPreregisteredShorttermForecasting2021" role="doc-biblioref">[7]</a>–<a href="#ref-bicherSupportingCOVID19PolicyMaking2021" role="doc-biblioref">[9]</a></span>. Standardising forecasts allows for combining multiple forecasts into a single ensemble with the potential for an improved predictive performance. Evidence from previous efforts in multi-model infectious disease forecasting suggests that forecasts from an ensemble of models can be consistently high performing compared to any one of the component models <span class="citation"><a href="#ref-reichAccuracyRealtimeMultimodel2019" role="doc-biblioref">[10]</a>–<a href="#ref-viboudRAPIDDEbolaForecasting2018" role="doc-biblioref">[12]</a></span>. Elsewhere, weather forecasting has a long-standing use of building ensembles of models using diverse methods with standardised data and formatting in order to improve performance <span class="citation"><a href="#ref-buizzaIntroductionSpecialIssue2019" role="doc-biblioref">[13]</a>, <a href="#ref-moranEpidemicForecastingMessier2016" role="doc-biblioref">[14]</a></span>. The European COVID-19 Forecast Hub <span class="citation"><a href="#ref-europeancovid-19forecasthubEuropeanCOVID19Forecast2021" role="doc-biblioref">[15]</a></span> is a project to collate short term forecasts of COVID-19 across 32 countries in the European region. The Hub is funded and supported by the European Centre for Disease Prevention and Control (ECDC), with the primary aim to provide reliable information about the near-term epidemiology of the COVID-19 pandemic to the research and policy communities and the general public. Second, the Hub aims to create infrastructure for storing and analysing epidemiological forecasts made in real time by diverse research teams and methods across Europe. Third, the Hub aims to maintain a community of infectious disease modellers underpinned by open science principles. We started formally collating and combining contributions to the European Forecast Hub in March 2021. Here, we investigate the predictive performance of an ensemble of all forecasts contributed to the Hub in real time each week, as well as the performance of variations of ensemble methods created retrospectively.</p>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>We developed infrastructure to host and analyse forecasts, focussing on compatibility with the US <span class="citation"><a href="#ref-cramerReichlabCovid19forecasthubRelease2021" role="doc-biblioref">[16]</a>, <a href="#ref-wangReichlabCovidHubUtilsRepository2021" role="doc-biblioref">[17]</a></span> and the German and Polish COVID-19 <span class="citation"><a href="#ref-bracherGermanPolishCOVID192020" role="doc-biblioref">[18]</a></span> forecast hubs.</p>
+<div id="forecast-targets-and-standardisation" class="section level3">
+<h3>Forecast targets and standardisation</h3>
+<p>We sought forecasts for two measures of COVID-19 incidence: the total reported number of cases and deaths per week. We considered forecasts for 32 countries in Europe, including all countries of the European Union and European Free Trade Area, and the United Kingdom. We compared forecasts against observed data reported by Johns Hopkins University (JHU, <span class="citation"><a href="#ref-dongInteractiveWebbasedDashboard2020" role="doc-biblioref">[19]</a></span>). JHU data included a mix of national and aggregated subnational data for the 32 countries in the Hub. Incidence was aggregated over the Morbidity and Mortality Weekly Report (MMWR) <code># ADD ZOTERO cite MMWR week</code> epidemiological week definition of Sunday through Saturday. When predicting any single forecast target, teams could express uncertainty by submitting predictions across a range of a pre-specified set of 23 quantiles in the probability distribution. Teams could also submit a single point forecast without uncertainty. At the first submission we asked teams to add a single set of metadata briefly describing the forecasting team and methods. No restrictions were placed on who could submit forecasts, and to increase participation we actively contacted known forecasting teams across Europe and the US and advertised among the ECDC network. Teams submitted a broad spectrum of model types, ranging from mechanistic to empirical models, agent-based and statistical models, and ensembles of multiple quantitative or qualitative models (<code># see SI</code>). We maintain a full project specification with a detailed submissions protocol <span class="citation"><a href="#ref-europeancovid-19forecasthubCovid19forecasthubeuropeWiki" role="doc-biblioref">[20]</a></span>. With the complete dataset for the latest forecasting week available each Sunday, teams typically submitted forecasts to the hub on Monday. We implemented an automated validation programme to check that each new forecast conformed to standardised formatting. The validation step ensured a monotonic increase of predictions with each increasing quantile, integer-valued counts of predicted cases, as well as consistent date and location definitions. Each week we built an ensemble of all forecasts updated after all forecasts had been validated. From the first week of forecasting from 8 March 2021, the ensemble method for summarising across forecasts was the arithmetic mean of all models at each predictive quantile for a given location, target, and horizon. From 26 July 2021 onwards the ensemble instead used a median of all predictive quantiles, in order to mitigate the wide uncertainty produced by some highly anomalous forecasts. We created an open and publicly accessible interface to the forecasts and ensemble, including an online visualisation tool allowing viewers to see past data and interact with one or multiple forecasts for each country and target for up to four weeks’ horizon<span class="citation"><a href="#ref-europeancovid-19forecasthubEuropeanCovid19Forecast" role="doc-biblioref">[21]</a></span>. All forecast and meta data are freely available and held on Zoltar, a platform for hosting epidemiological forecasts <span class="citation"><a href="#ref-epiforecastsProjectECDCEuropean2021" role="doc-biblioref">[22]</a>, <a href="#ref-reichZoltarForecastArchive2021" role="doc-biblioref">[23]</a></span>.</p>
+</div>
+<div id="forecast-evaluation" class="section level3">
+<h3>Forecast evaluation</h3>
+<p>We evaluated all previous forecasts against actual observed values for each model, stratified by the forecast horizon, location, and target. We calculated scores using the scoringutils R package <span class="citation"><a href="#ref-nikosibosseScoringutilsUtilitiesScoring2020" role="doc-biblioref">[24]</a></span>. We removed any forecast surrounding (in the week of the first week after) a strongly anomalous data point. We defined anomalous as where any subsequent data release revised that data point by over 5%. <code># ADD number of excluded targets due to data revisions</code></p>
+<p>For each model, we established its overall predictive performance using the weighted interval score (WIS) and the accuracy of its prediction boundaries as the coverage of the predictive intervals. We calculated coverage at a given interval level k, where <span class="math inline">\(k\in[0,1]\)</span>, as the proportion <span class="math inline">\(p\)</span> of observations that fell within the corresponding central predictive intervals across locations and forecast dates. A perfectly calibrated model would have <span class="math inline">\(p=k\)</span> at all 11 levels (corresponding to 22 quantiles excluding the median). An under confident model at level <span class="math inline">\(k\)</span> would have <span class="math inline">\(p&gt;k\)</span>, i.e. more observations fall within a given interval than expected. In contrast, an overconfident model at level <span class="math inline">\(k\)</span> would have <span class="math inline">\(p&lt;k\)</span>, i.e. fewer observations fall within a given interval than expected. We here focus on coverage at the <span class="math inline">\(k=0.5\)</span> and <span class="math inline">\(k=0.95\)</span> level.</p>
+<p>We assessed weekly forecasts using the WIS, across all quantiles that were being gathered <span class="citation"><a href="#ref-bracherEvaluatingEpidemicForecasts2021" role="doc-biblioref">[25]</a></span>. The WIS is a strictly proper scoring rule, that is, it is optimised for predictions that come from the data-generating model. As a consequence, the WIS encourages forecasters to report predictions representing their true belief about the future <span class="citation"><a href="#ref-gneitingStrictlyProperScoring2007" role="doc-biblioref">[26]</a></span>. The WIS represents an approach to scoring forecasts based on uncertainty represented as forecast values across a set of quantiles <span class="citation"><a href="#ref-bracherEvaluatingEpidemicForecasts2021" role="doc-biblioref">[25]</a></span>. The WIS represents a parsimonious approach to scoring forecasts when only quantiles are available. Each forecast for a given location and date is scored based on an observed count of weekly incidence, the median of the predictive distribution and the width of the predictive upper and lower quantiles corresponding to the central predictive interval level (see <span class="citation"><a href="#ref-bracherEvaluatingEpidemicForecasts2021" role="doc-biblioref">[25]</a></span>). As not all models provided forecasts for all locations and dates, to compare predictive performance in the face of various levels of missingness, we calculated a relative WIS. This is a measure of forecast performance which takes into account that different teams may not cover the same set of forecast targets (i.e., weeks and locations). Loosely speaking, a relative WIS of x means that averaged over the targets a given team addressed, its WIS was x times higher or lower than the performance of the baseline model. Smaller values in the relative WIS are thus better and a value below one means that the model has above average performance. The relative WIS is computed using a <em>pairwise comparison tournament</em> <code>#add more detail</code> where for each pair of models a mean score ratio is computed based on the set of shared targets. The relative WIS of a model with respect to another model is then the ratio of their respective geometric mean of the mean score ratios. We then took the relative WIS of each model and scaled this against the relative WIS of a baseline model, for each forecast target, location, date, and horizon. The baseline model assumes case or death counts stay the same as the latest data point over all future horizons, with expanding uncertainty, described previously in <span class="citation"><a href="#ref-cramerEvaluationIndividualEnsemble2021" role="doc-biblioref">[27]</a></span>. Here we report the relative WIS of each model with respect to the baseline model.</p>
+<div id="ensemble-methods" class="section level4">
+<h4>Ensemble methods</h4>
+<p>We retrospectively explored alternative methods for combining forecasts for each target at each week. A natural way to combine probability distributions available in a quantile format, such as the ones collated in the European COVID-19 Forecast Hub, is <span class="citation"><a href="#ref-genestVincentizationRevisited1992" role="doc-biblioref">[28]</a></span> <span class="math display">\[F^{-1}(\alpha) = \sum_{i=1}^{n}w_i F_i^{-1}(\alpha)\]</span></p>
+<p>Where <span class="math inline">\(F_{1} \ldots F_{n}\)</span> are the cumulative distribution functions of the individual probability distributions (in our case, the predictive distributions of each forecast model <span class="math inline">\(i\)</span> contributed to the hub), <span class="math inline">\(w_i\)</span> are a set of weights in <span class="math inline">\([0,1]\)</span>; and <span class="math inline">\(\alpha\)</span> are the quantile levels such that</p>
+<p><span class="math display">\[F^{-1}(\alpha) = \mathrm{inf} \{t : F_i(t) \geq \alpha \}\]</span></p>
+<p>Different ensemble choices then mainly translate to the choice of weights <span class="math inline">\(w_i\)</span>. The simplest choice of weights <span class="math inline">\(w_i\)</span> is to set them all equal so that they sum up to 1, <span class="math inline">\(w_i=1/n\)</span>, resulting in an arithmetic mean ensemble. However, with this method a single outlier can have a very strong effect on the ensemble forecast. To avoid this overrepresentation, we can choose a set of weights to apply to forecasts before they are combined at each quantile level. Numerous options exist for choosing these weights with the aim to maximise predictive performance, including choosing weights to reflect each forecast’s past performance (thereby moving from an untrained to a trained ensemble). A straightforward choice is so-called inverse score weighting, which was recently found in the US to outperform unweighted scores during some time periods <span class="citation"><a href="#ref-taylorCombiningProbabilisticForecasts2021" role="doc-biblioref">[29]</a></span> but not confirmed in a similar study in Germany and Poland Poland <span class="citation"><a href="#ref-bracherPreregisteredShorttermForecasting2021" role="doc-biblioref">[7]</a></span>. In this case, the weights are calculated as <span class="math display">\[w_i = \frac{1}{S_i}\]</span></p>
+<p>where <span class="math inline">\(S_i\)</span> reflects the forecast skill of forecaster <span class="math inline">\(i\)</span>, normalised so that weights sum to 1.</p>
+<p>Alternatively, previous research has found that an unweighted median ensemble, where the arithmetic mean of each quantile is replaced by a median, yields very competitive performance while maintaining robustness to outlying forecasts <code># cite https://arxiv.org/abs/2201.12387</code>. Building on this, it is possible to use the same weights described above to create a weighted median. This uses the Harrel-Davis quantile estimator with a beta function to approximate the weighted percentiles <code>#ADD ZOTERO cite Harrell, F.E. &amp; Davis, C.E. (1982). A new distribution-free quantile estimator. Biometrika, 69(3), 635-640</code> ; <code># ADD ZOTERO cite https://www.rdocumentation.org/packages/cNORM/versions/2.0.3/topics/weighted.quantile</code> . Here we considered unweighted and inverse relative WIS weighted mean and median ensembles.</p>
+</div>
+</div>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p>We scored all forecasts submitted weekly in real time over the 52 week period from 08 March 2021 to 07 March 2022. Each week, forecasts were collated for incident cases and deaths, for 32 locations over the following 4 weeks, creating 256 possible forecast targets each week.</p>
+<p>We received 28 unique forecasting models from 26 independent forecasting teams. While not all modellers created forecasts for all locations, horizons, or variables, at least 3 independent models contributed forecasts for each location, week ahead horizon, and variable. At most, <code>r</code>modellers<span class="math inline">\(targets\)</span>max_scores<span class="math inline">\(n_models` models contributed forecasts for cases in Germany at the 1 week horizon, with an accumulated 592 forecasts for that single target over the study period. In contrast, deaths in Finland at the 2 week horizon saw the smallest number of forecasts, with only 6 independent models contributing a total 24 forecasts over the `hub\)</span>n_weeks` week study period. Similarly, not all teams forecast across all quantiles of the predictive distribution for each target, with only 23 models providing the full set of 23 quantiles.</p>
+<p>Together with our ensemble model (which used all available forecasts for each possible target every week), we used this dataset to create 2106 forecasting scores, where each score summarises a unique combination of model, variable, country, and week ahead horizon. All data are available: <code># ADD data DOI</code>.</p>
+<p><img src="figure/2022-03-23-abstract-results.Rmd/figure-1-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>The hub’s weekly created ensemble (all models, unweighted using a mean and then a median from July; the ensemble from now on) performed well compared to both its component models and the baseline. In ranking all models’ scores compared to the baseline, this ensemble performed better on relative WIS than 72% model scores when forecasting cases (<span class="math inline">\(n=990\)</span>), and 79% of scores for forecasts of incident deaths (<span class="math inline">\(n=864\)</span>). The ensemble outperformed the baseline model at the one-week ahead horizon for both cases and deaths (Figure 1). For horizons longer than one week, performance depended on the epidemiological target. The ensemble stopped outperforming the baseline at three to four weeks with respect to incidence cases. In contrast, the ensemble outperformed the baseline for deaths at all horizons considered (up to four weeks WIS), with no discernible deterioration in performance relative to the baseline.</p>
+<p>We observed similar trends in performance when considering how well the ensemble was calibrated with respect to the observed data. At one week ahead the case ensemble was well calibrated (ca. 50% nominal coverage at the 50% level), but this did not hold with increasing forecast horizon. The death ensemble was well calibrated at the 95% level for all horizons and under confident for the 50% level, with only slow deterioration with increasing forecast horizon.</p>
+<div class="figure" style="text-align: center">
+<img src="figure/2022-03-23-abstract-results.Rmd/figure-2-1.png" alt="Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk. y-axis is cut-off to an upper bound of 4 for readability, excluding one data point (relative WIS 5.91, one model of cases in Netherlands)" width="672" />
+<p class="caption">
+Performance of short-term forecasts across models and median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk. y-axis is cut-off to an upper bound of 4 for readability, excluding one data point (relative WIS 5.91, one model of cases in Netherlands)
+</p>
+</div>
+<p>The ensemble also performed consistently well when forecasting across countries relative to individual models and the baseline (figure 2, figure SI1). Compared to models that forecast across all 32 countries at the two-week horizon, the ensemble was more consistent in outperforming the baseline across countries compared to any single model forecasting deaths, and all but one model for case forecasts. Considering forecast targets across all 32 countries and over all four horizons (128 targets), the ensemble forecast outperformed the baseline for 82% and 90% of all 128 targets when forecasting cases and deaths, respectively.</p>
+<div id="performance-of-ensemble-re.-variants" class="section level4">
+<h4>performance of ensemble re. variants</h4>
+<p><em>delta and omicron – show forecasts</em></p>
+</div>
+<div id="alternative-ensembles" class="section level4">
+<h4>Alternative ensembles</h4>
+<p><em>Weighted mean, weighted median, mean, median – table comparing performance</em></p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Predictive performance of main ensembles, as measured by the scaled relative WIS.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Horizon
+</th>
+<th style="text-align:right;">
+Weighted mean
+</th>
+<th style="text-align:right;">
+Weighted median
+</th>
+<th style="text-align:right;">
+Unweighted mean
+</th>
+<th style="text-align:right;">
+Unweighted median
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="4">
+<td colspan="5" style="border-bottom: 1px solid;">
+<strong>Cases</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+1 week
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+2 weeks
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+3 weeks
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+4 weeks
+</td>
+<td style="text-align:right;">
+1.06
+</td>
+<td style="text-align:right;">
+0.75
+</td>
+<td style="text-align:right;">
+1.09
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+</tr>
+<tr grouplength="4">
+<td colspan="5" style="border-bottom: 1px solid;">
+<strong>Deaths</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+1 week
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+2 weeks
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+3 weeks
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+4 weeks
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+</tbody>
+</table>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-basshuysenThreeWaysWhich2021" class="csl-entry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">P. van Basshuysen, L. White, D. Khosrowi, and M. Frisch, <span>“Three <span>Ways</span> in <span>Which Pandemic Models May Perform</span> a <span>Pandemic</span>,”</span> <em>Erasmus Journal for Philosophy and Economics</em>, vol. 14, no. 1, pp. 110-127-110-127, 2021, doi: <a href="https://doi.org/10.23941/ejpe.v14i1.582">10.23941/ejpe.v14i1.582</a>.</div>
+</div>
+<div id="ref-zelnerAccountingUncertaintyPandemic2021" class="csl-entry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">J. Zelner, J. Riou, R. Etzioni, and A. Gelman, <span>“Accounting for uncertainty during a pandemic,”</span> <em>Patterns</em>, vol. 2, no. 8, 2021, doi: <a href="https://doi.org/10.1016/j.patter.2021.100310">10.1016/j.patter.2021.100310</a>.</div>
+</div>
+<div id="ref-jamesUseMisuseMathematical2021" class="csl-entry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">L. P. James, J. A. Salomon, C. O. Buckee, and N. A. Menzies, <span>“The <span>Use</span> and <span>Misuse</span> of <span>Mathematical Modeling</span> for <span>Infectious Disease Policymaking</span>: <span>Lessons</span> for the <span>COVID-19 Pandemic</span>,”</span> <em>Medical Decision Making</em>, vol. 41, no. 4, pp. 379–385, 2021, doi: <a href="https://doi.org/10.1177/0272989X21990391">10.1177/0272989X21990391</a>.</div>
+</div>
+<div id="ref-reichCollaborativeMultiyearMultimodel2019" class="csl-entry">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">N. G. Reich <em>et al.</em>, <span>“A collaborative multiyear, multimodel assessment of seasonal influenza forecasting in the <span>United States</span>,”</span> <em>Proceedings of the National Academy of Sciences</em>, vol. 116, no. 8, pp. 3146–3154, 2019, doi: <a href="https://doi.org/10.1073/pnas.1812594116">10.1073/pnas.1812594116</a>.</div>
+</div>
+<div id="ref-cdcCoronavirusDisease20192020" class="csl-entry">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">CDC, <span>“Coronavirus <span>Disease</span> 2019 (<span>COVID-19</span>),”</span> <em>Centers for Disease Control and Prevention</em>. 2020. Accessed: Jan. 09, 2022. [Online]. Available: <a href="https://www.cdc.gov/coronavirus/2019-ncov/science/forecasting/forecasting.html">https://www.cdc.gov/coronavirus/2019-ncov/science/forecasting/forecasting.html</a></div>
+</div>
+<div id="ref-rayEnsembleForecastsCoronavirus2020e" class="csl-entry">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">E. L. Ray <em>et al.</em>, <span>“Ensemble <span>Forecasts</span> of <span>Coronavirus Disease</span> 2019 (<span>COVID-19</span>) in the <span>U</span>.<span>S</span>.”</span> <span>Cold Spring Harbor Laboratory Press</span>, p. 2020.08.19.20177493, 2020. doi: <a href="https://doi.org/10.1101/2020.08.19.20177493">10.1101/2020.08.19.20177493</a>.</div>
+</div>
+<div id="ref-bracherPreregisteredShorttermForecasting2021" class="csl-entry">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">J. Bracher <em>et al.</em>, <span>“A pre-registered short-term forecasting study of <span>COVID-19</span> in <span>Germany</span> and <span>Poland</span> during the second wave,”</span> <em>Nature Communications</em>, vol. 12, no. 1, p. 5173, 2021, doi: <a href="https://doi.org/10.1038/s41467-021-25207-0">10.1038/s41467-021-25207-0</a>.</div>
+</div>
+<div id="ref-funkShorttermForecastsInform2020" class="csl-entry">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">S. Funk <em>et al.</em>, <span>“Short-term forecasts to inform the response to the <span>Covid-19</span> epidemic in the <span>UK</span>,”</span> <em>medRxiv</em>, p. 2020.11.11.20220962, 2020, doi: <a href="https://doi.org/10.1101/2020.11.11.20220962">10.1101/2020.11.11.20220962</a>.</div>
+</div>
+<div id="ref-bicherSupportingCOVID19PolicyMaking2021" class="csl-entry">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">M. Bicher <em>et al.</em>, <span>“Supporting <span>COVID-19 Policy-Making</span> with a <span>Predictive Epidemiological Multi-Model Warning System</span>,”</span> <em>medRxiv</em>, p. 2020.10.18.20214767, 2021, doi: <a href="https://doi.org/10.1101/2020.10.18.20214767">10.1101/2020.10.18.20214767</a>.</div>
+</div>
+<div id="ref-reichAccuracyRealtimeMultimodel2019" class="csl-entry">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">N. G. Reich <em>et al.</em>, <span>“Accuracy of real-time multi-model ensemble forecasts for seasonal influenza in the <span>U</span>.<span>S</span>,”</span> <em>PLoS computational biology</em>, vol. 15, no. 11, p. e1007486, 2019, doi: <a href="https://doi.org/10.1371/journal.pcbi.1007486">10.1371/journal.pcbi.1007486</a>.</div>
+</div>
+<div id="ref-johanssonOpenChallengeAdvance2019" class="csl-entry">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">M. A. Johansson <em>et al.</em>, <span>“An open challenge to advance probabilistic forecasting for dengue epidemics,”</span> <em>Proceedings of the National Academy of Sciences</em>, vol. 116, no. 48, pp. 24268–24274, 2019, doi: <a href="https://doi.org/10.1073/pnas.1909865116">10.1073/pnas.1909865116</a>.</div>
+</div>
+<div id="ref-viboudRAPIDDEbolaForecasting2018" class="csl-entry">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">C. Viboud <em>et al.</em>, <span>“The <span>RAPIDD</span> ebola forecasting challenge: <span>Synthesis</span> and lessons learnt,”</span> <em>Epidemics</em>, vol. 22, pp. 13–21, 2018, doi: <a href="https://doi.org/10.1016/j.epidem.2017.08.002">10.1016/j.epidem.2017.08.002</a>.</div>
+</div>
+<div id="ref-buizzaIntroductionSpecialIssue2019" class="csl-entry">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">R. Buizza, <span>“Introduction to the special issue on <span>‘25 years of ensemble forecasting’</span>,”</span> <em>Quarterly Journal of the Royal Meteorological Society</em>, vol. 145, no. S1, pp. 1–11, 2019, doi: <a href="https://doi.org/10.1002/qj.3370">10.1002/qj.3370</a>.</div>
+</div>
+<div id="ref-moranEpidemicForecastingMessier2016" class="csl-entry">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">K. R. Moran <em>et al.</em>, <span>“Epidemic <span>Forecasting</span> is <span>Messier Than Weather Forecasting</span>: <span>The Role</span> of <span>Human Behavior</span> and <span>Internet Data Streams</span> in <span>Epidemic Forecast</span>,”</span> <em>The Journal of Infectious Diseases</em>, vol. 214, no. suppl_4, pp. S404–S408, 2016, doi: <a href="https://doi.org/10.1093/infdis/jiw375">10.1093/infdis/jiw375</a>.</div>
+</div>
+<div id="ref-europeancovid-19forecasthubEuropeanCOVID19Forecast2021" class="csl-entry">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">European Covid-19 Forecast Hub, <span>“European <span>COVID-19 Forecast Hub</span>.”</span> covid19-forecast-hub-europe, 2021.Available: <a href="https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe">https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe</a></div>
+</div>
+<div id="ref-cramerReichlabCovid19forecasthubRelease2021" class="csl-entry">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">E. Cramer <em>et al.</em>, <span>“Reichlab/Covid19-forecast-hub: Release for <span>Zenodo</span>, 20210816,”</span> 2021, doi: <a href="https://doi.org/10.5281/zenodo.5208210">10.5281/zenodo.5208210</a>.</div>
+</div>
+<div id="ref-wangReichlabCovidHubUtilsRepository2021" class="csl-entry">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">S. Y. Wang <em>et al.</em>, <span>“Reichlab/<span class="nocase">covidHubUtils</span>: Repository release for <span>Zenodo</span>,”</span> 2021, doi: <a href="https://doi.org/10.5281/zenodo.5207940">10.5281/zenodo.5207940</a>.</div>
+</div>
+<div id="ref-bracherGermanPolishCOVID192020" class="csl-entry">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">J. Bracher <em>et al.</em>, <span>“The <span>German</span> and <span>Polish COVID-19 Forecast Hub</span>.”</span> 2020.Available: <a href="https://github.com/KITmetricslab/covid19-forecast-hub-de">https://github.com/KITmetricslab/covid19-forecast-hub-de</a></div>
+</div>
+<div id="ref-dongInteractiveWebbasedDashboard2020" class="csl-entry">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">E. Dong, H. Du, and L. Gardner, <span>“An interactive web-based dashboard to track <span>COVID-19</span> in real time,”</span> <em>The Lancet Infectious Diseases</em>, vol. 20, no. 5, pp. 533–534, 2020, doi: <a href="https://doi.org/10.1016/S1473-3099(20)30120-1">10.1016/S1473-3099(20)30120-1</a>.</div>
+</div>
+<div id="ref-europeancovid-19forecasthubCovid19forecasthubeuropeWiki" class="csl-entry">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">European Covid-19 Forecast Hub, <span>“Covid19-forecast-hub-europe: <span>Wiki</span>,”</span> <em>GitHub</em>. Available: <a href="https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe">https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe</a></div>
+</div>
+<div id="ref-europeancovid-19forecasthubEuropeanCovid19Forecast" class="csl-entry">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">European Covid-19 Forecast Hub, <span>“European <span>Covid-19 Forecast Hub</span>.”</span> Available: <a href="https://covid19forecasthub.eu/index.html">https://covid19forecasthub.eu/index.html</a></div>
+</div>
+<div id="ref-epiforecastsProjectECDCEuropean2021" class="csl-entry">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">EpiForecasts, <span>“Project: <span>ECDC European COVID-19 Forecast Hub</span> - <span>Zoltar</span>.”</span> 2021.Available: <a href="https://www.zoltardata.com/project/238">https://www.zoltardata.com/project/238</a></div>
+</div>
+<div id="ref-reichZoltarForecastArchive2021" class="csl-entry">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">N. G. Reich, M. Cornell, E. L. Ray, K. House, and K. Le, <span>“The <span>Zoltar</span> forecast archive, a tool to standardize and store interdisciplinary prediction research,”</span> <em>Scientific Data</em>, vol. 8, no. 1, p. 59, 2021, doi: <a href="https://doi.org/10.1038/s41597-021-00839-5">10.1038/s41597-021-00839-5</a>.</div>
+</div>
+<div id="ref-nikosibosseScoringutilsUtilitiesScoring2020" class="csl-entry">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">Nikos I Bosse, Sam Abbott, EpiForecasts, and Sebastian Funk, <span>“Scoringutils: <span>Utilities</span> for <span>Scoring</span> and <span>Assessing Predictions</span>.”</span> 2020.Available: <a href="https://github.com/epiforecasts/scoringutils">https://github.com/epiforecasts/scoringutils</a></div>
+</div>
+<div id="ref-bracherEvaluatingEpidemicForecasts2021" class="csl-entry">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">J. Bracher, E. L. Ray, T. Gneiting, and N. G. Reich, <span>“Evaluating epidemic forecasts in an interval format,”</span> <em>PLOS Computational Biology</em>, vol. 17, no. 2, p. e1008618, 2021, doi: <a href="https://doi.org/10.1371/journal.pcbi.1008618">10.1371/journal.pcbi.1008618</a>.</div>
+</div>
+<div id="ref-gneitingStrictlyProperScoring2007" class="csl-entry">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">T. Gneiting and A. E. Raftery, <span>“Strictly <span>Proper Scoring Rules</span>, <span>Prediction</span>, and <span>Estimation</span>,”</span> <em>Journal of the American Statistical Association</em>, vol. 102, no. 477, pp. 359–378, 2007, doi: <a href="https://doi.org/10.1198/016214506000001437">10.1198/016214506000001437</a>.</div>
+</div>
+<div id="ref-cramerEvaluationIndividualEnsemble2021" class="csl-entry">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline">E. Y. Cramer <em>et al.</em>, <span>“Evaluation of individual and ensemble probabilistic forecasts of <span>COVID-19</span> mortality in the <span>US</span>,”</span> <em>medRxiv</em>, p. 2021.02.03.21250974, 2021, doi: <a href="https://doi.org/10.1101/2021.02.03.21250974">10.1101/2021.02.03.21250974</a>.</div>
+</div>
+<div id="ref-genestVincentizationRevisited1992" class="csl-entry">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">C. Genest, <span>“Vincentization <span>Revisited</span>,”</span> <em>The Annals of Statistics</em>, vol. 20, no. 2, pp. 1137–1142, 1992, Accessed: Jan. 09, 2022. [Online]. Available: <a href="https://www.jstor.org/stable/2242003">https://www.jstor.org/stable/2242003</a></div>
+</div>
+<div id="ref-taylorCombiningProbabilisticForecasts2021" class="csl-entry">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">J. W. Taylor and K. S. Taylor, <span>“Combining <span>Probabilistic Forecasts</span> of <span>COVID-19 Mortality</span> in the <span>United States</span>,”</span> <em>European Journal of Operational Research</em>, 2021, doi: <a href="https://doi.org/10.1016/j.ejor.2021.06.044">10.1016/j.ejor.2021.06.044</a>.</div>
+</div>
+</div>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre><code>R version 4.1.2 (2021-11-01)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 22000)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_United Kingdom.1252 
+[2] LC_CTYPE=English_United Kingdom.1252   
+[3] LC_MONETARY=English_United Kingdom.1252
+[4] LC_NUMERIC=C                           
+[5] LC_TIME=English_United Kingdom.1252    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] yaml_2.2.2        gh_1.3.0          readr_2.1.2       kableExtra_1.3.4 
+ [5] gghighlight_0.3.2 patchwork_1.1.1   forcats_0.5.1     ggplot2_3.3.5    
+ [9] purrr_0.3.4       lubridate_1.8.0   tidyr_1.2.0       dplyr_1.0.8      
+[13] here_1.0.1       
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.8         svglite_2.1.0      gitcreds_0.1.1     rprojroot_2.0.2   
+ [5] digest_0.6.29      utf8_1.2.2         R6_2.5.1           evaluate_0.14     
+ [9] highr_0.9          httr_1.4.2         pillar_1.7.0       rlang_1.0.1       
+[13] curl_4.3.2         rstudioapi_0.13    whisker_0.4        jquerylib_0.1.4   
+[17] rmarkdown_2.12     labeling_0.4.2     webshot_0.5.2      stringr_1.4.0     
+[21] bit_4.0.4          munsell_0.5.0      compiler_4.1.2     httpuv_1.6.5      
+[25] xfun_0.29          pkgconfig_2.0.3    systemfonts_1.0.4  htmltools_0.5.2   
+[29] tidyselect_1.1.1   tibble_3.1.6       workflowr_1.7.0    fansi_1.0.2       
+[33] viridisLite_0.4.0  crayon_1.5.0       tzdb_0.2.0         withr_2.4.3       
+[37] later_1.3.0        grid_4.1.2         jsonlite_1.7.3     gtable_0.3.0      
+[41] lifecycle_1.0.1    git2r_0.29.0       magrittr_2.0.2     scales_1.1.1      
+[45] cli_3.1.1          stringi_1.7.6      vroom_1.5.7        farver_2.1.0      
+[49] fs_1.5.2           promises_1.2.0.1   xml2_1.3.3         bslib_0.3.1       
+[53] ellipsis_0.3.2     generics_0.1.2     vctrs_0.3.8        RColorBrewer_1.1-2
+[57] tools_4.1.2        bit64_4.0.5        glue_1.6.1         hms_1.1.1         
+[61] parallel_4.1.2     fastmap_1.1.0      colorspace_2.0-2   rvest_1.0.2       
+[65] knitr_1.37         sass_0.4.0        </code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

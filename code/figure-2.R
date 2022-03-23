@@ -4,7 +4,7 @@ library(ggplot2)
 theme_set(theme_bw())
 
 # PLOT: All model and ensemble performance by boxplot by location at 2 wk horizon
-figure_2 <- scores_eval %>%
+figure_2 <- scores_model %>%
   # Use 2 week horizon
   filter(horizon == 2) %>%
   mutate(rel_wis = ifelse(rel_wis == 0, NA, rel_wis)) %>%

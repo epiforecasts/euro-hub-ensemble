@@ -9,11 +9,12 @@ if (!exists("eval_date")) {eval_date <- as.Date("2022-03-07")}
 if (!exists("scores_model")) {source(here("code", "load-evaluation-scores.R"))}
 
 # Set report dates
-start_date <- format.Date(eval_date - weeks(max(scores_model$n)), "%d %B %Y")
+start_date <- eval_date - weeks(max(scores_model$n))
 locations <- unique(scores_model$location)
 
 # Matrix of all possible targets
-target_matrix <- tibble("date" = seq.Date(from = start_date, to = eval_date,
+target_matrix <- tibble("date" = seq.Date(from = start_date,
+                                          to = eval_date,
                                           by = "week")) %>%
   left_join(tibble("target_variable" = c("inc case", "inc death")),
             by = character()) %>%
