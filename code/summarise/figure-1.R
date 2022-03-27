@@ -1,20 +1,33 @@
 # Create figure 1: models vs. ensemble by horizon
+# Ensemble performance in 32 locations plotted at each horizon
 library(dplyr)
 library(ggplot2)
 library(patchwork)
 
-#
+# Set up ------------------------------------------------------------------
+# Get evaluation scores if not already present
+if (!exists("scores_model")) {source(here("code", "load", "evaluation-scores.R"))}
+# plot settings
 theme_set(theme_bw())
 models_ensemble_cols <- c("#9ebcda", "#8856a7")
 
-# Ensemble performance in 32 locations plotted at each horizon
-horizon <- scores_model %>%
+# Plot data --------------------------------------------------------------
+fig1_data <- scores_model %>%
   mutate(horizon = factor(horizon),
          Model = factor(is_hub, levels = c(FALSE, TRUE),
                         labels = c("All other models", "Hub ensemble")))
 
+# some summary values for describing figure in text
+fig1_ensemble <- fig1_data %>%
+  filter(is_hub) %>%
+  group_by(horizon, target_variable) %>%
+  summarise(median_score = median(rel_wis, na.rm = TRUE)) %>%
+  arrange(horizon) %>%
+  split(.$target_variable)
+
+# Plots -------------------------------------------------------------------
 # Rel wis
-rel_wis <- horizon %>%
+rel_wis <- fig1_data %>%
   ggplot(aes(y = rel_wis,
              x = horizon,
              col = Model)) +
@@ -33,7 +46,7 @@ rel_wis <- horizon %>%
         axis.text.x = element_blank())
 
 # 50% coverage
-cov_50 <- horizon %>%
+cov_50 <- fig1_data %>%
   ggplot(aes(y = cov_50,
              x = horizon, col = Model)) +
   geom_boxplot(varwidth = TRUE, outlier.alpha = 0.2) +
@@ -52,7 +65,7 @@ cov_50 <- horizon %>%
         axis.text.x = element_blank())
 
 # 95% coverage
-cov_95 <- horizon %>%
+cov_95 <- fig1_data %>%
   ggplot(aes(y = cov_95,
              x = horizon, col = Model)) +
   geom_boxplot(varwidth = TRUE, outlier.alpha = 0.2) +
@@ -63,18 +76,23 @@ cov_95 <- horizon %>%
   coord_cartesian(ylim = c(0, 1)) +
   labs(y = "95% coverage",
        x = "Weeks ahead horizon",
-       col = NULL,
-       caption = "Boxplot width proportional to observations;
-       Yellow indicates target range") +
+       col = NULL) +
   facet_wrap(~ target_variable, ncol = 2) +
   scale_colour_manual(values = models_ensemble_cols) +
   theme(strip.text = element_blank(),
         strip.background = element_blank(),
         legend.position = "bottom")
+
+
+# Figure ------------------------------------------------------------------
 figure_1 <-
   rel_wis +
   cov_50 +
   cov_95 +
   plot_layout(ncol = 1)
 
-ggsave(filename = here("output", "figures", "figure-1.png"), plot = figure_1, width = 5, height = 7)
+ggsave(filename = here("output", "figures", "figure-1.png"),
+       plot = figure_1, width = 5, height = 7)
+
+# caption
+fig1_cap <- "Performance of short-term forecasts aggregated across all individually submitted models and the Hub ensemble, by horizon, forecasting cases (left) and deaths (right). Performance measured by relative weighted interval score scaled against a baseline (dotted line, 1), and coverage of uncertainty at the 50% and 95% levels. Boxplot, with width proportional to number of observations, show interquartile ranges with outlying scores as faded points. The target range for each set of scores is shaded in yellow."

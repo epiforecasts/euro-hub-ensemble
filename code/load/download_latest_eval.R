@@ -5,7 +5,7 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(lubridate)
-here::i_am("code/download_latest_eval.R")
+here::i_am("code/load/download_latest_eval.R")
 
 # Args:
 # eval_date the date of an evaluation (a Monday)
