@@ -1,5 +1,5 @@
 name: "hub-ensemble"
-output_dir: ../output
+output_dir: ../docs
 navbar:
   title: "European Covid-19 Forecast Hub: Ensembles"
   left:
