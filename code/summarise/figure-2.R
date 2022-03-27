@@ -72,9 +72,8 @@ fig2_summary <- fig2_base$ensemble_models %>%
 figure_2 <- fig2_base$plot_location
 ggsave(filename = here("output", "figures", "figure-2.png"), plot = figure_2)
 
-fig2_cap <- "Performance of short-term forecasts across models and
-median ensemble (asterisk), by country, forecasting cases (top) and deaths
-(bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk. y-axis is cut-off to an upper bound of 4 for readability"
+fig2_cap <- "_Performance of short-term forecasts across models and
+median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk. y-axis is cut-off to an upper bound of 4 for readability._"
 
 # Repeat for all horizons -----------------------------------------------
 h1234_base <- ensemble_performance_by_location(scores_model)

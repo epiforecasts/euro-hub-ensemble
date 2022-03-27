@@ -1,19 +1,9 @@
 name: "hub-ensemble"
-output_dir: ../docs
+output_dir: ../output
 navbar:
   title: "European Covid-19 Forecast Hub: Ensembles"
   left:
-  - text: Home
-    href: index.html
-  - text: Read
-    href: euro-hub-ensemble-draft.html
   - text: Edit text
     href: https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit
-  - text: Edit code
-    href: https://github.com/kathsherratt/euro-hub-ensemble/blob/main/analysis/euro-hub-ensemble-draft.Rmd
-output:
-  workflowr::wflow_html:
-    toc: yes
-    toc_float: yes
-    theme: cosmo
-    highlight: textmate
+  - text: Code
+    href: https://github.com/kathsherratt/euro-hub-ensemble/
