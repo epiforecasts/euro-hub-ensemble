@@ -5,6 +5,7 @@ output:
 bibliography: references.bib
 link-citations: true
 csl: ieee.csl
+always_allow_html: true
 ---
 
 ```{r render, include=FALSE}
