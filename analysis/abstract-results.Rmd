@@ -9,7 +9,7 @@ always_allow_html: true
 ---
 
 ```{r render, include=FALSE}
-this_doc <- here::here("analysis/2022-03-23-abstract-results.Rmd")
+this_doc <- here::here("analysis/abstract-results.Rmd")
 # Build PDF or word doc
 # rmarkdown::render(this_doc, rmarkdown:: pdf_document())
 # rmarkdown::render(this_doc, rmarkdown::word_document())
