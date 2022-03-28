@@ -54,13 +54,23 @@ modeller_scores <- list(
   "score_3_p" = sum(scores_model_exhub$rel_wis > 3, na.rm = TRUE) / sum(!is.na(scores_model_exhub$rel_wis)) * 100)
 
 # ensemble score summary --------------------------------------------------
+hub_scores_summary <- scores_model %>%
+  filter(is_hub) %>%
+  group_by(horizon) %>%
+  summarise(min_score = min(rel_wis, na.rm = TRUE),
+            max_score = max(rel_wis, na.rm = TRUE),
+            beat_base = sum(rel_wis <= 1, na.rm = TRUE) / n() * 100,
+            q75 = quantile(rel_wis, probs = 0.75, na.rm = TRUE),
+            median_score = median(rel_wis, na.rm = TRUE)
+  )
+
 hub_scores <- list(
   "median_score" = median(scores_model %>% filter(is_hub) %>% pull(rel_wis), na.rm = TRUE),
   "vs_models" = scores_model_exhub %>%
     filter(!is.na(rel_wis))  %>%
     group_by(target_variable) %>%
     summarise(n = n(),
-              p_better = round(sum(rel_wis_distance < 0) / n * 100)) %>%
+              p_better = round(sum(rel_wis_distance <= 0) / n * 100)) %>%
     split(.$target_variable)
 )
 
