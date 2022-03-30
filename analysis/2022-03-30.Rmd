@@ -1,9 +1,8 @@
 ---
 title: Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations
 output:
-  word_document: default
   html_document: default
-  pdf_document: default
+  word_document: default
 bibliography: references.bib
 link-citations: yes
 csl: ieee.csl
