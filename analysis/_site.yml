@@ -4,6 +4,6 @@ navbar:
   title: "European Covid-19 Forecast Hub: Ensembles"
   left:
   - text: Edit text
-    href: https://docs.google.com/document/d/1XT7xwljCfaQ1_CpKxyJySqiPsIZ2bWNWFJE_v_U6EHc/edit
+    href: https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/main/analysis/2022-03-30.Rmd
   - text: Code
     href: https://github.com/kathsherratt/euro-hub-ensemble/
