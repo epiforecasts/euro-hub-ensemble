@@ -1,8 +1,10 @@
 ---
-title: Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations
+title: Predictive performance of multi-model ensemble forecasts of COVID-19 across
+  European nations
 output:
-  html_document: default
+  pdf_document: default
   word_document: default
+  html_document: default
 bibliography: references.bib
 link-citations: yes
 csl: ieee.csl
@@ -193,3 +195,20 @@ There is also a wide range of methods for combining forecasts which could improv
 For applied public health work, we recommend adapting and using our open-source infrastructure to standardise and improve epidemiological forecasts. The hub structure maximises the transparency and accuracy of real-time forecasts and can reduce reliance on individual models as a basis for action during an epidemic. The benefits of combining multiple models into an ensemble come from individual models’ wide variation in forecast performance across varying targets, and this is particularly true during emerging epidemics where forecasters vary in how quickly their models are able to adapt to new information. Setting up the infrastructure for this could be an important component to future epidemic and pandemic preparedness. As it is free to develop, highly modular, and well documented, the infrastructure we have developed in this project may make this easier and faster to do.
 
 In conclusion, we have shown that during a rapidly evolving epidemic spreading through multiple populations, an ensemble forecast performed highly consistently across a large matrix of forecast targets, typically outperforming the majority of its separate component models. In addition, we have demonstrated some limits to predictability, especially for case forecasts, while showing that ensemble methods based on past model performance were unable to reliably improve forecast performance. Our work constitutes a step towards both unifying COVID-19 forecasts and improving our understanding of them.
+
+---
+# Supplementary information
+
+```{r get-si}
+# Get SI figures
+source(here("code", "summarise", "supplementary.R"))
+```
+
+```{r si-fig-1}
+si_figure_1
+```
+
+```{r si-fig-2}
+si_figure_2
+```
+
