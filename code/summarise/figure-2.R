@@ -1,83 +1,98 @@
-# Create figure 2: performance by location
-#  All model and ensemble performance as boxplot at 2 wk horizon
+# Create figure 2: models vs. ensemble by horizon
+# Ensemble performance in 32 locations plotted at each horizon
 library(dplyr)
 library(ggplot2)
-theme_set(theme_bw())
+library(patchwork)
 
 # Set up ------------------------------------------------------------------
 # Get evaluation scores if not already present
 if (!exists("scores_model")) {source(here("code", "load", "evaluation-scores.R"))}
+# plot settings
+theme_set(theme_bw())
+models_ensemble_cols <- c("#9ebcda", "#8856a7")
 
-#  Summarise by location -------------------------------------------------
-ensemble_performance_by_location <- function(scores_model) {
+# Plot data --------------------------------------------------------------
+fig2_data <- scores_model %>%
+  mutate(horizon = factor(horizon),
+         Model = factor(is_hub, levels = c(FALSE, TRUE),
+                        labels = c("All other models", "Hub ensemble")))
 
-  data <- scores_model %>%
-    mutate(rel_wis = ifelse(rel_wis == 0, NA, rel_wis))
-
-  # at each wk horizon, for each location, what % model did the ensemble outperform?
-  location_performance <- data %>%
-    filter(!is_hub) %>%
-    group_by(location, target_variable) %>%
-    summarise(
-      n_models = n(),
-      n_rel_wis = sum(!is.na(rel_wis)),
-      ensemble_beat = sum(ensemble_rel_wis <= rel_wis, na.rm=TRUE),
-      ensemble_beat_p = ensemble_beat / n_rel_wis * 100,
-      ensemble_score = min(ensemble_rel_wis),
-      median_score = median(rel_wis, na.rm = TRUE))
-
-  # for how many locations did the ensemble outperform x% models?
-  ensemble_models <- location_performance %>%
-    group_by(target_variable) %>%
-    summarise(beat_50 = sum(ensemble_beat_p >= 50),
-              beat_75 = sum(ensemble_beat_p >= 75),
-              beat_100 = sum(ensemble_beat_p >= 100))
-
-  plot_location <- data %>%
-    ggplot(aes(x = location_name, y = rel_wis,
-               colour = target_variable,
-               fill = target_variable)) +
-    geom_boxplot(alpha = 0.8,
-                 outlier.alpha = 0.2) +
-    geom_hline(aes(yintercept = 1), lty = 2) +
-    # overlay ensemble as extra point
-    geom_point(aes(y = ensemble_rel_wis),
-               size = 2, shape = "asterisk",
-               colour = "grey 10",
-               position = position_dodge(width = 0.8)) +
-    # format
-    ylim(c(0,4)) +
-    labs(x = NULL, y = "Scaled relative WIS across models") +
-    scale_fill_brewer(palette = "Set1") +
-    scale_colour_brewer(palette = "Set1") +
-    facet_wrap(~ target_variable, scales = "fixed", nrow = 2) +
-    theme(legend.position = "none",
-          axis.text.x = element_text(angle = 30, hjust = 1),
-          strip.background = element_blank())
-
-  return(list("location_performance" = location_performance,
-              "ensemble_models" = ensemble_models,
-              "plot_location" = plot_location,
-              "data" = data))
-}
-
-# 2 week horizon (text) ---------------------------------------------------
-fig2_base <- ensemble_performance_by_location(scores_model %>%
-                                                filter(horizon == 2))
-fig2_summary <- fig2_base$ensemble_models %>%
-  mutate(across(starts_with("beat_"),
-                ~ gsub(32, "all", .))) %>%
+# some summary values for describing figure in text
+fig2_ensemble <- fig2_data %>%
+  filter(is_hub) %>%
+  group_by(horizon, target_variable) %>%
+  summarise(median_score = median(rel_wis, na.rm = TRUE)) %>%
+  arrange(horizon) %>%
   split(.$target_variable)
 
-figure_2 <- fig2_base$plot_location
-ggsave(filename = here("output", "figures", "figure-2.png"), plot = figure_2)
+# Plots -------------------------------------------------------------------
+# Rel wis
+rel_wis <- fig2_data %>%
+  ggplot(aes(y = rel_wis,
+             x = horizon,
+             col = Model)) +
+  geom_boxplot(varwidth = TRUE, outlier.alpha = 0.2) +
+  geom_hline(aes(yintercept = 1), lty = 2) +
+  annotate("rect", alpha = 0.1, fill = "gold",
+           xmin = -Inf, xmax = Inf,
+           ymin = -Inf, ymax = 1) +
+  coord_cartesian(ylim = c(0, 2)) +
+  labs(y = "Scaled relative WIS",
+       x = NULL, col = NULL) +
+  scale_colour_manual(values = models_ensemble_cols) +
+  facet_wrap(~ target_variable, ncol = 2) +
+  theme(strip.background = element_blank(),
+        legend.position = "none",
+        axis.text.x = element_blank())
 
-fig2_cap <- "_Performance of short-term forecasts across models and
-median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk. y-axis is cut-off to an upper bound of 4 for readability._"
+# 50% coverage
+cov_50 <- fig2_data %>%
+  ggplot(aes(y = cov_50,
+             x = horizon, col = Model)) +
+  geom_boxplot(varwidth = TRUE, outlier.alpha = 0.2) +
+  geom_hline(aes(yintercept = 0.5), lty = 2) +
+  annotate("rect", alpha = 0.1, fill = "gold",
+           xmin = -Inf, xmax = Inf,
+           ymin = 0.45, ymax = 0.55) +
+  coord_cartesian(ylim = c(0, 1)) +
+  labs(y = "50% coverage",
+       x = NULL, col = NULL) +
+  facet_wrap(~ target_variable, ncol = 2) +
+  scale_colour_manual(values = models_ensemble_cols) +
+  theme(strip.text = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "none",
+        axis.text.x = element_blank())
 
-# Repeat for all horizons -----------------------------------------------
-h1234_base <- ensemble_performance_by_location(scores_model)
-h1234_summary <- h1234_base$ensemble_models %>%
-  mutate(across(starts_with("beat_"),
-                ~ gsub(32, "all", .))) %>%
-  split(.$target_variable)
+# 95% coverage
+cov_95 <- fig2_data %>%
+  ggplot(aes(y = cov_95,
+             x = horizon, col = Model)) +
+  geom_boxplot(varwidth = TRUE, outlier.alpha = 0.2) +
+  geom_hline(aes(yintercept = 0.95), lty = 2) +
+  annotate("rect", alpha = 0.1, fill = "gold",
+           xmin = -Inf, xmax = Inf,
+           ymin = 0.90, ymax = 1) +
+  coord_cartesian(ylim = c(0, 1)) +
+  labs(y = "95% coverage",
+       x = "Weeks ahead horizon",
+       col = NULL) +
+  facet_wrap(~ target_variable, ncol = 2) +
+  scale_colour_manual(values = models_ensemble_cols) +
+  theme(strip.text = element_blank(),
+        strip.background = element_blank(),
+        legend.position = "bottom")
+
+
+# Figure ------------------------------------------------------------------
+figure_2 <-
+  rel_wis +
+  cov_50 +
+  cov_95 +
+  plot_layout(ncol = 1)
+
+ggsave(filename = here("output", "figures", "figure-2.png"),
+       plot = figure_2, width = 5, height = 7)
+
+# caption
+fig2_cap <- "_Performance of short-term forecasts aggregated across all individually submitted models and the Hub ensemble, by horizon, forecasting cases (left) and deaths (right). Performance measured by relative weighted interval score scaled against a baseline (dotted line, 1), and coverage of uncertainty at the 50% and 95% levels. Boxplot, with width proportional to number of observations, show interquartile ranges with outlying scores as faded points. The target range for each set of scores is shaded in yellow._"

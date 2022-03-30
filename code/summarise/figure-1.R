@@ -1,98 +1,50 @@
-# Create figure 1: models vs. ensemble by horizon
-# Ensemble performance in 32 locations plotted at each horizon
+# Figure 3: ensemble forecasts over 2020-2021
+#   over periods of increasing variants of concern - delta and omicron
+library(here)
 library(dplyr)
 library(ggplot2)
-library(patchwork)
-
-# Set up ------------------------------------------------------------------
-# Get evaluation scores if not already present
-if (!exists("scores_model")) {source(here("code", "load", "evaluation-scores.R"))}
-# plot settings
+source(here("code", "load", "forecast-variants.R"))
 theme_set(theme_bw())
-models_ensemble_cols <- c("#9ebcda", "#8856a7")
 
-# Plot data --------------------------------------------------------------
-fig1_data <- scores_model %>%
-  mutate(horizon = factor(horizon),
-         Model = factor(is_hub, levels = c(FALSE, TRUE),
-                        labels = c("All other models", "Hub ensemble")))
+# targets
+variant_names <- c("B.1.617.2" = "Delta",
+                   "B.1.1.529" = "Omicron")
 
-# some summary values for describing figure in text
-fig1_ensemble <- fig1_data %>%
-  filter(is_hub) %>%
-  group_by(horizon, target_variable) %>%
-  summarise(median_score = median(rel_wis, na.rm = TRUE)) %>%
-  arrange(horizon) %>%
-  split(.$target_variable)
+# Get ensemble forecasts of cases in Germany at dates of variant introductions
+forecast_variants <- load_forecast_variants(load_from_local = TRUE)
 
-# Plots -------------------------------------------------------------------
-# Rel wis
-rel_wis <- fig1_data %>%
-  ggplot(aes(y = rel_wis,
-             x = horizon,
-             col = Model)) +
-  geom_boxplot(varwidth = TRUE, outlier.alpha = 0.2) +
-  geom_hline(aes(yintercept = 1), lty = 2) +
-  annotate("rect", alpha = 0.1, fill = "gold",
-           xmin = -Inf, xmax = Inf,
-           ymin = -Inf, ymax = 1) +
-  coord_cartesian(ylim = c(0, 2)) +
-  labs(y = "Scaled relative WIS",
-       x = NULL, col = NULL) +
-  scale_colour_manual(values = models_ensemble_cols) +
-  facet_wrap(~ target_variable, ncol = 2) +
-  theme(strip.background = element_blank(),
-        legend.position = "none",
-        axis.text.x = element_blank())
+# alternatively download afresh (allows any country/variant combination)
+# forecast_variants <- load_forecast_variants(load_from_local = FALSE,
+#                                             country_names = "Germany",
+#                                             variant_codes = names(variant_names))
 
-# 50% coverage
-cov_50 <- fig1_data %>%
-  ggplot(aes(y = cov_50,
-             x = horizon, col = Model)) +
-  geom_boxplot(varwidth = TRUE, outlier.alpha = 0.2) +
-  geom_hline(aes(yintercept = 0.5), lty = 2) +
-  annotate("rect", alpha = 0.1, fill = "gold",
-           xmin = -Inf, xmax = Inf,
-           ymin = 0.45, ymax = 0.55) +
-  coord_cartesian(ylim = c(0, 1)) +
-  labs(y = "50% coverage",
-       x = NULL, col = NULL) +
-  facet_wrap(~ target_variable, ncol = 2) +
-  scale_colour_manual(values = models_ensemble_cols) +
-  theme(strip.text = element_blank(),
-        strip.background = element_blank(),
-        legend.position = "none",
-        axis.text.x = element_blank())
+# figure 0 plot ----------------------------------------------
+fig1_data <- forecast_variants %>%
+  filter(location == "DE" & target_variable == "inc case") %>%
+  mutate(forecast_date = factor(forecast_date),
+         variant = recode(variant, !!!variant_names)) %>%
+  filter(quantile %in% c(0.1,0.25,0.5,0.75,0.9)) %>%
+  pivot_wider(names_from = quantile, names_prefix = "q",
+              values_from = prediction)
 
-# 95% coverage
-cov_95 <- fig1_data %>%
-  ggplot(aes(y = cov_95,
-             x = horizon, col = Model)) +
-  geom_boxplot(varwidth = TRUE, outlier.alpha = 0.2) +
-  geom_hline(aes(yintercept = 0.95), lty = 2) +
-  annotate("rect", alpha = 0.1, fill = "gold",
-           xmin = -Inf, xmax = Inf,
-           ymin = 0.90, ymax = 1) +
-  coord_cartesian(ylim = c(0, 1)) +
-  labs(y = "95% coverage",
-       x = "Weeks ahead horizon",
-       col = NULL) +
-  facet_wrap(~ target_variable, ncol = 2) +
-  scale_colour_manual(values = models_ensemble_cols) +
-  theme(strip.text = element_blank(),
-        strip.background = element_blank(),
-        legend.position = "bottom")
+figure_1 <- fig1_data %>%
+  mutate(variant = paste("Increasing %", variant)) %>%
+  ggplot(aes(x = target_end_date)) +
+  geom_point(aes(y = observed)) +
+  geom_line(aes(y = observed)) +
+  geom_line(aes(y = q0.5, col = forecast_date), alpha = 0.6) +
+  geom_ribbon(aes(ymin = q0.25, ymax = q0.75,
+                  fill = forecast_date), alpha = 0.4) +
+  geom_ribbon(aes(ymin = q0.1, ymax = q0.9,
+                  fill = forecast_date), alpha = 0.2) +
+  geom_vline(aes(xintercept = date_dominant), lty = 3) +
+  scale_x_date(date_labels = "%b %Y") +
+  scale_y_continuous(labels = scales::label_comma()) +
+  labs(x = NULL, y = "Weekly incident cases in Germany") +
+  facet_wrap(~ variant, scales = "free") +
+  theme(legend.position = "none",
+        strip.background = element_blank())
 
+ggsave(here("output", "figures", "figure-1.png"), width = 7, height = 3)
 
-# Figure ------------------------------------------------------------------
-figure_1 <-
-  rel_wis +
-  cov_50 +
-  cov_95 +
-  plot_layout(ncol = 1)
-
-ggsave(filename = here("output", "figures", "figure-1.png"),
-       plot = figure_1, width = 5, height = 7)
-
-# caption
-fig1_cap <- "_Performance of short-term forecasts aggregated across all individually submitted models and the Hub ensemble, by horizon, forecasting cases (left) and deaths (right). Performance measured by relative weighted interval score scaled against a baseline (dotted line, 1), and coverage of uncertainty at the 50% and 95% levels. Boxplot, with width proportional to number of observations, show interquartile ranges with outlying scores as faded points. The target range for each set of scores is shaded in yellow._"
+fig1_cap <- "_Ensemble forecasts of weekly incident cases in Germany over periods of increasing SARS-CoV-2 variants Delta (B.1.617.2, left) and Omicron (B.1.1.529, right). Black indicates observed data. Coloured ribbons represent each weekly forecast of 1-4 weeks ahead (showing median, 50%, and 90% probability). For each variant, forecasts are shown over an x-axis bounded by the earliest dates at which 5% and 99% of sequenced cases were identified as the respective variant of concern, while vertical dotted lines indicate the approximate date that the variant reached dominance (>50% sequenced cases)._"
