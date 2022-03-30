@@ -16,8 +16,8 @@ si_figure_1 = models_per_target %>%
   facet_wrap("target_variable") +
   theme(legend.position = "bottom")
 
-ggsave("output/figures/si-figure-1.png", plot = si_figure_1,
-       height = 5, width = 5)
+# ggsave("output/figures/si-figure-1.png", plot = si_figure_1,
+#        height = 5, width = 5)
 
 # SI figure 2: Distribution of non-hub model scores --------------
 si_fig2a <- scores_model_exhub %>%
@@ -43,5 +43,5 @@ si_figure_2 <- si_fig2a + si_fig2b + plot_layout(nrow = 1) +
     subtitle = "Comparison of scores between participating model forecasts \n and Hub ensemble of all available forecasts for each target",
     caption = paste("N =", modeller_scores$n_rel_wis - modeller_scores$score_3, "excluding", modeller_scores$score_3, "scores with scaled relative WIS > 3"))
 
-ggsave("output/figures/si-figure-2.png", plot = si_figure_2,
-       height = 3, width = 7)
+# ggsave("output/figures/si-figure-2.png", plot = si_figure_2,
+#        height = 3, width = 7)
