@@ -5,12 +5,14 @@ source(here("code", "load", "download_variant_introduction.R"))
 source(here("code", "load", "download_forecasts.R"))
 
 load_forecast_variants <- function(load_from_local = TRUE,
-                                   country_names, variant_codes) {
+                                   country_names = NULL,
+                                   variant_codes = NULL) {
 
   # optionally load from running this code previously
   if(load_from_local) {
     forecast_variants <- read_csv(here("data", "ensemble-forecast-variants.csv"))
   } else {
+    if (is.null(country_names)) {stop("Specify country names and variant codes")}
 
   # Variants ----------------------------------------------------------------
   # Variant timings - when variant increased 5-50-100%

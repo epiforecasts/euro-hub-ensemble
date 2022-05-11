@@ -13,7 +13,7 @@ variant_names <- c("B.1.617.2" = "Delta",
 # Get ensemble forecasts of cases in Germany at dates of variant introductions
 forecast_variants <- load_forecast_variants(load_from_local = TRUE)
 
-# alternatively download afresh (allows any country/variant combination)
+# alternatively download fresh (allows any country/variant combination)
 # forecast_variants <- load_forecast_variants(load_from_local = FALSE,
 #                                             country_names = "Germany",
 #                                             variant_codes = names(variant_names))

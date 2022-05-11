@@ -22,9 +22,8 @@ download_latest_eval <- function(eval_date,
   # Function to get a single weekly evaluation file
   get_given_date_eval <- function(eval_date, branch, subdir) {
     filepath <- paste0("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/", branch, "/", subdir, "/evaluation/weekly-summary/evaluation-", eval_date, ".csv")
-    eval <- read_csv(filepath, progress = FALSE, show_col_types = FALSE)
-    return(eval)
-  }
+    read_csv(filepath, progress = FALSE, show_col_types = FALSE)
+    }
 
   # Get evaluation file for a given date
   given_date_eval <- get_given_date_eval(eval_date, branch, subdir)

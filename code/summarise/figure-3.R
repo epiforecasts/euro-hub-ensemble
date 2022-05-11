@@ -37,7 +37,7 @@ ensemble_performance_by_location <- function(scores_model) {
     ggplot(aes(x = location_name, y = rel_wis,
                colour = target_variable,
                fill = target_variable)) +
-    geom_boxplot(alpha = 0.8,
+    geom_boxplot(alpha = 0.6,
                  outlier.alpha = 0.2) +
     geom_hline(aes(yintercept = 1), lty = 2) +
     # overlay ensemble as extra point
