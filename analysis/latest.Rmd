@@ -15,10 +15,10 @@ always_allow_html: yes
 ---
 
 ```{r render, include=FALSE}
-this_doc <- here::here("analysis/latest.Rmd")
+# this_doc <- here::here("analysis/latest.Rmd")
 # rmarkdown::render(this_doc,
 #                   rmarkdown::html_document(fig_caption = TRUE),
-#                   output_dir = "docs")
+#                   output_dir = "output")
 ```
 
 ```{r set-up, include=FALSE}
@@ -222,10 +222,10 @@ In conclusion, we have shown that during a rapidly evolving epidemic spreading t
 source(here("code", "summarise", "supplementary.R"))
 ```
 
-```{r si-fig-1}
+```{r si-fig-1, fig.cap=si_fig1_legend, fig.height=7, fig.width=5}
 si_figure_1
 ```
 
-```{r si-fig-2}
+```{r si-fig-2, fig.cap=si_fig2_legend, fig.height=3, fig.width=7}
 si_figure_2
 ```

@@ -5,6 +5,7 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(lubridate)
+source(here("code", "load", "download_anomalies.R"))
 here::i_am("code/load/download_latest_eval.R")
 
 # Args:
@@ -29,9 +30,8 @@ download_latest_eval <- function(eval_date,
   given_date_eval <- get_given_date_eval(eval_date, branch, subdir)
 
   # check for missing target evaluations due to anomalies
-  anomalies_path <- paste0("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/", branch, "/data-truth/anomalies/anomalies.csv")
-  anomalies <- read_csv(anomalies_path,
-                        progress = FALSE, show_col_types = FALSE) %>%
+  anomalies <- download_anomalies()
+  anomalies <- anomalies %>%
     filter(target_variable != "inc hosp") %>%
     # Get most recent evaluation date (Monday) before each target goes missing (Sunday)
     mutate(most_recent_eval = target_end_date - 5,

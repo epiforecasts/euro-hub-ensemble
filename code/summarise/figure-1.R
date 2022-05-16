@@ -3,7 +3,7 @@
 library(here)
 library(dplyr)
 library(ggplot2)
-source(here("code", "load", "forecast-variants.R"))
+source(here("code", "load", "download_variant_forecasts.R"))
 theme_set(theme_bw())
 
 # targets
@@ -11,7 +11,7 @@ variant_names <- c("B.1.617.2" = "Delta",
                    "B.1.1.529" = "Omicron")
 
 # Get ensemble forecasts of cases in Germany at dates of variant introductions
-forecast_variants <- load_forecast_variants(load_from_local = TRUE)
+forecast_variants <- download_variant_forecasts(load_from_local = TRUE)
 
 # alternatively download fresh (allows any country/variant combination)
 # forecast_variants <- load_forecast_variants(load_from_local = FALSE,
@@ -40,11 +40,18 @@ figure_1 <- fig1_data %>%
   geom_vline(aes(xintercept = date_dominant), lty = 3) +
   scale_x_date(date_labels = "%b %Y") +
   scale_y_continuous(labels = scales::label_comma()) +
+  # Use a single colour for successive weeks' forecasts
+  scale_fill_hue(h = c(50,50)) +
+  scale_colour_hue(h = c(50,50)) +
+  #
   labs(x = NULL, y = "Weekly incident cases in Germany") +
   facet_wrap(~ variant, scales = "free") +
   theme(legend.position = "none",
         strip.background = element_blank())
 
-ggsave(here("output", "figures", "figure-1.png"), width = 7, height = 3)
+ggsave(here("output", "figures", "figure-1.png"),
+       width = 7, height = 3)
+
+
 
 fig1_cap <- "_Ensemble forecasts of weekly incident cases in Germany over periods of increasing SARS-CoV-2 variants Delta (B.1.617.2, left) and Omicron (B.1.1.529, right). Black indicates observed data. Coloured ribbons represent each weekly forecast of 1-4 weeks ahead (showing median, 50%, and 90% probability). For each variant, forecasts are shown over an x-axis bounded by the earliest dates at which 5% and 99% of sequenced cases were identified as the respective variant of concern, while vertical dotted lines indicate the approximate date that the variant reached dominance (>50% sequenced cases)._"

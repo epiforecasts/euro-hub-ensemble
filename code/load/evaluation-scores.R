@@ -10,6 +10,7 @@ here::i_am("code/load/evaluation-scores.R")
 # Set date of evaluation
 if (!exists("eval_date")) {eval_date <- as.Date("2022-03-07")}
 
+# Load from local csv -----------------------------------------------------
 # Optional skip download steps below and load from locally saved csv
 if (!exists("load_from_local")) {load_from_local <- TRUE}
 
@@ -18,17 +19,19 @@ if(load_from_local) {
   scores_ensemble <- read_csv(here("data", "scores-ensemble.csv"))
   message("Scores loaded from csvs saved in 'data/'")
 } else {
-# Otherwise download from Github repo, continued below
+
+# Otherwise download from Github repo ------------------------------------
   message("Loading scores from Github")
   source(here("code", "load", "download_latest_eval.R"))
 
   # Individual model evaluation ---------------------------------------------
   scores_model <- download_latest_eval(eval_date, "main", "",
                                        weeks_included = "All",
-                                       target_variables = c("inc case", "inc death"))
+                                       target_variables = c("inc case",
+                                                            "inc death"))
 
   # Exclusions - models designated "other"
-  source(here("code", "load", "download_model_metadata.R"))
+  source(here("code", "load", "download_metadata.R"))
   metadata_other <- download_model_metadata() %>%
     filter(team_model_designation == "other") %>%
     pull(model_abbr)
@@ -55,9 +58,11 @@ if(load_from_local) {
 
   # Separately created retrospective ensemble scores --------------------------
   scores_ensemble <- download_latest_eval(eval_date = eval_date,
-                                          branch = "assess-ensembles", subdir = "ensembles",
+                                          branch = "assess-ensembles",
+                                          subdir = "ensembles",
                                           weeks_included = "All",
-                                          target_variables = c("inc case", "inc death"))
+                                          target_variables = c("inc case",
+                                                               "inc death"))
 
   # Include only 4 ensemble models
   scores_ensemble <- scores_ensemble %>%

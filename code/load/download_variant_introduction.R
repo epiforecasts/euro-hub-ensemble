@@ -23,7 +23,7 @@ download_variant_introduction <- function(country_names = NULL,
     filter(daily_date == min(daily_date))
 
   # get data
-  variants <- read_csv("https://opendata.ecdc.europa.eu/covid19/virusvariant/csv/data.csv")
+  variants <- read_csv("https://opendata.ecdc.europa.eu/covid19/virusvariant/csv/data.csv", progress = FALSE, show_col_types = FALSE)
   if (is.null(variant_codes)) {variant_codes <- unique(variants$variant)}
   if (is.null(country_names)) {country_names <- unique(variants$country)}
 

@@ -3,47 +3,59 @@ library(readr)
 library(purrr)
 library(tidyr)
 library(covidHubUtils)
+library(gh)
+source(here("code", "load", "download_metadata.R"))
+here::i_am("code/load/download_forecasts.R")
 
-# Download forecasts ------------------------------------------------------
-download_forecasts_with_observed <- function(models, forecast_dates) {
+# Get forecasts from a single model at specified forecast dates --------------
+## example: get all forecasts made by one model
+# one_model <- download_model_forecasts(model_name = "EuroCOVIDhub-ensemble")
 
-  # Get truth data with anomalies removed ------------------------------------
-  raw_truth <- covidHubUtils::load_truth(truth_source = "JHU",
-                                         temporal_resolution = "weekly",
-                                         hub = "ECDC")
-  ## get anomalies
-  anomalies <- read_csv("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/main/data-truth/anomalies/anomalies.csv")
+download_model_forecasts <- function(model_name, forecast_dates = NULL) {
+  # If forecast dates are not specified, get all available forecast dates
+  if (is.null(forecast_dates)) {
+    model_files <- gh(paste0("/repos/covid19-forecast-hub-europe/covid19-forecast-hub-europe/contents/data-processed/", model_name, "?recursive=1"))
+    model_files <- transpose(model_files)
+    all_paths <- model_files[["download_url"]]
+    forecast_paths <- all_paths[grepl("\\.csv", all_paths)]
+  } else {
+    # If forecast dates are specified, construct download url directly
+    forecast_paths <- map_chr(forecast_dates,
+                          ~ paste0("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/main/data-processed/",
+                                 model_name, "/",
+                                 .x, "-",
+                                 model_name, ".csv"))
+  }
+  # Read URLs
+  safely_read_csv <- safely(~ read_csv(., progress = FALSE,
+                                       show_col_types = FALSE))
+  forecasts <- map(forecast_paths, ~ safely_read_csv(.x)) %>%
+    transpose()
+  forecasts <- bind_rows(forecasts$result) %>%
+    mutate(model = model_name)
+  closeAllConnections()
 
-  truth <- anti_join(raw_truth, anomalies) %>%
-    select(location, location_name, target_variable, target_end_date,
-           observed = value)
-
-  # Get forecasts -----------------------------------------------------------
-  forecasts <- map2_dfr(.x = models, .y = forecast_dates,
-                        ~ read_csv(paste0("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/main/data-processed/",
-                                          .x, "/", .y, "-", .x, ".csv")) %>%
-                          mutate(model = .x))
-
-  # Clean forecasts ---------------------------------------------------------
-  forecasts <- forecasts %>%
-    separate(target, into = c("horizon", "target_variable"), sep = " wk ahead ") %>%
-    mutate(horizon = as.numeric(horizon)) %>%
-    rename(prediction = value) %>%
-    left_join(truth, by = c("location", "target_end_date", "target_variable"))
-
-  ## remove forecasts made directly after a data anomaly
-  forecasts <- forecasts %>%
-    mutate(previous_end_date = forecast_date - 2) %>%
-    left_join(anomalies %>%
-                rename(previous_end_date = target_end_date),
-              by = c("target_variable",
-                     "location", "location_name",
-                     "previous_end_date")) %>%
-    filter(is.na(anomaly)) %>%
-    select(-anomaly, -previous_end_date)
+  if (nrow(forecasts) > 0) {
+    print(paste("Downloaded", model_name))
+  }
 
   return(forecasts)
-
 }
 
-
+# Get forecasts from multiple models ---------------------------------------
+## example: get forecasts from specified dates made by specified models
+# multiple_models <- download_forecasts(model_names = c("BIOCOMSC-Gompertz",
+#                                                 "EuroCOVIDhub-ensemble"),
+#                                 forecast_dates = c("2021-03-08", "2021-04-26"))
+download_forecasts <- function(model_names = NULL, forecast_dates = NULL) {
+  if (is.null(model_names)) {
+    model_names <- download_model_names()
+  }
+  if (is.null(forecast_dates)) {
+    forecast_dates <- get_forecast_dates()
+  }
+  forecasts <- map_dfr(model_names,
+                       ~ download_model_forecasts(model_name = .x,
+                                                  forecast_dates = forecast_dates))
+  return(forecasts)
+}
