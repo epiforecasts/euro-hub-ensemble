@@ -1,5 +1,5 @@
 library(dplyr)
-library(readr)
+library(vroom)
 library(purrr)
 library(tidyr)
 library(covidHubUtils)
@@ -12,10 +12,11 @@ here::i_am("code/load/download_forecasts.R")
 # one_model <- download_model_forecasts(model_name = "EuroCOVIDhub-ensemble")
 
 download_model_forecasts <- function(model_name, forecast_dates = NULL) {
+
   # If forecast dates are not specified, get all available forecast dates
   if (is.null(forecast_dates)) {
     model_files <- gh(paste0("/repos/covid19-forecast-hub-europe/covid19-forecast-hub-europe/contents/data-processed/", model_name, "?recursive=1"))
-    model_files <- transpose(model_files)
+    model_files <- purrr::transpose(model_files)
     all_paths <- model_files[["download_url"]]
     forecast_paths <- all_paths[grepl("\\.csv", all_paths)]
   } else {
@@ -26,15 +27,18 @@ download_model_forecasts <- function(model_name, forecast_dates = NULL) {
                                  .x, "-",
                                  model_name, ".csv"))
   }
+
   # Read URLs
-  safely_read_csv <- safely(~ read_csv(., progress = FALSE,
-                                       show_col_types = FALSE))
-  forecasts <- map(forecast_paths, ~ safely_read_csv(.x)) %>%
-    transpose()
+  safely_read_csv <- safely(~ vroom::vroom(., guess_max = 50,
+                                    progress = TRUE,
+                                    show_col_types = FALSE))
+  forecasts <- purrr::map(forecast_paths, ~ safely_read_csv(.x)) %>%
+    purrr::transpose(.l = .)
+  closeAllConnections()
+  gc()
+
   forecasts <- bind_rows(forecasts$result) %>%
     mutate(model = model_name)
-  closeAllConnections()
-
   if (nrow(forecasts) > 0) {
     print(paste("Downloaded", model_name))
   }

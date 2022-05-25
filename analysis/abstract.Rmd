@@ -1,0 +1,52 @@
+---
+title: Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations
+output:
+  bookdown::pdf_document2:
+    extra_dependencies: ["colortbl"]
+    toc: false
+    number_sections: false
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+bibliography: references.bib
+link-citations: yes
+csl: ieee.csl
+always_allow_html: yes
+---
+
+```{r set-up, include=FALSE}
+# Packages
+library(knitr)
+library(here)
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
+
+# Document settings
+opts_chunk$set(eval = TRUE, echo = FALSE,
+               message = FALSE, warning = FALSE,
+               eval.after = "fig.cap")
+options(scipen=1, digits=2)
+theme_set(theme_bw())
+
+# Set latest date for evaluation
+eval_date <- as.Date("2022-03-07")
+
+# Load data: evaluation scores
+load_from_local <- TRUE # load from saved csv in "data" (FALSE starts download)
+source(here("code", "load", "evaluation-scores.R"))
+
+# Load summary numbers used in text
+source(here("code", "summarise", "data.R"))
+```
+
+# Abstract
+
+_Background_ Short-term forecasts of infectious disease burden can contribute to situational awareness and aid capacity planning. Based on best practice in other fields and recent insights in infectious disease epidemiology, one can maximise the predictive performance of such forecasts if multiple models are combined into an ensemble. Here we report on the performance of ensembles in predicting COVID-19 cases and deaths across Europe between `r hub$start_date` and `r hub$end_date`.
+
+_Methods_ We used open-source tools to develop a public European COVID-19 Forecast Hub. We invited groups globally to contribute weekly forecasts for COVID-19 cases and deaths reported from a standardised source over the next one to four weeks. Teams submitted forecasts from March 2021 using standardised quantiles of the predictive distribution. Each week we created an ensemble forecast, where each predictive quantile was calculated as the equally-weighted average (initially the mean and then from 26th July the median) of all individual models’ predictive quantiles. We measured the performance of each model using the relative Weighted Interval Score (WIS), comparing models' forecast accuracy relative to all other models. We retrospectively explored alternative methods for ensemble forecasts, including weighted averages based on models' past predictive performance.
+
+_Results_ Over `r hub$n_weeks` weeks we collected and combined up to `r modellers$n_model` forecast models for 32 countries. We found a weekly ensemble had a consistently strong performance across countries over time. Across all horizons and locations, the ensemble performed better on relative WIS than `r hub_scores$vs_models$Cases$p_better`% of participating models' forecasts of incident cases (with a total N=`r hub_scores$vs_models$Cases$n`), and `r hub_scores$vs_models$Deaths$p_better`% of participating models' forecasts of deaths (N=`r hub_scores$vs_models$Deaths$n`). Across a one to four week time horizon, ensemble performance declined with longer forecast periods when forecasting cases, but remained stable over four weeks for incident death forecasts. In every forecast across 32 countries, the ensemble outperformed most contributing models when forecasting either cases or deaths, frequently outperforming all of its individual component models. Among several choices of ensemble methods we found that the most influential and best choice was to use a median average of models instead of using the mean, regardless of methods of weighting component forecast models.
+
+_Conclusions_ Our results support the use of combining forecasts from individual models into an ensemble in order to improve predictive performance across epidemiological targets and populations during infectious disease epidemics. Our findings further suggest that median ensemble methods yield better predictive performance more than ones based on means. Our findings also highlight that forecast consumers should place more weight on incident death forecasts than incident case forecasts at forecast horizons greater than two weeks.
+
+_Code and data availability_ All data and code are publicly available on Github: [covid19-forecast-hub-europe/euro-hub-ensemble](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble).

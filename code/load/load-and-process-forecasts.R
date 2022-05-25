@@ -1,4 +1,5 @@
 # Get all forecasts
+library(here)
 library(dplyr)
 source(here("code", "load", "download_metadata.R"))
 source(here("code", "load", "download_forecasts.R"))
@@ -22,15 +23,25 @@ eval_date <- as.Date("2022-03-07")
 forecast_dates <- get_forecast_dates(max_date = eval_date)
 
 # Specify models - all those not designated "other"
-model_names <- download_model_metadata()
-model_names <- filter(model_names,
+metadata <- download_model_metadata()
+## ignore warnings about incomplete final line
+model_names <- filter(metadata,
                       team_model_designation != "other") %>%
   pull(model_abbr)
 
 # Get forecasts
 forecasts_raw <- download_forecasts(model_names = model_names,
                                     forecast_dates = forecast_dates)
-# write_csv(forecasts_raw, "raw-forecasts.csv")
+write_csv(forecasts_raw, "raw-forecasts.csv")
 
+# Get any forecasts not yet downloaded
+remaining_models <- model_names[!model_names %in% forecasts_raw$model]
+remaining_forecasts_raw <- download_forecasts(model_names = remaining_models,
+                                    forecast_dates = forecast_dates)
+forecasts <- bind_rows(forecasts_raw, remaining_forecasts_raw)
+write_csv(forecasts, "raw-forecasts.csv")
+
+
+# Add observed data and remove anomalies
 forecasts_processed <- process_forecasts(forecasts_raw, exclude_anomalies = TRUE)
 forecasts <- filter(forecasts_processed, forecast_date <= eval_date)

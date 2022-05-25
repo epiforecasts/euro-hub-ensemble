@@ -1,6 +1,5 @@
 ---
-title: Predictive performance of multi-model ensemble forecasts of COVID-19 across
-  European nations
+title: Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations
 output:
   bookdown::pdf_document2:
     extra_dependencies: ["colortbl"]
@@ -47,7 +46,8 @@ source(here("code", "load", "evaluation-scores.R"))
 source(here("code", "summarise", "data.R"))
 ```
 
-_Order tbc;_ Katharine Sherratt, Hugo Gruson, _Any co-authors_, _Team authors_, _Advisory team authors_, _ECDC authors_, Johannes Bracher, Sebastian Funk
+Sherratt, K., Gruson, H., Niehus, R., Grah, R., Sandman, F., Johnson, H., Prasse, B., Ullrich, A., Wolffram, D., Deuschel, J., Bosse, NI., Srivastava, A., Mingione, M., Sheldon, D., Wang, Y., Reich, NG., Gibson, G., Wattanachit, N., Ray, EL., Farcomeni, A., Lovison, G., Parolini, N., Ardenghi, G., Ziarelli, G., Tarantino, B., Giudici, P., Pribylova, L., Eclerová, V., Gogolewski, K., Gambin, A., Szczurek, E., Alaimo Di Loro, P., Villanueva, I., Català, M., Prats, C., Álvarez, E., Alonso, S., López, D., Rodloff, A., Zimmermann, T., Bartolucci, F., Pennoni, F., Baccam, P., Gurung, H., Stage, S., Suchoski, B., Barbarossa, MV., Fuhrmann, J., Hotz, T., Heyder, S., Burgard, JP., Rakowski, F., Niedzielewski, K., Semeniuk, M., Adiga, A., Hurt, B., Lewis, B., Porebski, P., Venkatramanan, S., Wang, L., Marathe, M., Bartczuk, R., Zielinski, J., Radwan, M., Nowosielski, J., Gruziel-Slomka, M., Kraus, A., Kraus, D., Dreger, F., Moszynski, A., Krupa, B., Kisielewski, J., Aznarte, JL., Pérez Álvarez, C., Reina, B., Maruotti, A., Jona Lasinio, G., Divino, F., Holger, K., Kheifetz, Y., Scholz, M., Rodiah, I., Lange, B., Bock, W., Kuhlmann, A., Mohring, J., Leithäuser, N., Wlazlo, J., Schneider, J., Mohr, S., Dehning, J., Priesemann, V., Abbott, S., Pottier, L., E. Singh, D., Guzman-Merino, M., Krymova, E., Thanou, D., Bejar, B., Sun, T., Obozinski, G., Li, ML., Dimitris, B., Saksham, S., Montero-Manso, P., Budzinski, J., Bracher, J., Funk, S.
+
 
 # Abstract
 
