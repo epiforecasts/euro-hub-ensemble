@@ -1,9 +1,14 @@
 name: "hub-ensemble"
 output_dir: ../docs
 navbar:
-  title: "European Covid-19 Forecast Hub: Ensembles"
+  title: "Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations"
   left:
-  - text: Edit text
-    href: https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/main/analysis/2022-03-30.Rmd
+  - text: Report
+    href: https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/main/output/latest.pdf
+  - text: Supplement
+    href: https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/blob/main/output/supplementary.pdf
   - text: Code
-    href: https://github.com/kathsherratt/euro-hub-ensemble/
+    href: https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble
+  right:
+  - text: European COVID-19 Forecast Hub
+    href: https://covid19forecasthub.eu/index.html
