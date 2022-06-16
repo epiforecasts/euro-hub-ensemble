@@ -21,7 +21,8 @@ si_figure_1 <- models_per_target %>%
   scale_fill_viridis_c(direction = -1, breaks = c(100, 300, 500)) +
   labs(x = "Horizon", y = NULL, fill = "Number of forecasts") +
   facet_wrap("target_variable") +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom",
+        strip.background = element_blank())
 
 si_fig1_legend <- "Total number of forecasts included in evaluation, by target location, week ahead horizon, and variable"
 
@@ -93,13 +94,27 @@ team_df <-
     .keep = "unused"
   ) %>%
   arrange(tolower(model_abbr))
+  # select(link, model_abbr, team_name, website_url, methods) %>%
+  # mutate(
+  #   md_link = glue::glue("[Metadata]({link})"),
+  #   website = glue::glue("[Website]({website_url})"),
+  #   .keep = "unused"
+  # ) %>%
+  # arrange(tolower(model_abbr))
+
+# team_table <- team_df  %>%
+#   relocate(
+#     "Model name" = model_abbr,
+#     "Affiliation" = team_name,
+#     "Methods" = methods,
+#     "Metadata" = md_link,
+#     "Website" = website)
 
 team_table <- team_df  %>%
   relocate(
-    "Model name" = model_abbr,
+    "Model" = model_abbr,
     "Affiliation" = team_name,
     "Methods" = methods,
-    "Complete metadata" = md_link
+    "Metadata" = md_link
   ) %>%
-  kable(format = "markdown", caption = "Teams participating in the European Forecast Hub contributing a model between March 2021 - March 2022") %>%
-  kable_styling(latex_options = "striped")
+  knitr::kable(format = "markdown")

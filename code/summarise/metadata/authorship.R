@@ -5,6 +5,7 @@ library(stringr)
 library(tidyr)
 library(janitor)
 library(googlesheets4)
+library(tibble)
 
 # Set up
 gs4_deauth()
@@ -70,23 +71,33 @@ writeLines(institution_text,
 
 # create medrxiv csv ------------------------------------------------------
 medrxiv <- authors %>%
-  mutate(corresponding = ifelse(last_name == "Sherratt", TRUE, NA))
+  mutate(corresponding = ifelse(last_name == "Sherratt", TRUE, NA),
+         "Suffix" = NA,
+         "Home Page URL" = NA,
+         "Collaborative Group/Consortium" = NA)
 
-medrxiv_headers <-  c("Email" = "email",
-                      "Institution" = "institution",
-                      "First Name" = "first_name",
-                      "Middle Name(s)/Initial(s)" = "middle_name_s_initial_s",
-                      "Last Name" = "last_name",
-                      "Corresponding Author" = "corresponding",
-                      "ORCiD" = "or_ci_d")
+medrxiv_headers <- c("Email" = "email",
+             "Institution" = "institution",
+             "First Name" = "first_name",
+             "Middle Name(s)/Initial(s)" = "middle_name_s_initial_s",
+             "Last Name" = "last_name",
+             "Suffix" = "Suffix",
+             "Corresponding Author" = "corresponding",
+             "Home Page URL" = "Home Page URL",
+             "Collaborative Group/Consortium" = "Collaborative Group/Consortium",
+             "ORCiD" = "or_ci_d")
 
-medrxiv <- select(medrxiv, all_of(medrxiv_headers))
-readr::write_csv(medrxiv, here::here("output", "metadata",
-                                     "medrxiv-authorship.csv"))
+medrxiv <- select(medrxiv, all_of(medrxiv_headers)) %>%
+  mutate(across(.cols = everything(),
+               ~ iconv(., from = "UTF-8", to = "ASCII//TRANSLIT")))
+
+readr::write_tsv(medrxiv,
+                 here::here("output", "metadata", "medrxiv-authorship.tsv"),
+                 na = "")
 
 # Table of authors by model ------------------------------------
-author_list_models <- authors %>%
-  select(author_name, institution, abbreviated_team_name, country)
+# author_list_models <- authors %>%
+#   select(author_name, institution, abbreviated_team_name, country)
 
 # checks ------------------------------------------------------------------
 # author_model <- read_sheet("https://docs.google.com/spreadsheets/d/19hS7r7y126J3BPBhJa20rHApFu3Hx1DQEWe7av7fX68/",

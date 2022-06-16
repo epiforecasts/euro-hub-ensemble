@@ -1,18 +1,19 @@
 ---
-title: Supplementary information 
+title: Supplement
 output:
-  bookdown::html_document2:
-      toc: true
-      number_sections: false
   bookdown::pdf_document2:
     extra_dependencies: ["colortbl"]
     toc: false
     number_sections: false
+  bookdown::html_document2:
+      toc: true
+      number_sections: false
   bookdown::word_document2: default
 always_allow_html: yes
 ---
 
-```{r set-up, include=FALSE}
+```{r si-set-up, include=FALSE}
+# set up -----------------------------------
 # Packages
 library(knitr)
 library(here)
@@ -34,29 +35,37 @@ eval_date <- as.Date("2022-03-07")
 load_from_local <- TRUE # load from saved csv in "data" (FALSE starts download)
 ```
 
-_Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations_
+Supplementary information: _Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations_
 
 ```{r get-si, include = FALSE}
 # Get SI figures
 source(here("code", "summarise", "supplementary.R"))
 ```
 
-#### Participating teams
+### Participating teams
 
 The following teams participated in the European Forecast Hub by contributing forecasts over the study period. Information below is taken from metadata provided by each team.
 
-```{r teams-table}
+```{r team-table}
 team_table
+# team_table %>%
+#   kable(format = "markdown", booktabs = T,
+#         caption = "Teams participating in the European Forecast Hub contributing a model between March 2021 - March 2022") %>%
+#   kableExtra::kable_styling(kable_input = .,
+#                             full_width = TRUE,
+#                             latex_options = c("striped", "scale_down"))
 ```
 
-#### Summary of evaluated forecasts
-
-```{r si-fig-1, fig.cap=si_fig1_legend, fig.height=7, fig.width=5}
+ \newpage
+ 
+### Summary of evaluated forecasts
+```{r si-fig-1, fig.cap=si_fig1_legend, fig.height=6, fig.width=5}
 si_figure_1
 ```
 
-#### Comparison of contributed forecasts and the Hub ensemble
-
+\newpage
+ 
+### Comparison of contributed forecasts and the Hub ensemble
 ```{r si-fig-2, fig.cap=si_fig2_legend, fig.height=3, fig.width=7}
 si_figure_2
 ```
