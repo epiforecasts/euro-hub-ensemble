@@ -5,7 +5,9 @@ output:
     extra_dependencies: ["colortbl"]
     toc: false
     number_sections: false
-  bookdown::html_document2: default
+  bookdown::html_document2:
+    toc: true
+    number_sections: false
   bookdown::word_document2: default
 bibliography: references.bib
 link-citations: yes
@@ -35,6 +37,9 @@ opts_chunk$set(eval = TRUE, echo = FALSE,
 options(scipen=1, digits=2)
 theme_set(theme_bw())
 
+# Include supplementary information in the output?
+include_si <- TRUE
+
 # Set latest date for evaluation
 eval_date <- as.Date("2022-03-07")
 
@@ -47,7 +52,7 @@ source(here("code", "summarise", "data.R"))
 ```
 
 ```{r authors, results='asis'}
-# Get authors
+# Get author list
 pre_clearance <- TRUE
 source(here("code", "summarise", "metadata", "authorship.R"))
 authors <- readLines(here("output", "metadata", "authors.txt"))
@@ -63,15 +68,15 @@ cat(institutions)
 
 # Abstract
 
-_Background_ Short-term forecasts of infectious disease burden can contribute to situational awareness and aid capacity planning. Based on best practice in other fields and recent insights in infectious disease epidemiology, one can maximise the predictive performance of such forecasts if multiple models are combined into an ensemble. Here we report on the performance of ensembles in predicting COVID-19 cases and deaths across Europe between `r hub$start_date` and `r hub$end_date`.
+_Background:_ Short-term forecasts of infectious disease burden can contribute to situational awareness and aid capacity planning. Based on best practice in other fields and recent insights in infectious disease epidemiology, one can maximise the predictive performance of such forecasts if multiple models are combined into an ensemble. Here we report on the performance of ensembles in predicting COVID-19 cases and deaths across Europe between `r hub$start_date` and `r hub$end_date`.
 
-_Methods_ We used open-source tools to develop a public European COVID-19 Forecast Hub. We invited groups globally to contribute weekly forecasts for COVID-19 cases and deaths reported from a standardised source over the next one to four weeks. Teams submitted forecasts from March 2021 using standardised quantiles of the predictive distribution. Each week we created an ensemble forecast, where each predictive quantile was calculated as the equally-weighted average (initially the mean and then from 26th July the median) of all individual models’ predictive quantiles. We measured the performance of each model using the relative Weighted Interval Score (WIS), comparing models' forecast accuracy relative to all other models. We retrospectively explored alternative methods for ensemble forecasts, including weighted averages based on models' past predictive performance.
+_Methods:_ We used open-source tools to develop a public European COVID-19 Forecast Hub. We invited groups globally to contribute weekly forecasts for COVID-19 cases and deaths reported from a standardised source over the next one to four weeks. Teams submitted forecasts from March 2021 using standardised quantiles of the predictive distribution. Each week we created an ensemble forecast, where each predictive quantile was calculated as the equally-weighted average (initially the mean and then from 26th July the median) of all individual models’ predictive quantiles. We measured the performance of each model using the relative Weighted Interval Score (WIS), comparing models' forecast accuracy relative to all other models. We retrospectively explored alternative methods for ensemble forecasts, including weighted averages based on models' past predictive performance.
 
-_Results_ Over `r hub$n_weeks` weeks we collected and combined up to `r modellers$n_model` forecast models for 32 countries. We found a weekly ensemble had a consistently strong performance across countries over time. Across all horizons and locations, the ensemble performed better on relative WIS than `r hub_scores$vs_models$Cases$p_better`% of participating models' forecasts of incident cases (with a total N=`r hub_scores$vs_models$Cases$n`), and `r hub_scores$vs_models$Deaths$p_better`% of participating models' forecasts of deaths (N=`r hub_scores$vs_models$Deaths$n`). Across a one to four week time horizon, ensemble performance declined with longer forecast periods when forecasting cases, but remained stable over four weeks for incident death forecasts. In every forecast across 32 countries, the ensemble outperformed most contributing models when forecasting either cases or deaths, frequently outperforming all of its individual component models. Among several choices of ensemble methods we found that the most influential and best choice was to use a median average of models instead of using the mean, regardless of methods of weighting component forecast models.
+_Results:_ Over `r hub$n_weeks` weeks we collected and combined up to `r modellers$n_model` forecast models for 32 countries. We found a weekly ensemble had a consistently strong performance across countries over time. Across all horizons and locations, the ensemble performed better on relative WIS than `r hub_scores$vs_models$Cases$p_better`% of participating models' forecasts of incident cases (with a total N=`r hub_scores$vs_models$Cases$n`), and `r hub_scores$vs_models$Deaths$p_better`% of participating models' forecasts of deaths (N=`r hub_scores$vs_models$Deaths$n`). Across a one to four week time horizon, ensemble performance declined with longer forecast periods when forecasting cases, but remained stable over four weeks for incident death forecasts. In every forecast across 32 countries, the ensemble outperformed most contributing models when forecasting either cases or deaths, frequently outperforming all of its individual component models. Among several choices of ensemble methods we found that the most influential and best choice was to use a median average of models instead of using the mean, regardless of methods of weighting component forecast models.
 
-_Conclusions_ Our results support the use of combining forecasts from individual models into an ensemble in order to improve predictive performance across epidemiological targets and populations during infectious disease epidemics. Our findings further suggest that median ensemble methods yield better predictive performance more than ones based on means. Our findings also highlight that forecast consumers should place more weight on incident death forecasts than incident case forecasts at forecast horizons greater than two weeks.
+_Conclusions:_ Our results support the use of combining forecasts from individual models into an ensemble in order to improve predictive performance across epidemiological targets and populations during infectious disease epidemics. Our findings further suggest that median ensemble methods yield better predictive performance more than ones based on means. Our findings also highlight that forecast consumers should place more weight on incident death forecasts than incident case forecasts at forecast horizons greater than two weeks.
 
-_Code and data availability_ All data and code are publicly available on Github: covid19-forecast-hub-europe/euro-hub-ensemble.
+_Code and data availability:_ All data and code are publicly available on Github: [covid19-forecast-hub-europe/euro-hub-ensemble](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble).
 
 # Background
 
@@ -96,7 +101,7 @@ We developed infrastructure to host and analyse prospective forecasts of COVID-1
 
 We sought forecasts for the incidence of COVID-19 as the total reported number of cases and deaths per week. We considered forecasts for 32 countries in Europe, including all countries of the European Union, European Free Trade Area, and the United Kingdom. We compared forecasts against observed data reported for each country by Johns Hopkins University (JHU, [@dongInteractiveWebbasedDashboard2020]). JHU data sources included a mix of national and aggregated subnational data. We aggregated incidence over the Morbidity and Mortality Weekly Report (MMWR) epidemiological week definition of Sunday through Saturday.
 
-Teams could express their uncertainty around any single forecast target by submitting predictions for up to 23 quantiles (from 0.01 to 0.99) of the predictive probability distribution. Teams could also submit a single point forecast. At the first submission we asked teams to add a pre-specified set of metadata briefly describing the forecasting team and methods. No restrictions were placed on who could submit forecasts. To increase participation we actively contacted known forecasting teams across Europe and the US and advertised among the ECDC network. Teams submitted a broad spectrum of model types, ranging from mechanistic to empirical models, agent-based and statistical models, and ensembles of multiple quantitative or qualitative models (described at [@europeancovid-19forecasthubCommunity]). We maintain a full project specification with a detailed submissions protocol [@europeancovid-19forecasthubCovid19forecasthubeuropeWiki].
+Teams could express their uncertainty around any single forecast target by submitting predictions for up to 23 quantiles (from 0.01 to 0.99) of the predictive probability distribution. Teams could also submit a single point forecast. At the first submission we asked teams to add a pre-specified set of metadata briefly describing the forecasting team and methods (see supplementary information (SI)). No restrictions were placed on who could submit forecasts. To increase participation we actively contacted known forecasting teams across Europe and the US and advertised among the ECDC network. Teams submitted a broad spectrum of model types, ranging from mechanistic to empirical models, agent-based and statistical models, and ensembles of multiple quantitative or qualitative models (described at [@europeancovid-19forecasthubCommunity]). We maintain a full project specification with a detailed submissions protocol [@europeancovid-19forecasthubCovid19forecasthubeuropeWiki].
 
 We collected forecasts submitted weekly in real time over the `r hub$n_weeks` week period from `r hub$start_date` to `r hub$end_date`. Teams submitted at latest two days after the complete dataset for the latest forecasting week became available each Sunday. We implemented an automated validation programme to check that each new forecast conformed to standardised formatting. Forecast validation ensured a monotonic increase of predictions with each increasing quantile, integer-valued non-negative counts of predicted cases, as well as consistent date and location definitions.
 
@@ -145,7 +150,7 @@ source(here("code", "summarise", "figure-1.R"))
 figure_1
 ```
 
-The number of models contributing to each ensemble forecast varied over time and by forecasting target (SI Figure 1). Over the whole study period `r modellers$n_team` independently participating forecasting teams contributed results from `r modellers$n_model` unique forecasting models. Not all modellers created forecasts for all locations, horizons, or variables. At most, `r modellers$targets$max_scores$n_models` models contributed forecasts for `r modellers$targets$max_scores$target_variable` in `r modellers$targets$max_scores$location_name` at the `r modellers$targets$max_scores$horizon` week horizon, with an accumulated `r modellers$targets$max_scores$n_scores` forecasts for that single target over the study period. In contrast, `r modellers$targets$min_scores$target_variable` in `r modellers$targets$min_scores$location` at the `r modellers$targets$min_scores$horizon` week horizon saw the smallest number of forecasts, with only `r modellers$targets$min_scores$n_models` independent models contributing a total `r modellers$targets$min_scores$n_scores` forecasts. Similarly, not all teams forecast across all quantiles of the predictive distribution for each target, with only `r modellers$n_model_wis` models providing the full set of 23 quantiles. No ensemble forecast was composed of less than `r modellers$targets$min_models` independent models.
+Over the whole study period, `r modellers$n_team` independently participating forecasting teams contributed results from `r modellers$n_model` unique forecasting models (see supplementary information (SI), Table 1). The number of models contributing to each ensemble forecast varied over time and by forecasting target (SI Figure 1). Not all modellers created forecasts for all locations, horizons, or variables. At most, `r modellers$targets$max_scores$n_models` models contributed forecasts for `r modellers$targets$max_scores$target_variable` in `r modellers$targets$max_scores$location_name` at the `r modellers$targets$max_scores$horizon` week horizon, with an accumulated `r modellers$targets$max_scores$n_scores` forecasts for that single target over the study period. In contrast, `r modellers$targets$min_scores$target_variable` in `r modellers$targets$min_scores$location` at the `r modellers$targets$min_scores$horizon` week horizon saw the smallest number of forecasts, with only `r modellers$targets$min_scores$n_models` independent models contributing a total `r modellers$targets$min_scores$n_scores` forecasts. Similarly, not all teams forecast across all quantiles of the predictive distribution for each target, with only `r modellers$n_model_wis` models providing the full set of 23 quantiles. No ensemble forecast was composed of less than `r modellers$targets$min_models` independent models.
 
 Using all models and the ensemble, we created `r nrow(scores_model)` forecasting scores where each score summarises a unique combination of forecasting model, variable, country, and week ahead horizon (SI Figure 2). We visually compared the absolute performance of forecasts in predicting numbers of incident cases and deaths. We observed that forecasts predicted well in times of stable epidemic behaviour, while struggling to accurately predict at longer horizons around inflection points, for example during rapid changes in population-level behaviour or surveillance. Forecast models varied widely in their ability to predict and account for the introduction of new variants, giving the ensemble forecast over these periods a high level of uncertainty (Figure \@ref(fig:example-ensemble)).
 
@@ -225,17 +230,3 @@ In conclusion, we have shown that during a rapidly evolving epidemic spreading t
 
  \newpage
 
-# Supplementary information
-
-```{r get-si}
-# Get SI figures
-source(here("code", "summarise", "supplementary.R"))
-```
-
-```{r si-fig-1, fig.cap=si_fig1_legend, fig.height=7, fig.width=5}
-si_figure_1
-```
-
-```{r si-fig-2, fig.cap=si_fig2_legend, fig.height=3, fig.width=7}
-si_figure_2
-```
