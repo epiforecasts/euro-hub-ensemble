@@ -1,4 +1,4 @@
-# Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations
+# [Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024)
 
 --- **Now online as a [pre-print](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024)** ---
 
