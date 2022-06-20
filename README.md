@@ -18,4 +18,8 @@ A quick guide to this repository:
    
 - [data](data): evaluation scores for ensemble and individual models, downloaded from the [European COVID-19 Forecast Hub repository](https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe)
 
-Please open an [Issue](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/issues) to comment or discuss code.
+All feedback is very welcome - just open an [Issue](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/issues) with your comments. I would  especially appreciate thoughts on:
+
+- Bugs or potential improvements to code or documentation
+- Ease of use as an example for extracting, transforming, and loading Forecast Hub data (particularly from the perspective of users who are less/un-familiar with using data stored on Github)
+- Further thoughts and priorities for the analysis of COVID-19 individual and ensemble forecasts
