@@ -21,7 +21,7 @@ Each folder has a README with a more detailed guide to its contents.
 
 ### Feedback
 
-All feedback is very welcome - just open an [Issue](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/issues) with your comments. I would  especially appreciate thoughts on:
+All feedback is very welcome - just open an [Issue](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/issues) with your comments. We would  especially appreciate thoughts on:
 
 - Bugs or potential improvements to code or documentation
 - Ease of use as an example for extracting, transforming, and loading Forecast Hub data (particularly from the perspective of users who are less/un-familiar with using data stored on Github)
