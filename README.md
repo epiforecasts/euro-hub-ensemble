@@ -1,23 +1,28 @@
-This repository provides code and data for the paper: *Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations*, in draft from the European COVID-19 Forecast Hub.
+# [Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024)
 
-A quick guide to this repository:
-
-- [output](output): The [latest draft](output/latest.pdf) as a complete text generated from a rendered `rmarkdown` file, plus dated previous versions of the text 
-
-- [analysis](analysis): raw `rmarkdown` files containing blended text and code
-
-- [code](code): data loading and cleaning code used to support the main [analysis](analysis/latest.Rmd)
-
-   - [load](code/load): functions to download forecasts and evaluation scores from the Forecast Hub Github repository
-   
-   - [summarise](code/summarise): create figures and summary statistics
-   
-- [data](data): evaluation scores for ensemble and individual models
-
-Please open an [Issue](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/issues) to comment or discuss code.
+--- **Now online as a [pre-print](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024)** ---
 
 ---
 
-# Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations
+This repository provides code and data for the paper: *Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations*, analysing a year of COVID-19 forecasts from the [European COVID-19 Forecast Hub](https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe).
 
-_Order tbc;_ Katharine Sherratt, Hugo Gruson, _Any co-authors_, _Team authors_, _Advisory team authors_, _ECDC authors_, Johannes Bracher, Sebastian Funk
+### Quick start
+
+A brief guide to the workflow of files in this repository:
+
+- [output](output): The [latest manuscript](output/latest.pdf) and [supplement](output/supplementary.pdf), plus previous dated drafts of the text
+- [analysis](analysis): raw `rmarkdown` files, containing blended text and code to produce the `output`
+- [code](code): data extraction, loading and transformation code used to support the main [analysis](analysis/latest.Rmd)
+   - [load](code/load): functions to download forecasts and evaluation scores from the Forecast Hub Github repository
+   - [summarise](code/summarise): uses the `load` functions to save key [datasets](data) and create figures and summary statistics used in the [analysis](analysis)
+- [data](data): key datasets used in this study, including evaluation scores for ensemble and individual models downloaded from the [European COVID-19 Forecast Hub repository](https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe)
+
+Each folder has a README with a more detailed guide to its contents.
+
+### Feedback
+
+All feedback is very welcome - just open an [Issue](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/issues) with your comments. We would  especially appreciate thoughts on:
+
+- Bugs or potential improvements to code or documentation
+- Ease of use as an example for extracting, transforming, and loading Forecast Hub data (particularly from the perspective of users who are less/un-familiar with using data stored on Github)
+- Further thoughts and priorities for the analysis of COVID-19 individual and ensemble forecasts
