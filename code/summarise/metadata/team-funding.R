@@ -1,6 +1,7 @@
 library(dplyr)
 library(stringr)
 library(tidyr)
+library(janitor)
 library(googlesheets4)
 
 # set up ------------------------------------------------------------------
@@ -70,8 +71,9 @@ muni_final <- paste0(funding_statements[[which(grepl(muni_funding, names(funding
 funding_statements[[which(grepl(muni_funding, names(funding_statements)))]] <- muni_final
 
 
-# all togethe
-funding_text <- paste(sort(unlist(funding_statements)), collapse = ". ")
+# all together
+funding_text <- paste0(paste(sort(unlist(funding_statements)), collapse = ". "),
+                      ". The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.")
 
 writeLines(funding_text,
            con = here::here("output", "metadata", "funding-statements.txt"))
