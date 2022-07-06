@@ -1,3 +1,5 @@
+library(here)
+library(readr)
 library(dplyr)
 library(vroom)
 library(purrr)
@@ -63,3 +65,49 @@ download_forecasts <- function(model_names = NULL, forecast_dates = NULL) {
                                                   forecast_dates = forecast_dates))
   return(forecasts)
 }
+
+
+# Process forecasts -------------------------------------------------------
+# Add observed data and remove anomalies
+process_forecasts <- function(forecasts, exclude_anomalies = TRUE) {
+  # tidy variables
+  forecasts <- forecasts %>%
+    separate(target, into = c("horizon", "target_variable"), sep = " wk ahead ") %>%
+    mutate(horizon = as.numeric(horizon)) %>%
+    rename(prediction = value)
+
+  if (exclude_anomalies) {
+    # get anomalies
+    anomalies <- download_anomalies()
+    exclude_by_target_end_date <- select(anomalies,
+                                         target_variable,
+                                         location, location_name,
+                                         target_end_date)
+    exclude_by_forecast_date <- select(anomalies,
+                                       target_variable, location, location_name,
+                                       forecast_date = following_forecast_date)
+    forecasts <- forecasts %>%
+      anti_join(exclude_by_target_end_date) %>%
+      anti_join(exclude_by_forecast_date)
+  }
+
+  # Download observed data and join to forecasts
+  # TODO get truth data directly from hub and aggregate to weekly
+  obs <- covidHubUtils::load_truth(truth_source = "JHU",
+                                   temporal_resolution = "weekly",
+                                   hub = "ECDC") %>%
+    select(location, target_variable, target_end_date,
+           observed = value)
+  forecasts <- left_join(forecasts, obs, by = c("location",
+                                                "target_variable",
+                                                "target_end_date"))
+
+  # add location names
+  hub_locations <- read_csv("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/main/data-locations/locations_eu.csv",
+                            progress = FALSE, show_col_types = FALSE) %>%
+    select(location_name, location)
+  forecasts <- left_join(forecasts, hub_locations, by = "location")
+
+  return(forecasts)
+}
+

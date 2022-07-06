@@ -1,33 +1,58 @@
-## Code and data
+# Guide to code
 
-Data for this project are evaluation results from comparing multiple forecasting models to observed data. [Read more about Hub evaluation](https://covid19forecasthub.eu/reports.html).
+`load` provides functions to access different types of European Forecast Hub data, with example scripts for using those functions to create a dataset of forecasts or evaluations. `summarise` creates the summary numbers and figures used in the main study.
 
-The code in this folder gets and cleans these evaluation datasets. This code is used (sourced) within the analysis files, but could also be used separately to get data for new analyses of the evaluation datasets.
+## `load`
 
-### Code
+## Scripts
 
-- `load`
+`load-and-process-forecasts.R` -  script to download forecasts and remove anomalies
 
-  - `download_latest_eval.R`
-    - Contains a single function: `download_latest_eval()`
-    - Function downloads latest evaluation from the European Forecast Hub github repository and lightly cleans
-    - Options to 
-      - specify the evaluation date (latest date until when to assess models)
-      - how many weeks models should have been evaluated over (only the most recent 10 weeks or over all time)
-      - which scores to include from evaluating forecasts of cases, deaths, and/or hospitalisations (default returns only cases and deaths)
-      - whether to download evaluations from `main` branch or alternative branch of the Forecast Hub repo
+`evaluation-scores.R` - script to load and save evaluation scores
 
-  - `download_model_metadata.R`
-    - Function: `download_model_metadata()` - helper to check metadata for all individual models in the Hub, including model designation
-  
-  - `load-evaluation-scores.R`
-    - Loads the latest evaluation scores for all individual models, and the retrospectively run alternative ensembles
-  
-- `summarise`
+## Functions
 
-  - `data.R`
-    - Uses evaluation scores to create a list of named values used in the text of the paper 
+Functions include the type of output they return in (brackets).
 
-  - Remaining files create figures and tables in the text and SI
+### Accessing forecasts
+
+`download_forecasts.R`    
+
+ - `download_model_forecasts()` - get forecasts from a single model at specified forecast dates (dataframe)
+
+ - `download_forecasts()` - get forecasts from optionally specified models at optionally specified dates (dataframe)
+
+ - `process_forecasts()` - add observed data and remove anomalies (dataframe)
+
+`download_variant_forecasts.R`
+
+   - `download_variant_forecasts()` - gets Hub ensemble forecast at timing of variant introductions (dataframe)
+
+### Accessing metadata
+
+`download_metadata.R` - collection of helper functions to access metadata about the Forecast Hub, including:
+
+ - `download_hub_metadata()` - get information about the Hub configuration, such as start date, targets (dataframe)
+
+ - `get_forecast_dates()` - get all possible weekly dates on which forecasts were made (vector)
+
+ - `download_model_names()` - get names of all forecasting models in the Hub (vector)
+
+ - `download_model_metadata()` - get metadata associated with all models in the Hub (dataframe)
+
+ - `download_anomalies()` - download dataset of anomalies found by the Forecast hub (dataframe)
+
+`download_variant_introduction.R`
+
+  - `download_variant_introduction()` - gets variants of concern dataset from ECDC; for each variant/country finds the first period with variant % of cases greater than 5% and up to 50%,  before the first peak for that variant (dataframe)
+
+### Accessing evaluation
+
+`download_latest_eval.R`    
+
+  - `download_latest_eval()` - downloads latest evaluation from the European Forecast Hub github repository ([read more about Hub evaluation](https://covid19forecasthub.eu/reports.html)), and lightly cleans. (dataframe)          
 
 
+## `summarise`
+
+These scripts create numbers, figures, and tables used in the text and SI of the `analysis`.

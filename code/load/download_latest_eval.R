@@ -5,7 +5,7 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(lubridate)
-source(here("code", "load", "download_anomalies.R"))
+source(here("code", "load", "download_metadata.R"))
 here::i_am("code/load/download_latest_eval.R")
 
 # Args:

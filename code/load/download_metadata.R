@@ -40,3 +40,11 @@ download_model_metadata <- function() {
   return(metadata)
 }
 
+
+# Anomalies ---------------------------------------------------------------
+# Download dataset of anomalies identified by Hub
+download_anomalies <- function() {
+  anomalies <- read_csv("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/main/data-truth/anomalies/anomalies.csv",
+                        progress = FALSE, show_col_types = FALSE)
+  return(anomalies)
+}
