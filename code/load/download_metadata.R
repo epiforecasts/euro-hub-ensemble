@@ -24,7 +24,7 @@ get_forecast_dates <- function(max_date = NULL) {
 # Get all available model names in data-processed
 download_model_names <- function() {
   models <- gh("/repos/covid19-forecast-hub-europe/covid19-forecast-hub-europe/contents/data-processed?recursive=true")
-  models <- unlist(transpose(models)$name)
+  models <- unlist(purrr::transpose(models)$name)
   models <- models[!grepl("schema.+yml", models)] # exclude hub schema files
 }
 
