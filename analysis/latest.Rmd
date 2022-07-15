@@ -53,7 +53,7 @@ source(here("code", "summarise", "data.R"))
 
 ```{r authors, results='asis'}
 # Get author list
-pre_clearance <- TRUE
+pre_clearance <- FALSE
 source(here("code", "summarise", "metadata", "authorship.R"))
 authors <- readLines(here("output", "metadata", "authors.txt"))
 cat(authors)
