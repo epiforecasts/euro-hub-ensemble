@@ -2,7 +2,7 @@
 
 MedRxiv: [https://doi.org/10.1101/2022.06.16.22276024](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024)
 
-[![Code DOI](https://zenodo.org/badge/434779787.svg)](https://zenodo.org/badge/latestdoi/434779787)
+Code: [![DOI](https://zenodo.org/badge/434779787.svg)](https://zenodo.org/badge/latestdoi/434779787)
 
 ---
 
