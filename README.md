@@ -1,6 +1,8 @@
 # [Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024)
 
---- **Now online as a [pre-print](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024)** ---
+MedRxiv: [https://doi.org/10.1101/2022.06.16.22276024](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024)
+
+[![Code DOI](https://zenodo.org/badge/434779787.svg)](https://zenodo.org/badge/latestdoi/434779787)
 
 ---
 
