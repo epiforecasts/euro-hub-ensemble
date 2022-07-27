@@ -10,8 +10,6 @@ library(tibble)
 # Set up
 gs4_deauth()
 
-if (!exists("pre_clearance")) {pre_clearance <- TRUE}
-
 author_types <- ordered(c("first", "second",
                           "hub", "hub_support", "model",
                           "second_last", "last"))
@@ -41,11 +39,6 @@ authors <- authors %>%
   arrange(type) %>%
   mutate(author_index = row_number()) %>%
   ungroup()
-
-if (pre_clearance) {
-  authors <- authors %>%
-    filter(clearance == FALSE)
-}
 
 institutions <- authors %>%
   select(author_index, institution) %>%
@@ -131,3 +124,17 @@ readr::write_tsv(medrxiv,
 #   arrange(info)
 #
 # write_csv(authors_metadata, here("model-authors.csv"))
+#
+
+# -------------------------------------------------------------------------
+
+# # twitter handles
+# twt <- select(metadata, twitter_handles)
+#
+#
+# # authors email
+# authors <- readr::read_tsv(here("output", "metadata", "medrxiv-authorship.tsv")) |>
+#   filter(!is.na(Email)) |>
+#   pull(Email)
+#
+# writeClipboard(paste(authors, collapse = "; "))

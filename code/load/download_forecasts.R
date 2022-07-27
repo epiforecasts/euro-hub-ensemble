@@ -6,6 +6,7 @@ library(purrr)
 library(tidyr)
 library(covidHubUtils)
 library(gh)
+library(arrow) # for fast csv loading
 source(here("code", "load", "download_metadata.R"))
 here::i_am("code/load/download_forecasts.R")
 
@@ -31,9 +32,12 @@ download_model_forecasts <- function(model_name, forecast_dates = NULL) {
   }
 
   # Read URLs
-  safely_read_csv <- safely(~ vroom::vroom(., guess_max = 50,
-                                    progress = TRUE,
-                                    show_col_types = FALSE))
+  # safely_read_csv <- safely(~ vroom::vroom(., guess_max = 50,
+  #                                   progress = TRUE,
+  #                                   show_col_types = FALSE))
+  safely_read_csv <- safely(~ arrow::read_csv_arrow(.))
+
+  #
   forecasts <- purrr::map(forecast_paths, ~ safely_read_csv(.x)) %>%
     purrr::transpose(.l = .)
   closeAllConnections()
@@ -79,6 +83,10 @@ process_forecasts <- function(forecasts, exclude_anomalies = TRUE) {
   if (exclude_anomalies) {
     # get anomalies
     anomalies <- download_anomalies()
+    # add forecast date in the following week after anomalous target
+    anomalies <- anomalies |>
+      mutate(following_forecast_date = target_end_date + 5)
+
     exclude_by_target_end_date <- select(anomalies,
                                          target_variable,
                                          location, location_name,
