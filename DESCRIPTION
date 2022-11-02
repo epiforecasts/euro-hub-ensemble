@@ -13,7 +13,6 @@ Depends:
     R (>= 3.5.0)
 Imports:
   rmarkdown,
-  workflowr,
   dplyr,
   forcats,
   gghighlight,
