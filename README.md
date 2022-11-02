@@ -6,12 +6,15 @@ Code: [![DOI](https://zenodo.org/badge/434779787.svg)](https://zenodo.org/badge/
 
 ---
 
+### This project
+
 This repository provides code and data for analysing a year of COVID-19 forecasts from the [European COVID-19 Forecast Hub](https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe).
+
+ All code is open source and anyone is welcome to freely use and adapt any part of this codebase for any purpose.
 
 You can find here:
 
-- The [latest manuscript](output/latest.pdf) in pdf
-  - The [Rmarkdown](analysis/latest.Rmd) to create the Paper
+- The latest manuscript in [pdf](output/latest.pdf) or [Rmarkdown](analysis/latest.Rmd), now published as a [pre-print](https://doi.org/10.1101/2022.06.16.22276024) and submitted to eLife
 - A [modular codebase](code) for downloading and summarising data from the European Forecast Hub
 
 All feedback is very welcome - just open an [Issue](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/issues) with your comments. We would  especially appreciate thoughts on:
@@ -20,18 +23,18 @@ All feedback is very welcome - just open an [Issue](https://github.com/covid19-f
 - Ease of use as an example for extracting, transforming, and loading Forecast Hub data (particularly from the perspective of users who are less/un-familiar with using data stored on Github)
 - Further thoughts and priorities for the analysis of COVID-19 individual and ensemble forecasts
 
-### Repository quick start
+### This repository
 
 #### Workflow
 
-A brief guide to the workflow of files in this repository:
+A brief guide to the files in this repository:
 
 - [data](data): key datasets used in this study, including evaluation scores for ensemble and individual models downloaded from the [European COVID-19 Forecast Hub repository](https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe)
-- [code](code/readme.md): data extraction, loading and transformation code used to support the main [analysis](analysis/latest.Rmd)
+- [code](code#readme): data extraction, loading and transformation code used to support the main [analysis](analysis/latest.Rmd)
  - [load](code/load): functions to download forecasts and evaluation scores from the Forecast Hub Github repository
  - [summarise](code/summarise): uses the `load` functions to save key [datasets](data) and create figures and summary statistics used in the [analysis](analysis)
-- [analysis](analysis/readme.md): raw `rmarkdown` files, containing blended text and code to produce the `output`
-- [output](output/readme.md): The [latest manuscript](output/latest.pdf) and [supplement](output/supplementary.pdf), plus previous dated drafts of the text
+- [analysis](analysis#readme): raw `rmarkdown` files, containing blended text and code to produce the `output`
+- [output](output#readme): The [latest manuscript](output/latest.pdf) and [supplement](output/supplementary.pdf), plus previous dated drafts of the text
 
 Each folder has a README with a more detailed guide to its contents.
 
