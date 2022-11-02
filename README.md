@@ -42,7 +42,10 @@ Each folder has a README with a more detailed guide to its contents.
 
 All code is in R, tested in version 4.2.1.
 
-The [DESCRIPTION](DESCRIPTION) lists packages used in the project. You can also use the [`renv`](https://rstudio.github.io/renv/index.html) package to check for dependencies with `renv::dependencies()` and install any missing with `renv::hydrate()`.
+The [DESCRIPTION](DESCRIPTION) lists packages used in the project. They are all available on CRAN, except `covidHubUtils`, the package used to load observed data. Install this with:
+```
+remotes::install_github("reichlab/covidHubUtils")
+```
 
 <details><summary>R session info</summary>
 

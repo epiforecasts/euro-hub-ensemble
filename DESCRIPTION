@@ -24,8 +24,13 @@ Imports:
   patchwork,
   purrr,
   tidyr,
-  readr
+  readr,
+  googlesheets4,
+  arrow
 Suggests:
   covidHubUtils
+Remotes:
+  reichlab/covidHubUtils
 Encoding: UTF-8
 Language: en-US
+RoxygenNote: 7.2.1
