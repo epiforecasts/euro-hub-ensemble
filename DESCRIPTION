@@ -1,13 +1,13 @@
-Package: euro-hub-ensembles
+Package: EuroHubEnsemble
 Title: Evaluating ensembles for the European COVID-19 Forecast Hub
 Version: 0.9.3
 Authors@R:
-    c(person(given = "Katharine",
-             family = "Sherratt",
-             role = "aut",
+  c(person("Katharine",
+            "Sherratt",
+             role = c("cre", "aut"),
              email = "katharine.sherratt@lshtm.ac.uk",
              comment = c(ORCID = "0000-0003-2049-3423")))
-Description:
+Description: Code and data for analysing a year of COVID-19 forecasts from the European COVID-19 Forecast Hub.
 License: MIT
 Depends:
     R (>= 3.5.0)
@@ -18,12 +18,14 @@ Imports:
   gghighlight,
   ggplot2,
   here,
+  janitor,
   knitr,
   lubridate,
   patchwork,
   purrr,
   tidyr,
-  readr,
+  readr
+Suggests:
   covidHubUtils
 Encoding: UTF-8
 Language: en-US
