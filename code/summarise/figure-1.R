@@ -1,4 +1,4 @@
-# Figure 3: ensemble forecasts over 2020-2021
+# Figure: ensemble forecasts over 2020-2021
 #   over periods of increasing variants of concern - delta and omicron
 library(here)
 library(dplyr)
@@ -18,7 +18,7 @@ forecast_variants <- download_variant_forecasts(load_from_local = TRUE)
 #                                             country_names = "Germany",
 #                                             variant_codes = names(variant_names))
 
-# figure 0 plot ----------------------------------------------
+# figure plot ----------------------------------------------
 fig1_data <- forecast_variants %>%
   filter(location == "DE" & target_variable == "inc case") %>%
   mutate(forecast_date = factor(forecast_date),

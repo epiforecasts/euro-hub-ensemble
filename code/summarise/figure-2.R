@@ -6,7 +6,10 @@ library(patchwork)
 
 # Set up ------------------------------------------------------------------
 # Get evaluation scores if not already present
-if (!exists("scores_model")) {source(here("code", "load", "evaluation-scores.R"))}
+if (!exists("scores_model")) {
+  source(here("code", "load", "evaluation-scores.R"))
+}
+
 # plot settings
 theme_set(theme_bw())
 models_ensemble_cols <- c("#9ebcda", "#8856a7")

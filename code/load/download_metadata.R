@@ -33,8 +33,8 @@ download_model_metadata <- function() {
   models <- download_model_names()
   # Get paths for metadata files
   model_metadata_paths <- map_chr(models,
-                                  ~ paste0("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/main/data-processed/",
-                                           .x, "/metadata-", .x, ".yml"))
+                                  ~ paste0("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/main/model-metadata/",
+                                           .x, ".yml"))
   # Download metadata into single data frame
   metadata <- map_dfr(model_metadata_paths, ~ read_yaml(.x))
   return(metadata)
@@ -44,7 +44,11 @@ download_model_metadata <- function() {
 # Anomalies ---------------------------------------------------------------
 # Download dataset of anomalies identified by Hub
 download_anomalies <- function() {
-  anomalies <- read_csv("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/main/data-truth/anomalies/anomalies.csv",
-                        progress = FALSE, show_col_types = FALSE)
+  anomalies <- try(read_csv("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/main/data-truth/anomalies/anomalies.csv",
+                        progress = FALSE, show_col_types = FALSE))
+  if (class(anomalies)[1] == "try-error") {
+    print("Error downloading from Github. Loading from data/data-anomalies.csv")
+    anomalies <- read_csv(here("data", "data-anomalies.csv"))
+  }
   return(anomalies)
 }
