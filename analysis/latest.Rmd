@@ -5,9 +5,7 @@ output:
     extra_dependencies: ["colortbl"]
     toc: false
     number_sections: false
-  bookdown::html_document2:
-    toc: true
-    number_sections: false
+    keep_tex: true
   bookdown::word_document2: default
 header-includes:
     - \usepackage{setspace}\doublespacing
@@ -112,7 +110,9 @@ We created an open and publicly accessible interface to the forecasts and ensemb
 
 ### Forecast evaluation
 
-In this study we focus only on the comparative performance of forecasting models relative to each other. For each model, we evaluated performance in terms of both accuracy (coverage) and overall predictive performance (weighted interval score). We evaluated all previous forecasts against actual observed values for each model, stratified by the forecast horizon, location, and target. We calculated scores using the _scoringutils_ R package [@nikosibosseScoringutilsUtilitiesScoring2020]. We removed any forecast surrounding (both the week of, and the first week after) a strongly anomalous data point. We defined anomalous as where any subsequent data release revised that data point by over 5%.
+In this study we focus only on the comparative performance of forecasting models relative to each other. Performance in absolute terms is available on the Hub website [europeancovid-19forecasthubEuropeanCovid19Forecast].  
+
+For each model, we evaluated performance in terms of both accuracy (coverage) and overall predictive performance (weighted interval score). We evaluated all previous forecasts against actual observed values for each model, stratified by the forecast horizon, location, and target. We calculated scores using the _scoringutils_ R package [@nikosibosseScoringutilsUtilitiesScoring2020]. We removed any forecast surrounding (both the week of, and the first week after) a strongly anomalous data point. We defined anomalous as where any subsequent data release revised that data point by over 5%.
 
 We established the accuracy of each model's prediction boundaries as the coverage of the predictive intervals. We calculated coverage at a given interval level k, where $k\in[0,1]$, as the proportion $p$ of observations that fell within the corresponding central predictive intervals across locations and forecast dates. A perfectly calibrated model would have $p=k$ at all 11 levels (corresponding to 22 quantiles excluding the median). An underconfident model at level $k$ would have $p>k$, i.e. more observations fall within a given interval than expected. In contrast, an overconfident model at level $k$ would have $p<k$, i.e. fewer observations fall within a given interval than expected. We here focus on coverage at the $k=0.5$ and $k=0.95$ levels.
 
@@ -138,13 +138,13 @@ Alternatively, we can choose a set of weights to apply to forecasts before they 
 
 $$w_i = \frac{1}{S_i}$$ ,
 
-where $S_i$ reflects the forecasting skill of forecaster $i$, normalised so that weights sum to 1. This method of weighting was found in the US to outperform unweighted scores during some time periods [@taylorCombiningProbabilisticForecasts2021] but this was not confirmed in a similar study in Germany and Poland [@bracherPreregisteredShorttermForecasting2021].
+where $S_i$ reflects the forecasting skill calculated as the relative WIS of forecaster $i$ (as explained in the previous section), and normalised so that weights sum to 1. This method of weighting was found in the US to outperform unweighted scores during some time periods [@taylorCombiningProbabilisticForecasts2021] but this was not confirmed in a similar study in Germany and Poland [@bracherPreregisteredShorttermForecasting2021].
 
 When constructing ensembles from quantile means, a single outlier can have an oversized effect on the ensemble forecast. Previous research has found that a median ensemble, replacing the arithmetic mean of each quantile with a median of the same values, yields competitive performance while maintaining robustness to outlying forecasts [@rayComparingTrainedUntrained2022]. Building on this, we also created weighted median ensembles using the weights described above and a Harrel-Davis quantile estimator with a beta function to approximate the weighted percentiles [@harrellNewDistributionfreeQuantile1982]. We then compared the performance of unweighted and inverse relative WIS weighted mean and median ensembles.
 
 # Results
 
-An example of weekly forecasts from the ensemble model is shown in Figure \@ref(fig:example-ensemble).
+The full history of real time forecasts and observed data for 32 countries is visualised and available online [europeancovid-19forecasthubEuropeanCovid19Forecast]. An example of weekly forecasts from the ensemble model is shown in Figure \@ref(fig:example-ensemble).
 
 ```{r example-ensemble, fig.cap=fig1_cap, fig.height=3, fig.width=7}
 source(here("code", "summarise", "figure-1.R"))
@@ -191,7 +191,13 @@ Across all models we observed that forecasting changes in trend in real time was
 
 <!-- paragraph: performance over future horizons -->
 
-We observed a contrast between a more stable performance of forecasting deaths further into the future compared to forecasts of cases. Previous work has found rapidly declining performance for case forecasts with increasing horizon [@cramerEvaluationIndividualEnsemble2021; @castroTurningPointEnd2020], while death forecasts can perform well with up to six weeks lead time [@friedmanPredictivePerformanceInternational2021]. We can similarly link this to the specific epidemic dynamics in this study. COVID-19 has a typical serial interval of less than a week [@aleneSerialIntervalIncubation2021]. This implies that case forecasts of more than two weeks only remain valid if rates of transmission and detection remain stable over the entire forecast horizon. This is unlikely to have held given the rapid changes in epidemic dynamics across many countries in Europe. Meanwhile, we can interpret the higher reliability of death forecasts as due to the longer time lag between infection and death [@jinLagDailyReported2021], and higher consistency of reporting deaths in surveillance data [@catalaRobustEstimationDiagnostic2021]. This allows forecasters to incorporate the effect of changes in transmission. Additionally, the performance of trend-based forecasts may have benefited from the slower changes to trends in incident deaths caused by gradually increasing vaccination rates.
+We observed a contrast between a more stable performance of forecasting deaths further into the future compared to forecasts of cases. Previous work has found rapidly declining performance for case forecasts with increasing horizon [@cramerEvaluationIndividualEnsemble2021; @castroTurningPointEnd2020], while death forecasts can perform well with up to six weeks lead time [@friedmanPredictivePerformanceInternational2021]. We can link this to the specific epidemic dynamics in this study. 
+
+First, COVID-19 has a typical serial interval of less than a week [@aleneSerialIntervalIncubation2021]. This implies that case forecasts of more than two weeks only remain valid if rates of both transmission and detection remain stable over the entire forecast horizon. In contrast, we saw rapid changes in epidemic dynamics across many countries in Europe over our study period, impacting the longer term case forecasts. 
+
+Second, we can interpret the higher reliability of death forecasts as due to the different lengths and distributions of time lags from infection to case and death reporting [@jinLagDailyReported2021]. For example, a spike in infections may be matched by a consistently sharp increase in case reporting, but a longer-tailed distribution of the subsequent increase in death reports. This creates a lower magnitude of fluctuation in the time-series of deaths compared to that of cases. Similarly, surveillance data for death reporting is substantially more consistent, with fewer errors and retrospective corrections, than case reporting [@catalaRobustEstimationDiagnostic2021]. 
+
+Third, we also note that the performance of trend-based forecasts may have benefited from the slower changes to trends in incident deaths caused by gradually increasing vaccination rates. These features  allow forecasters to incorporate the effect of changes in transmission more easily when forecasting deaths, compared to cases.
 
 <!-- paragraph: benefit of using ensemble models -->
 
@@ -199,7 +205,7 @@ We found the ensemble in this study continued to outperform both other models an
 
 <!-- paragraph: alternative ensemble methods -->
 
-When exploring variations in ensemble methods, we found that the choice of median over means yielded the most consistent improvement in predictive performance, regardless of the method of weighting. Other work has supported the importance of the median in providing a stable forecast that better accounts for outlier forecasts than the mean [@brooksComparingEnsembleApproaches2020], although though this finding may be dependent on the quality of the individual forecast submissions. In contrast, weighing models by past performance did not result in any consistent improvement in performance. This is in line with  existing mixed evidence for any optimal ensemble method for combining short term probabilistic infectious disease forecasts. Many methods of combination have performed competitively in analyses of forecasts for COVID-19 in the US, including the simple mean and weighted approaches outperforming unweighted or median methods [@taylorCombiningProbabilisticForecasts2021]. This contrasts with later analyses finding weighted methods to give similar performance to a median average [@rayEnsembleForecastsCoronavirus2020e; @brooksComparingEnsembleApproaches2020]. We can partly explain this inconsistency if performance of each method depends on the outcome being predicted (cases, deaths), its count (incident, cumulative) and absolute level, the changing disease dynamics, and the varying quality and quantity of forecasting teams over time.
+When exploring variations in ensemble methods, we found that the choice of median over means yielded the most consistent improvement in predictive performance, regardless of the method of weighting. Other work has supported the importance of the median in providing a stable forecast that better accounts for outlier forecasts than the mean [@brooksComparingEnsembleApproaches2020], although this finding may be dependent on the quality of the individual forecast submissions. In contrast, weighing models by past performance did not result in any consistent improvement in performance. This is in line with  existing mixed evidence for any optimal ensemble method for combining short term probabilistic infectious disease forecasts. Many methods of combination have performed competitively in analyses of forecasts for COVID-19 in the US, including the simple mean and weighted approaches outperforming unweighted or median methods [@taylorCombiningProbabilisticForecasts2021]. This contrasts with later analyses finding weighted methods to give similar performance to a median average [@rayEnsembleForecastsCoronavirus2020e; @brooksComparingEnsembleApproaches2020]. We can partly explain this inconsistency if performance of each method depends on the outcome being predicted (cases, deaths), its count (incident, cumulative) and absolute level, the changing disease dynamics, and the varying quality and quantity of forecasting teams over time.
 
 <!-- paragraph: limitations -->
 
