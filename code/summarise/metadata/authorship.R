@@ -7,16 +7,22 @@ library(janitor)
 library(googlesheets4)
 library(tibble)
 
-# Set up
+# Set up ---------------------------------------------------------
 gs4_deauth()
-
 author_types <- ordered(c("first", "second",
                           "hub", "hub_support", "model",
                           "second_last", "last"))
+if (exists("load_from_local")) {
+  load_from_local <- TRUE
+}
 
-#  -------------------------------------------------------------------
-authors_raw <- read_sheet("https://docs.google.com/spreadsheets/d/19hS7r7y126J3BPBhJa20rHApFu3Hx1DQEWe7av7fX68/edit#gid=1316950565",
-                      sheet = "Authorship details")
+#  Load -----------------------------------------------------------
+if (load_from_local) {
+  authors_raw <- read_csv(here("output", "metadata", "authorship_raw.csv"))
+} else {
+  authors_raw <- try(read_sheet("https://docs.google.com/spreadsheets/d/19hS7r7y126J3BPBhJa20rHApFu3Hx1DQEWe7av7fX68/edit#gid=1316950565",
+                                sheet = "Authorship details"))
+}
 
 authors <- authors_raw %>%
   clean_names() %>%
