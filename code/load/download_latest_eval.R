@@ -19,7 +19,8 @@ here::i_am("code/load/download_latest_eval.R")
 download_latest_eval <- function(eval_date = as.Date("2022-03-07"),
                                  branch = "main", subdir = "",
                                  weeks_included = "All",
-                                 target_variables = c("inc case", "inc death")) {
+                                 target_variables = c("inc case", "inc death"),
+                                 all_model = FALSE) {
 
   # Function to get a single weekly evaluation file
   get_given_date_eval <- function(eval_date, branch, subdir) {
@@ -37,11 +38,17 @@ download_latest_eval <- function(eval_date = as.Date("2022-03-07"),
   all_eval <- map_dfr(all_eval_dates,
                       ~ get_given_date_eval(.x, branch, subdir) |>
                         mutate(eval_date = .x))
-  # Filter to latest evaluation available for each target
-  latest_eval <- all_eval |>
-    group_by(location, target_variable) |>
-    filter(eval_date == max(eval_date))
 
+  # Filter to latest evaluation available for each target
+  if(all_model) {
+    latest_eval <- all_eval |>
+      group_by(location, target_variable, model) |>
+      filter(eval_date == max(eval_date))
+  } else {
+    latest_eval <- all_eval |>
+      group_by(location, target_variable) |>
+      filter(eval_date == max(eval_date))
+  }
 # Cleaning steps ----------------------------------------------------------
   clean_variables <- c("inc case" = "Cases",
                        "inc death" = "Deaths",
