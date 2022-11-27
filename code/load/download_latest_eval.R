@@ -1,11 +1,12 @@
-# Get evaluation dataset
+# Generic function to get an evaluation dataset on Hub github
+# used in:
+#    here("code", "load", "get-scores.R")
 library(here)
 library(purrr)
 library(readr)
 library(dplyr)
 library(tidyr)
 library(lubridate)
-source(here("code", "load", "download_metadata.R"))
 here::i_am("code/load/download_latest_eval.R")
 
 # Args:
@@ -15,72 +16,45 @@ here::i_am("code/load/download_latest_eval.R")
 # weeks_included  "All" or "10" - number of weeks included in evaluation score
 # target_variables  any of "inc case", "inc death", "inc hosp"
 
-download_latest_eval <- function(eval_date,
+download_latest_eval <- function(eval_date = as.Date("2022-03-07"),
                                  branch = "main", subdir = "",
                                  weeks_included = "All",
                                  target_variables = c("inc case", "inc death")) {
 
   # Function to get a single weekly evaluation file
   get_given_date_eval <- function(eval_date, branch, subdir) {
+    print(eval_date)
     filepath <- paste0("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/", branch, "/", subdir, "/evaluation/weekly-summary/evaluation-", eval_date, ".csv")
     read_csv(filepath, progress = FALSE, show_col_types = FALSE)
     }
 
-  # Get evaluation file for a given date
-  given_date_eval <- get_given_date_eval(eval_date, branch, subdir)
-
-  # check for missing target evaluations due to anomalies
-  anomalies <- download_anomalies()
-  anomalies <- anomalies %>%
-    filter(target_variable != "inc hosp") %>%
-    # Get most recent evaluation date (Monday) before each target goes missing (Sunday)
-    mutate(most_recent_eval = target_end_date - 5,
-           anomaly_id = row_number()) %>%
-    filter((target_end_date + weeks(4)) > as.Date(eval_date)) %>%
-    group_by(target_variable, location) %>%
-    filter(most_recent_eval == max(most_recent_eval)) %>%
-    select(anomaly_id, most_recent_eval, target_variable, location)
-
-  if (nrow(anomalies) > 0) {
-    message(paste0("Evaluation as of ", eval_date, " missing some targets due to data anomalies"))
-
-    # Loop through evaluation data-sets to get missing evaluation targets
-    missing_eval <- split(anomalies, anomalies$anomaly_id)
-    missing_eval <- map_dfr(missing_eval,
-                            ~ get_given_date_eval(eval_date = .x$most_recent_eval,
-                                                  branch = branch,
-                                                  subdir = subdir) %>%
-                              filter(target_variable == .x$target_variable &
-                                       location == .x$location))
-
-    # Join latest evaluation for all targets
-    latest_eval <- bind_rows(given_date_eval, missing_eval)
-
-    # Check this definitely includes all targets (32 locations * 2 variables)
-    if (!64 == nrow(
-      distinct(latest_eval, target_variable, location) %>%
-      filter(location != "Overall" &
-             target_variable %in% c("inc case", "inc death")))) {
-      warning("Evaluation data missing some targets")
-    } else {
-      message("All missing targets replaced with respective latest evaluations")
-      print(anomalies)
-      }
-
-  } else { latest_eval <- given_date_eval}
+  # Get evaluations up to latest evaluation date
+  all_eval_dates = seq.Date(from = as.Date("2021-04-05"), # start of evaluation
+                            to = eval_date,
+                            by = 7)
+  # get last 5 evaluations (assuming all targets represented in last 5)
+  all_eval_dates <- all_eval_dates[1:5]
+  all_eval <- map_dfr(all_eval_dates,
+                      ~ get_given_date_eval(.x, branch, subdir) |>
+                        mutate(eval_date = .x))
+  # Filter to latest evaluation available for each target
+  latest_eval <- all_eval |>
+    group_by(location, target_variable) |>
+    filter(eval_date == max(eval_date))
 
 # Cleaning steps ----------------------------------------------------------
   clean_variables <- c("inc case" = "Cases",
                        "inc death" = "Deaths",
                        "inc hosp" = "Hospitalisations")
 
-  latest_eval <- latest_eval %>%
+  latest_eval <- latest_eval |>
+    ungroup() |>
     filter(
       horizon <= 4 &
         target_variable %in% target_variables &
-        weeks_included == !!weeks_included) %>%
+        weeks_included == !!weeks_included)|>
     separate(model, into = c("team_name", "model_name"),
-             sep = "-", remove = FALSE) %>%
+             sep = "-", remove = FALSE)|>
     mutate(
       target_variable = recode(target_variable, !!!clean_variables),
       model = factor(model, ordered = TRUE),
