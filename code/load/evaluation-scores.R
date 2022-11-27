@@ -20,4 +20,3 @@ if(load_from_local) {
   scores_model <- get_model_scores(eval_date, save = TRUE)
   scores_ensemble <- get_ensemble_scores(save = TRUE)
 }
-

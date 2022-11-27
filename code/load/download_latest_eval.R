@@ -33,7 +33,7 @@ download_latest_eval <- function(eval_date = as.Date("2022-03-07"),
                             to = eval_date,
                             by = 7)
   # get last 5 evaluations (assuming all targets represented in last 5)
-  all_eval_dates <- all_eval_dates[1:5]
+  all_eval_dates <- all_eval_dates[length(all_eval_dates):(length(all_eval_dates)-4)]
   all_eval <- map_dfr(all_eval_dates,
                       ~ get_given_date_eval(.x, branch, subdir) |>
                         mutate(eval_date = .x))

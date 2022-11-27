@@ -47,7 +47,8 @@ get_model_scores <- function(eval_date = as.Date("2022-03-07"),
 
   # Save the downloaded data -----------------------------------------------
   if (save) {
-    write_csv(scores_ensemble, here("data", "scores-ensemble.csv"))
+    print("Saving model scores to data/")
+    write_csv(scores_model, here("data", "scores-model.csv"))
   }
 
   return(scores_model)
@@ -76,6 +77,7 @@ get_ensemble_scores <- function(# eval_date = # not updated,
 
   # Save the downloaded data -----------------------------------------------
   if (save) {
+    print("Saving ensemble variation scores to data/")
     write_csv(scores_ensemble, here("data", "scores-ensemble.csv"))
   }
   return(scores_ensemble)
