@@ -16,8 +16,8 @@ if(load_from_local) {
 
 # Download and clean evaluation csvs from github ----------------------------
   source(here("code", "load", "get-scores.R"))
-  # if (!exists("eval_date")) {eval_date <- as.Date("2022-03-07")}
-  scores_model <- get_model_scores(eval_date, save = FALSE)
-  scores_ensemble <- get_ensemble_scores(save = FALSE)
+  if (!exists("eval_date")) {eval_date <- as.Date("2022-03-07")}
+  scores_model <- get_model_scores(eval_date, save = TRUE)
+  scores_ensemble <- get_ensemble_scores(save = TRUE)
 }
 
