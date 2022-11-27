@@ -3,8 +3,10 @@
 library(dplyr)
 library(lubridate)
 
-# Get evaluation scores if not already present
-if (!exists("scores_model")) {source(here("code", "load", "evaluation-scores.R"))}
+# Get evaluation scores (saved locally) if not already present
+if (!exists("scores_model")) {
+  scores_model <- read_csv(here("data", "scores-model.csv"))
+}
 
 # Study period -----------------------------------------------------------
 hub <- list(
