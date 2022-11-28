@@ -17,13 +17,13 @@ always_allow_html: yes
 
 ```{r render, include=FALSE, eval=FALSE}
 # Create this document
-rmarkdown::render(here::here("analysis", "latest.Rmd"),
-                  rmarkdown::html_document(fig_caption = TRUE),
-                  output_dir = "output")
+rmarkdown::render(input = here::here("analysis", "latest.Rmd"),
+                  bookdown::pdf_document2(fig_caption = TRUE),
+                  output_dir = here::here("output"))
 # Create SI
 rmarkdown::render(here::here("analysis", "supplementary.Rmd"),
                   rmarkdown::pdf_document(fig_caption = TRUE),
-                  output_dir = "output")
+                  output_dir = here::here("output"))
 ```
 
 ```{r set-up, include=FALSE}
@@ -155,7 +155,7 @@ Over the whole study period, `r modellers$n_team` independently participating fo
 
 Using all models and the ensemble, we created `r nrow(scores_model)` forecasting scores where each score summarises a unique combination of forecasting model, variable, country, and week ahead horizon (SI Figure 2). We visually compared the absolute performance of forecasts in predicting numbers of incident cases and deaths. We observed that forecasts predicted well in times of stable epidemic behaviour, while struggling to accurately predict at longer horizons around inflection points, for example during rapid changes in population-level behaviour or surveillance. Forecast models varied widely in their ability to predict and account for the introduction of new variants, giving the ensemble forecast over these periods a high level of uncertainty (Figure \@ref(fig:example-ensemble)).
 
-In relative terms, the ensemble of all models performed well compared to both its component models and the baseline. By relative WIS scaled against a baseline of 1 (where a score <1 indicates outperforming the baseline), the median score for participating models across all submitted forecasts was `r modeller_scores[["score_range"]][["50%"]]`, within an interquartile range of `r modeller_scores[["score_range"]][["25%"]]` at 25% probability to `r modeller_scores[["score_range"]][["75%"]]` at 75% probability. Meanwhile the median score of forecasts from the ensemble model was `r hub_scores[["score_range"]][["50%"]]` (IQR `r hub_scores[["score_range"]][["25%"]]`-`r hub_scores[["score_range"]][["75%"]]`). 
+In relative terms, the ensemble of all models performed well compared to both its component models and the baseline. By relative WIS scaled against a baseline of 1 (where a score <1 indicates outperforming the baseline), the median score of forecasts from the Hub ensemble model  was `r modeller_scores[["score_range"]][["50%"]]`, within an interquartile range of `r modeller_scores[["score_range"]][["25%"]]` at 25% probability to `r modeller_scores[["score_range"]][["75%"]]` at 75% probability. Meanwhile the median score of forecasts across all participating models (excluding the Hub ensemble) was `r hub_scores[["score_range"]][["50%"]]` (IQR `r hub_scores[["score_range"]][["25%"]]`-`r hub_scores[["score_range"]][["75%"]]`). 
 
 Across all horizons and locations, the ensemble performed better on scaled relative WIS than `r hub_scores$wis_vs_models$Cases$p_better`% of forecast scores when forecasting cases (with a total N=`r hub_scores$wis_vs_models$Cases$n` from `r hub_scores$wis_vs_models$Cases$models` unique models), and `r hub_scores$wis_vs_models$Deaths$p_better`% of scores for forecasts of incident deaths (N=`r hub_scores$wis_vs_models$Deaths$n` scores from `r hub_scores$wis_vs_models$Deaths$models` models). We also saw high performance from the ensemble when evaluating against all models including those who did not submit the full set of probabilistic quantile predictions (`r hub_scores$ae_vs_models$Cases$p_better`% for cases with N=`r hub_scores$ae_vs_models$Cases$n` scores from `r hub_scores$ae_vs_models$Cases$models` models, and `r hub_scores$ae_vs_models$Deaths$p_better`% for deaths, N=`r hub_scores$ae_vs_models$Deaths$n` scores from `r hub_scores$ae_vs_models$Deaths$models` models).
 
