@@ -98,17 +98,16 @@ team_df <-
            !grepl("other", team_model_designation)) %>%
   arrange(tolower(model_abbr)) %>%
   mutate(
-    md_link = glue::glue("[Metadata]({link})"),
-    model_abbr = glue::glue("[{model_abbr}]({website_url})")) %>%
-  select(authors, model_abbr, team_name, md_link, methods)
+    team_name = glue::glue("[{team_name}]({website_url})"),
+    metadata = glue::glue("[{model_abbr}]({link})")) %>%
+  select(authors, team_name, methods, metadata)
 
 team_table <- team_df  %>%
   relocate(
-    "Model name" = model_abbr,
-    "Authors" = authors,
     "Team" = team_name,
+    "Authors" = authors,
     "Methods" = methods,
-    "Online metadata" = md_link
+    "Metadata" =metadata
   )
 
 #%>%

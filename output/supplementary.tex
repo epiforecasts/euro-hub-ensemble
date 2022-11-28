@@ -1,0 +1,256 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Supplement},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Supplement}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+Supplementary information: \emph{Predictive performance of multi-model
+ensemble forecasts of COVID-19 across European nations}
+
+\hypertarget{participating-teams}{%
+\subsubsection{Participating teams}\label{participating-teams}}
+
+The following teams participated in the European Forecast Hub by
+contributing forecasts over the study period. Information below is taken
+from metadata provided by each team.
+
+\begin{table}
+
+\caption{\label{tab:team-table}Teams participating in the European Forecast Hub contributing a model between March 2021 - March 2022}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+\toprule
+Model name & Authors & Team & Methods & Online metadata\\
+\midrule
+\cellcolor{gray!6}{{}[BIOCOMSC-Gompertz](https://biocomsc.upc.edu/en/covid-19)} & \cellcolor{gray!6}{Martí Català, Enric Álvarez, Sergio Alonso, Daniel López, Clara Prats} & \cellcolor{gray!6}{BIOCOMSC} & \cellcolor{gray!6}{Empirical model based on cases and deaths dynamics.} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/BIOCOMSC-Gompertz.yml)}\\
+{}[CovidMetrics-epiBATS](https://tomz.shinyapps.io/coronaLandkreise/) & Tom Zimmermann, Arne Rodloff & University of Cologne Covid Metrics & Forecasts are based on TBATS - models (DeLivera, Hyndman and Snyder (2011)) and are updated daily for each German state. & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/CovidMetrics-epiBATS.yml)\\
+\cellcolor{gray!6}{{}[epiforecasts-EpiNow2](https://epiforecasts.io/EpiNow2)} & \cellcolor{gray!6}{Nikos Bosse, Sam Abbott, Sebastian Funk} & \cellcolor{gray!6}{Epiforecasts / London School of Hygiene and Tropical Medicine} & \cellcolor{gray!6}{Semi-mechanistic estimation of the time-varying reproduction number for latent infections mapped to reported cases/deaths.} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/epiforecasts-EpiNow2.yml)}\\
+{}[epiforecasts-weeklygrowth](https://samabbott.co.uk) & Sam Abbott & epiforecasts & A Bayesian autoregressive model using weekly incidence data, application of the forecast.vocs R package. & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/epiforecasts-weeklygrowth.yml)\\
+\cellcolor{gray!6}{{}[epiMOX-SUIHTER](https://www.epimox.polimi.it)} & \cellcolor{gray!6}{Giovanni Ardenghi, Giovanni Ziarelli, Luca Dede', Nicola Parolini, Alfio Quarteroni} & \cellcolor{gray!6}{epiMOX} & \cellcolor{gray!6}{Compartmental model SUIHTER} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/epiMOX-SUIHTER.yml)}\\
+\addlinespace
+{}[EuroCOVIDhub-ensemble](https://covid19forecasthub.eu/) & Katharine Sherratt, Nikos Bosse, Sebastian Funk & European COVID-19 Forecast Hub & An ensemble, or model average, of submitted forecasts to the European COVID-19 Forecast Hub. & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/EuroCOVIDhub-ensemble.yml)\\
+\cellcolor{gray!6}{{}[FIAS\_FZJ-Epi1Ger](https://www.fz-juelich.de/SharedDocs/Meldungen/IAS/JSC/DE/2021/2021-01-covid-19.html;jsessionid=F4D5FB4027E871A6F4C2FCAF0F08FC35)} & \cellcolor{gray!6}{Maria V. Barbarossa, Jan Fuhrmann, Stefan Krieg, Jan H. Meinke} & \cellcolor{gray!6}{Frankfurt Institute for Advanced Studies \& Forschungszentrum Jülich} & \cellcolor{gray!6}{An extended SEIR model with additional compartments for undetected cases} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/FIAS\_FZJ-Epi1Ger.yml)}\\
+{}[HZI-AgeExtendedSEIR](https://www.helmholtz-hzi.de/en/nc/research/research-topics/bacterial-and-viral-pathogens/epidemiology/team/) & Isti Rodiah, Berit Lange, Pratizio Vanella, Alexander Kuhlmann, Wolfgang Bock & Helmholtz Zentrum fuer Infektionsforschung & Deterministic SEIR type model & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/HZI-AgeExtendedSEIR.yml)\\
+\cellcolor{gray!6}{{}[ICM-agentModel](https://covid-19.icm.edu.pl/en/model-description/)} & \cellcolor{gray!6}{Rafał Bartczuk, Łukasz Górski, Magdalena Gruziel-Słomka, Artur Kaczorek, Jan Kisielewski, Antoni Moszyński, Karol Niedzielewski, Jędrzej Nowosielski, Maciej Radwan, Franciszek Rakowski, Marcin Semeniuk, Jakub Zieliński} & \cellcolor{gray!6}{ICM / University of Warsaw} & \cellcolor{gray!6}{Agent-based model} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/ICM-agentModel.yml)}\\
+{}[IEM\_Health-CovidProject](https://iem.com/) & Brad Suchoski, Steve Stage, Heidi Gurung, Sid Baccam & IEM Health & SEIR model projections for daily incident confirmed COVID cases and deaths by using AI to fit actual cases observed. & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/IEM\_Health-CovidProject.yml)\\
+\addlinespace
+\cellcolor{gray!6}{{}[ILM-EKF](https://github.com/Stochastik-TU-Ilmenau)} & \cellcolor{gray!6}{Stefan Heyder, Thomas Hotz} & \cellcolor{gray!6}{ILM} & \cellcolor{gray!6}{Extended Kalman filter based on reproduction equation} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/ILM-EKF.yml)}\\
+{}[itwm-dSEIR](https://www.itwm.fraunhofer.de/) & Jan Mohring, Neele Leithäuser, Michael Helmling & Fraunhofer Institute for Industrial Mathematics ITWM & Integral equation model based on age cohorts taking into account vaccination and testing. The parameters are adjusted to the counted cases and deaths. & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/itwm-dSEIR.yml)\\
+\cellcolor{gray!6}{{}[ITWW-county\_repro](https://github.com/Stochastik-TU-Ilmenau)} & \cellcolor{gray!6}{Przemyslaw Biecek, Viktor Bezborodov, Marcin Bodych, Jan Pablo Burgard, Stefan Heyder, Thomas Hotz, Tyll Krüger} & \cellcolor{gray!6}{ITWW} & \cellcolor{gray!6}{Forecasts of county level incidence based on regional reproduction numbers.} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/ITWW-county\_repro.yml)}\\
+{}[JBUD-HMXK](https://joebud.github.io/covid-19-analyses/) & Jozef Budzinski & JBUD & Heavily modified infection-age SIR-X model with waning immunity, vaccinations, seasonality and undetected cases. & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/JBUD-HMXK.yml)\\
+\cellcolor{gray!6}{{}[MOCOS-agent1](https://mocos.pl/)} & \cellcolor{gray!6}{Marek Bawiec, Marcin Bodych, Tyll Krueger, Tomasz Ozanski, Barbara Pabjan, Agata Migalska, Przemyslaw Biecak, Viktor Bezborodov, Ewa Szczurek, Ewaryst Rafajłowicz, Ewa Rafajłowicz, Wojciech Rafajłowicz} & \cellcolor{gray!6}{MOCOS group} & \cellcolor{gray!6}{Agent-based microsimulation model} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/MOCOS-agent1.yml)}\\
+\addlinespace
+{}[MUNI-ARIMA](https://krausstat.shinyapps.io/covid19global/) & Andrea Kraus, David Kraus & Masaryk University & ARIMA model with outlier detection fitted to transformed weekly aggregated series. & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/MUNI-ARIMA.yml)\\
+\cellcolor{gray!6}{{}[MUNI\_DMS-SEIAR](https://webstudio.shinyapps.io/MAMES/)} & \cellcolor{gray!6}{Veronika Eclerova, Lenka Pribylova} & \cellcolor{gray!6}{Department of Mathematics and Statistics Masaryk University Team} & \cellcolor{gray!6}{SEIAR model with A compartment of absent unobserved infected estimated from hospital data with incorporated mobility data dependence; optimized to the compartment of all exposed (unobserved included)} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/MUNI\_DMS-SEIAR.yml)}\\
+{}[PL\_GRedlarski-DistrictsSum](https://docs.google.com/spreadsheets/d/e/2PACX-1vRpH4yhKRts7Co5tydhZhojIPTcTTybms1PqJ9j1tmSBzzPLoU2U9XjUWDwiKYxnE6gMLayl71rpGC8/pubhtml?gid=493251550\&single=true) & Grzegorz Redlarski & Grzegorz Redlarski & Modified SIR method, applied to all districts. Forecasts for districts are summed up. & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/PL\_GRedlarski-DistrictsSum.yml)\\
+\cellcolor{gray!6}{{}[prolix-euclidean](https://cp.lpmib.fr/medias/covid19/\_synthese.html)} & \cellcolor{gray!6}{Loïc Pottier} & \cellcolor{gray!6}{prolix} & \cellcolor{gray!6}{Offsets obtained by correlations, best linear approximation of reproduction rates (using vaccination  approximation) by least euclidean distance, and linear prediction.} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/prolix-euclidean.yml)}\\
+{}[RobertWalraven-ESG](http://rwalraven.com/COVID19) & Robert Walraven & Robert Walraven & Multiple skewed gaussian distribution peaks fit to raw data & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/RobertWalraven-ESG.yml)\\
+\addlinespace
+\cellcolor{gray!6}{{}[SDSC\_ISG-TrendModel](https://renkulab.shinyapps.io/COVID-19-Epidemic-Forecasting/)} & \cellcolor{gray!6}{Ekaterina Krymova, Dorina Thanou, Benjamin Bejar Haro, Tao Sun, Gavin Lee, Elisa Manetti, Christine Choirat, Antoine Flahault, Guillaume Obozinski} & \cellcolor{gray!6}{Swiss Data Science Center / University of Geneva} & \cellcolor{gray!6}{The Trend Model predicts daily cases and deaths using linear extrapolation on the linear or log scale of the underlying trend estimated by a robust LOESS seasonal-trend decomposition model.} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/SDSC\_ISG-TrendModel.yml)}\\
+{}[Statgroup19-richards](https://statgroup19.shinyapps.io/Covid19App/) & Marco Mingione, Pierfrancesco Alaimo Di Loro & Statgroup19 & Richards' curve based generalized growth model & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/Statgroup19-richards.yml)\\
+\cellcolor{gray!6}{{}[Statgroup19-spatialrichards](https://statgroup19.shinyapps.io/Covid19App/)} & \cellcolor{gray!6}{Marco Mingione, Pierfrancesco Alaimo Di Loro} & \cellcolor{gray!6}{Statgroup19} & \cellcolor{gray!6}{Richards' curve based generalized growth model taking into account spatial dependence} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/Statgroup19-spatialrichards.yml)}\\
+{}[UC3M-EpiGraph](https://www.arcos.inf.uc3m.es/epigraph/) & David E. Singh, Miguel Guzman Merino, Maria Cristina Marinescu, Jesus Carretero, Alberto Cascajo Garcia & Universidad Carlos III de Madrid & Agent-based parallel simulator that models individual interactions extracted from social networks and demographical data. & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/UC3M-EpiGraph.yml)\\
+\cellcolor{gray!6}{{}[ULZF-SEIRC19SI](https://apps.lusy.fri.uni-lj.si)} & \cellcolor{gray!6}{Janez Zibert} & \cellcolor{gray!6}{University of Ljubljana, Faculty of Health Sciences Team} & \cellcolor{gray!6}{SEIHR model extended with compartments for hospitals, intensive care units, asymptomatic cases, separate submodels for vaccinated and unvaccinated, divided to 5 age subgroups of population} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/ULZF-SEIRC19SI.yml)}\\
+\addlinespace
+{}[UMass-MechBayes](https://github.com/dsheldon/covid) & Dan Sheldon, Graham Gibson, Nick Reich & UMass-Amherst & Bayesian compartmental model with observations on cumulative case counts and cumulative deaths. Model is fit independently to each state. Model includes observation noise and a case detection rate. & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/UMass-MechBayes.yml)\\
+\cellcolor{gray!6}{{}[UNED-PreCoV2](https://precov2.org)} & \cellcolor{gray!6}{José L. Aznarte, César Pérez, José Almagro, Pedro Álvarez, Álvaro Ortiz, Fernando Blat} & \cellcolor{gray!6}{UNED} & \cellcolor{gray!6}{Bayesian time series models with ARIMA noise and fixed transfer functions for each input.} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/UNED-PreCoV2.yml)}\\
+{}[UpgUmibUsi-MultiBayes](https://github.com/francescobartolucci/ARMultinomial) & Francesco Bartolucci, Fulvia Pennoni, Antonietta Mira & UNIPG\_UNIMIB\_USI\_UNINSUBRIA & Bayesian Dirichlet-Multinomial models for counts of patients in mutually exclusive and exhaustive categories such as hospitalized in regular wards and in intensive care units, deceased and recovered & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/UpgUmibUsi-MultiBayes.yml)\\
+\cellcolor{gray!6}{{}[USC-SIkJalpha](https://scc-usc.github.io/ReCOVER-COVID-19)} & \cellcolor{gray!6}{Ajitesh Srivastava, Frost Tianjian Xu} & \cellcolor{gray!6}{University of Southern California} & \cellcolor{gray!6}{A heterogeneous infection rate model with human mobility for epidemic modeling. Our model adapts to changing trends and provide predictions of confirmed cases and deaths.} & \cellcolor{gray!6}{{}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/USC-SIkJalpha.yml)}\\
+{}[UVA-Ensemble](https://biocomplexity.virginia.edu/) & Aniruddha Adiga, Lijing Wang, Srinivasan Venkatramanan, Akhil Sai Peddireddy, Benjamin Hurt, Przemyslaw Porebski, Bryan Lewis, Madhav Marathe, Jiangzhou Chen, Anil Vullikanti & University of Virginia, Biocomplexity COVID-19 Response Team & An ensemble of multiple methods such as auto-regressive (AR)models with exogenous variables, Long short-term memory (lSTM) models,Kalman filter and PatchSim (an SEIR model). & {}[Metadata](https://raw.githubusercontent.com/epiforecasts/covid19-forecast-hub-europe/main/model-metadata/UVA-Ensemble.yml)\\
+\bottomrule
+\end{tabu}}
+\end{table}
+
+\newpage
+
+\hypertarget{summary-of-evaluated-forecasts}{%
+\subsubsection{Summary of evaluated
+forecasts}\label{summary-of-evaluated-forecasts}}
+
+\begin{figure}
+\centering
+\includegraphics{C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/supplementary_files/figure-latex/si-fig-1-1.pdf}
+\caption{Total number of forecasts included in evaluation, by target
+location, week ahead horizon, and variable}
+\end{figure}
+
+\newpage
+
+\hypertarget{comparison-of-contributed-forecasts-and-the-hub-ensemble}{%
+\subsubsection{Comparison of contributed forecasts and the Hub
+ensemble}\label{comparison-of-contributed-forecasts-and-the-hub-ensemble}}
+
+\begin{figure}
+\centering
+\includegraphics{C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/supplementary_files/figure-latex/si-fig-2-1.pdf}
+\caption{Comparison of scores between participating model forecasts and
+Hub ensemble of all available forecasts for each target}
+\end{figure}
+
+\hypertarget{epiforge-guidelines-for-reporting-of-epidemic-forecasting-research}{%
+\subsubsection{EPIFORGE guidelines for reporting of epidemic forecasting
+research}\label{epiforge-guidelines-for-reporting-of-epidemic-forecasting-research}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1014}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0230}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.6820}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1935}}@{}}
+\caption{EPIFORGE guidelines (Pollet et. al., 2021)}\tabularnewline
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Section of manuscript
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Checklist item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reported on page
+\end{minipage} \\
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Section of manuscript
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Checklist item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reported on page
+\end{minipage} \\
+\midrule
+\endhead
+Title/Abstract & 1 & Describe the study as forecast or prediction
+research in at least the title or abstract & 1 \\
+Introduction & 2 & Define the purpose of study and forecasting targets &
+4 \\
+Methods & 3 & Fully document the methods & 4,5,6,7,8 \\
+Methods & 4 & Identify whether the forecast was performed prospectively,
+in real time, and/or retrospectively & 5 \\
+Methods & 5 & Explicitly describe the origin of input source data, with
+references & 5 \\
+Methods & 6 & Provide source data with publication, or document reasons
+as to why this was not possible & see Github
+epiforecasts/euro-hub-ensemble \\
+Methods & 7 & Describe input data processing procedures in detail &
+5,6 \\
+Methods & 8 & State and describe the model type, and document model
+assumptions, including references & 5,6, Supplement Table 1 \\
+Methods & 9 & Make the model code available, or document the reasons why
+this was not possible & see Github epiforecasts/euro-hub-ensemble \\
+Methods & 10 & Describe the model validation, and justify the approach &
+5,6 \\
+Methods & 11 & Describe the forecast accuracy evaluation method used,
+with justification & 6,7 \\
+Methods & 12 & Where possible, compare model results to a benchmark or
+other comparator model, with justification of comparator choice & 6,7 \\
+Methods & 13 & Describe the forecast horizon, with justification of its
+length & 5 \\
+Results & 14 & Present and explain uncertainty of forecasting results &
+8,9,10,11,12 \\
+Results & 15 & Briefly summarize the results in nontechnical terms,
+including a nontechnical interpretation of forecast uncertainty &
+12,13,14 \\
+Results & 16 & If results are published as a data object, encourage a
+time-stamped version number & see Github
+epiforecasts/euro-hub-ensemble \\
+Discussion & 17 & Describe the weaknesses of the forecast, including
+weaknesses specific to data quality and methods & 12,13,14 \\
+Discussion & 18 & If the research is applicable to a specific epidemic,
+comment on its potential implications and impact for public health
+action and decision-making & 14,15 \\
+Discussion & 19 & If the research is applicable to a specific epidemic,
+comment on how generalizable it may be across populations & 15 \\
+\bottomrule
+\end{longtable}
+
+Following:
+
+Pollett S, Johansson MA, Reich NG, Brett-Major D, Del Valle SY,
+Venkatramanan S, Lowe R, Porco T, Berry IM, Deshpande A, Kraemer MUG,
+Blazes DL, Pan-Ngum W, Vespigiani A, Mate SE, Silal SP, Kandula S, Sippy
+R, Quandelacy TM, Morgan JJ, Ball J, Morton LC, Althouse BM, Pavlin J,
+van Panhuis W, Riley S, Biggerstaff M, Viboud C, Brady O, Rivers C.
+Recommended reporting items for epidemic forecasting and prediction
+research: The EPIFORGE 2020 guidelines. PLoS Med. 2021 Oct
+19;18(10):e1003793. doi: 10.1371/journal.pmed.1003793. PMID: 34665805;
+PMCID: PMC8525759.
+
+\end{document}
