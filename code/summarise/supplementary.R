@@ -68,6 +68,9 @@ si_fig2_legend <- "Comparison of scores between participating model forecasts \n
 github_repo <- "epiforecasts/covid19-forecast-hub-europe"
 branch <- "main"
 
+
+github_repo <- "epiforecasts/covid19-forecast-hub-europe"
+branch <- "main"
 team_df <-
   gh::gh(
     paste0("https://api.github.com/repos/{github_repo}/",
@@ -76,45 +79,37 @@ team_df <-
   ) %>%
   pluck("tree") %>%
   keep(~ .x$type == "blob" &&
-         grepl("data-processed/(.*)/metadata-\\1", .x$path)) %>%
+         grepl("metadata/", .x$path)) %>%
   map_chr(~ glue::glue(
     paste0("https://raw.githubusercontent.com/{github_repo}/",
            "{branch}/{.x$path}")
   )) %>%
   set_names() %>%
-  imap_dfr(~ c(link = .y, read_yaml(.x))) %>%
-  #
+  map(read_yaml) %>%
+  imap_dfr(~ list(
+    link = .y,
+    authors = glue::glue_collapse(purrr::map(.x$model_contributors, "name"), sep = ", "),
+    model_abbr = .x$model_abbr,
+    website_url = .x$website_url,
+    team_name = .x$team_name,
+    methods = .x$methods,
+    team_model_designation = .x$team_model_designation)) %>%
   filter(model_abbr %in% scores_model$model &
-           team_model_designation != "other") %>%
-  #
-  select(link, model_abbr, team_name, website_url, methods) %>%
+           !grepl("other", team_model_designation)) %>%
+  arrange(tolower(model_abbr)) %>%
   mutate(
     md_link = glue::glue("[Metadata]({link})"),
-    model_abbr = glue::glue("[{model_abbr}]({website_url})"),
-    .keep = "unused"
-  ) %>%
-  arrange(tolower(model_abbr))
-  # select(link, model_abbr, team_name, website_url, methods) %>%
-  # mutate(
-  #   md_link = glue::glue("[Metadata]({link})"),
-  #   website = glue::glue("[Website]({website_url})"),
-  #   .keep = "unused"
-  # ) %>%
-  # arrange(tolower(model_abbr))
-
-# team_table <- team_df  %>%
-#   relocate(
-#     "Model name" = model_abbr,
-#     "Affiliation" = team_name,
-#     "Methods" = methods,
-#     "Metadata" = md_link,
-#     "Website" = website)
+    model_abbr = glue::glue("[{model_abbr}]({website_url})")) %>%
+  select(authors, model_abbr, team_name, md_link, methods)
 
 team_table <- team_df  %>%
   relocate(
-    "Model" = model_abbr,
-    "Affiliation" = team_name,
+    "Model name" = model_abbr,
+    "Authors" = authors,
+    "Team" = team_name,
     "Methods" = methods,
-    "Metadata" = md_link
-  ) %>%
-  knitr::kable(format = "markdown")
+    "Online metadata" = md_link
+  )
+
+#%>%
+# knitr::kable(format = "markdown")
