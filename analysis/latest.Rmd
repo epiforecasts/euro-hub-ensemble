@@ -15,11 +15,15 @@ csl: ieee.csl
 always_allow_html: yes
 ---
 
-```{r render, include=FALSE}
-# this_doc <- here::here("analysis/latest.Rmd")
-# rmarkdown::render(this_doc,
-#                   rmarkdown::html_document(fig_caption = TRUE),
-#                   output_dir = "output")
+```{r render, include=FALSE, eval=FALSE}
+# Create this document
+rmarkdown::render(here::here("analysis", "latest.Rmd"),
+                  rmarkdown::html_document(fig_caption = TRUE),
+                  output_dir = "output")
+# Create SI
+rmarkdown::render(here::here("analysis", "supplementary.Rmd"),
+                  rmarkdown::pdf_document(fig_caption = TRUE),
+                  output_dir = "output")
 ```
 
 ```{r set-up, include=FALSE}
@@ -36,9 +40,6 @@ opts_chunk$set(eval = TRUE, echo = FALSE,
                eval.after = "fig.cap")
 options(scipen=1, digits=2)
 theme_set(theme_bw())
-
-# Include supplementary information in the output?
-include_si <- TRUE
 
 # Set latest date for evaluation
 eval_date <- as.Date("2022-03-07")
@@ -241,4 +242,3 @@ In conclusion, we have shown that during a rapidly evolving epidemic spreading t
 <div id="refs"></div>
 
  \newpage
-
