@@ -18,6 +18,7 @@ always_allow_html: yes
 library(knitr)
 library(here)
 library(dplyr)
+library(readr)
 library(ggplot2)
 library(kableExtra)
 
@@ -47,13 +48,12 @@ source(here("code", "summarise", "supplementary.R"))
 The following teams participated in the European Forecast Hub by contributing forecasts over the study period. Information below is taken from metadata provided by each team.
 
 ```{r team-table}
-team_table
-# team_table %>%
-#   kable(format = "markdown", booktabs = T,
-#         caption = "Teams participating in the European Forecast Hub contributing a model between March 2021 - March 2022") %>%
-#   kableExtra::kable_styling(kable_input = .,
-#                             full_width = TRUE,
-#                             latex_options = c("striped", "scale_down"))
+team_table %>%
+  kable(format = "markdown", escape = TRUE,
+        booktabs = T) %>%
+  kableExtra::kable_styling(kable_input = .,
+                            full_width = TRUE,
+                            latex_options = c("striped", "scale_down"))
 ```
 
  \newpage

@@ -3,8 +3,10 @@
 library(dplyr)
 library(lubridate)
 
-# Get evaluation scores if not already present
-if (!exists("scores_model")) {source(here("code", "load", "evaluation-scores.R"))}
+# Get evaluation scores (saved locally) if not already present
+if (!exists("scores_model")) {
+  scores_model <- read_csv(here("data", "scores-model.csv"))
+}
 
 # Study period -----------------------------------------------------------
 hub <- list(
@@ -18,7 +20,8 @@ hub <- list(
 # scores per target excluding hub ensemble
 scores_model_exhub <- scores_model %>%
   filter(!is_hub) %>%
-  mutate(rel_wis_distance = ensemble_rel_wis - rel_wis)
+  mutate(rel_wis_distance = ensemble_rel_wis - rel_wis,
+         rel_ae_distance = ensemble_rel_ae - rel_ae)
 
 # Summary of participants and models across targets
 models_per_target <- scores_model_exhub %>%
@@ -47,7 +50,9 @@ modellers <- list(
 # Distribution of scores among models
 modeller_scores <- list(
   "n_rel_wis" = sum(!is.na(scores_model_exhub$rel_wis)),
-  "median_score" = median(scores_model_exhub$rel_wis, na.rm = TRUE),
+  "score_range" = quantile(scores_model_exhub$rel_wis,
+                           probs = c(0.05, 0.25, 0.5, 0.75, 0.95),
+                           na.rm = TRUE),
   "score_3_n" = sum(scores_model_exhub$rel_wis > 3, na.rm = TRUE),
   "score_3_p" = sum(scores_model_exhub$rel_wis > 3, na.rm = TRUE) / sum(!is.na(scores_model_exhub$rel_wis)) * 100)
 
@@ -63,11 +68,23 @@ hub_scores_summary <- scores_model %>%
   )
 
 hub_scores <- list(
-  "median_score" = median(scores_model %>% filter(is_hub) %>% pull(rel_wis), na.rm = TRUE),
-  "vs_models" = scores_model_exhub %>%
-    filter(!is.na(rel_wis))  %>%
-    group_by(target_variable) %>%
+  "score_range" = quantile(scores_model |>
+                             filter(is_hub) |>
+                             pull(rel_wis),
+                           probs = c(0.05, 0.25, 0.5, 0.75, 0.95),
+                           na.rm = TRUE),
+  "wis_vs_models" = scores_model_exhub |>
+    filter(!is.na(rel_wis_distance)) |>
+    group_by(target_variable) |>
     summarise(n = n(),
+              models = n_distinct(model),
               p_better = round(sum(rel_wis_distance <= 0) / n * 100)) %>%
+    split(.$target_variable),
+  "ae_vs_models" = scores_model_exhub |>
+    filter(!is.na(rel_ae_distance)) |>
+    group_by(target_variable) |>
+    summarise(n = n(),
+              models = n_distinct(model),
+              p_better = round(sum(rel_ae_distance <= 0) / n * 100)) %>%
     split(.$target_variable)
 )
