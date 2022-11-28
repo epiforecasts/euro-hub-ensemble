@@ -24,7 +24,7 @@ if(load_from_local) {
   message("Loading scores from Github")
   source(here("code", "load", "download_latest_eval.R"))
 
-  # Individual model evaluation ---------------------------------------------
+  # Get individual model evaluation ------------------------------------------
   scores_model <- download_latest_eval(eval_date, "main", "",
                                        weeks_included = "All",
                                        target_variables = c("inc case",
@@ -54,9 +54,12 @@ if(load_from_local) {
               by = c("weeks_included", "target_variable", "horizon", "location")) %>%
     mutate(is_hub = grepl("hub-ensemble", model))
 
-  rm(score_realtime_ensemble, metadata_other, download_metadata)
+  rm(score_realtime_ensemble, metadata_other)
 
-  # Separately created retrospective ensemble scores --------------------------
+  # Save
+  write_csv(scores_model, here("data", "scores-model.csv"))
+
+  # Get separately created retrospective ensemble scores --------------------------
   scores_ensemble <- download_latest_eval(eval_date = eval_date,
                                           branch = "assess-ensembles",
                                           subdir = "ensembles",
@@ -75,7 +78,6 @@ if(load_from_local) {
            model = sub("EuroCOVIDhub-", "Unweighted ", model)
     )
 
-  # Save the downloaded data -----------------------------------------------
-  write_csv(scores_model, here("data", "scores-model.csv"))
+  # Save
   write_csv(scores_ensemble, here("data", "scores-ensemble.csv"))
 }
