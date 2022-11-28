@@ -1,0 +1,88 @@
+---
+title: Supplement
+output:
+  bookdown::pdf_document2:
+    extra_dependencies: ["colortbl"]
+    toc: false
+    number_sections: false
+  bookdown::html_document2:
+      toc: true
+      number_sections: false
+  bookdown::word_document2: default
+always_allow_html: yes
+---
+
+```{r si-set-up, include=FALSE}
+# set up -----------------------------------
+# Packages
+library(knitr)
+library(here)
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
+
+# Document settings
+opts_chunk$set(eval = TRUE, echo = FALSE,
+               message = FALSE, warning = FALSE,
+               eval.after = "fig.cap")
+options(scipen=1, digits=2)
+theme_set(theme_bw())
+
+# Set latest date for evaluation
+eval_date <- as.Date("2022-03-07")
+
+# Load data: evaluation scores
+load_from_local <- TRUE # load from saved csv in "data" (FALSE starts download)
+```
+
+Supplementary information: _Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations_
+
+```{r get-si, include = FALSE}
+# Get SI figures
+source(here("code", "summarise", "supplementary.R"))
+```
+
+### Participating teams
+
+The following teams participated in the European Forecast Hub by contributing forecasts over the study period. Information below is taken from metadata provided by each team.
+
+```{r team-table}
+team_table
+# team_table %>%
+#   kable(format = "markdown", booktabs = T,
+#         caption = "Teams participating in the European Forecast Hub contributing a model between March 2021 - March 2022") %>%
+#   kableExtra::kable_styling(kable_input = .,
+#                             full_width = TRUE,
+#                             latex_options = c("striped", "scale_down"))
+```
+
+ \newpage
+ 
+### Summary of evaluated forecasts
+```{r si-fig-1, fig.cap=si_fig1_legend, fig.height=6, fig.width=5}
+si_figure_1
+```
+
+\newpage
+ 
+### Comparison of contributed forecasts and the Hub ensemble
+```{r si-fig-2, fig.cap=si_fig2_legend, fig.height=3, fig.width=7}
+si_figure_2
+```
+
+
+### EPIFORGE guidelines for reporting of epidemic forecasting research
+
+```{r epiforge}
+epiforge <- read_csv(here("output", "metadata", "epiforge.csv"))
+epiforge %>%
+  kable(format = "markdown", booktabs = T,
+        caption = "EPIFORGE guidelines (Pollet et. al., 2021)") %>%
+  kableExtra::kable_styling(kable_input = .,
+                            full_width = TRUE,
+                            latex_options = c("striped", "scale_down"))
+```
+
+Following:
+
+Pollett S, Johansson MA, Reich NG, Brett-Major D, Del Valle SY, Venkatramanan S, Lowe R, Porco T, Berry IM, Deshpande A, Kraemer MUG, Blazes DL, Pan-Ngum W, Vespigiani A, Mate SE, Silal SP, Kandula S, Sippy R, Quandelacy TM, Morgan JJ, Ball J, Morton LC, Althouse BM, Pavlin J, van Panhuis W, Riley S, Biggerstaff M, Viboud C, Brady O, Rivers C. Recommended reporting items for epidemic forecasting and prediction research: The EPIFORGE 2020 guidelines. PLoS Med. 2021 Oct 19;18(10):e1003793. doi: 10.1371/journal.pmed.1003793. PMID: 34665805; PMCID: PMC8525759.
