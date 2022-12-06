@@ -16,6 +16,21 @@ hub <- list(
   "end_date" = format.Date(eval_date, "%d %B %Y")
 )
 
+# Submissions (including those excluded from scoring) ---------------------
+# The size of the combined csv files is too large to read efficiently
+#   instead we can use Apache Arrow parquet file format.
+# Parquet file created and saved to data/ file. Source code:
+# source("https://gist.githubusercontent.com/kathsherratt/c942c1a5870db243a5c6a9a066de4f6e/raw/1384b81735599a3a4550c1e31197debcac6320c3/create-parquet.R")
+#
+# read in parquet file
+forecasts <- arrow::read_parquet("data/covid19-forecast-hub-europe.parquet")
+# number of models and forecasts for each location at each target date
+loc_models <- forecasts |>
+  filter(!grepl("EuroCOVIDhub", model)) |>
+  group_by(target_variable, location, horizon) |>
+  summarise(n = n(),
+            models = n_distinct(model))
+
 # Individual models -------------------------------------------------------
 # scores per target excluding hub ensemble
 scores_model_exhub <- scores_model %>%
