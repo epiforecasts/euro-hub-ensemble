@@ -1,5 +1,7 @@
 # Create values to summarise data in text
 #   and figures for supplementary information (SI)
+library(here)
+library(readr)
 library(dplyr)
 library(lubridate)
 
@@ -7,6 +9,7 @@ library(lubridate)
 if (!exists("scores_model")) {
   scores_model <- read_csv(here("data", "scores-model.csv"))
 }
+eval_date <- as.Date("2022-03-07")
 
 # Study period -----------------------------------------------------------
 hub <- list(
@@ -25,11 +28,19 @@ hub <- list(
 # read in parquet file
 forecasts <- arrow::read_parquet("data/covid19-forecast-hub-europe.parquet")
 # number of models and forecasts for each location at each target date
-loc_models <- forecasts |>
+submissions <- forecasts |>
   filter(!grepl("EuroCOVIDhub", model)) |>
   group_by(target_variable, location, horizon) |>
   summarise(n = n(),
-            models = n_distinct(model))
+            n_models = n_distinct(model)) |>
+  ungroup() |>
+  mutate(target_variable = gsub("inc ", "", target_variable))
+
+submissions_range <- list(
+  "max" = slice_max(submissions, order_by = n_models,
+                    n = 1, with_ties = FALSE) |>  as.list(),
+  "min" = slice_min(submissions, order_by = n_models,
+                    n = 1) |>  slice_max(n = 1, order_by = horizon) |> as.list())
 
 # Individual models -------------------------------------------------------
 # scores per target excluding hub ensemble
