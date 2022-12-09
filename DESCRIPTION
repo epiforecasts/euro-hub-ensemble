@@ -28,7 +28,8 @@ Imports:
   googlesheets4,
   arrow
 Suggests:
-  covidHubUtils
+  covidHubUtils,
+  kableExtra
 Remotes:
   reichlab/covidHubUtils
 Encoding: UTF-8
