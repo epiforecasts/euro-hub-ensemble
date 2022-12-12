@@ -14,7 +14,7 @@ author_types <- ordered(c("first", "second",
                           "hub", "hub_support", "model",
                           "second_last", "last"))
 if (exists("load_from_local")) {
-  load_from_local <- TRUE
+  load_from_local <- FALSE
 }
 
 #  Load -----------------------------------------------------------
