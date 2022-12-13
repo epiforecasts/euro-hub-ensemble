@@ -45,7 +45,7 @@ source(here("code", "summarise", "supplementary.R"))
 
 ### Participating teams
 
-The following teams participated in the European Forecast Hub by contributing forecasts over the study period. Information below is taken from metadata provided by each team.
+The following teams contributed forecasts over the study period and were included in this analysis of the European Forecast Hub. Information below is taken from metadata provided by each team. This table is intended to be interactive: "Team" links to a team's given website address, while "Metadata" links to the model's metadata contributed by each team to the Hub repository, which may contain further details on methods and references to related publications.
 
 ```{r team-table}
 team_table %>%
