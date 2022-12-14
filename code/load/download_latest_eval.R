@@ -17,7 +17,8 @@ here::i_am("code/load/download_latest_eval.R")
 download_latest_eval <- function(eval_date = as.Date("2022-03-07"),
                                  branch = "main", subdir = "",
                                  weeks_included = "All",
-                                 target_variables = c("inc case", "inc death")) {
+                                 target_variables = c("inc case", "inc death"),
+                                 eval_start = as.Date("2021-04-05")) {
 
   # Function to get a single weekly evaluation file
   get_given_date_eval <- function(eval_date, branch, subdir) {
@@ -27,7 +28,7 @@ download_latest_eval <- function(eval_date = as.Date("2022-03-07"),
   }
 
   # Get evaluations up to latest evaluation date
-  all_eval_dates = seq.Date(from = as.Date("2021-04-05"), # start of evaluation
+  all_eval_dates = seq.Date(from = eval_start, # start of evaluation
                             to = eval_date,
                             by = 7)
   all_eval <- map_dfr(all_eval_dates,

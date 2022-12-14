@@ -3,7 +3,7 @@ library(dplyr)
 library(tidyr)
 library(kableExtra)
 
-if (!exists("scores_model")) {source(here("code", "load", "evaluation-scores.R"))}
+if (!exists("scores_ensemble")) {source(here("code", "load", "evaluation-scores.R"))}
 
 ensemble_eval_table <- scores_ensemble %>%
   filter(location == "Overall") %>%
