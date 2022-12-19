@@ -46,13 +46,13 @@ si_fig2b <- scores_model_exhub %>%
   geom_vline(aes(xintercept = 0), lty = 2) +
   labs(x = "Difference from ensemble",
        y = NULL,
-       subtitle = "(b) Contributed forecasts \n compared to the Hub ensemble model")
+       subtitle = "(b) Difference in score between contributed forecasts \n compared to the Hub ensemble model (for each comparable forecast target, difference = model forecast score - hub ensemble score")
 
 si_figure_2 <- si_fig2a +
   si_fig2b +
   plot_layout(nrow = 1) +
   plot_annotation(
-    caption = paste("N =", modeller_scores$n_rel_wis - modeller_scores$score_3, "excluding", modeller_scores$score_3, "scores with scaled relative WIS > 3"))
+    caption = paste("N =", modeller_scores$n_rel_wis - modeller_scores$score_3_n, "excluding", modeller_scores$score_3_n, "scores with scaled relative WIS > 3"))
 
 si_fig2_legend <- "Comparison of scores between participating model forecasts \n and Hub ensemble of all available forecasts for each target"
 
@@ -110,5 +110,8 @@ team_table <- team_df  %>%
     "Metadata" =metadata
   )
 
-#%>%
-# knitr::kable(format = "markdown")
+# Replace a team name on their request
+team_table <- team_table |>
+  mutate(Team = gsub("UNIPG_UNIMIB_USI_UNINSUBRIA",
+                     "University of Perugia / University of Milano-Bicocca / Università della Svizzera Italiana",
+                     Team))
