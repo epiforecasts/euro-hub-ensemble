@@ -11,7 +11,7 @@ source(here("code", "load", "download_metadata.R"))
 # source("https://gist.githubusercontent.com/kathsherratt/c942c1a5870db243a5c6a9a066de4f6e/raw/1384b81735599a3a4550c1e31197debcac6320c3/create-parquet.R")
 
 # Read in parquet file
-submissions <- arrow::read_parquet("data/covid19-forecast-hub-europe.parquet") |>
+submissions <- arrow::read_parquet(here("data", "covid19-forecast-hub-europe.parquet")) |>
   mutate(target_variable = gsub("inc ", "", target_variable))
 
 # Exclusions ------------------------------------------------------------
