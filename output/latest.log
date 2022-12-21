@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.21)  12 DEC 2022 01:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.21)  21 DEC 2022 13:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -620,7 +620,7 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 (hyperref)                than one, level fixed on input line 160.
 
 [5] [6] [7]
-<latest_files/figure-latex/example-ensemble-1.pdf, id=168, 505.89pt x 216.81pt>
+<latest_files/figure-latex/example-ensemble-1.pdf, id=169, 505.89pt x 216.81pt>
 File: latest_files/figure-latex/example-ensemble-1.pdf Graphic file (type pdf)
 <use latest_files/figure-latex/example-ensemble-1.pdf>
 Package pdftex.def Info: latest_files/figure-latex/example-ensemble-1.pdf  used on input line 213.
@@ -629,34 +629,33 @@ Package pdftex.def Info: latest_files/figure-latex/example-ensemble-1.pdf  used 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.220 
+l.222 
        <./latest_files/figure-latex/example-ensemble-1.pdf>]
-<latest_files/figure-latex/performance-horizon-1.pdf, id=195, 361.35pt x 433.62pt>
+<latest_files/figure-latex/performance-horizon-1.pdf, id=196, 361.35pt x 433.62pt>
 File: latest_files/figure-latex/performance-horizon-1.pdf Graphic file (type pdf)
 <use latest_files/figure-latex/performance-horizon-1.pdf>
 Package pdftex.def Info: latest_files/figure-latex/performance-horizon-1.pdf  used on input line 229.
 (pdftex.def)             Requested size: 361.34912pt x 433.61894pt.
-[10] [11
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.236 
-       <./latest_files/figure-latex/performance-horizon-1.pdf>]
-<latest_files/figure-latex/performance-countries-1.pdf, id=216, 505.89pt x 361.35pt>
+<latest_files/figure-latex/performance-countries-1.pdf, id=198, 505.89pt x 361.35pt>
 File: latest_files/figure-latex/performance-countries-1.pdf Graphic file (type pdf)
 <use latest_files/figure-latex/performance-countries-1.pdf>
 Package pdftex.def Info: latest_files/figure-latex/performance-countries-1.pdf  used on input line 239.
 (pdftex.def)             Requested size: 469.76265pt x 335.54477pt.
-[12
+[10] [11
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.242 \end{figure}
+                   <./latest_files/figure-latex/performance-horizon-1.pdf>] [12
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.245 
+l.271 
        <./latest_files/figure-latex/performance-countries-1.pdf>] [13
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.278 
+l.280 
       ] [14] [15] [16]
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 316--319
 [] []
@@ -697,7 +696,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 328--331
 
  []
 
-[17]
+
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 332--335
 [][] []
  []
@@ -707,7 +706,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 332--335
 
  []
 
-
+[17]
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 336--339
 [][] []
  []
@@ -827,7 +826,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 380--383
 
  []
 
-[18]
+
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 384--387
 [][] []
  []
@@ -837,7 +836,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 384--387
 
  []
 
-
+[18]
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 388--391
 [][] []
  []
@@ -967,7 +966,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 436--439
 
  []
 
-[19]
+
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 440--443
 [][] []
  []
@@ -977,7 +976,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 440--443
 
  []
 
-
+[19]
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 444--447
 [][] []
  []
@@ -1077,7 +1076,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 480--483
 
  []
 
-[20]
+
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 484--487
 [][] []
  []
@@ -1087,7 +1086,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 484--487
 
  []
 
-
+[20]
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 488--491
 [][] []
  []
@@ -1177,23 +1176,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 520--523
 
  []
 
-[21] (./latest.aux)
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 524--527
+[][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 524--527
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 528--531
+[][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 528--531
+
+ []
+
+[21] [22] (./latest.aux)
 Package rerunfilecheck Info: File `latest.out' has not changed.
 (rerunfilecheck)             Checksum: 5150ACD79A9A1668C7F8893FA7711713;874.
  ) 
 Here is how much of TeX's memory you used:
- 14784 strings out of 476931
- 241753 string characters out of 5823845
+ 14787 strings out of 476931
+ 241816 string characters out of 5823845
  625591 words of memory out of 5000000
  35491 multiletter control sequences out of 15000+600000
  526964 words of font info for 153 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 72i,9n,77p,4474b,472s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,9n,77p,4474b,476s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on latest.pdf (21 pages, 301060 bytes).
+Output written on latest.pdf (22 pages, 302437 bytes).
 PDF statistics:
- 477 PDF objects out of 1000 (max. 8388607)
- 419 compressed objects within 5 object streams
- 97 named destinations out of 1000 (max. 500000)
+ 487 PDF objects out of 1000 (max. 8388607)
+ 428 compressed objects within 5 object streams
+ 100 named destinations out of 1000 (max. 500000)
  28752 words of extra memory for PDF output out of 29859 (max. 10000000)
 

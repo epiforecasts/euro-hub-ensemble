@@ -129,7 +129,7 @@ We retrospectively explored alternative methods for combining forecasts for each
 
 $$F^{-1}(\alpha) = \sum_{i=1}^{n}w_i F_i^{-1}(\alpha),$$
 
-Where $F_{1} \ldots F_{n}$ are the cumulative distribution functions of the individual probability distributions (in our case, the predictive distributions of each forecast model $i$ contributed to the hub), $w_i$ are a set of weights in $[0,1]$; and $\alpha$ are the quantile levels such that
+Where $F_{1} \ldots F_{n}$ are the cumulative distribution functions of the individual probability distributions (in our case, the predictive distributions of each forecast model $i$ contributed to the hub), $w_i$ are a set of weights in $[0,1]$; and $\alpha$ are the quantile levels, such that following notation introduced in [@genestVincentizationRevisited1992],
 
 $$F^{-1}(\alpha) = \mathrm{inf} \{t : F_i(t) \geq \alpha \}.$$
 
@@ -182,7 +182,7 @@ The ensemble also performed consistently well in comparison to individual models
 source(here("code", "summarise", "table-1.R"))
 ensemble_eval_table
 ```
-We considered alternative methods for creating ensembles from the participating forecasts, using either a mean or median to combine either weighted or unweighted forecasts (Table \@ref(tab:ensembles)). Across locations we observed that the median outperformed the mean across all one through four week horizons and both cases and death targets, for all but cases at the 1 week horizon. This held regardless of whether the component forecasts were weighted or unweighted by their individual past performance. Between methods of combination, weighting made little difference to the performance of the median ensemble, but improved performance of the mean ensemble in forecasting deaths at longer (2-4 week) time horizons.
+We considered alternative methods for creating ensembles from the participating forecasts, using either a mean or median to combine either weighted or unweighted forecasts (Table \@ref(tab:ensembles)). Across locations we observed that the median outperformed the mean across all one through four week horizons and both cases and death targets, for all but cases at the 1 week horizon. This held regardless of whether the component forecasts were weighted or unweighted by their individual past performance. Between methods of combination, weighting made little difference to the performance of the median ensemble, but appeared to improve performance of a mean ensemble in forecasting deaths.
 
 # Discussion
 
