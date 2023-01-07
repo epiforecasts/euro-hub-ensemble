@@ -64,7 +64,6 @@ cat(authors)
 ```{r authors-institutions, results='asis', size ="small"}
 institutions <- readLines(here("output", "metadata", "institutions.txt"))
 cat(institutions)
-cat("\n\n Complete author funding information available as a supplement")
 ```
 
 

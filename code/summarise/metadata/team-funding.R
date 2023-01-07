@@ -25,8 +25,9 @@ initials <- authors_raw %>%
                            paste0(init_firstlast, init_last2),
                            init_firstlast),
          initials = ifelse(is.na(initials), init_firstlast, initials),
-         funding = str_remove_all(funding, "\\.$")) %>%
-  select(initials, funding, funding_individual)
+         funding = str_remove_all(funding, "\\.$"),
+         full_name = paste(first_name, last_name)) %>%
+  select(initials, full_name, funding, funding_individual)
 
 # parse funding statements ------------------------------------------------
 funding_split <- split(initials, initials$funding)
