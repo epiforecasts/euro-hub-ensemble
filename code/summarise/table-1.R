@@ -9,7 +9,6 @@ scores_ensemble <- read_csv("https://raw.githubusercontent.com/covid19-forecast-
 
 scores_ensemble <- scores_ensemble |>
   filter(model != "EuroCOVIDhub-baseline" &
-           compare_against == "EuroCOVIDhub-baseline" &
            location == "Overall") |>
   mutate(model = sub("EuroCOVIDhub-All_relative_skill_weighted_", "Weighted ", model),
          model = sub("EuroCOVIDhub-", "Unweighted ", model)
@@ -18,8 +17,8 @@ scores_ensemble <- scores_ensemble |>
 ensemble_eval_table <- scores_ensemble |>
   arrange(horizon) |>
   mutate(horizon = paste(horizon, if_else(horizon == 1, "week", "weeks"))) |>
-  select(model, target_variable, Horizon = horizon, mean_scores_ratio) |>
-  pivot_wider(names_from = "model", values_from = "mean_scores_ratio") |>
+  select(model, target_variable, Horizon = horizon, msr_baseline) |>
+  pivot_wider(names_from = "model", values_from = "msr_baseline") |>
   arrange(target_variable) %>%
   select(-target_variable)
 
