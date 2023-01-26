@@ -61,7 +61,7 @@ if(load_from_local) {
 
   # Get separately created retrospective ensemble scores --------------------------
   scores_ensemble <- download_latest_eval(eval_date = eval_date,
-                                          branch = "assess-ensembles",
+                                          branch = "assess-ensembles-update",
                                           subdir = "ensembles",
                                           weeks_included = "All",
                                           target_variables = c("inc case",
@@ -72,8 +72,7 @@ if(load_from_local) {
     filter(model %in% c("EuroCOVIDhub-mean",
                         "EuroCOVIDhub-median",
                         "EuroCOVIDhub-All_relative_skill_weighted_mean",
-                        "EuroCOVIDhub-All_relative_skill_weighted_median") &
-             is.finite(rel_wis)) %>%
+                        "EuroCOVIDhub-All_relative_skill_weighted_median")) %>%
     mutate(model = sub("EuroCOVIDhub-All_relative_skill_weighted_", "Weighted ", model),
            model = sub("EuroCOVIDhub-", "Unweighted ", model)
     )
