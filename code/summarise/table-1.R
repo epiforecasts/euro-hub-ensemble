@@ -7,6 +7,8 @@ library(kableExtra)
 
 scores_ensemble <- read_csv("https://raw.githubusercontent.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe/assess-ensembles-update/ensembles/evaluation/weekly-summary/evaluation-2022-03-07.csv")
 
+# write_csv(scores_ensemble, here::here("data", "scores-ensemble.csv"))
+
 scores_ensemble <- scores_ensemble |>
   filter(model != "EuroCOVIDhub-baseline" &
            location == "Overall") |>
