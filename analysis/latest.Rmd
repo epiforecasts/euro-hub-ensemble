@@ -7,6 +7,8 @@ output:
     number_sections: false
     keep_tex: true
   bookdown::word_document2: default
+knit: (function(input, ...) {
+    rmarkdown::render(input, output_dir = "../output")})
 header-includes:
     - \usepackage{setspace}\doublespacing
 bibliography: references.bib
