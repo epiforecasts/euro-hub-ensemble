@@ -70,10 +70,10 @@ fig_loc_summary <- fig_loc_base$ensemble_models %>%
   split(.$target_variable)
 
 figure_loc <- fig_loc_base$plot_location
-ggsave(filename = here("output", "figures", "figure-3.png"), plot = figure_loc)
+ggsave(filename = here("output", "figures", "figure-performance-location.png"), plot = figure_loc)
 
-fig_loc_cap <- "_Performance of short-term forecasts across models and
-median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk. y-axis is cut-off to an upper bound of 4 for readability._"
+fig_loc_cap <- "Performance of short-term forecasts across models and
+median ensemble (asterisk), by country, forecasting cases (top) and deaths (bottom) for two-week ahead forecasts, according to the relative weighted interval score. Boxplots show interquartile ranges, with outliers as faded points, and the ensemble model performance is marked by an asterisk. y-axis is cut-off to an upper bound of 4 for readability."
 
 # Repeat for all horizons -----------------------------------------------
 h1234_base <- ensemble_performance_by_location(scores_model)

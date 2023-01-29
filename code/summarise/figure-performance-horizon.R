@@ -78,7 +78,7 @@ cov_95 <- fig_data_horizon %>%
            ymin = 0.90, ymax = 1) +
   coord_cartesian(ylim = c(0, 1)) +
   labs(y = "95% coverage",
-       x = "Weeks ahead horizon",
+       x = "Weeks ahead forecast horizon",
        col = NULL) +
   facet_wrap(~ target_variable, ncol = 2) +
   scale_colour_manual(values = models_ensemble_cols) +
@@ -94,8 +94,8 @@ figure_horizon <-
   cov_95 +
   plot_layout(ncol = 1)
 
-ggsave(filename = here("output", "figures", "figure-2.png"),
+ggsave(filename = here("output", "figures", "figure-performance-horizon.png"),
        plot = figure_horizon, width = 5, height = 7)
 
 # caption
-figure_horizon_cap <- "_Performance of short-term forecasts aggregated across all individually submitted models and the Hub ensemble, by horizon, forecasting cases (left) and deaths (right). Performance measured by relative weighted interval score scaled against a baseline (dotted line, 1), and coverage of uncertainty at the 50% and 95% levels. Boxplot, with width proportional to number of observations, show interquartile ranges with outlying scores as faded points. The target range for each set of scores is shaded in yellow._"
+figure_horizon_cap <- "Performance of short-term forecasts aggregated across all individually submitted models and the Hub ensemble, by horizon, forecasting cases (left) and deaths (right). Performance measured by relative weighted interval score scaled against a baseline (dotted line, 1), and coverage of uncertainty at the 50% and 95% levels. Boxplot, with width proportional to number of observations, show interquartile ranges with outlying scores as faded points. The target range for each set of scores is shaded in yellow."

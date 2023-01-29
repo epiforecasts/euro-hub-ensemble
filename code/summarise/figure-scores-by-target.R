@@ -19,7 +19,7 @@ figure_scores_by_target <- models_per_target %>%
   ggplot(aes(x = horizon, y = location_name, fill = n_scores)) +
   geom_tile() +
   scale_fill_viridis_c(direction = -1, breaks = c(100, 300, 500)) +
-  labs(x = "Horizon", y = NULL, fill = "Number of forecast scores") +
+  labs(x = "Weeks ahead forecast horizon", y = NULL, fill = "Number of forecast scores") +
   facet_wrap("target_variable") +
   theme(legend.position = "bottom",
         strip.background = element_blank())
@@ -27,4 +27,4 @@ figure_scores_by_target <- models_per_target %>%
 figure_scores_by_target_cap <- "Total number of forecasts included in evaluation, by target location, week ahead horizon, and variable"
 
 ggsave(here("output", "figures", "figure-scores-by-target.png"),
-       width = 4, height = 6)
+       width = 5, height = 5)
