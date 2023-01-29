@@ -1,5 +1,12 @@
 ---
 title: Predictive performance of multi-model ensemble forecasts of COVID-19 across European nations
+knit: (function(input, ...) {
+    rmarkdown::render(input,
+                  output_format = bookdown::pdf_document2(fig_caption = TRUE,
+                    keep_tex = TRUE, number_sections = FALSE, toc = FALSE,
+                    extra_dependencies = "colortbl"),
+                  output_dir = here::here("output"))
+    })
 output:
   bookdown::pdf_document2:
     extra_dependencies: ["colortbl"]
@@ -7,8 +14,6 @@ output:
     number_sections: false
     keep_tex: true
   bookdown::word_document2: default
-knit: (function(input, ...) {
-    rmarkdown::render(input, output_dir = "../output")})
 header-includes:
     - \usepackage{setspace}\doublespacing
 bibliography: references.bib
@@ -19,9 +24,9 @@ always_allow_html: yes
 
 ```{r render, include=FALSE, eval=FALSE}
 # Create this document
-rmarkdown::render(input = here::here("analysis", "latest.Rmd"),
-                  bookdown::pdf_document2(fig_caption = TRUE),
-                  output_dir = here::here("output"))
+rmarkdown::render(input = here::here("analysis", "latest.Rmd"), 
+                  output_format = bookdown::pdf_document2(fig_caption = TRUE),
+                  output_dir = here::here("output"), )
 ```
 
 ```{r set-up, include=FALSE}
