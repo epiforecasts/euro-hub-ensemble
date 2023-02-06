@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.29)  29 JAN 2023 20:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.29)  1 FEB 2023 11:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -620,7 +620,7 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 (hyperref)                than one, level fixed on input line 152.
 
 [5] [6] [7]
-<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf, id=166, 361.35pt x 361.35pt>
+<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf, id=170, 361.35pt x 361.35pt>
 File: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf Graphic file (type pdf)
 <use C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf>
 Package pdftex.def Info: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf  used on input line 203.
@@ -631,7 +631,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has
                                                   \__shipout_drop_firstpage_...
 l.208 
        <c:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf>]
-<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf, id=191, 505.89pt x 216.81pt>
+<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf, id=195, 505.89pt x 216.81pt>
 File: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf Graphic file (type pdf)
 <use C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf>
 Package pdftex.def Info: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf  used on input line 215.
@@ -642,12 +642,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has
                                                   \__shipout_drop_firstpage_...
 l.220 
        <c:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf>]
-<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf, id=208, 361.35pt x 433.62pt>
+<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf, id=212, 361.35pt x 433.62pt>
 File: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf Graphic file (type pdf)
 <use C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf>
 Package pdftex.def Info: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf  used on input line 227.
 (pdftex.def)             Requested size: 361.34912pt x 433.61894pt.
-<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf, id=210, 505.89pt x 361.35pt>
+<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf, id=214, 505.89pt x 361.35pt>
 File: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf Graphic file (type pdf)
 <use C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf>
 Package pdftex.def Info: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf  used on input line 237.
@@ -667,563 +667,563 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has 
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.275 A
-       cross all models we observed that forecasting changes in trend in rea...] [15] [16] [17]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 314--317
+       cross all models we observed that forecasting changes in trend in rea...] [15] [16] [17] [18]
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 323--326
 [] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--317
+Underfull \hbox (badness 10000) in paragraph at lines 323--326
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 318--321
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 327--330
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--321
+Underfull \hbox (badness 10000) in paragraph at lines 327--330
 
  []
 
-[18]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 322--325
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 331--334
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--325
+Underfull \hbox (badness 10000) in paragraph at lines 331--334
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 326--329
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 335--338
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--329
+Underfull \hbox (badness 10000) in paragraph at lines 335--338
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 330--333
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 339--342
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--333
+Underfull \hbox (badness 10000) in paragraph at lines 339--342
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 334--337
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 343--346
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--337
+Underfull \hbox (badness 10000) in paragraph at lines 343--346
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 338--341
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 347--350
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 338--341
+Underfull \hbox (badness 10000) in paragraph at lines 347--350
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 342--345
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 351--354
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--345
+Underfull \hbox (badness 10000) in paragraph at lines 351--354
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 346--349
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 355--358
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 346--349
+Underfull \hbox (badness 10000) in paragraph at lines 355--358
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 350--353
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 359--362
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--353
-
- []
-
-
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 354--357
-[][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 354--357
-
- []
-
-
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 358--361
-[][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 358--361
-
- []
-
-
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 362--365
-[][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 362--365
-
- []
-
-
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 366--369
-[][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 366--369
-
- []
-
-
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 370--373
-[][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 370--373
+Underfull \hbox (badness 10000) in paragraph at lines 359--362
 
  []
 
 [19]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 374--377
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 363--366
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--377
+Underfull \hbox (badness 10000) in paragraph at lines 363--366
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 378--381
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 367--370
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 378--381
+Underfull \hbox (badness 10000) in paragraph at lines 367--370
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 382--385
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 371--374
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 382--385
+Underfull \hbox (badness 10000) in paragraph at lines 371--374
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 386--389
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 375--378
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 386--389
+Underfull \hbox (badness 10000) in paragraph at lines 375--378
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 390--393
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 379--382
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 390--393
+Underfull \hbox (badness 10000) in paragraph at lines 379--382
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 394--397
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 383--386
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--397
+Underfull \hbox (badness 10000) in paragraph at lines 383--386
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 398--401
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 387--390
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--401
+Underfull \hbox (badness 10000) in paragraph at lines 387--390
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 402--405
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 391--394
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--405
+Underfull \hbox (badness 10000) in paragraph at lines 391--394
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 406--409
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 395--398
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--409
+Underfull \hbox (badness 10000) in paragraph at lines 395--398
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 410--413
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 399--402
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--413
+Underfull \hbox (badness 10000) in paragraph at lines 399--402
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 414--417
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 403--406
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 414--417
+Underfull \hbox (badness 10000) in paragraph at lines 403--406
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 418--421
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 407--410
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--421
+Underfull \hbox (badness 10000) in paragraph at lines 407--410
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 422--425
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 411--414
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 422--425
+Underfull \hbox (badness 10000) in paragraph at lines 411--414
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 426--429
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 415--418
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 426--429
+Underfull \hbox (badness 10000) in paragraph at lines 415--418
 
  []
 
 [20]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 430--433
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 419--422
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 430--433
+Underfull \hbox (badness 10000) in paragraph at lines 419--422
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 434--437
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 423--426
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--437
+Underfull \hbox (badness 10000) in paragraph at lines 423--426
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 438--441
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 427--430
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 438--441
+Underfull \hbox (badness 10000) in paragraph at lines 427--430
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 442--445
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 431--434
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 442--445
+Underfull \hbox (badness 10000) in paragraph at lines 431--434
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 446--449
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 435--438
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 446--449
+Underfull \hbox (badness 10000) in paragraph at lines 435--438
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 450--453
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 439--442
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 450--453
+Underfull \hbox (badness 10000) in paragraph at lines 439--442
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 454--457
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 443--446
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--457
+Underfull \hbox (badness 10000) in paragraph at lines 443--446
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 458--461
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 447--450
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 458--461
+Underfull \hbox (badness 10000) in paragraph at lines 447--450
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 462--465
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 451--454
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--465
+Underfull \hbox (badness 10000) in paragraph at lines 451--454
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 466--469
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 455--458
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 466--469
+Underfull \hbox (badness 10000) in paragraph at lines 455--458
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 470--473
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 459--462
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--473
+Underfull \hbox (badness 10000) in paragraph at lines 459--462
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 474--477
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 463--466
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 474--477
+Underfull \hbox (badness 10000) in paragraph at lines 463--466
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 467--470
+[][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 467--470
 
  []
 
 [21]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 478--481
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 471--474
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 478--481
+Underfull \hbox (badness 10000) in paragraph at lines 471--474
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 482--485
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 475--478
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--485
+Underfull \hbox (badness 10000) in paragraph at lines 475--478
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 486--489
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 479--482
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 486--489
+Underfull \hbox (badness 10000) in paragraph at lines 479--482
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 490--493
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 483--486
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 490--493
+Underfull \hbox (badness 10000) in paragraph at lines 483--486
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 494--497
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 487--490
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 494--497
+Underfull \hbox (badness 10000) in paragraph at lines 487--490
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 498--501
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 491--494
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 498--501
+Underfull \hbox (badness 10000) in paragraph at lines 491--494
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 502--505
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 495--498
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 502--505
+Underfull \hbox (badness 10000) in paragraph at lines 495--498
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 506--509
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 499--502
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 506--509
+Underfull \hbox (badness 10000) in paragraph at lines 499--502
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 510--513
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 503--506
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--513
+Underfull \hbox (badness 10000) in paragraph at lines 503--506
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 514--517
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 507--510
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 514--517
+Underfull \hbox (badness 10000) in paragraph at lines 507--510
 
  []
 
 [22]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 518--521
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 511--514
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 518--521
+Underfull \hbox (badness 10000) in paragraph at lines 511--514
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 522--525
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 515--518
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--525
+Underfull \hbox (badness 10000) in paragraph at lines 515--518
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 526--529
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 519--522
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--529
+Underfull \hbox (badness 10000) in paragraph at lines 519--522
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 523--526
+[][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 523--526
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 527--530
+[][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 527--530
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 531--534
+[][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--534
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 535--538
+[][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 535--538
 
  []
 
 [23] (./latest.aux)
 Package rerunfilecheck Info: File `latest.out' has not changed.
-(rerunfilecheck)             Checksum: 5150ACD79A9A1668C7F8893FA7711713;874.
+(rerunfilecheck)             Checksum: 25F6DFC5E42F7096E9B6F71DAA4EE088;1047.
  ) 
 Here is how much of TeX's memory you used:
- 14793 strings out of 478025
- 243853 string characters out of 5838745
+ 14799 strings out of 478025
+ 243953 string characters out of 5838745
  1871299 words of memory out of 5000000
- 34404 multiletter control sequences out of 15000+600000
- 569649 words of font info for 154 fonts, out of 8000000 for 9000
+ 34406 multiletter control sequences out of 15000+600000
+ 569743 words of font info for 155 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,9n,76p,4531b,467s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on latest.pdf (23 pages, 307866 bytes).
+Output written on latest.pdf (23 pages, 311268 bytes).
 PDF statistics:
- 499 PDF objects out of 1000 (max. 8388607)
- 436 compressed objects within 5 object streams
- 102 named destinations out of 1000 (max. 500000)
- 28757 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 505 PDF objects out of 1000 (max. 8388607)
+ 442 compressed objects within 5 object streams
+ 104 named destinations out of 1000 (max. 500000)
+ 28765 words of extra memory for PDF output out of 29859 (max. 10000000)
 

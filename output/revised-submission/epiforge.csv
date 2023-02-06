@@ -1,0 +1,20 @@
+﻿Section of manuscript,Item,Checklist item,Reported on page
+Title/Abstract,1,Describe the study as forecast or prediction research in at least the title or abstract,1
+Introduction,2,Define the purpose of study and forecasting targets,4
+Methods,3,Fully document the methods,"4,5,6,7,8"
+Methods,4,"Identify whether the forecast was performed prospectively, in real time, and/or retrospectively",5
+Methods,5,"Explicitly describe the origin of input source data, with references",5
+Methods,6,"Provide source data with publication, or document reasons as to why this was not possible",see Github epiforecasts/euro-hub-ensemble
+Methods,7,Describe input data processing procedures in detail,"5,6"
+Methods,8,"State and describe the model type, and document model assumptions, including references","5,6, Supplement Table 1"
+Methods,9,"Make the model code available, or document the reasons why this was not possible",see Github epiforecasts/euro-hub-ensemble
+Methods,10,"Describe the model validation, and justify the approach","5,6"
+Methods,11,"Describe the forecast accuracy evaluation method used, with justification","6,7"
+Methods,12,"Where possible, compare model results to a benchmark or other comparator model, with justification of comparator choice","6,7"
+Methods,13,"Describe the forecast horizon, with justification of its length",5
+Results,14,Present and explain uncertainty of forecasting results,"8,9,10,11,12"
+Results,15,"Briefly summarize the results in nontechnical terms, including a nontechnical interpretation of forecast uncertainty","12,13,14"
+Results,16,"If results are published as a data object, encourage a time-stamped version number",see Github epiforecasts/euro-hub-ensemble
+Discussion,17,"Describe the weaknesses of the forecast, including weaknesses specific to data quality and methods","12,13,14"
+Discussion,18,"If the research is applicable to a specific epidemic, comment on its potential implications and impact for public health action and decision-making","14,15"
+Discussion,19,"If the research is applicable to a specific epidemic, comment on how generalizable it may be across populations",15
