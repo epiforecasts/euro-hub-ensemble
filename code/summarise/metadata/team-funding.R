@@ -1,15 +1,21 @@
 library(dplyr)
+library(readr)
+library(here)
 library(stringr)
 library(tidyr)
 library(janitor)
 library(googlesheets4)
 
 # set up ------------------------------------------------------------------
-gs4_deauth()
-
+load_from_local <- TRUE
 # Get funding details
-authors_raw <- read_sheet("https://docs.google.com/spreadsheets/d/19hS7r7y126J3BPBhJa20rHApFu3Hx1DQEWe7av7fX68/edit#gid=1316950565",
-                          sheet = "Authorship details")
+if (load_from_local) {
+  authors_raw <- read_csv(here("output", "metadata", "authorship_raw.csv"))
+} else {
+  gs4_deauth()
+  authors_raw <- try(read_sheet("https://docs.google.com/spreadsheets/d/19hS7r7y126J3BPBhJa20rHApFu3Hx1DQEWe7av7fX68/edit#gid=1316950565",
+                                sheet = "Authorship details"))
+}
 
 # create unique author initial abbreviations
 initials <- authors_raw %>%
@@ -77,4 +83,4 @@ funding_text <- paste0(paste(sort(unlist(funding_statements)), collapse = ". "),
                       ". The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.")
 
 writeLines(funding_text,
-           con = here::here("output", "metadata", "funding-statements.txt"))
+           con = here::here("output", "metadata", "funding-statements.txt"), useBytes = TRUE)
