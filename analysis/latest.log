@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.29)  2 APR 2023 12:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.29)  4 APR 2023 21:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -614,60 +614,60 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 120.
 [1
 
-{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
+{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 152.
 
-[6] [7] [8]
-<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf, id=174, 361.35pt x 361.35pt>
+[5] [6] [7] [8]
+<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf, id=178, 361.35pt x 361.35pt>
 File: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf Graphic file (type pdf)
 <use C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf>
 Package pdftex.def Info: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf  used on input line 203.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-[9] [10
+[9
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.208 
+l.210 
        <c:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/figure-scores-by-target-1.pdf>]
-<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf, id=199, 505.89pt x 216.81pt>
+<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf, id=195, 505.89pt x 216.81pt>
 File: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf Graphic file (type pdf)
 <use C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf>
 Package pdftex.def Info: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf  used on input line 215.
 (pdftex.def)             Requested size: 469.76265pt x 201.32684pt.
-[11
+[10
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.220 
        <c:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/example-ensemble-1.pdf>]
-<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf, id=216, 361.35pt x 433.62pt>
+<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf, id=212, 361.35pt x 433.62pt>
 File: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf Graphic file (type pdf)
 <use C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf>
 Package pdftex.def Info: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf  used on input line 227.
 (pdftex.def)             Requested size: 361.34912pt x 433.61894pt.
-<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf, id=218, 505.89pt x 361.35pt>
+<C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf, id=214, 505.89pt x 361.35pt>
 File: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf Graphic file (type pdf)
 <use C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf>
 Package pdftex.def Info: C:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf  used on input line 237.
 (pdftex.def)             Requested size: 469.76265pt x 335.54477pt.
-[12] [13
+[11] [12
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.243 
-       <c:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf>] [14
+       <c:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-horizon-1.pdf>] [13
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.243 
-       <c:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf>] [15
+       <c:/Users/kaths/Documents/GitHub/euro-hub-ensemble/output/latest_files/figure-latex/performance-location-1.pdf>] [14
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.274 
-      ] [16] [17] [18] [19]
+l.276 
+      ] [15] [16] [17] [18]
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 323--326
 [] []
  []
@@ -767,7 +767,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 359--362
 
  []
 
-[20]
+
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 363--366
 [][] []
  []
@@ -777,7 +777,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 363--366
 
  []
 
-
+[19]
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 367--370
 [][] []
  []
@@ -907,7 +907,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 415--418
 
  []
 
-[21]
+
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 419--422
 [][] []
  []
@@ -917,7 +917,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 419--422
 
  []
 
-
+[20]
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 423--426
 [][] []
  []
@@ -1037,7 +1037,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 467--470
 
  []
 
-[22]
+
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 471--474
 [][] []
  []
@@ -1047,7 +1047,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 471--474
 
  []
 
-
+[21]
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 475--478
 [][] []
  []
@@ -1137,7 +1137,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 507--510
 
  []
 
-[23]
+
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 511--514
 [][] []
  []
@@ -1147,7 +1147,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 511--514
 
  []
 
-
+[22]
 Overfull \hbox (2.22221pt too wide) in paragraph at lines 515--518
 [][] []
  []
@@ -1207,23 +1207,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 535--538
 
  []
 
-[24] (./latest.aux)
+[23] (./latest.aux)
 Package rerunfilecheck Info: File `latest.out' has not changed.
 (rerunfilecheck)             Checksum: 25F6DFC5E42F7096E9B6F71DAA4EE088;1047.
  ) 
 Here is how much of TeX's memory you used:
- 14802 strings out of 478025
- 243984 string characters out of 5838745
- 1871299 words of memory out of 5000000
+ 14797 strings out of 478025
+ 243929 string characters out of 5838745
+ 1872299 words of memory out of 5000000
  34406 multiletter control sequences out of 15000+600000
- 569873 words of font info for 156 fonts, out of 8000000 for 9000
+ 569613 words of font info for 154 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,9n,76p,6496b,467s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,76p,4532b,467s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/kaths/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on latest.pdf (24 pages, 314649 bytes).
+Output written on latest.pdf (23 pages, 311831 bytes).
 PDF statistics:
- 509 PDF objects out of 1000 (max. 8388607)
- 445 compressed objects within 5 object streams
- 105 named destinations out of 1000 (max. 500000)
+ 505 PDF objects out of 1000 (max. 8388607)
+ 442 compressed objects within 5 object streams
+ 104 named destinations out of 1000 (max. 500000)
  28765 words of extra memory for PDF output out of 29859 (max. 10000000)
 
