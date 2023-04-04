@@ -13,7 +13,7 @@ author_types <- ordered(c("first", "second",
                           "hub", "hub_support", "model",
                           "second_last", "last"))
 
-if (exists("load_from_local")) {
+if (!exists("load_from_local")) {
   load_from_local <- TRUE
 }
 
@@ -24,6 +24,7 @@ if (load_from_local) {
   gs4_deauth()
   authors_raw <- try(read_sheet("https://docs.google.com/spreadsheets/d/19hS7r7y126J3BPBhJa20rHApFu3Hx1DQEWe7av7fX68/edit#gid=1316950565",
                                 sheet = "Authorship details"))
+  readr::write_csv(authors_raw, here("output", "metadata", "authorship_raw.csv"))
 }
 
 authors <- authors_raw %>%
@@ -49,12 +50,13 @@ authors <- authors %>%
   ungroup()
 
 institutions <- authors %>%
-  select(author_index, institution) %>%
-  distinct(institution) %>%
+  select(author_index, institution, city, country) %>%
+  distinct(institution, city, country) %>%
   mutate(institution_index = row_number(),
-         institution_name = paste0("^", institution_index, "^", institution))
+         institution_name = paste0("^", institution_index, "^", institution),
+         institution_city_country = paste(institution_name, city, country, sep = ", "))
 
-authors <- left_join(authors, institutions, by = "institution") %>%
+authors <- left_join(authors, institutions, by = c("institution", "city", "country")) %>%
   mutate(author_inst = paste0(author_name, " ^", institution_index, "^"))
 
 # Save --------------------------------------------------------------------
@@ -64,7 +66,7 @@ writeLines(author_text, con = here::here("output", "metadata",
                                          "authors.txt"))
 
 # Separately list the institutions
-institution_text <- paste(institutions$institution_name, collapse = ", ")
+institution_text <- paste(institutions$institution_city_country, collapse = ", ")
 writeLines(institution_text,
            con = here::here("output", "metadata",
                             "institutions.txt"))

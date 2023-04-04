@@ -7,14 +7,18 @@ library(janitor)
 library(googlesheets4)
 
 # set up ------------------------------------------------------------------
-load_from_local <- TRUE
+if (!exists("load_from_local")) {
+  load_from_local <- TRUE
+}
 # Get funding details
 if (load_from_local) {
   authors_raw <- read_csv(here("output", "metadata", "authorship_raw.csv"))
 } else {
-  gs4_deauth()
+  # gs4_deauth()
+  # gs4_auth() # 1
   authors_raw <- try(read_sheet("https://docs.google.com/spreadsheets/d/19hS7r7y126J3BPBhJa20rHApFu3Hx1DQEWe7av7fX68/edit#gid=1316950565",
                                 sheet = "Authorship details"))
+  readr::write_csv(authors_raw, here("output", "metadata", "authorship_raw.csv"))
 }
 
 # create unique author initial abbreviations
@@ -84,3 +88,13 @@ funding_text <- paste0(paste(sort(unlist(funding_statements)), collapse = ". "),
 
 writeLines(funding_text,
            con = here::here("output", "metadata", "funding-statements.txt"), useBytes = TRUE)
+
+
+# funding bodies only --------------------------------------
+
+funding_bodies <- paste(unique(authors_raw$funding_short), collapse = "; ")
+funding_bodies <- gsub("; NA;", ";", funding_bodies)
+writeLines(funding_bodies,
+           con = here::here("output", "metadata", "funding-bodies.txt"),
+           useBytes = TRUE)
+
