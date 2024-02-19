@@ -1,20 +1,16 @@
-# [Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024)
+# Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations
+[![DOI](https://zenodo.org/badge/434779787.svg)](https://zenodo.org/badge/latestdoi/434779787)
 
-MedRxiv: [https://doi.org/10.1101/2022.06.16.22276024](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024)
+### Project guide
 
-Code: [![DOI](https://zenodo.org/badge/434779787.svg)](https://zenodo.org/badge/latestdoi/434779787)
+This repository provides code and data for analysing COVID-19 forecasts from the [European COVID-19 Forecast Hub](https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe). It is associated with the paper, "Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations" (Sherratt and others, 2023).
 
----
-
-### This project
-
-This repository provides code and data for analysing a year of COVID-19 forecasts from the [European COVID-19 Forecast Hub](https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe).
-
- All code is open source and anyone is welcome to freely use and adapt any part of this codebase for any purpose.
+- The paper is now published and available at [eLife](https://elifesciences.org/articles/81916) or [medRxiv](https://www.medrxiv.org/content/10.1101/2022.06.16.22276024).
+- All code is open source and anyone is welcome to freely use and adapt any part of this codebase for any purpose.
 
 You can find here:
 
-- The latest manuscript in [pdf](output/latest.pdf) or [Rmarkdown](analysis/latest.Rmd), now published as a [pre-print](https://doi.org/10.1101/2022.06.16.22276024) and submitted to eLife
+- The latest manuscript in [pdf](output/latest.pdf) or [Rmarkdown](analysis/latest.Rmd)
 - A [modular codebase](code) for downloading and summarising data from the European Forecast Hub
 
 All feedback is very welcome - just open an [Issue](https://github.com/covid19-forecast-hub-europe/euro-hub-ensemble/issues) with your comments. We would  especially appreciate thoughts on:
@@ -23,9 +19,9 @@ All feedback is very welcome - just open an [Issue](https://github.com/covid19-f
 - Ease of use as an example for extracting, transforming, and loading Forecast Hub data (particularly from the perspective of users who are less/un-familiar with using data stored on Github)
 - Further thoughts and priorities for the analysis of COVID-19 individual and ensemble forecasts
 
-### This repository
+---
 
-#### Workflow
+### Workflow
 
 A brief guide to the files in this repository:
 
