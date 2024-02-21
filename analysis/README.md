@@ -7,7 +7,7 @@ This draws on a modular [codebase](code) for loading and summarising raw data fr
 
 #### Generate the complete paper
 
-Generate the [latest version of the paper](analysis/latest.Rmd) with:
+Generate the [latest version of the paper]([analysis/latest.Rmd](https://github.com/epiforecasts/euro-hub-ensemble/blob/main/analysis/latest.Rmd)) with:
 
 ```
 rmarkdown::render(here::here("analysis/latest.Rmd"),
