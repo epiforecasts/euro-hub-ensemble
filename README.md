@@ -25,10 +25,10 @@ All feedback is very welcome - just open an [Issue](https://github.com/covid19-f
 
 A brief guide to the files in this repository:
 
-- [data](data): key datasets used in this study, including evaluation scores for ensemble and individual models downloaded from the [European COVID-19 Forecast Hub repository](https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe)
+- [data](https://github.com/epiforecasts/euro-hub-ensemble/tree/main/data): key datasets used in this study, including evaluation scores for ensemble and individual models downloaded from the [European COVID-19 Forecast Hub repository](https://github.com/covid19-forecast-hub-europe/covid19-forecast-hub-europe)
 - [code](code#readme): data extraction, loading and transformation code used to support the main [analysis](analysis/latest.Rmd)
- - [load](code/load): functions to download forecasts and evaluation scores from the Forecast Hub Github repository
- - [summarise](code/summarise): uses the `load` functions to save key [datasets](data) and create figures and summary statistics used in the [analysis](analysis)
+ - [load](https://github.com/epiforecasts/euro-hub-ensemble/tree/main/code/load): functions to download forecasts and evaluation scores from the Forecast Hub Github repository
+ - [summarise](https://github.com/epiforecasts/euro-hub-ensemble/tree/main/code/summarise): uses the `load` functions to save key [datasets](https://github.com/epiforecasts/euro-hub-ensemble/tree/main/data) and create figures and summary statistics used in the [analysis](analysis)
 - [analysis](analysis#readme): raw `rmarkdown` files, containing blended text and code to produce the `output`
 - [output](output#readme): The [latest manuscript](output/latest.pdf) and [supplement](output/supplementary.pdf), plus previous dated drafts of the text
 
