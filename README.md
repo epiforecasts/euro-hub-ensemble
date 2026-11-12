@@ -1,4 +1,7 @@
 # Predictive performance of multi-model ensemble forecasts of Covid-19 across European nations
+
+> **Archived.** No longer maintained; last updated August 2026.
+
 [![DOI](https://zenodo.org/badge/434779787.svg)](https://zenodo.org/badge/latestdoi/434779787)
 
 ### Project guide
